@@ -1,0 +1,88 @@
+---
+title: Installation
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Getting started
+
+## Requirements
+
+## Installation
+
+It takes three steps to add Reanimated to a project:
+
+### Step 1: Install the package
+
+Install `react-native-reanimated` from npm:
+
+<Tabs>
+  <TabItem value="expo" label="EXPO" default>
+
+    npx expo install react-native-reanimated
+
+  </TabItem>
+  <TabItem value="npm" label="NPM">
+
+    npm install react-native-reanimated
+
+  </TabItem>
+  <TabItem value="yarn" label="YARN">
+
+    yarn add react-native-reanimated
+
+  </TabItem>
+</Tabs>
+
+### Step 2: Add Reanimated's babel plugin
+
+Add `react-native-reanimated/plugin` plugin to your `babel.config.js`.
+
+```js {7}
+  module.exports = {
+    presets: [
+      ... // don't add it here :)
+    ],
+    plugins: [
+      ...
+      'react-native-reanimated/plugin',
+    ],
+  };
+```
+
+:::caution
+
+`react-native-reanimated/plugin` has to be listed last.
+
+:::
+
+<details>
+<summary>Why do I need this?</summary>
+<br/>
+
+In short, the Reanimated babel plugin automatically converts special JavaScript functions (called [worklets]('/worklets')) in a way that they could be passed and run in the UI thread.
+
+To learn more about the plugin head onto to [Reanimated babel plugin](/docs/learn-more/reanimated-babel-plugin) section of the documentation.
+
+</details>
+
+### Step 3: Clear cache (recommended)
+
+<Tabs>
+  <TabItem value="expo" label="EXPO" default>
+
+    npx expo start -c
+
+  </TabItem>
+  <TabItem value="npm" label="NPM">
+
+    npm start -- --reset-cache
+
+  </TabItem>
+  <TabItem value="yarn" label="YARN">
+
+    yarn start --reset-cache
+
+  </TabItem>
+</Tabs>
