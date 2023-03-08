@@ -1,3 +1,8 @@
 module.exports = {
-  presets: [require.resolve('@docusaurus/core/lib/babel/preset')],
+  presets: [require.resolve("@docusaurus/core/lib/babel/preset")],
+  plugins: [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-namespace-from",
+    "react-native-reanimated/plugin",
+  ],
 };
