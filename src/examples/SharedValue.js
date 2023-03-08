@@ -3,7 +3,6 @@ import { Button, StyleSheet } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  useDerivedValue,
 } from "react-native-reanimated";
 
 export default function Example() {
@@ -13,11 +12,7 @@ export default function Example() {
     return {
       transform: [{ translateX: offset.value * 255 }],
     };
-  }, [offset]);
-
-  useDerivedValue(() => {
-    console.log("offset changed", offset.value);
-  }, [offset]);
+  });
 
   return (
     <>
