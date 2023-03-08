@@ -137,24 +137,24 @@ const config = {
                 setImmediate: () => {},
               }),
             ],
-            // module: {
-            //   rules: [
-            //     {
-            //       test: /\.(js|jsx)$/,
-            //       use: {
-            //         loader: "babel-loader",
-            //         options: {
-            //           presets: [
-            //             "@babel/preset-react",
-            //             {
-            //               plugins: ["@babel/plugin-proposal-class-properties"],
-            //             },
-            //           ],
-            //         },
-            //       },
-            //     },
-            //   ],
-            // },
+            module: {
+              rules: [
+                {
+                  test: /\.(js|jsx)$/,
+                  use: {
+                    loader: "babel-loader",
+                    options: {
+                      presets: [
+                        "@babel/preset-react",
+                        {
+                          plugins: ["@babel/plugin-proposal-class-properties"],
+                        },
+                      ],
+                    },
+                  },
+                },
+              ],
+            },
             resolve: {
               alias: { "react-native$": "react-native-web" },
               extensions: [".web.js", "..."],
