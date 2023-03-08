@@ -3,7 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 /** @type {import('@docusaurus/types').Config} */
@@ -121,37 +121,50 @@ const config = {
         name: "react-native-reanimated/docusaurus-plugin",
         configureWebpack(config, isServer, utils) {
           return {
-            mergeStrategy: { "resolve.extensions": "prepend" },
+            mergeStrategy: {
+              "resolve.extensions": "prepend",
+              "modules.rules": "prepend",
+            },
             // entry: [
             //   "babel-polyfill",
             //   // './index.js'
             // ],
             plugins: [
-              //               // new HtmlWebpackPlugin({
-              //               //   filename: 'index.html',
-              //               //   template: './index.html',
-              //               // }),
               new webpack.DefinePlugin({
                 process: { env: {} },
                 __DEV__: true,
                 setImmediate: () => {},
               }),
+              // new CopyPlugin({
+              //   patterns: [{ from: "src/examples", to: "src/examples/raw" }],
+              // }),
             ],
             module: {
               rules: [
                 {
-                  test: /\.(js|jsx)$/,
-                  use: {
-                    loader: "babel-loader",
-                    options: {
-                      presets: [
-                        "@babel/preset-react",
-                        {
-                          plugins: ["@babel/plugin-proposal-class-properties"],
-                        },
-                      ],
+                  oneOf: [
+                    {
+                      test: /\.txt/,
+                      type: "asset/source",
                     },
-                  },
+                    {
+                      test: /\.(js|jsx)$/,
+                      resourceQuery: { not: [/raw/] },
+                      use: {
+                        loader: "babel-loader",
+                        options: {
+                          presets: [
+                            "@babel/preset-react",
+                            {
+                              plugins: [
+                                "@babel/plugin-proposal-class-properties",
+                              ],
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  ],
                 },
               ],
             },

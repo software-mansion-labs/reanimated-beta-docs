@@ -1,0 +1,27 @@
+.container {
+  height: 400px;
+  background: #fafafa;
+  overflow: scroll;
+  position: relative;
+  border-radius: 15px;
+  contain: content;
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+button {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.active {
+  background: #eee;
+}
