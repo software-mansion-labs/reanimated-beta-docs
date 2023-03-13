@@ -107,6 +107,9 @@ const config = {
       },
     }),
   plugins: [
+    ...[
+      process.env.NODE_ENV === "production" && "@docusaurus/plugin-debug",
+    ].filter(Boolean),
     async function reanimatedDocusaurusPlugin(context, options) {
       return {
         name: "react-native-reanimated/docusaurus-plugin",
