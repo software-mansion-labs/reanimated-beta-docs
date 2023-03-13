@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -16,32 +17,36 @@ export default function InteractiveExample(props: any) {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.buttonContainer}>
-        <button
-          className={showPreview ? styles.active : ""}
-          onClick={() => setShowPreview(true)}
-        >
-          Preview
-        </button>
-        <button
-          className={!showPreview ? styles.active : ""}
-          onClick={() => setShowPreview(false)}
-        >
-          Code
-        </button>
-        <button onClick={() => setCopied(true)}>
-          {copied ? "Copied!" : "Copy"}
-        </button>
-        <button onClick={resetExample}>Reset</button>
-      </div>
-      {showPreview ? (
-        <React.Fragment key={key}>{props.component}</React.Fragment>
-      ) : (
-        <SyntaxHighlighter language="javascript" style={docco}>
-          {sourceCode}
-        </SyntaxHighlighter>
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => (
+        <div className={styles.container}>
+          <div className={styles.buttonContainer}>
+            <button
+              className={showPreview ? styles.active : ""}
+              onClick={() => setShowPreview(true)}
+            >
+              Preview
+            </button>
+            <button
+              className={!showPreview ? styles.active : ""}
+              onClick={() => setShowPreview(false)}
+            >
+              Code
+            </button>
+            <button onClick={() => setCopied(true)}>
+              {copied ? "Copied!" : "Copy"}
+            </button>
+            <button onClick={resetExample}>Reset</button>
+          </div>
+          {showPreview ? (
+            <React.Fragment key={key}>{props.component}</React.Fragment>
+          ) : (
+            <SyntaxHighlighter language="javascript" style={docco}>
+              {sourceCode}
+            </SyntaxHighlighter>
+          )}
+        </div>
       )}
-    </div>
+    </BrowserOnly>
   );
 }
