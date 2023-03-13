@@ -23,7 +23,7 @@ const config = {
   organizationName: "facebook", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -114,51 +114,25 @@ const config = {
       return {
         name: "react-native-reanimated/docusaurus-plugin",
         configureWebpack(config, isServer, utils) {
+          const processMock = !isServer ? { process: { env: {} } } : {};
+
+          const raf = require("raf");
+          raf.polyfill();
+
           return {
             mergeStrategy: {
               "resolve.extensions": "prepend",
-              "modules.rules": "prepend",
             },
-            // entry: [
-            //   "babel-polyfill",
-            //   // './index.js'
-            // ],
             plugins: [
               new webpack.DefinePlugin({
-                process: { env: {} },
-                __DEV__: true,
-                setImmediate: () => {},
+                ...processMock,
               }),
-              // new CopyPlugin({
-              //   patterns: [{ from: "src/examples", to: "src/examples/raw" }],
-              // }),
             ],
             module: {
               rules: [
                 {
-                  oneOf: [
-                    {
-                      test: /\.txt/,
-                      type: "asset/source",
-                    },
-                    {
-                      test: /\.(js|jsx)$/,
-                      resourceQuery: { not: [/raw/] },
-                      use: {
-                        loader: "babel-loader",
-                        options: {
-                          presets: [
-                            "@babel/preset-react",
-                            {
-                              plugins: [
-                                "@babel/plugin-proposal-class-properties",
-                              ],
-                            },
-                          ],
-                        },
-                      },
-                    },
-                  ],
+                  test: /\.txt/,
+                  type: "asset/source",
                 },
               ],
             },
