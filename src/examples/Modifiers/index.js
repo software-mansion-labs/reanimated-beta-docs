@@ -7,24 +7,23 @@ import Animated, {
 } from "react-native-reanimated";
 
 export default function App() {
-  const offset = useSharedValue(0);
+  const offset = useSharedValue(200);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: offset.value * 400 }],
+      transform: [{ translateX: offset.value }],
     };
   });
 
+  const handlePress = () => {
+    offset.value = withSpring(offset.value * -1);
+  };
+
   return (
-    <>
+    <View style={styles.container}>
       <Animated.View style={[styles.box, animatedStyles]} />
-      <View style={styles.container}>
-        <Button
-          onPress={() => (offset.value = withSpring(Math.random()))}
-          title="Move"
-        />
-      </View>
-    </>
+      <Button onPress={handlePress} title="Click me" />
+    </View>
   );
 }
 
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-end",
   },
   box: {
     height: 100,

@@ -6,7 +6,7 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
-export default function Example() {
+export default function App() {
   const offset = useSharedValue(0);
 
   const animatedStyles = useAnimatedStyle(() => {
@@ -20,7 +20,6 @@ export default function Example() {
       <Animated.View style={[styles.box, animatedStyles]} />
       <View style={styles.container}>
         <Button
-          style={styles.button}
           onPress={() => (offset.value = withSpring(Math.random()))}
           title="Move"
         />
