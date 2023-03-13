@@ -7,33 +7,46 @@ import FirstAnimation from "@site/src/examples/FirstAnimation";
 
 # Your First Animation
 
-which we will expand in the following sections.
+In this section, we will walk you through the basic concepts of Reanimated. If you're new to Reanimated, you're in the right hands! We're going to start by building a simple animation which will help you develop a basic understanding of the library. We will built on top of this and extend the animation in the following sections. Let's go!
 
-<InteractiveExample name="FirstAnimation" component={<FirstAnimation />} />
+## Using an Animated component
 
-## Animated component
-
-First, we need to have something to animate. The `Animated` component wraps React Native built-in such as `View`, `ScrollView` or `FlatList`.
+Let's start by having something that we could animate on the screen. You can do this by importing `Animated` from `react-native-reanimated`:
 
 ```bash
 import Animated from "react-native-reanimated";
 ```
 
-Let's animate a simple `View` component:
+This component wraps React Native built-in component such as `View`, `ScrollView` or `FlatList`. As it is a default export you can name this whatever you like but we highly suggest sticking to `Animated`.
 
-```jsx {4}
+You use this component as any other JSX component like so:
+
+```jsx {5}
+import { StyleSheet } from "react-native";
 import Animated from "react-native-reanimated";
 
 export default function App() {
   return <Animated.View style={styles.box} />;
 }
+
+const styles = StyleSheet.create({
+  box: {
+    height: 100,
+    width: 100,
+    backgroundColor: "violet",
+  },
+});
 ```
 
-## Shared value
+:::info
 
-All animations starts with a [shared value](/learn-more/shared-value). A shared value is a driving factor of all your animations. You can think of it as a state which is automagically kept in sync between “JavaScript” and “native” side of your app (hence the name).
+You can create your own custom animated components by using [`createAnimatedComponent`](/api/createAnimatedComponent).
 
-You use by referencing into `.value` property of the shared value.
+:::
+
+## Defining a shared value
+
+All animations starts with a [shared value](/learn-more/shared-value). A shared value is a driving factor of all your animations in Reanimated. You can think of it as a state which is automagically kept in sync between “JavaScript” and “native” side of your app (hence the name).
 
 ```bash
 import { useSharedValue } from 'react-native-reanimated';
@@ -50,4 +63,33 @@ export default function App() {
 ```
 
 You can store any JS value in a shared value including arrays and JS objects.
+
+## Using a shared value
+
+You use shared values by referencing `.value` property. There's no setter or anything - you simply mutate the `.value` property like there's no tomorrow.
+
 changing the width by 20% on each click.
+
+```jsx
+import { Button, StyleSheet, View } from "react-native";
+import Animated, { useSharedValue } from "react-native-reanimated";
+
+export default function App() {
+  const width = useSharedValue(100);
+
+  const handlePress = () => {
+    width.value = width.value * 1.2;
+  };
+
+  return (
+    <View style={styles.container}>
+      <Animated.View style={{ ...styles.box, width }} />
+      <Button onPress={handlePress} title="Click me" />
+    </View>
+  );
+}
+```
+
+<InteractiveExample name="FirstAnimation" component={<FirstAnimation />} />
+
+## Wrapping up
