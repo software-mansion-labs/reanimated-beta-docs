@@ -1,17 +1,26 @@
 import React from "react";
 import { Button, StyleSheet, View } from "react-native";
-import Animated, { useSharedValue } from "react-native-reanimated";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+} from "react-native-reanimated";
 
 export default function App() {
   const width = useSharedValue(100);
 
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      width: width.value,
+    };
+  });
+
   const handlePress = () => {
-    width.value = width.value * 1.2;
+    width.value += 50;
   };
 
   return (
     <View style={styles.container}>
-      <Animated.View style={{ ...styles.box, width }} />
+      <Animated.View style={[styles.box, animatedStyles]} />
       <Button onPress={handlePress} title="Click me" />
     </View>
   );

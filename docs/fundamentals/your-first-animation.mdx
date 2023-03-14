@@ -7,35 +7,35 @@ import FirstAnimation from "@site/src/examples/FirstAnimation";
 
 # Your First Animation
 
-In this section, we will walk you through the basic concepts of Reanimated. If you're new to Reanimated, you're in the right hands! We're going to start by building a simple animation which will help you develop a basic understanding of the library. We will built on top of this and extend the animation in the following sections. Let's go!
+In this section, we'll guide you through the basic concepts of Reanimated. If you're new to Reanimated, you're in the right hands! We're going to start by building a simple animation which will help you develop a basic understanding of the library. Then, in the following sections, we're going to built on top of this knowledge and further extend the animation. Let's go!
 
 ## Using an Animated component
 
-Let's start by having something that we could animate on the screen. You can do this by importing `Animated` from `react-native-reanimated`:
+Let's start by having something that we could see on the screen. First, to create an animatable component you need to import it:
 
 ```bash
 import Animated from "react-native-reanimated";
 ```
 
-This component wraps React Native built-in component such as `View`, `ScrollView` or `FlatList`. As it is a default export you can name this whatever you like but we highly suggest sticking to `Animated`.
+This `Animated` component wraps React Native built-ins such as `View`, `ScrollView` or `FlatList`.
 
-You use this component as any other JSX component like so:
+You use this component as any other JSX component:
 
-```jsx {5}
+```jsx {6}
 import { StyleSheet } from "react-native";
 import Animated from "react-native-reanimated";
 
 export default function App() {
-  return <Animated.View style={styles.box} />;
+  return (
+    <Animated.View
+      style={{
+        width: 100,
+        height: 100,
+        backgroundColor: "violet",
+      }}
+    />
+  );
 }
-
-const styles = StyleSheet.create({
-  box: {
-    height: 100,
-    width: 100,
-    backgroundColor: "violet",
-  },
-});
 ```
 
 :::info
@@ -44,52 +44,90 @@ You can create your own custom animated components by using [`createAnimatedComp
 
 :::
 
-## Defining a shared value
+## Defining a Shared Value
 
-All animations starts with a [shared value](/learn-more/shared-value). A shared value is a driving factor of all your animations in Reanimated. You can think of it as a state which is automagically kept in sync between “JavaScript” and “native” side of your app (hence the name).
+A [Shared Value](/learn-more/shared-value) is a driving factor of all your animations. You can think of it as a React state which is automagically kept in sync between the “JavaScript” and the “native” side of your app (hence the name). You create Shared Values using a `useSharedValue` hook:
 
 ```bash
 import { useSharedValue } from 'react-native-reanimated';
 ```
 
-```jsx {4, 6}
+As any [other React hook](https://reactjs.org/docs/hooks-rules.html), you have to define it in your component's body. In a Shared Value you can store any JS value like `number`, `string` or `boolean` but also data structures such as `array` and `object`.
+
+For now, let's use `100` as the default value of the `useSharedValue` hook and pass the returned value as an inline style of the `Animated.View`:
+
+```jsx {4,9}
 import Animated, { useSharedValue } from "react-native-reanimated";
 
 export default function App() {
-  const width = useSharedValue(50);
+  const width = useSharedValue(100);
 
-  return <Animated.View style={{ ...styles.box, width }} />;
+  return (
+    <Animated.View
+      style={{
+        width,
+        height: 100,
+        backgroundColor: "violet",
+      }}
+    />
+  );
 }
 ```
 
-You can store any JS value in a shared value including arrays and JS objects.
+## Using a Shared Value
 
-## Using a shared value
+Our goal is to animate a `width` of an element that will expand by `50px` on each button press. We can do this by modifying a shared value that is connected to the `width` property of a `Animated.View` component.
 
-You use shared values by referencing `.value` property. There's no setter or anything - you simply mutate the `.value` property like there's no tomorrow.
+Shared Values are accessed and modified by their `.value` property.
 
-changing the width by 20% on each click.
+There's no setter or anything - you simply mutate the `.value` property like there's no tomorrow.
 
-```jsx
-import { Button, StyleSheet, View } from "react-native";
+Let's define a `handlePress` function in which we'll modify the shared value:
+
+```jsx {8,20}
+import { Button, View } from "react-native";
 import Animated, { useSharedValue } from "react-native-reanimated";
 
 export default function App() {
   const width = useSharedValue(100);
 
   const handlePress = () => {
-    width.value = width.value * 1.2;
+    width.value += 50;
   };
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={{ ...styles.box, width }} />
+    <View style={{ flex: 1 }}>
+      <Animated.View
+        style={{
+          width,
+          height: 100,
+          backgroundColor: "violet",
+        }}
+      />
       <Button onPress={handlePress} title="Click me" />
     </View>
   );
 }
 ```
 
+:::caution
+
+It's a very common mistake to try to modify a shared value directly, like using ~~`sv = sv + 100;`~~. Always remember to access the shared value by using the `.value` property instead! Here, the correct usage would be `sv.value = sv.value + 100;`.
+
+:::
+
+And voilà, we've made our first animation using Reanimated! You can see how it works in it's full glory in a preview below:
+
 <InteractiveExample name="FirstAnimation" component={<FirstAnimation />} />
 
-## Wrapping up
+## Summary
+
+Right now, the animation we made in this section may not be very exciting, but we gained a firm grasp on the fundamentals. We learned about `Animated` components and how to define and modify `Shared Values`. To sum up:
+
+- `Animated` components are used to define animatable elements.
+- Shared Values are driving factors of all animations and we define them using a `useSharedValue` hook.
+- Shared Values are always accessed and modified by the `.value` property (eg. `sv.value = 100;`)
+
+## What's next?
+
+In [the next section](applying-modifiers), we'll learn how to make our animations a little bit more interesting by applying modifiers like spring and decay.

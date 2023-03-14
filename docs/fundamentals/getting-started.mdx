@@ -7,11 +7,11 @@ import TabItem from "@theme/TabItem";
 
 # Getting started
 
-The _Fundamentals_ section was designed to help you gain a strong foundation on the core concepts of Reanimated and give you the confidence to explore more advanced use cases on your own. This section is packed with interactive examples, code snippets and detailed explainations. Are you ready? Let's dive in!
+The _Fundamentals_ section was designed to help you gain a strong foundation on the core concepts of Reanimated and give you the confidence to explore more advanced use cases on your own. This section is packed with interactive examples, code snippets and explanations. Are you ready? Let's dive in!
 
 ## What is React Native Reanimated?
 
-React Native Reanimated is a powerful animation library bulit by [Software Mansion](https://swmansion.com/).
+React Native Reanimated is a powerful animation library built by [Software Mansion](https://swmansion.com/).
 
 With Reanimated, you can easily create smooth animations and interactions that run on the native thread.
 
@@ -66,9 +66,9 @@ Add `react-native-reanimated/plugin` plugin to your `babel.config.js`.
 <details>
 <summary>Why do I need this?</summary>
 
-In short, the Reanimated babel plugin automatically converts special JavaScript functions (called [worklets](/worklets)) in a way that they could be passed and run in the UI thread.
+In short, the Reanimated babel plugin automatically converts special JavaScript functions (called [worklets](/worklets)) in a way that they could be passed and run on the UI thread.
 
-To learn more about the plugin head onto to [Reanimated babel plugin](/docs/learn-more/reanimated-babel-plugin) section of the documentation.
+To learn more about the plugin head onto to [Reanimated babel plugin](/docs/learn-more/reanimated-babel-plugin) section.
 
 </details>
 
@@ -108,9 +108,9 @@ npx pod-install ios
 
 #### Web
 
-We highly recommend to use [Expo](https://expo.dev/).
+For building apps that target web using [react-native-web](https://www.npmjs.com/package/react-native-web) we highly recommend to use [Expo](https://expo.dev/).
 
-Add [`@babel/plugin-proposal-export-namespace-from`](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from) Babel plugin.
+To use Reanimated on the web all you need to do is to install and add [`@babel/plugin-proposal-export-namespace-from`](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from) Babel plugin to your `babel.config.js`.
 
 <Tabs>
   <TabItem value="expo" label="EXPO" default>
@@ -143,4 +143,6 @@ Add [`@babel/plugin-proposal-export-namespace-from`](https://babeljs.io/docs/en/
   };
 ```
 
-More advanced use cases such as running Reanimated with `webpack` or with `Next.js` are explained in [a separate guide](/web-support).
+Make sure to list `react-native-reanimated/plugin` last.
+
+More advanced use cases such as running Reanimated with `webpack` or with `Next.js` are explained in a separate [Web Support](/web-support) guide.
