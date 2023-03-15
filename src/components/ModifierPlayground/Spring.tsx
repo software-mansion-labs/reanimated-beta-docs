@@ -25,6 +25,7 @@ export default function App({ options }: Props) {
 
   useEffect(() => {
     cancelAnimation(offset);
+    offset.value = initialOffset;
   }, [options]);
 
   useEffect(() => {
