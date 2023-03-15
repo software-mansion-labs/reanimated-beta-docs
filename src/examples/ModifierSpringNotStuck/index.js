@@ -3,28 +3,22 @@ import { Button, StyleSheet, View } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withTiming,
-  Easing,
+  withSpring,
 } from "react-native-reanimated";
 
-export default function App() {
-  const offset = useSharedValue(200);
+const initialOffset = 200;
 
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateX: offset.value,
-        },
-      ],
-    };
-  });
+export default function App() {
+  const offset = useSharedValue(initialOffset);
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: offset.value }],
+  }));
 
   const handlePress = () => {
-    offset.value = withTiming(offset.value * -1, {
-      duration: 500,
-      easing: Easing.bezier(0.25, 0.1, 0.25, 1),
-    });
+    offset.value = withSpring(
+      offset.value < 0 ? initialOffset : -initialOffset
+    );
   };
 
   return (

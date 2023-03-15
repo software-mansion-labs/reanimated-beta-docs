@@ -6,8 +6,10 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
+const initialOffset = 200;
+
 export default function App() {
-  const offset = useSharedValue(200);
+  const offset = useSharedValue(initialOffset);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {

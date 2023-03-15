@@ -11,7 +11,25 @@ import ModifierTiming from "@site/src/examples/ModifierTiming";
 
 ## Animating styles
 
-`useAnimatedStyle` hook
+extract your animation logic from your JSX
+
+a very handy `useAnimatedStyle` hook when you'd want to make a bit more complicated
+
+```jsx
+const animatedStyles = useAnimatedStyle(() => {
+  return {
+    transform: [{ translateX: offset.value }],
+  };
+});
+```
+
+The implicit return shorthand format also works:
+
+```jsx
+const animatedStyles = useAnimatedStyle(() => ({
+  transform: [{ translateX: offset.value }],
+})
+```
 
 <InteractiveExample name="ModifierBare" component={<ModifierBare />} />
 

@@ -1,13 +1,15 @@
-import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import React from "react";
+import { Button, StyleSheet, View } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
+
+const initialOffset = 200;
 
 export default function App() {
-  const offset = useSharedValue(200);
+  const offset = useSharedValue(initialOffset);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -30,12 +32,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   box: {
     height: 100,
     width: 100,
-    backgroundColor: '#001A72',
+    backgroundColor: "#001A72",
     borderRadius: 20,
     marginVertical: 64,
   },
