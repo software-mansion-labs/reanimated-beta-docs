@@ -15,7 +15,7 @@ export default function ModifierPlayground(props: any) {
   const [stiffness, setStiffness] = React.useState(100);
   const [overshootClamping, setOvershootClamping] = React.useState(false);
   const [restDisplacementThreshold, setRestDisplacementThreshold] =
-    React.useState(21.37);
+    React.useState(0.01);
   const [restSpeedThreshold, setRestSpeedThreshold] = React.useState(2);
 
   const resetExample = () => {
