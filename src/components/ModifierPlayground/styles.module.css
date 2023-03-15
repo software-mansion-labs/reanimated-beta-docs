@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.sliders {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 1rem;
+  max-width: 350px;
+}
+
+.code {
+  display: flex;
+  flex: 1;
+  margin: 20px;
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+.row input[type="range"] {
+  flex: 1;
+  margin: 0 0.5rem;
+}
+
+.codeWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.container {
+  position: relative;
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+}
+
+.label {
+  width: 40px;
+  text-align: center;
+}
