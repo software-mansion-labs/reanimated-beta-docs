@@ -8,18 +8,16 @@ import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 interface Props {
   name: string;
   component: React.ReactNode;
-  showByDefault?: "preview" | "code";
+  showCode?: boolean; // whether to show code by default
 }
 
 export default function InteractiveExample({
   name,
   component,
-  showByDefault = "preview",
+  showCode = false,
 }: Props) {
   const [key, setKey] = React.useState(0);
-  const [showPreview, setShowPreview] = React.useState(
-    showByDefault === "preview"
-  );
+  const [showPreview, setShowPreview] = React.useState(!showCode);
   const [copied, setCopied] = React.useState(false);
   const sourceCode = require(`../../examples/${name}/code.txt`);
 

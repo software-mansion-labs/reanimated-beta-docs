@@ -1,1 +1,1 @@
-# `react-native-reanimated/plugin`
+# Reanimated Babel plugin

@@ -1,10 +1,13 @@
 import ModifierPlayground from "@site/src/components/ModifierPlayground";
 import InteractiveExample from "@site/src/components/InteractiveExample";
+import SpringBasic from "@site/src/examples/SpringBasic";
 import SpringCarousel from "@site/src/examples/SpringCarousel";
 
-# withSpring
+# withSpring()
 
-A spring-based [animation modifier](docs/fundamentals/glossary#animation-modifier).
+A spring-based [animation modifier](/docs/fundamentals/glossary#animation-modifier).
+
+<InteractiveExample name="SpringBasic" component={<SpringBasic />} />
 
 ## Import
 
@@ -41,34 +44,41 @@ function withSpring<T extends AnimatableValue>(
 
 ### Arguments
 
-| Name                            | Type                     | Description |
-| ------------------------------- | ------------------------ | ----------- |
-| **toValue**                     | [`AnimatableValue`](/)   | TODO        |
-| **config** <br/> _(optional)_   | [`WithSpringConfig`](/)  | TODO        |
-| **callback** <br />_(optional)_ | [`AnimationCallback`](/) | TODO        |
+#### `toValue`
 
-#### `WithSpringConfig`
+The value on which the animation will come at rest.
 
-| Name                                             | Type      | Default | Description |
-| ------------------------------------------------ | --------- | ------- | ----------- |
-| **damping** <br/> _(optional)_                   | `number`  | 10      | TODO        |
-| **mass** <br/> _(optional)_                      | `number`  | 1       | TODO        |
-| **stiffness** <br/>_(optional)_                  | `number`  | 100     | TODO        |
-| **overshootClamping** <br/> _(optional)_         | `boolean` | false   | TODO        |
-| **restDisplacementThreshold** <br/> _(optional)_ | `number`  | 0.01    | TODO        |
-| **restSpeedThreshold** <br/> _(optional)_        | `number`  | 2       | TODO        |
+#### `config`
 
-#### Options playground
+The spring animation configuration. Available properties:
+
+| Name                                             | Type      | Default | Description                                                                                               |
+| ------------------------------------------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| **damping** <br/> _(optional)_                   | `number`  | 10      | How quickly a spring stops moving. Higher damping means the spring will come to rest faster.              |
+| **mass** <br/> _(optional)_                      | `number`  | 1       | The weight of the spring. Reducing this value makes the animation faster.                                 |
+| **stiffness** <br/>_(optional)_                  | `number`  | 100     | How bouncy the spring is.                                                                                 |
+| **velocity** <br/>_(optional)_                   | `number`  | 100     | Initial velocity applied to the spring equation.                                                          |
+| **overshootClamping** <br/> _(optional)_         | `boolean` | false   | Whether a spring can bounce over the `toValue`.                                                           |
+| **restDisplacementThreshold** <br/> _(optional)_ | `number`  | 0.01    | The displacement below which the spring will snap to `toValue` without further oscillations.              |
+| **restSpeedThreshold** <br/> _(optional)_        | `number`  | 2       | The speed in pixels per second from which the spring will snap to `toValue` without further oscillations. |
+
+<details>
+<summary><b><code>config</code> playground</b></summary>
 
 <ModifierPlayground />
+</details>
+
+#### `callback`
+
+A function called on animation complete. In case the animation is cancelled, the callback will receive false as the argument, otherwise it will receive true.
+
+### Returns
+
+An [animation object](/docs/fundamentals/glossary#animation-object). It can be either assigned directly to a [shared value](/docs/fundamentals/glossary#shared-value) or can be used as a value for a style object returned from [useAnimatedStyle](/).
 
 ## Example
 
-<InteractiveExample
-  name="SpringCarousel"
-  component={<SpringCarousel />}
-  showByDefault="code"
-/>
+<InteractiveExample name="SpringCarousel" component={<SpringCarousel />} />
 
 ## Platform compatibility
 

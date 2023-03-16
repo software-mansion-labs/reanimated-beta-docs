@@ -2,11 +2,42 @@
 
 ## Shared value
 
+## Animation value
+
+An animation value refers to a type of value that can be used for animations. These values include numbers, strings, and arrays of numbers.
+
+String values can be animated if they are in a specific format, such as `"10deg"`, `"21%"`, or even colors like `"#ffaabb"` or `"rgba(100, 200, 100, 0.7)"`.
+
+## Animation modifier
+
+Animation modifiers are functions used to customize animations. They describe how the animation should behave.
+
+Reanimated comes with a bunch of built-in modifiers:
+
+- [`withDecay`](/)
+- [`withDelay`](/)
+- [`withRepeat`](/)
+- [`withSequence`](/)
+- [`withSpring`](/)
+- [`withTiming`](/)
+
+## Animation object
+
+An animation object holds the current state of the animation including its start and end conditions, as well as a `onFrame` function which allows to calculate the animation state for each frame.
+
+When you pass an animation object to a shared value it is automatically treated as an [animation value](/docs/fundamentals/glossary#animation-value).
+
+For example, consider this code:
+
+```javascript
+sv.value = withSpring(100);
+```
+
+Even though, the `withSpring` returns an animation object the final result that is stored in a shared value is just a number.
+
 ## Worklet
 
 ## Reanimated Babel plugin
-
-## Animation modifier
 
 ## to workletize
 
@@ -16,4 +47,4 @@
 
 ## Snack
 
-An [Expo Snack](https://snack.expo.dev/) is a platform simillar to CodeSandbox or StackBlitz allowing to run React Native apps in the browser. It's a great way to report issues with the library.
+An [Expo Snack](https://snack.expo.dev/) is a platform similar to CodeSandbox or StackBlitz allowing to run React Native apps in the browser. It's a great way to report issues with the library.
