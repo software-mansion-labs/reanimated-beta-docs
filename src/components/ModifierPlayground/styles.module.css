@@ -3,7 +3,7 @@
   flex: 1;
 }
 
-.sliders {
+.controls {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -20,10 +20,11 @@
 
 .row {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
 }
-.row input[type="range"] {
+.row input[type="range"],
+.row input[type="checkbox"] {
   flex: 1;
   margin: 0 0.5rem;
 }

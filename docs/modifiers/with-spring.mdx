@@ -50,23 +50,21 @@ The value on which the animation will come at rest.
 
 #### `config`
 
-The spring animation configuration. Available properties:
+The spring animation configuration.
+
+<ModifierPlayground />
+
+Available properties:
 
 | Name                                             | Type      | Default | Description                                                                                               |
 | ------------------------------------------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------- |
 | **damping** <br/> _(optional)_                   | `number`  | 10      | How quickly a spring stops moving. Higher damping means the spring will come to rest faster.              |
 | **mass** <br/> _(optional)_                      | `number`  | 1       | The weight of the spring. Reducing this value makes the animation faster.                                 |
 | **stiffness** <br/>_(optional)_                  | `number`  | 100     | How bouncy the spring is.                                                                                 |
-| **velocity** <br/>_(optional)_                   | `number`  | 100     | Initial velocity applied to the spring equation.                                                          |
+| **velocity** <br/>_(optional)_                   | `number`  | 0       | Initial velocity applied to the spring equation.                                                          |
 | **overshootClamping** <br/> _(optional)_         | `boolean` | false   | Whether a spring can bounce over the `toValue`.                                                           |
 | **restDisplacementThreshold** <br/> _(optional)_ | `number`  | 0.01    | The displacement below which the spring will snap to `toValue` without further oscillations.              |
 | **restSpeedThreshold** <br/> _(optional)_        | `number`  | 2       | The speed in pixels per second from which the spring will snap to `toValue` without further oscillations. |
-
-<details>
-<summary><b><code>config</code> playground</b></summary>
-
-<ModifierPlayground />
-</details>
 
 #### `callback`
 
