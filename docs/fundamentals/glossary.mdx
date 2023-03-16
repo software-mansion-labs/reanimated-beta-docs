@@ -2,6 +2,22 @@
 
 ## Shared value
 
+Shared values are defined using `useSharedValue` hook which is imported:
+
+```javascript
+import { useSharedValue } from "react-native-reanimated";
+```
+
+and used in your components:
+
+```javascript {2}
+function App() {
+  const sv = useSharedValue(0);
+
+  // rest of your glamorous code ✨
+}
+```
+
 ## Animatable value
 
 An animatable value refers to a type of value that can be used for animations. These values include numbers, strings, and arrays of numbers.
