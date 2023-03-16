@@ -41,4 +41,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginVertical: 64,
   },
+  next: {},
+  previous: {},
 });

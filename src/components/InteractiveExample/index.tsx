@@ -5,11 +5,23 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-export default function InteractiveExample(props: any) {
+interface Props {
+  name: string;
+  component: React.ReactNode;
+  showByDefault?: "preview" | "code";
+}
+
+export default function InteractiveExample({
+  name,
+  component,
+  showByDefault = "preview",
+}: Props) {
   const [key, setKey] = React.useState(0);
-  const [showPreview, setShowPreview] = React.useState(true);
+  const [showPreview, setShowPreview] = React.useState(
+    showByDefault === "preview"
+  );
   const [copied, setCopied] = React.useState(false);
-  const sourceCode = require(`../../examples/${props.name}/code.txt`);
+  const sourceCode = require(`../../examples/${name}/code.txt`);
 
   const resetExample = () => {
     setKey(key + 1);
@@ -19,7 +31,9 @@ export default function InteractiveExample(props: any) {
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => (
-        <div className={styles.container}>
+        <div
+          className={`${styles.container} ${!showPreview ? styles.code : ""}`}
+        >
           <div className={styles.buttonContainer}>
             <button
               className={showPreview ? styles.active : ""}
@@ -39,7 +53,7 @@ export default function InteractiveExample(props: any) {
             <button onClick={resetExample}>Reset</button>
           </div>
           {showPreview ? (
-            <React.Fragment key={key}>{props.component}</React.Fragment>
+            <React.Fragment key={key}>{component}</React.Fragment>
           ) : (
             <SyntaxHighlighter language="javascript" style={docco}>
               {sourceCode}
