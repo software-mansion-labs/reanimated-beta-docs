@@ -3,7 +3,7 @@ import Example from "./Example";
 
 import { Range, Checkbox } from "..";
 
-export default function useSpringExample() {
+export default function useSpringPlayground() {
   const [damping, setDamping] = useState(10);
   const [mass, setMass] = useState(1);
   const [stiffness, setStiffness] = useState(100);

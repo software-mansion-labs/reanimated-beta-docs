@@ -1,4 +1,6 @@
-import ModifierPlayground from "@site/src/components/ModifierPlayground";
+import ModifierPlayground, {
+  useSpringPlayground,
+} from "@site/src/components/ModifierPlayground";
 import InteractiveExample from "@site/src/components/InteractiveExample";
 import SpringBasic from "@site/src/examples/SpringBasic";
 import SpringCarousel from "@site/src/examples/SpringCarousel";
@@ -52,7 +54,7 @@ The value on which the animation will come at rest.
 
 The spring animation configuration.
 
-<ModifierPlayground />
+<ModifierPlayground usePlayground={useSpringPlayground} />
 
 Available properties:
 

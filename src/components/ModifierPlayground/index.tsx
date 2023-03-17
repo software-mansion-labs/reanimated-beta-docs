@@ -4,13 +4,16 @@ import styles from "./styles.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
 import useSpringPlayground from "./useSpringPlayground";
+import useTimingPlayground from "./useTimingPlayground";
+export { useSpringPlayground, useTimingPlayground };
 
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
 
-  const { example, code, controls } = useSpringPlayground();
+  const { example, code, controls } = props.usePlayground();
 
   const resetExample = () => {
     setKey(key + 1);
@@ -63,7 +66,7 @@ export function Range({
   return (
     <>
       <div className={styles.row}>
-        <div>{label}</div>
+        <label>{label}</label>
         <input
           type="number"
           min={min}
@@ -100,6 +103,39 @@ export function Checkbox({ value, onChange, label }: CheckboxProps) {
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
       />
+    </div>
+  );
+}
+
+interface SelectProps {
+  value: string;
+  onChange: Dispatch<string>;
+  label: string;
+  options: string[];
+  disabled?: boolean;
+}
+
+export function Select({
+  value,
+  onChange,
+  label,
+  options,
+  disabled,
+}: SelectProps) {
+  return (
+    <div className={styles.row}>
+      <label>{label}</label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
+      >
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
