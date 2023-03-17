@@ -91,13 +91,13 @@ export default function useTimingPlayground() {
           "ease",
           "elastic",
           "exp",
-          "in",
-          "inOut",
           "linear",
-          "out",
           "poly",
           "quad",
           "sin",
+          "in",
+          "inOut",
+          "out",
         ]}
       />
       {canNestEasing(easing) && (

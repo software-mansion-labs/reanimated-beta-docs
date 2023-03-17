@@ -57,7 +57,32 @@ Available properties:
 | **duration** <br/> _(optional)_ | `number` | 300                         | Length of the animation (in milliseconds).            |
 | **easing** <br/> _(optional)_   | `Easing` | `Easing.inOut(Easing.quad)` | An easing function which defines the animation curve. |
 
-Reanimated provides a handful of ready-to-use easing functions in the `Easing` module.
+##### `Easing`
+
+Reanimated provides a handful of ready-to-use easing functions in the `Easing` module. You can find a visualization of some common easing functions at [http://easings.net/](http://easings.net/).
+
+```javascript
+import { Easing } from "react-native-reanimated";
+```
+
+- `back` provides a simple animation where the object goes slightly back before moving forward
+- `bezier(x1: number, y1: number, x2: number, y2: number)` provides a cubic bezier curve
+- `bounce` provides a bouncing animation
+- `circle` provides a circular function
+- `cubic` provides a cubic function
+- `ease` provides a simple inertial animation
+- `elastic(bounciness?: number)` provides a simple spring interaction
+- `exp` provides an exponential function
+- `linear` provides a linear function
+- `poly(n: number)` can be used to implement quartic, quintic, and other higher power functions
+- `quad` provides a quadratic function
+- `sin` provides a sinusoidal function
+
+The following helpers are used to modify other easing functions.
+
+- `in(easing: EasingFunction)` runs an easing function forwards
+- `inOut(easing: EasingFunction)` makes any easing function symmetrical
+- `out(easing: EasingFunction)` runs an easing function backwards
 
 #### `callback`
 
@@ -66,55 +91,3 @@ A function called on animation complete. In case the animation is cancelled, the
 ### Returns
 
 An [animation object](/docs/fundamentals/glossary#animation-object). It can be either assigned directly to a [shared value](/docs/fundamentals/glossary#shared-value) or can be used as a value for a style object returned from [useAnimatedStyle](/).
-
-### Easing
-
-The `Easing` module implements common easing functions. This module is used
-by `withTiming()` to convey physically
-believable motion in animations.
-
-You can find a visualization of some common easing functions at
-http://easings.net/
-
-#### Import
-
-```javascript
-import { Easing } from "react-native-reanimated";
-```
-
-#### Predefined animations
-
-The `Easing` module provides several predefined animations through the
-following methods:
-
-- [`back`](docs/easing.html#back) provides a simple animation where the
-  object goes slightly back before moving forward
-- [`bounce`](docs/easing.html#bounce) provides a bouncing animation
-- [`ease`](docs/easing.html#ease) provides a simple inertial animation
-- [`elastic`](docs/easing.html#elastic) provides a simple spring interaction
-
-#### Standard functions
-
-Three standard easing functions are provided:
-
-- [`linear`](docs/easing.html#linear)
-- [`quad`](docs/easing.html#quad)
-- [`cubic`](docs/easing.html#cubic)
-
-The [`poly`](docs/easing.html#poly) function can be used to implement
-quartic, quintic, and other higher power functions.
-
-#### Additional functions
-
-Additional mathematical functions are provided by the following methods:
-
-- [`bezier`](docs/easing.html#bezier) provides a cubic bezier curve
-- [`circle`](docs/easing.html#circle) provides a circular function
-- [`sin`](docs/easing.html#sin) provides a sinusoidal function
-- [`exp`](docs/easing.html#exp) provides an exponential function
-
-The following helpers are used to modify other easing functions.
-
-- [`in`](docs/easing.html#in) runs an easing function forwards
-- [`inOut`](docs/easing.html#inout) makes any easing function symmetrical
-- [`out`](docs/easing.html#out) runs an easing function backwards
