@@ -26,7 +26,7 @@ type AnimatableValue = number | string | number[];
 
 interface WithTimingConfig {
   duration?: number;
-  easing?: (value: number) => number;
+  easing?: EasingFunction;
 }
 
 function withTiming<T extends AnimatableValue>(
@@ -91,3 +91,15 @@ A function called on animation complete. In case the animation is cancelled, the
 ### Returns
 
 An [animation object](/docs/fundamentals/glossary#animation-object). It can be either assigned directly to a [shared value](/docs/fundamentals/glossary#shared-value) or can be used as a value for a style object returned from [useAnimatedStyle](/).
+
+## Example
+
+## Platform compatibility
+
+<div class="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
