@@ -20,47 +20,51 @@ export default function useTimingPlayground() {
   const [power, setPower] = useState(4);
 
   // elastic
-  const [bounciness, setBounciness] = useState(1);
+  const [bounciness, setBounciness] = useState(2);
 
-  function canNestEasing(easing: string) {
+  const canNestEasing = (easing: string) => {
     return easing === "inOut" || easing === "in" || easing === "out";
-  }
+  };
 
-  const formattedEasing = (() => {
+  const formatEasing = (easing: string) => {
     if (canNestEasing(easing)) {
       return {
-        fn: Easing[easing](Easing[nestedEasing]),
-        code: `Easing.${easing}(Easing.${nestedEasing})`,
+        fn: Easing[easing](formatEasing(nestedEasing).fn),
+        code: `Easing.${easing}(${formatEasing(nestedEasing).code})`,
       };
     }
-    if (easing === "bezier") {
-      return {
-        fn: Easing.bezier(x1, y1, x2, y2),
-        code: `Easing.bezier(${x1}, ${y1}, ${x2}, ${y2})`,
-      };
-    }
-    if (easing === "poly") {
-      return {
-        fn: Easing.poly(power),
-        code: `Easing.poly(${power})`,
-      };
-    }
-    if (easing === "elastic") {
-      return {
-        fn: Easing.elastic(bounciness),
-        code: `Easing.elastic(${bounciness})`,
-      };
+    switch (easing) {
+      case "bezierFn":
+        return {
+          fn: Easing.bezierFn(x1, y1, x2, y2),
+          code: `Easing.bezierFn(${x1}, ${y1}, ${x2}, ${y2})`,
+        };
+      case "bezier":
+        return {
+          fn: Easing.bezier(x1, y1, x2, y2),
+          code: `Easing.bezier(${x1}, ${y1}, ${x2}, ${y2})`,
+        };
+      case "poly":
+        return {
+          fn: Easing.poly(power),
+          code: `Easing.poly(${power})`,
+        };
+      case "elastic":
+        return {
+          fn: Easing.elastic(bounciness),
+          code: `Easing.elastic(${bounciness})`,
+        };
     }
     return {
       fn: Easing[easing],
       code: `Easing.${easing}`,
     };
-  })();
+  };
 
   const code = `
     withTiming(sv.value, {
       duration: ${duration},
-      easing: ${formattedEasing.code}
+      easing: ${formatEasing(easing).code}
     })
   `;
 
@@ -79,24 +83,47 @@ export default function useTimingPlayground() {
         value={easing}
         onChange={setEasing}
         options={[
-          "linear",
-          "ease",
-          "quad",
-          "cubic",
-          "poly",
-          "sin",
-          "circle",
-          "exp",
-          "elastic",
           "back",
-          "bounce",
           "bezier",
+          "bounce",
+          "circle",
+          "cubic",
+          "ease",
+          "elastic",
+          "exp",
           "in",
-          "out",
           "inOut",
+          "linear",
+          "out",
+          "poly",
+          "quad",
+          "sin",
         ]}
       />
-      {easing === "bezier" && (
+      {canNestEasing(easing) && (
+        <Select
+          label="Easing"
+          value={nestedEasing}
+          onChange={setNestedEasing}
+          disabled={!canNestEasing(easing)}
+          options={[
+            "back",
+            "bezierFn",
+            "bounce",
+            "circle",
+            "cubic",
+            "ease",
+            "elastic",
+            "exp",
+            "linear",
+            "poly",
+            "quad",
+            "sin",
+          ]}
+        />
+      )}
+      {(easing === "bezier" ||
+        (nestedEasing === "bezierFn" && canNestEasing(easing))) && (
         <>
           <Range
             label="x1"
@@ -108,8 +135,8 @@ export default function useTimingPlayground() {
           />
           <Range
             label="y1"
-            min={0}
-            max={1}
+            min={-1}
+            max={2}
             step={0.01}
             value={y1}
             onChange={setY1}
@@ -124,15 +151,15 @@ export default function useTimingPlayground() {
           />
           <Range
             label="y2"
-            min={0}
-            max={1}
+            min={-1}
+            max={2}
             step={0.01}
             value={y2}
             onChange={setY2}
           />
         </>
       )}
-      {easing === "poly" && (
+      {(easing === "poly" || nestedEasing === "poly") && (
         <Range
           label="Power"
           min={1}
@@ -142,7 +169,7 @@ export default function useTimingPlayground() {
           onChange={setPower}
         />
       )}
-      {easing === "elastic" && (
+      {(easing === "elastic" || nestedEasing === "elastic") && (
         <Range
           label="Bounciness"
           min={0}
@@ -152,28 +179,6 @@ export default function useTimingPlayground() {
           onChange={setBounciness}
         />
       )}
-      {canNestEasing(easing) && (
-        <Select
-          label="Easing"
-          value={nestedEasing}
-          onChange={setNestedEasing}
-          disabled={!canNestEasing(easing)}
-          options={[
-            "linear",
-            "ease",
-            "quad",
-            "cubic",
-            "poly",
-            "sin",
-            "circle",
-            "exp",
-            "elastic",
-            "back",
-            "bounce",
-            "bezier",
-          ]}
-        />
-      )}
     </>
   );
 
@@ -181,7 +186,7 @@ export default function useTimingPlayground() {
     <Example
       options={{
         duration,
-        easing: formattedEasing.fn,
+        easing: formatEasing(easing).fn,
       }}
     />
   );
