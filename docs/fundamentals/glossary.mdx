@@ -2,21 +2,29 @@
 
 ## Shared value
 
-Shared values are defined using `useSharedValue` hook which is imported:
+Shared Values are a driving factor of all your animations in Reanimated.
+
+They are defined using `useSharedValue` hook:
 
 ```javascript
 import { useSharedValue } from "react-native-reanimated";
 ```
 
-and used in your components:
+and accessed and modified by their `.value` property:
 
-```javascript {2}
+```javascript {2,5}
 function App() {
   const sv = useSharedValue(0);
+
+  const handlePress = () => {
+    sv.value += 10;
+  };
 
   // rest of your glamorous code ✨
 }
 ```
+
+When used, the data stored in Shared Value is automatically synchronized between the JS thread and the UI thread.
 
 ## Animatable value
 
