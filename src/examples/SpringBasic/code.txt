@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -11,35 +11,21 @@ const initialOffset = 200;
 export default function App() {
   const offset = useSharedValue(initialOffset);
 
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: offset.value }],
-    };
-  });
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: offset.value }],
+  }));
 
-  useEffect(() => {
-    cancelAnimation(offset);
-    offset.value = initialOffset;
-  }, [options]);
-
-  useEffect(() => {
+  React.useEffect(() => {
     const id = setInterval(() => {
-      offset.value = withSpring(-initialOffset, options, (isFinished) => {
-        setTimeout(() => {
-          if (isFinished) {
-            offset.value = initialOffset;
-          }
-        }, 1000);
-      });
-    }, 1000);
+      offset.value = withSpring(-offset.value);
+    }, 2000);
 
     return () => clearInterval(id);
-  }, [options]);
+  }, []);
 
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.box, animatedStyles]} />
-      <Button onPress={handlePress} title="Click me" />
     </View>
   );
 }
@@ -48,13 +34,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
   },
   box: {
-    height: 100,
-    width: 100,
+    height: 120,
+    width: 120,
     backgroundColor: "#001A72",
     borderRadius: 20,
-    marginVertical: 64,
   },
   next: {},
   previous: {},

@@ -4,7 +4,6 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  cancelAnimation,
 } from "react-native-reanimated";
 
 const initialOffset = 200;
@@ -18,9 +17,7 @@ export default function App() {
 
   React.useEffect(() => {
     const id = setInterval(() => {
-      offset.value = withSpring(
-        offset.value < initialOffset ? initialOffset : -initialOffset
-      );
+      offset.value = withSpring(-offset.value);
     }, 2000);
 
     return () => clearInterval(id);
