@@ -9,13 +9,15 @@ import ModifierPlayground, {
 
 `withDelay` is an [animation modifier](/docs/fundamentals/glossary#animation-modifier) that lets you start an animation with a delay.
 
-## Import
+## Reference
 
 ```javascript
 import { withDelay } from "react-native-reanimated";
-```
 
-## Reference
+function App() {
+  sv.value = withDelay(500, withTiming(0));
+  // ...
+```
 
 <details>
 <summary><b>Type definitions</b></summary>
@@ -24,7 +26,7 @@ import { withDelay } from "react-native-reanimated";
 export type AnimatableValue = number | string | number[];
 
 export function withDelay<T extends AnimatableValue>(
-  delayMS: number,
+  delayMs: number,
   delayedAnimation: T
 ): T;
 ```

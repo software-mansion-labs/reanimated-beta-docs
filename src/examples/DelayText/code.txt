@@ -18,7 +18,6 @@ export default function App() {
   const opacity2 = useSharedValue(0);
   const opacity3 = useSharedValue(0);
 
-  // prettier-ignore
   const show = () => {
     if (isShown) {
       opacity3.value = withDelay(0 * DELAY, withTiming(0, { duration: DURATION }));
