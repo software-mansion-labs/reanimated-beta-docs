@@ -41,6 +41,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#001A72",
     borderRadius: 20,
   },
-  next: {},
-  previous: {},
 });
