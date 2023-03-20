@@ -1,1 +1,48 @@
 # withSequence()
+
+`withSequence` is an [animation modifier](/docs/fundamentals/glossary#animation-modifier) that lets you run animations in a sequence.
+
+## Reference
+
+```javascript
+import { withSequence } from "react-native-reanimated";
+
+function App() {
+  sv.value = withSequence(withTiming(50), withTiming(0))
+  // ...
+```
+
+<details>
+<summary><b>Type definitions</b></summary>
+
+```typescript
+type AnimatableValue = number | string | number[];
+
+export function withSequence<T extends AnimatableValue>(
+  ...animations: [T, ...T[]]
+): T;
+```
+
+</details>
+
+### Arguments
+
+#### `...animations`
+
+Any number of [animation objects](docs/fundamentals/glossary#animation-object) to be run in a sequence.
+
+### Returns
+
+An [animation object](/docs/fundamentals/glossary#animation-object). It can be either assigned directly to a [shared value](/docs/fundamentals/glossary#shared-value) or can be used as a value for a style object returned from [useAnimatedStyle](/).
+
+## Example
+
+## Platform compatibility
+
+<div class="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
