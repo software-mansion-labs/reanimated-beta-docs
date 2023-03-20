@@ -1,5 +1,6 @@
 import InteractiveExample from "@site/src/components/InteractiveExample";
 import TimingBasic from "@site/src/examples/TimingBasic";
+import TimingTabs from "@site/src/examples/TimingTabs";
 import ModifierPlayground, {
   useTimingPlayground,
 } from "@site/src/components/ModifierPlayground";
@@ -61,9 +62,17 @@ Available properties:
 
 Reanimated provides a handful of ready-to-use easing functions in the `Easing` module. You can find a visualization of some common easing functions at [http://easings.net/](http://easings.net/).
 
+You use our built-in easings by passing them as `easing` property to `withTiming` config:
+
 ```javascript
 import { Easing } from "react-native-reanimated";
+
+withTiming(sv.value, {
+  easing: Easing.bounce,
+});
 ```
+
+Available functions:
 
 - `back` provides a simple animation where the object goes slightly back before moving forward
 - `bezier(x1: number, y1: number, x2: number, y2: number)` provides a cubic bezier curve
@@ -93,6 +102,8 @@ A function called on animation complete. In case the animation is cancelled, the
 An [animation object](/docs/fundamentals/glossary#animation-object). It can be either assigned directly to a [shared value](/docs/fundamentals/glossary#shared-value) or can be used as a value for a style object returned from [useAnimatedStyle](/).
 
 ## Example
+
+<InteractiveExample name="TimingTabs" component={<TimingTabs />} />
 
 ## Platform compatibility
 
