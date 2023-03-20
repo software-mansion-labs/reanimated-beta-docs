@@ -11,13 +11,15 @@ import ModifierPlayground, {
 
 <InteractiveExample name="TimingBasic" component={<TimingBasic />} />
 
-## Import
+## Reference
 
 ```javascript
 import { withTiming } from "react-native-reanimated";
-```
 
-## Reference
+function App() {
+  withTiming(sv.value);
+  // ...
+```
 
 <details>
 <summary><b>Type definitions</b></summary>
@@ -47,12 +49,16 @@ The value on which the animation will come at rest.
 
 #### `config`
 
-The timing animation configuration. Available properties:
-
-- `duration`: length of the animation (in milliseconds). Defaults to 300.
-- `easing`: an easing function which defines the animation curve. Defaults to `Easing.inOut(Easing.quad)`.
+The timing animation configuration.
 
 <ModifierPlayground usePlayground={useTimingPlayground} />
+
+Available properties:
+
+| Name                            | Type     | Default                     | Description                                           |
+| ------------------------------- | -------- | --------------------------- | ----------------------------------------------------- |
+| **duration** <br/> _(optional)_ | `number` | 300                         | Length of the animation (in milliseconds).            |
+| **easing** <br/> _(optional)_   | `Easing` | `Easing.inOut(Easing.quad)` | An easing function which defines the animation curve. |
 
 ##### `Easing`
 
