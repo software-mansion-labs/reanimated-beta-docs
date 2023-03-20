@@ -1,0 +1,60 @@
+import InteractiveExample from "@site/src/components/InteractiveExample";
+import TimingBasic from "@site/src/examples/TimingBasic";
+import TimingTabs from "@site/src/examples/TimingTabs";
+import ModifierPlayground, {
+  useTimingPlayground,
+} from "@site/src/components/ModifierPlayground";
+
+# withDelay()
+
+`withDelay` is an [animation modifier](/docs/fundamentals/glossary#animation-modifier) that lets you start an animation with a delay.
+
+## Import
+
+```javascript
+import { withDelay } from "react-native-reanimated";
+```
+
+## Reference
+
+<details>
+<summary><b>Type definitions</b></summary>
+
+```typescript
+export type AnimatableValue = number | string | number[];
+
+export function withDelay<T extends AnimatableValue>(
+  delayMS: number,
+  delayedAnimation: T
+): T;
+```
+
+</details>
+
+### Arguments
+
+#### `delayMs`
+
+Duration (in milliseconds) before the animation starts.
+
+#### `delayedAnimation`
+
+Animation to delay.
+
+### Returns
+
+An [animation object](/docs/fundamentals/glossary#animation-object). It can be either assigned directly to a [shared value](/docs/fundamentals/glossary#shared-value) or can be used as a value for a style object returned from [useAnimatedStyle](/).
+
+## Example
+
+<InteractiveExample name="DelayText" component={<DelayText />} />
+
+## Platform compatibility
+
+<div class="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
