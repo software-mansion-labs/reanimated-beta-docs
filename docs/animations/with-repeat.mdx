@@ -1,9 +1,8 @@
-import InteractiveExample from "@site/src/components/InteractiveExample";
 import RepeatBasic from "@site/src/examples/RepeatBasic";
 
 # withRepeat()
 
-`withRepeat` lets you repeat an animation specified number of times or indefinitely.
+`withRepeat` lets you repeat an animation given number of times or run it indefinitely.
 
 <InteractiveExample name="RepeatBasic" component={<RepeatBasic />} />
 
@@ -39,12 +38,14 @@ function withRepeat<T extends AnimatableValue>(
 
 The animation you want to repeat. These animations can be created using [`withTiming`](/), [`withSpring`](/) or [`withDecay`](/).
 
-#### `numberOfReps`
+#### `numberOfReps` <optional />
 
-The number of times you want the animation to repeat. Defaults to `2`. When you set this value to negative (eg. `-1`)
+The number of times you want the animation to repeat. Defaults to `2`.
+
+When negative (eg. `-1`)
 
 #### `reverse`
 
 #### `callback`
 
-A function called on animation complete. In case the animation is cancelled, the callback will receive false as the argument, otherwise it will receive true.
+A function called on animation complete. In case the animation is cancelled, the callback will receive `false` as the argument, otherwise it will receive `true`.

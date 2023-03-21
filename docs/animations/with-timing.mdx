@@ -1,9 +1,6 @@
-import InteractiveExample from "@site/src/components/InteractiveExample";
 import TimingBasic from "@site/src/examples/TimingBasic";
 import TimingTabs from "@site/src/examples/TimingTabs";
-import ModifierPlayground, {
-  useTimingPlayground,
-} from "@site/src/components/ModifierPlayground";
+import { useTimingPlayground } from "@site/src/components/ModifierPlayground";
 
 # withTiming()
 
@@ -47,7 +44,7 @@ function withTiming<T extends AnimatableValue>(
 
 The value on which the animation will come at rest.
 
-#### `config`
+#### `config` <Optional />
 
 The timing animation configuration.
 
@@ -55,10 +52,10 @@ The timing animation configuration.
 
 Available properties:
 
-| Name                            | Type     | Default                     | Description                                           |
-| ------------------------------- | -------- | --------------------------- | ----------------------------------------------------- |
-| **duration** <br/> _(optional)_ | `number` | 300                         | Length of the animation (in milliseconds).            |
-| **easing** <br/> _(optional)_   | `Easing` | `Easing.inOut(Easing.quad)` | An easing function which defines the animation curve. |
+| Name                      | Type     | Default                     | Description                                           |
+| ------------------------- | -------- | --------------------------- | ----------------------------------------------------- |
+| **duration** <Optional /> | `number` | 300                         | Length of the animation (in milliseconds).            |
+| **easing** <Optional />   | `Easing` | `Easing.inOut(Easing.quad)` | An easing function which defines the animation curve. |
 
 ##### `Easing`
 
@@ -95,9 +92,9 @@ The following helpers are used to modify other easing functions.
 - `inOut(easing: EasingFunction)` makes any easing function symmetrical
 - `out(easing: EasingFunction)` runs an easing function backwards
 
-#### `callback`
+#### `callback` <Optional />
 
-A function called on animation complete. In case the animation is cancelled, the callback will receive false as the argument, otherwise it will receive true.
+A function called on animation complete. In case the animation is cancelled, the callback will receive `false` as the argument, otherwise it will receive `true`.
 
 ### Returns
 

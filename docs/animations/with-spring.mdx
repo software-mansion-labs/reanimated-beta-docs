@@ -1,7 +1,4 @@
-import ModifierPlayground, {
-  useSpringPlayground,
-} from "@site/src/components/ModifierPlayground";
-import InteractiveExample from "@site/src/components/InteractiveExample";
+import { useSpringPlayground } from "@site/src/components/ModifierPlayground";
 import SpringBasic from "@site/src/examples/SpringBasic";
 import SpringCarousel from "@site/src/examples/SpringCarousel";
 
@@ -52,7 +49,7 @@ function withSpring<T extends AnimatableValue>(
 
 The value on which the animation will come at rest.
 
-#### `config`
+#### `config` <Optional />
 
 The spring animation configuration.
 
@@ -60,19 +57,19 @@ The spring animation configuration.
 
 Available properties:
 
-| Name                                             | Type      | Default | Description                                                                                               |
-| ------------------------------------------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------- |
-| **damping** <br/> _(optional)_                   | `number`  | 10      | How quickly a spring stops moving. Higher damping means the spring will come to rest faster.              |
-| **mass** <br/> _(optional)_                      | `number`  | 1       | The weight of the spring. Reducing this value makes the animation faster.                                 |
-| **stiffness** <br/>_(optional)_                  | `number`  | 100     | How bouncy the spring is.                                                                                 |
-| **velocity** <br/>_(optional)_                   | `number`  | 0       | Initial velocity applied to the spring equation.                                                          |
-| **overshootClamping** <br/> _(optional)_         | `boolean` | false   | Whether a spring can bounce over the `toValue`.                                                           |
-| **restDisplacementThreshold** <br/> _(optional)_ | `number`  | 0.01    | The displacement below which the spring will snap to `toValue` without further oscillations.              |
-| **restSpeedThreshold** <br/> _(optional)_        | `number`  | 2       | The speed in pixels per second from which the spring will snap to `toValue` without further oscillations. |
+| Name                                       | Type      | Default | Description                                                                                               |
+| ------------------------------------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| **damping** <Optional />                   | `number`  | 10      | How quickly a spring stops moving. Higher damping means the spring will come to rest faster.              |
+| **mass** <Optional />                      | `number`  | 1       | The weight of the spring. Reducing this value makes the animation faster.                                 |
+| **stiffness** <Optional />                 | `number`  | 100     | How bouncy the spring is.                                                                                 |
+| **velocity** <Optional />                  | `number`  | 0       | Initial velocity applied to the spring equation.                                                          |
+| **overshootClamping** <Optional />         | `boolean` | false   | Whether a spring can bounce over the `toValue`.                                                           |
+| **restDisplacementThreshold** <Optional /> | `number`  | 0.01    | The displacement below which the spring will snap to `toValue` without further oscillations.              |
+| **restSpeedThreshold** <Optional />        | `number`  | 2       | The speed in pixels per second from which the spring will snap to `toValue` without further oscillations. |
 
-#### `callback`
+#### `callback` <Optional />
 
-A function called on animation complete. In case the animation is cancelled, the callback will receive false as the argument, otherwise it will receive true.
+A function called on animation complete. In case the animation is cancelled, the callback will receive `false` as the argument, otherwise it will receive `true`.
 
 ### Returns
 
