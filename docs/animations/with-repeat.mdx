@@ -1,0 +1,50 @@
+import InteractiveExample from "@site/src/components/InteractiveExample";
+import RepeatBasic from "@site/src/examples/RepeatBasic";
+
+# withRepeat()
+
+`withRepeat` lets you repeat a animation specified number of times or indefinitely.
+
+<InteractiveExample name="RepeatBasic" component={<RepeatBasic />} />
+
+## Reference
+
+```javascript
+import { withRepeat } from "react-native-reanimated";
+
+function App() {
+  sv.value = withRepeat(withSpring(0), 5);
+  // ...
+```
+
+<details>
+<summary><b>Type definitions</b></summary>
+
+```typescript
+type AnimatableValue = number | string | number[];
+
+function withRepeat<T extends AnimatableValue>(
+  animation: T,
+  numberOfReps?: number,
+  reverse?: boolean,
+  callback?: (finished?: boolean, current?: AnimatableValue) => void
+): T;
+```
+
+</details>
+
+### Arguments
+
+#### `animation`
+
+The animation you want to repeat. These animations can be created using [`withTiming`](/), [`withSpring`](/) or [`withDecay`](/).
+
+#### `numberOfReps`
+
+The number of times you want the animation to repeat. Defaults to `2`. When you set this value to negative (eg. `-1`)
+
+#### `reverse`
+
+#### `callback`
+
+A function called on animation complete. In case the animation is cancelled, the callback will receive false as the argument, otherwise it will receive true.
