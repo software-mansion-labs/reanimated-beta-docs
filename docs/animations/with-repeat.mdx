@@ -1,4 +1,5 @@
 import RepeatBasic from "@site/src/examples/RepeatBasic";
+import SequenceWobble from "@site/src/examples/SequenceWobble";
 
 # withRepeat()
 
@@ -36,16 +37,34 @@ function withRepeat<T extends AnimatableValue>(
 
 #### `animation`
 
-The animation you want to repeat. These animations can be created using [`withTiming`](/), [`withSpring`](/) or [`withDecay`](/).
+The animation you want to repeat.
 
-#### `numberOfReps` <optional />
+#### `numberOfReps` <Optional />
 
-The number of times you want the animation to repeat. Defaults to `2`.
+The number of times the animation is going to be repeated. Defaults to `2`.
 
-When negative (eg. `-1`)
+A negative value will cause the animation to repeat indefinitely until it is cancelled or torn down. For example, if the component unmounts or [`cancelAnimation`](/) was called.
 
-#### `reverse`
+#### `reverse` <Optional />
 
-#### `callback`
+Whether the animation should run in reverse every other repetition. Defaults to `false`.
+
+This option only supports [animation functions](/docs/fundamentals/glossary#animation-function) (eg. [`withSpring`](/docs/animations/with-spring)) and doesn't work with [animation modifiers](/docs/fundamentals/glossary#animation-modifier) (eg. [`withSequence`](/docs/animations/with-sequence)).
+
+#### `callback` <Optional />
 
 A function called on animation complete. In case the animation is cancelled, the callback will receive `false` as the argument, otherwise it will receive `true`.
+
+## Example
+
+<InteractiveExample name="SequenceWobble" component={<SequenceWobble />} />
+
+## Platform compatibility
+
+<div class="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
