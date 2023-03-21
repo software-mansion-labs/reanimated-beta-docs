@@ -1,61 +1,40 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import {
-  GestureDetector,
-  Gesture,
-  GestureHandlerRootView,
-  enableExperimentalWebImplementation,
-} from "react-native-gesture-handler";
+import { StyleSheet, View } from "react-native";
 import Animated, {
-  useSharedValue,
   useAnimatedStyle,
+  useSharedValue,
+  withSpring,
 } from "react-native-reanimated";
 
-enableExperimentalWebImplementation(true);
+import React from "react";
+import {
+  Gesture,
+  GestureDetector,
+  GestureHandlerRootView,
+} from "react-native-gesture-handler";
 
-function Ball() {
-  const isPressed = useSharedValue(false);
-  const offset = useSharedValue({ x: 0, y: 0 });
+export default function BouncingBoxExample() {
+  const offset = useSharedValue(0);
 
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateX: offset.value.x },
-        { translateY: offset.value.y },
-      ],
-      backgroundColor: isPressed.value ? "blue" : "navy",
-    };
-  });
-
-  const gesture = Gesture.Pan()
-    .manualActivation(true)
-    .onBegin(() => {
-      isPressed.value = true;
-    })
-    .onChange((e) => {
-      offset.value = {
-        x: e.changeX + offset.value.x,
-        y: e.changeY + offset.value.y,
-      };
+  const pan = Gesture.Pan()
+    .minDistance(0)
+    .onChange((event) => {
+      offset.value = event.translationX;
     })
     .onFinalize(() => {
-      isPressed.value = false;
-    })
-    .onTouchesMove((_, state) => {
-      state.activate();
+      offset.value = withSpring(0);
     });
 
-  return (
-    <GestureDetector gesture={gesture}>
-      <Animated.View style={[styles.ball, animatedStyles]} />
-    </GestureDetector>
-  );
-}
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: offset.value }],
+  }));
 
-export default function GestureHandlerExample() {
   return (
     <GestureHandlerRootView style={styles.container}>
-      <Ball />
+      <View style={styles.container}>
+        <GestureDetector gesture={pan}>
+          <Animated.View style={[styles.box, animatedStyles]}></Animated.View>
+        </GestureDetector>
+      </View>
     </GestureHandlerRootView>
   );
 }
@@ -65,12 +44,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    height: "100%",
   },
-  ball: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    backgroundColor: "blue",
-    alignSelf: "center",
+  box: {
+    height: 120,
+    width: 120,
+    backgroundColor: "#001A72",
+    borderRadius: 20,
+    cursor: "grab",
   },
 });
