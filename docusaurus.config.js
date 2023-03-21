@@ -127,6 +127,8 @@ const config = {
             plugins: [
               new webpack.DefinePlugin({
                 ...processMock,
+                __DEV__: "false",
+                setImmediate: () => {},
               }),
             ],
             module: {
