@@ -43,7 +43,7 @@ The animation you want to repeat.
 
 The number of times the animation is going to be repeated. Defaults to `2`.
 
-A negative value will cause the animation to repeat indefinitely until it is cancelled or torn down. For example, if the component unmounts or [`cancelAnimation`](/) was called.
+A non-positive value (e.g. `0` or `-1`) will cause the animation to repeat indefinitely until it is cancelled or torn down. For example, if the component unmounts or [`cancelAnimation`](/) was called.
 
 #### `reverse` <Optional />
 
