@@ -1,3 +1,7 @@
+import DecayBasic from "@site/src/examples/DecayBasic";
+
 # withDecay()
 
-`withDecay` lets you create animations that mimic objects in motion that move with a given deceleration rate. Usually used with `ScrollView` elements or gestures.
+`withDecay` lets you create animations that mimic objects in motion. The animation will start with the provided velocity and slow down over time according to the given deceleration rate until it reaches a stop.
+
+<InteractiveExample name="DecayBasic" component={<DecayBasic />} />
