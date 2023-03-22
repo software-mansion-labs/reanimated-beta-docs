@@ -1,5 +1,5 @@
-import React, { useRef, useState, useLayoutEffect, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useRef, useState, useEffect } from "react";
+import { StyleSheet, View, Text } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,6 +11,8 @@ import {
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 
+// hack, Gesture.Pan doesn't rerender on window resize for some reason
+const store = { width: 0 };
 const SIZE = 120;
 
 export default function App() {
@@ -18,8 +20,7 @@ export default function App() {
   const ref = useRef(null);
 
   const [width, setWidth] = useState(0);
-
-  console.log(width);
+  store.width = width;
 
   const setWrapperWidth = () => {
     setWidth(ref?.current?.clientWidth);
@@ -40,7 +41,7 @@ export default function App() {
     .onFinalize((event) => {
       offset.value = withDecay({
         velocity: event.velocityX,
-        clamp: [-200, 200],
+        clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
       });
     });
 
@@ -52,7 +53,9 @@ export default function App() {
     <GestureHandlerRootView style={styles.container}>
       <View ref={ref} style={styles.wrapper}>
         <GestureDetector gesture={pan}>
-          <Animated.View style={[styles.box, animatedStyles]} />
+          <Animated.View style={[styles.box, animatedStyles]}>
+            <Text style={styles.text}>Grab me</Text>
+          </Animated.View>
         </GestureDetector>
       </View>
     </GestureHandlerRootView>
@@ -69,7 +72,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     width: "100%",
-    border: "1px solid red",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -79,5 +81,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#001A72",
     borderRadius: 20,
     cursor: "grab",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    color: "white",
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
 });
