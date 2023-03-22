@@ -15,7 +15,7 @@ export default function App() {
   const sv = useSharedValue(0);
 
   useEffect(() => {
-    sv.value = withRepeat(withTiming(1, { duration, easing }), -1, true);
+    sv.value = withRepeat(withTiming(1, { duration, easing }), -1);
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => ({
