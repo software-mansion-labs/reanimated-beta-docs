@@ -42,6 +42,8 @@ export default function App() {
       offset.value = withDecay({
         velocity: event.velocityX,
         clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
+        rubberBandFactor: 0.0006,
+        rubberBandEffect: true,
       });
     });
 

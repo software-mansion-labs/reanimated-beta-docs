@@ -23,6 +23,7 @@ export default function App() {
       offset.value = withDecay({
         velocity: event.velocityX,
         clamp: [-300, 300],
+        rubberBandEffect: true
       });
     });
 
