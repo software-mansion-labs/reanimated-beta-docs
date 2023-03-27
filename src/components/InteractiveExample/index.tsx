@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { useCopyToClipboard } from "usehooks-ts";
 
 interface Props {
   name: string;
@@ -16,6 +17,7 @@ export default function InteractiveExample({
   component,
   showCode = false,
 }: Props) {
+  const [_, copy] = useCopyToClipboard();
   const [key, setKey] = React.useState(0);
   const [showPreview, setShowPreview] = React.useState(!showCode);
   const [copied, setCopied] = React.useState(false);
@@ -45,7 +47,12 @@ export default function InteractiveExample({
             >
               Code
             </button>
-            <button onClick={() => setCopied(true)}>
+            <button
+              onClick={() => {
+                copy(sourceCode);
+                setCopied(true);
+              }}
+            >
               {copied ? "Copied!" : "Copy"}
             </button>
             <button onClick={resetExample}>Reset</button>
