@@ -95,7 +95,7 @@ export default function App() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, alignItems: "center" }}>
       <Animated.View
         style={{
           width,
@@ -123,17 +123,17 @@ Finally, import `withSpring` function and wrap around `width.value + 50` in the 
 
 ```jsx {2,8}
 import { Button, View } from "react-native";
-import Animated, { useSharedValue, withTiming } from "react-native-reanimated";
+import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 
 export default function App() {
   const width = useSharedValue(100);
 
   const handlePress = () => {
-    width.value = withTiming(width.value + 50);
+    width.value = withSpring(width.value + 50);
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, alignItems: "center" }}>
       <Animated.View
         style={{
           width,
