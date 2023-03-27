@@ -1,11 +1,11 @@
 import { Button, View } from 'react-native';
-import Animated, { useSharedValue } from 'react-native-reanimated';
+import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 
 export default function App() {
   const width = useSharedValue(100);
 
   const handlePress = () => {
-    width.value += 100;
+    width.value += withSpring(50);
   };
 
   return (

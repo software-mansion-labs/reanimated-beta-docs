@@ -3,6 +3,7 @@ import { Button, StyleSheet, View } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  withSpring,
 } from "react-native-reanimated";
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
   });
 
   const handlePress = () => {
-    width.value += 50;
+    width.value = withSpring(width.value + 50);
   };
 
   return (
