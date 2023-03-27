@@ -9,13 +9,24 @@ import ModifierTiming from "@site/src/examples/ModifierTiming";
 
 # Customizing animation
 
-in the previous section we learned how to make a simple animation
+Now that we know how to use shared values we can dive deeper into the good stuff - creating engaging animations!
+
+It takes more than good intentions to create a good animation; but usually customizing existing animation functions is all you really need. But before we carry on we need to learn one more hook that makes our lives easier - `useAnimatedStyle`.
 
 ## Animating styles
 
-extract your animation logic from your JSX
+As we learned in the [previous section](/) we can animate styles by passing shared values to inline styles:
 
-a very handy `useAnimatedStyle` hook when you'd want to make a bit more complicated
+```jsx
+function App() {
+  const width = useSharedValue(100);
+
+  return <Animated.View style={{ width }} />;
+```
+
+But when you'd want to make a bit more complicated animations (with conditional statement or loops) inlining styles gets really messy really quick.
+
+Luckily, `useAnimatedStyle` hook comes to the rescue. It lets you extract your animation logic from your JSX which can provide additional control and flexibility over your animation.
 
 ```jsx
 const animatedStyles = useAnimatedStyle(() => {
@@ -25,7 +36,7 @@ const animatedStyles = useAnimatedStyle(() => {
 });
 ```
 
-The implicit return shorthand format also works:
+You can use the shorthand syntax just fine:
 
 ```jsx
 const animatedStyles = useAnimatedStyle(() => ({
@@ -37,7 +48,7 @@ const animatedStyles = useAnimatedStyle(() => ({
 
 ## Animation modifiers
 
-It takes more than good intentions to create a good animation; but usually an [animation modifier](docs/fundamentals/glossary#animation-modifier) is all you really need. They allow you to customize how your animations look and feel.
+They allow you to customize how your animations look and feel.
 
 ## `withSpring` modifier
 
