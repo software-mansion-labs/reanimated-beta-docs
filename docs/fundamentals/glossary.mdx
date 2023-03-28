@@ -68,6 +68,19 @@ sv.value = withSpring(100);
 
 Even though, the `withSpring` returns an animation object the final result that is stored in a shared value is just a number.
 
+## Animations in inline styling
+
+Passing Shared Values directly to `style` property without the use of `useAnimatedStyle`.
+
+For example:
+
+```jsx
+function App() {
+  const width = useSharedValue(100);
+
+  return <Animated.View style={{ width }} />;
+```
+
 ## Worklet
 
 ## Reanimated Babel plugin

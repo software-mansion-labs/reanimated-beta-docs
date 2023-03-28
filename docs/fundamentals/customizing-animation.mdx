@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import InteractiveExample from "@site/src/components/InteractiveExample";
@@ -7,60 +7,8 @@ import ModifierBare from "@site/src/examples/ModifierBare";
 import ModifierSpring from "@site/src/examples/ModifierSpring";
 import ModifierTiming from "@site/src/examples/ModifierTiming";
 
-# Customizing animation
+# Customizing animations
 
-Now that we know how to use shared values we can dive deeper into the good stuff - creating engaging animations!
+Now that we know how to use shared values in practice let's dive deeper into customizing animations.
 
-It takes more than good intentions to create a good animation; but usually customizing existing animation functions is all you really need. But before we carry on we need to learn one more hook that makes our lives easier - `useAnimatedStyle`.
-
-## Animating styles
-
-As we learned in the [previous section](/) we can animate styles by passing shared values to inline styles:
-
-```jsx
-function App() {
-  const width = useSharedValue(100);
-
-  return <Animated.View style={{ width }} />;
-```
-
-But when you'd want to make a bit more complicated animations (with conditional statement or loops) inlining styles gets really messy really quick.
-
-Luckily, `useAnimatedStyle` hook comes to the rescue. It lets you extract your animation logic from your JSX which can provide additional control and flexibility over your animation.
-
-```jsx
-const animatedStyles = useAnimatedStyle(() => {
-  return {
-    transform: [{ translateX: offset.value }],
-  };
-});
-```
-
-You can use the shorthand syntax just fine:
-
-```jsx
-const animatedStyles = useAnimatedStyle(() => ({
-  transform: [{ translateX: offset.value }],
-})
-```
-
-<InteractiveExample name="ModifierBare" component={<ModifierBare />} />
-
-## Animation modifiers
-
-They allow you to customize how your animations look and feel.
-
-## `withSpring` modifier
-
-<InteractiveExample name="ModifierSpring" component={<ModifierSpring />} />
-
-## `withTiming` modifier
-
-<InteractiveExample name="ModifierTiming" component={<ModifierTiming />} />
-
-## Summary
-
-- use `useAnimatedStyle` hook to extract your animation logic from markup
--
-
-## What's next?
+It takes more than good intentions to create a good animations; but most of the time customizing built-in animation functions is all you really need.
