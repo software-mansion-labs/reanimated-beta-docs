@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import AnimatingStyles from "@site/src/examples/AnimatingStyles";
+
 # Animating styles and props
 
 We've seen how to create basic animations, what Shared Values are and how to make use of them. Now, we're going to learn a different way of passing animation styles to elements. We'll also learn about the differences between animating styles and props and how to handle them both.
@@ -19,9 +21,9 @@ function App() {
 
 In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in the Shared Value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to `style`.
 
-Let's suppose we have an example with a box which is moved to the right on every button press:
+Let's suppose we have an example with a box which moves to the right on every button press:
 
-```jsx {14}
+```jsx {10}
 function App() {
   const translateX = useSharedValue(0);
 
@@ -38,23 +40,23 @@ function App() {
 }
 ```
 
-If we want to customize how our shared value changes based on user input, such as making it twice as fast or following a mathematical equation, we can't use inline styling.
+If we want to customize how our shared value changes based on the user input, such as making it twice as fast or following a mathematical equation, we can't use inline styling.
 
 Luckily, `useAnimatedStyle` hook comes to the rescue. It adds additional control and flexibility over your animation. This can be really useful when creating a bit more complicated animations which include conditional statement or loops.
 
 Let's see it in action:
 
-```jsx {3,17,23}
+```jsx {10,16}
 export default function App() {
   const translateX = useSharedValue(0);
 
   const handlePress = () => {
-    translateX.value = withSpring(translateX.value + 50);
+    translateX.value += 50;
   };
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: translateX.value * 2 }],
+      transform: [{ translateX: withSpring(translateX.value * 2) }],
     };
   });
 
@@ -67,50 +69,9 @@ export default function App() {
 }
 ```
 
-By using `useAnimatedStyle` exposed the value stored in shared value and thanks to that we could multiply the value by `2` before assigning it to `style`.
+`useAnimatedStyle` lets you access the value stored in a Shared Value. Thanks to that we could multiply the value by `2` before assigning it to `style`. This hook has one more advantage over passing animations to inline styles. It allows to keep all the animation-related logic in one place.
 
-This hook has one more advantage over passing animations to inline styles. It allows to keep all the animation related logic in one place.
-
-```jsx
-import React from "react";
-import { Button, View, StyleSheet } from "react-native";
-import Animated, {
-  useSharedValue,
-  withSpring,
-  useAnimatedStyle,
-} from "react-native-reanimated";
-
-export default function App() {
-  const translateX = useSharedValue(0);
-
-  const handlePress = () => {
-    translateX.value += 50;
-  };
-
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: withSpring(translateX.value * 2) }],
-  }));
-
-  return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.box, animatedStyles]} />
-      <Button onPress={handlePress} title="Click me" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  box: {
-    height: 120,
-    width: 120,
-    backgroundColor: "#001A72",
-    borderRadius: 20,
-  },
-});
-```
+<InteractiveExample name="AnimatingStyles" component={<AnimatingStyles />} />
 
 ## Animating props
 
