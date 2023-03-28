@@ -35,6 +35,7 @@
     "react-native": "^0.71.4",
     "react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#main",
     "react-native-reanimated": "https://github.com/software-mansion/react-native-reanimated.git#main",
+    "react-native-svg": "^13.8.0",
     "react-native-web": "^0.18.12",
     "react-syntax-highlighter": "^15.5.0",
     "source-map": "^0.7.4",
