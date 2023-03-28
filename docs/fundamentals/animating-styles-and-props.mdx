@@ -3,10 +3,11 @@ sidebar_position: 3
 ---
 
 import AnimatingStyles from "@site/src/examples/AnimatingStyles";
+import AnimatingProps from "@site/src/examples/AnimatingProps";
 
 # Animating styles and props
 
-We've seen how to create basic animations, what Shared Values are and how to make use of them. Now, we're going to learn a different way of passing animation styles to elements. We'll also learn about the differences between animating styles and props and how to handle them both.
+We've seen how to create basic animations, what Shared Values are and how to make use of them. Now, we're going to learn a different way of passing animation styles to elements. We'll also learn about the differences between animating styles and props and how to handle them using `useAnimatedStyle` & `useAnimatedProps`.
 
 ## Animating styles
 
@@ -75,9 +76,28 @@ export default function App() {
 
 ## Animating props
 
+Most of the values that developers animate (`width`, `color`, `transform` etc.) are modified by passing them as an object to `style` property of an element. But that's not always the case.
+
+Sometimes we'd like to also animate not just styles but also the props which are passed to the component.
+
+For example, let's say we want to animate SVG elements. Instead of passing values to the `style` property, we pass them as props:
+
+```jsx
+function App() {
+  const r = useSharedValue(0);
+
+  return (
+    <Svg>
+      <AnimatedCircle cx="50" cy="50" r={r} fill="blue" />
+    </Svg>
+  )
+```
+
+<InteractiveExample name="AnimatingProps" component={<AnimatingProps />} />
+
 ## Summary
 
-- use `useAnimatedStyle` hook to extract your animation logic from markup
--
+- Using `useAnimatedStyle` gives more control over the animation and allows to keep all the animation-related logic in one place.
+- Difference between animating `props` and `styles` is that props are not passed to the `style` object, but rather as a separate props to the component.
 
 ## What's next?
