@@ -1,5 +1,7 @@
 # Glossary of terms
 
+## Animated component
+
 ## Shared value
 
 Shared Values are a driving factor of all your animations in Reanimated.
@@ -67,6 +69,30 @@ sv.value = withSpring(100);
 ```
 
 Even though, the `withSpring` returns an animation object the final result that is stored in a shared value is just a number.
+
+## Animations in inline styling
+
+Passing Shared Values directly to `style` property without the use of `useAnimatedStyle`.
+
+For example:
+
+```jsx
+function App() {
+  const width = useSharedValue(100);
+
+  return <Animated.View style={{ width }} />;
+```
+
+## Custom Animated components
+
+Reanimated comes with just a handful of built-in components like `Animated.View` or `Animated.ScrollView`. For components which aren't a part of Reanimated, to make their props animatable, you wrap them with [`createAnimatedComponent`](/docs/core/createAnimatedComponent):
+
+```jsx
+import Animated from "react-native-reanimated";
+import { Circle } from "react-native-svg";
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+```
 
 ## Worklet
 
