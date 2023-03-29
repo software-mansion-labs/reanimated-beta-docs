@@ -10,15 +10,15 @@ In this section, we'll guide you through the basic concepts of Reanimated. If yo
 
 ## Using an Animated component
 
-Let's start by having something that we could see on the screen. First, to create an animatable component you need to import it:
+Let's start by having something that we could see on the screen. First, to create an animatable component you need to import an `Animated` object:
 
 ```bash
 import Animated from "react-native-reanimated";
 ```
 
-This `Animated` component wraps React Native built-ins such as `View`, `ScrollView` or `FlatList`.
+This `Animated` object wraps React Native built-ins such as `View`, `ScrollView` or `FlatList`.
 
-You use this component as any other JSX component:
+You use these components as any other JSX components:
 
 ```jsx {6}
 import { StyleSheet } from "react-native";
@@ -39,7 +39,7 @@ export default function App() {
 
 :::info
 
-You can create your own custom animated components with [`createAnimatedComponent`](/api/createAnimatedComponent).
+You can create your own custom Animated components with [`createAnimatedComponent`](/api/createAnimatedComponent).
 
 :::
 
@@ -75,7 +75,7 @@ export default function App() {
 
 ## Using a Shared Value
 
-Our goal is to animate a `width` of an element that will expand by `50px` on each button press. We can do this by modifying a shared value connected to the `width` property of an `Animated.View` component. I know it might sound complicated, but it's actually quite simple.
+Let's create a very simple animation that will animate a `width` of an element. We'll make it expand by `50px` on each button press. We can do this by modifying a Shared Value connected to the `width` property of an `Animated.View` component. I know it might sound complicated, but it's actually quite simple.
 
 Shared Values are accessed and modified by their `.value` property.
 
