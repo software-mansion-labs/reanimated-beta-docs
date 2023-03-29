@@ -11,7 +11,7 @@ In the last section, we learned how to make simple animations, what Shared Value
 
 ## Animating styles
 
-As we learned in the [previous section](/docs/fundamentals/your-first-animation) we can animate styles by [passing shared values inline](/docs/fundamentals/glossary#animations-in-inline-styling) to the elements's `style` property:
+As we learned in the [previous section](/docs/fundamentals/your-first-animation) we can animate styles by [passing Shared Values inline](/docs/fundamentals/glossary#animations-in-inline-styling) to the elements' `style` property:
 
 ```jsx
 function App() {
@@ -41,7 +41,7 @@ function App() {
 }
 ```
 
-If we want to customize how our shared value changes based on the user input, such as making it twice as fast or following a mathematical equation, we can't use inline styling.
+If we would like to customize how our shared value changes based on some user input, (e.g. making it twice as fast or following some mathematical equation) we couldn't use inline styling.
 
 Luckily, `useAnimatedStyle` hook comes to the rescue. It adds additional control and flexibility over your animation. This can be really useful when creating a bit more complicated animations which include conditional statement or loops.
 
@@ -150,8 +150,11 @@ Check out the full example below:
 
 ## Summary
 
-- Using `useAnimatedStyle` gives more control over the animation and allows to keep all the animation-related logic in one place.
-- Difference between animating `props` and `styles` is that props are not passed to the `style` object, but rather as a separate props to the component.
+- Passing Shared Values to inline styles is a simple way of creating animations but it has some limitations.
+- Difference between animating `props` and `styles` is that props are not passed to the `style` object, but rather as a separate props of the component.
+- By using `useAnimatedStyle` and `useAnimatedProps`, you can access the value stored in a Shared Value. This can add additional control over the animation.
+- By using `useAnimatedStyle` and `useAnimatedProps`, you can keep all the animation-related logic in one place.
+- You can make your own animatable components by wrapping them with `Animated.createAnimatedComponent`.
 
 ## What's next?
 
