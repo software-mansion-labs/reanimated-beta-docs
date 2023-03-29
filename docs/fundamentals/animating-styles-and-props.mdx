@@ -18,6 +18,7 @@ function App() {
   const width = useSharedValue(100);
 
   return <Animated.View style={{ width }} />;
+}
 ```
 
 In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in the Shared Value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to the `style` prop.
@@ -105,7 +106,8 @@ function App() {
     <Svg>
       <AnimatedCircle cx="50" cy="50" r={r} fill="blue" />
     </Svg>
-  )
+  );
+}
 ```
 
 This approach works just fine but same as `useAnimatedStyle` for animating styles we can encapsulate the animation logic and gain access to the `.value` property of a Shared Value by using `useAnimatedProps`.
