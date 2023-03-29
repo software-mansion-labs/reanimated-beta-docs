@@ -7,11 +7,11 @@ import AnimatingProps from "@site/src/examples/AnimatingProps";
 
 # Animating styles and props
 
-In [the last section](/docs/fundamentals/your-first-animation), we learned how to make simple animations, what Shared Values are and how to use them. Now, we'll learn a different way of passing animation styles to components. We'll also go over the difference between animating styles and props and how to handle them using `useAnimatedStyle` and `useAnimatedProps`.
+In [the last section](/docs/fundamentals/your-first-animation), we learned how to make simple animations, what shared values are and how to use them. Now, we'll learn a different way of passing animation styles to components. We'll also go over the difference between animating styles and props and how to handle them using `useAnimatedStyle` and `useAnimatedProps`.
 
 ## Animating styles
 
-As we learned in the previous section we can animate styles by [passing Shared Values inline](/docs/fundamentals/glossary#animations-in-inline-styling) to the elements' `style` property:
+As we learned in the previous section we can animate styles by [passing shared values inline](/docs/fundamentals/glossary#animations-in-inline-styling) to the elements' `style` property:
 
 ```jsx
 function App() {
@@ -21,7 +21,7 @@ function App() {
 }
 ```
 
-In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in the Shared Value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to the `style` prop.
+In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in a shared value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to the `style` prop.
 
 Let's suppose we have an example with a box which moves to the right on every button press:
 
@@ -42,7 +42,7 @@ function App() {
 }
 ```
 
-If we would like to customize how our Shared Value changes based on some user input, (e.g. multiplying it by 2 or following some other mathematical equation) we couldn't use inline styling.
+If we would like to customize how our shared value changes based on some user input, (e.g. multiplying it by 2 or following some other mathematical equation) we couldn't use inline styling.
 
 Luckily, the `useAnimatedStyle` hook comes to the rescue. It adds additional control and flexibility over your animation. This can be really useful when creating a bit more complicated animations which include conditional statements or loops.
 
@@ -69,7 +69,7 @@ function App() {
 }
 ```
 
-`useAnimatedStyle` lets you access the value stored in a Shared Value. Thanks to that we could multiply the value by `2` before assigning it to `style`. This hook has one more advantage over passing animations to inline styles. It allows you to keep all the animation-related logic in one place.
+`useAnimatedStyle` lets you access the value stored in a shared value. Thanks to that we could multiply the value by `2` before assigning it to `style`. This hook has one more advantage over passing animations to inline styles. It allows you to keep all the animation-related logic in one place.
 
 You can see it in action in the example below:
 
@@ -96,7 +96,7 @@ import { Circle } from "react-native-svg";
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 ```
 
-To animate the radius of the SVG circle we can simply pass the Shared Value as a prop:
+To animate the radius of the SVG circle we can simply pass the shared value as a prop:
 
 ```jsx {6}
 function App() {
@@ -110,7 +110,7 @@ function App() {
 }
 ```
 
-This approach works just fine but same as `useAnimatedStyle` for animating styles we can encapsulate the animation logic and gain access to the `.value` property of a Shared Value by using `useAnimatedProps`.
+This approach works just fine but same as `useAnimatedStyle` for animating styles we can encapsulate the animation logic and gain access to the `.value` property of a shared value by using `useAnimatedProps`.
 
 So if we'd like to smoothly increase the radius of a circle by `10px` on each button press we could use `useAnimatedProps`:
 
@@ -154,9 +154,9 @@ Check out the full example below:
 
 In this section, we went through the differences between animating styles and props and how to use `useAnimatedStyle` and `useAnimatedProps`. To sum up:
 
-- Passing Shared Values to inline styles is a simple way of creating animations but it has some limitations.
+- Passing shared values to inline styles is a simple way of creating animations but it has some limitations.
 - Difference between animating `props` and `styles` is that props are not passed to the `style` object, but rather as separate props of the component.
-- By using `useAnimatedStyle` and `useAnimatedProps`, you can access the value stored in a Shared Value. This can add additional control over the animation.
+- By using `useAnimatedStyle` and `useAnimatedProps`, you can access the value stored in a shared value. This can add additional control over the animation.
 - You can make your own animatable components by wrapping them with `Animated.createAnimatedComponent`.
 
 ## What's next?
