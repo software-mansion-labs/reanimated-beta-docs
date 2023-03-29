@@ -7,7 +7,7 @@ import AnimatingProps from "@site/src/examples/AnimatingProps";
 
 # Animating styles and props
 
-We've seen how to create basic animations, what Shared Values are and how to make use of them. Now, we're going to learn a different way of passing animation styles to elements. We'll also learn about the differences between animating styles and props and how to handle them using `useAnimatedStyle` & `useAnimatedProps`.
+In the last section, we learned how to make simple animations, what Shared Values are and how to use them. Now, we'll learn a different way of passing animation styles to components. We'll also go over the difference between animating styles and props and how to handle them using `useAnimatedStyle` and `useAnimatedProps`.
 
 ## Animating styles
 
@@ -24,7 +24,7 @@ In basic cases, this syntax works well but it has one big downside. It doesn't a
 
 Let's suppose we have an example with a box which moves to the right on every button press:
 
-```jsx {10}
+```jsx {5,10}
 function App() {
   const translateX = useSharedValue(0);
 
@@ -47,7 +47,7 @@ Luckily, `useAnimatedStyle` hook comes to the rescue. It adds additional control
 
 Let's see it in action:
 
-```jsx {10,16}
+```jsx {8-10,14}
 export default function App() {
   const translateX = useSharedValue(0);
 
@@ -55,11 +55,9 @@ export default function App() {
     translateX.value += 50;
   };
 
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: withSpring(translateX.value * 2) }],
-    };
-  });
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: withSpring(translateX.value * 2) }],
+  }));
 
   return (
     <View style={styles.container}>
@@ -72,6 +70,8 @@ export default function App() {
 
 `useAnimatedStyle` lets you access the value stored in a Shared Value. Thanks to that we could multiply the value by `2` before assigning it to `style`. This hook has one more advantage over passing animations to inline styles. It allows to keep all the animation-related logic in one place.
 
+You can see it action in the example below:
+
 <InteractiveExample name="AnimatingStyles" component={<AnimatingStyles />} />
 
 ## Animating props
@@ -80,11 +80,26 @@ Most of the values that developers animate (`width`, `color`, `transform` etc.) 
 
 Sometimes we'd like to also animate not just styles but also the props which are passed to the component.
 
-For example, let's say we want to animate SVG elements. Instead of passing values to the `style` property, we pass them as props:
+For example, let's say we would like to animate SVG elements. Instead of passing values to the `style` property, values are defined as props:
 
 ```jsx
+<Circle cx="50" cy="50" r="10" fill="blue" />
+```
+
+Reanimated comes with just a handful built-in components like `Animated.View` or `Animated.ScrollView`. For components which aren't a part of Reanimated, in order to make their props animatable, we need to wrap them with `createAnimatedComponent`:
+
+```jsx
+import Animated from "react-native-reanimated";
+import { Circle } from "react-native-svg";
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+```
+
+To animate the radius of the SVG circle we can simply pass the Shared Value as a prop:
+
+```jsx {6}
 function App() {
-  const r = useSharedValue(0);
+  const r = useSharedValue(10);
 
   return (
     <Svg>
@@ -92,6 +107,44 @@ function App() {
     </Svg>
   )
 ```
+
+This approach works just fine but same as `useAnimatedStyle` for animating styles we can encapsulate the animation logic and gain access to `.value` property of a Shared Value by using `useAnimatedProps`.
+
+So if we'd like to smoothly increases the radius of a circle by `10px` on each button press we could use `useAnimatedProps`:
+
+```jsx {10-12,21}
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
+export default function App() {
+  const r = useSharedValue(50);
+
+  const handlePress = () => {
+    r.value += 10;
+  };
+
+  const animatedProps = useAnimatedProps(() => ({
+    r: withTiming(r.value),
+  }));
+
+  return (
+    <>
+      <Svg>
+        <AnimatedCircle
+          cx="50%"
+          cy="50%"
+          fill="violet"
+          animatedProps={animatedProps}
+        />
+      </Svg>
+      <Button onPress={handlePress} title="Click me" />
+    </>
+  );
+}
+```
+
+In a function which `useAnimatedProps` takes as an argument we return an object with all the props we'd like to animate. Then we can pass the value which `useAnimatedProps` return to `animatedProps` props of an Animated component.
+
+Check out the full example below:
 
 <InteractiveExample name="AnimatingProps" component={<AnimatingProps />} />
 
@@ -101,3 +154,5 @@ function App() {
 - Difference between animating `props` and `styles` is that props are not passed to the `style` object, but rather as a separate props to the component.
 
 ## What's next?
+
+In [the next section](applying-modifiers), we'll learn more about animation functions and how to customize their behavior.
