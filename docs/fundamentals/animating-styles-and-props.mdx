@@ -7,11 +7,11 @@ import AnimatingProps from "@site/src/examples/AnimatingProps";
 
 # Animating styles and props
 
-In the last section, we learned how to make simple animations, what Shared Values are and how to use them. Now, we'll learn a different way of passing animation styles to components. We'll also go over the difference between animating styles and props and how to handle them using `useAnimatedStyle` and `useAnimatedProps`.
+In [the last section](/docs/fundamentals/your-first-animation), we learned how to make simple animations, what Shared Values are and how to use them. Now, we'll learn a different way of passing animation styles to components. We'll also go over the difference between animating styles and props and how to handle them using `useAnimatedStyle` and `useAnimatedProps`.
 
 ## Animating styles
 
-As we learned in the [previous section](/docs/fundamentals/your-first-animation) we can animate styles by [passing Shared Values inline](/docs/fundamentals/glossary#animations-in-inline-styling) to the elements' `style` property:
+As we learned in the previous section we can animate styles by [passing Shared Values inline](/docs/fundamentals/glossary#animations-in-inline-styling) to the elements' `style` property:
 
 ```jsx
 function App() {
@@ -20,7 +20,7 @@ function App() {
   return <Animated.View style={{ width }} />;
 ```
 
-In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in the Shared Value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to `style`.
+In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in the Shared Value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to the `style` prop.
 
 Let's suppose we have an example with a box which moves to the right on every button press:
 
@@ -41,7 +41,7 @@ function App() {
 }
 ```
 
-If we would like to customize how our shared value changes based on some user input, (e.g. making it twice as fast or following some mathematical equation) we couldn't use inline styling.
+If we would like to customize how our Shared Value changes based on some user input, (e.g. multiplying it by 2 or following some other mathematical equation) we couldn't use inline styling.
 
 Luckily, the `useAnimatedStyle` hook comes to the rescue. It adds additional control and flexibility over your animation. This can be really useful when creating a bit more complicated animations which include conditional statements or loops.
 
@@ -86,7 +86,7 @@ For example, let's say we would like to animate SVG elements. Instead of passing
 <Circle cx="50" cy="50" r="10" fill="blue" />
 ```
 
-Reanimated comes with just a handful of built-in components like `Animated.View` or `Animated.ScrollView`. For components which aren't a part of Reanimated, to make their props animatable, we need to wrap them with `createAnimatedComponent`:
+Reanimated comes with just a handful of built-in components like `Animated.View` or `Animated.ScrollView`. For components which aren't a part of Reanimated, to make their props animatable, we need to wrap them with [`createAnimatedComponent`](/docs/core/createAnimatedComponent):
 
 ```jsx
 import Animated from "react-native-reanimated";

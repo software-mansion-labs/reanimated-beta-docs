@@ -83,6 +83,17 @@ function App() {
   return <Animated.View style={{ width }} />;
 ```
 
+## Custom Animated components
+
+Reanimated comes with just a handful of built-in components like `Animated.View` or `Animated.ScrollView`. For components which aren't a part of Reanimated, to make their props animatable, you to wrap them with [`createAnimatedComponent`](/docs/core/createAnimatedComponent):
+
+```jsx
+import Animated from "react-native-reanimated";
+import { Circle } from "react-native-svg";
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+```
+
 ## Worklet
 
 ## Reanimated Babel plugin
