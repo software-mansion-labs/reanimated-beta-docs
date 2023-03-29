@@ -3,21 +3,21 @@ import { Button, View, StyleSheet } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedProps,
-  withSpring,
+  withTiming,
 } from "react-native-reanimated";
 import { Svg, Circle } from "react-native-svg";
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 export default function App() {
-  const r = useSharedValue(50);
+  const r = useSharedValue(20);
 
   const handlePress = () => {
     r.value += 10;
   };
 
   const animatedProps = useAnimatedProps(() => ({
-    r: withSpring(r.value),
+    r: withTiming(r.value),
   }));
 
   return (
@@ -27,7 +27,6 @@ export default function App() {
           cx="50%"
           cy="50%"
           fill="#001A72"
-          strokeWidth="2"
           animatedProps={animatedProps}
         />
       </Svg>
