@@ -51,7 +51,7 @@ A [Shared Value](/learn-more/shared-value) is a driving factor of all your anima
 import { useSharedValue } from 'react-native-reanimated';
 ```
 
-As any other [React hook](https://reactjs.org/docs/hooks-rules.html), you need to define it in your component's body. In a Shared Value you can store any JS value like `number`, `string` or `boolean` but also data structures such as `array` and `object`.
+As with any other [React hook](https://reactjs.org/docs/hooks-rules.html), you need to define it in your component's body. In a Shared Value, you can store any JS value like `number`, `string` or `boolean` but also data structures such as `array` and `object`.
 
 For now, let's use `100` as the default value of the `useSharedValue` hook and pass the returned value as an inline style of the `Animated.View`:
 
@@ -75,7 +75,7 @@ export default function App() {
 
 ## Using a Shared Value
 
-Our goal is to animate a `width` of an element that will expand by `50px` on each button press. We can do this by modifying a shared value connected to the `width` property of a `Animated.View` component. I know it might sound complicated, but it's actually quite simple.
+Our goal is to animate a `width` of an element that will expand by `50px` on each button press. We can do this by modifying a shared value connected to the `width` property of an `Animated.View` component. I know it might sound complicated, but it's actually quite simple.
 
 Shared Values are accessed and modified by their `.value` property.
 
@@ -147,7 +147,7 @@ export default function App() {
 }
 ```
 
-And voilà, we've made our first animation using Reanimated! You can see how it works in it's full glory in a preview below:
+And voilà, we've made our first animation using Reanimated! You can see how it works in its full glory in a preview below:
 
 <InteractiveExample name="FirstAnimation" component={<FirstAnimation />} />
 
