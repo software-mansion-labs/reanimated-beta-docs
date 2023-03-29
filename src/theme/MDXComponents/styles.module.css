@@ -1,0 +1,60 @@
+.details {
+    --docusaurus-details-summary-arrow-size: 0.38rem;
+    --docusaurus-details-transition: transform 200ms ease;
+    --docusaurus-details-decoration-color: grey;
+    --swm-color-purple-light: #F5EEFF;
+    --swm-color-purple-dark: #782AEB;
+
+    background-color: var(--swm-color-purple-light);
+    padding: 1.5em;
+
+    box-shadow: -8px 8px 0 var(--swm-color-purple-dark);
+}
+
+.details > summary {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+    padding-left: 2rem;
+}
+
+/* TODO: deprecation, need to remove this after Safari will support `::marker` */
+.details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.arrow {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+
+    transition: var(--docusaurus-details-transition);
+}
+
+.details[open]:not(.isBrowser) > summary > .arrow,
+    /* When JS works: we use the data-attribute for arrow animation */
+.details[data-collapsed='false'].isBrowser > summary > .arrow {
+    transform: rotate(180deg);
+}
+
+/*.details > summary::before {*/
+/*    position: absolute;*/
+/*    top: 0.45rem;*/
+/*    left: 0;*/
+
+/*    !* Arrow rotation anim *!*/
+/*    transform: rotate(-90deg);*/
+/*    transition: var(--docusaurus-details-transition);*/
+/*    transform-origin: calc(var(--docusaurus-details-summary-arrow-size) / 2) 50%;*/
+/*}*/
+
+.collapsibleContent {
+    margin-top: 1rem;
+    /*border-top: 1px solid var(--docusaurus-details-decoration-color)*/
+    padding-top: 0.5rem;
+}
+
+.collapsibleContent > *:last-child {
+    margin-bottom: 0;
+}
