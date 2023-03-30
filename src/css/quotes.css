@@ -1,0 +1,27 @@
+:root {
+    --swm-background-quote: #C1C6E5;
+    --swm-background-quote-blue: #B5E1F1;
+    --swm-background-quote-green: #DFF2EC;
+    --swm-background-quote-red: #FFD2D7;
+    --swm-background-quote-yellow: #FFF1B2;
+    --swm-background-quote-purple: #E8DAFC;
+}
+
+[data-theme="dark"] {
+    --swm-background-quote: #232736;
+    --swm-background-quote-blue: #1B4865;
+    --swm-background-quote-green: #2A4F4A;
+    --swm-background-quote-red: #5A3B46;
+    --swm-background-quote-yellow: #5A553A;
+    --swm-background-quote-purple: #473D68;
+}
+
+code {
+    background-color: var(--swm-background-quote);
+    padding: 0.25rem;
+}
+
+/* Styling for quote blocks (labels surrounded by ` sign) */
+details code {
+    background-color: var(--swm-background-quote-purple);
+}

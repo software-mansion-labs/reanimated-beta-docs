@@ -1,4 +1,4 @@
-import {useCollapsible, Collapsible} from '@docusaurus/theme-common';
+import {useCollapsible, useColorMode, Collapsible} from '@docusaurus/theme-common';
 
 import clsx from 'clsx';
 import React from 'react';
@@ -8,23 +8,11 @@ import styles from './styles.module.css';
 import useIsBrowser from "@docusaurus/useIsBrowser";
 
 import Arrow from '@site/static/img/Arrow.svg';
-
-function isInSummary(node: HTMLElement | null): boolean {
-  if (!node) {
-    return false;
-  }
-  return node.tagName === 'SUMMARY' || isInSummary(node.parentElement);
-}
-
-function hasParent(node: HTMLElement | null, parent: HTMLElement): boolean {
-  if (!node) {
-    return false;
-  }
-  return node === parent || hasParent(node.parentElement, parent);
-}
+import ArrowDark from '@site/static/img/Arrow-dark.svg';
 
 const DetailsStyling = ({summary, children, ...props}): JSX.Element => {
   const isBrowser = useIsBrowser();
+  const {isDarkTheme} = useColorMode();
   const {collapsed, setCollapsed} = useCollapsible({
     initialState: !props.open,
   });
@@ -75,8 +63,11 @@ const DetailsStyling = ({summary, children, ...props}): JSX.Element => {
       }}>
 
       <summary>
-        <Arrow className={styles.arrow} />
-        <h4>{extractedSummaryElement}</h4>
+        {!isDarkTheme
+          ? <Arrow className={styles.arrow} />
+          : <ArrowDark className={styles.arrow} />}
+
+        <p>{extractedSummaryElement}</p>
       </summary>
 
       <Collapsible
@@ -91,6 +82,20 @@ const DetailsStyling = ({summary, children, ...props}): JSX.Element => {
       </Collapsible>
     </details>
   );
+}
+
+function isInSummary(node: HTMLElement | null): boolean {
+  if (!node) {
+    return false;
+  }
+  return node.tagName === 'SUMMARY' || isInSummary(node.parentElement);
+}
+
+function hasParent(node: HTMLElement | null, parent: HTMLElement): boolean {
+  if (!node) {
+    return false;
+  }
+  return node === parent || hasParent(node.parentElement, parent);
 }
 
 export default DetailsStyling;
