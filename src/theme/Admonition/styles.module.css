@@ -1,0 +1,60 @@
+.admonition {
+  margin-bottom: 1em;
+}
+
+[data-theme="dark"] .admonition {
+  color: var(--ifm-color-primary-lightest);
+}
+
+.admonitionHeading {
+  display: flex;
+  font-family: var(--swm-admonition-heading-font-family);
+  font-weight: var(--swm-admonition-heading-font-weight);
+  text-transform: uppercase;
+
+  margin-bottom: 1.1rem;
+}
+
+.admonitionHeading code {
+  text-transform: none;
+}
+
+.admonitionIcon {
+  display: inline-block;
+  margin-right: 0.4em;
+}
+
+.admonitionIcon svg {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.alert--secondary {
+  background-color: var(--swm-admonition-color-secondary);
+  box-shadow: -8px 8px 0 var(--swm-admonition-color-secondary-shadow);
+}
+
+.alert--success {
+  background-color: var(--swm-admonition-color-success);
+  box-shadow: -8px 8px 0 var(--swm-admonition-color-success-shadow);
+}
+
+.alert--danger {
+  background-color: var(--swm-admonition-color-danger);
+  box-shadow: -8px 8px 0 var(--swm-admonition-color-danger-shadow);
+}
+
+.alert--info {
+  background-color: var(--swm-admonition-color-info);
+  box-shadow: -8px 8px 0 var(--swm-admonition-color-info-shadow);
+}
+
+.alert--caution {
+  background-color: var(--swm-admonition-color-caution);
+  box-shadow: -8px 8px 0 var(--swm-admonition-color-caution-shadow);
+}
+
+.admonitionContent > :last-child {
+  margin-bottom: 0;
+}

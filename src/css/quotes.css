@@ -8,7 +8,7 @@
 }
 
 [data-theme="dark"] {
-    --swm-background-quote: #232736;
+    --swm-background-quote: #001A72;
     --swm-background-quote-blue: #1B4865;
     --swm-background-quote-green: #2A4F4A;
     --swm-background-quote-red: #5A3B46;
@@ -24,4 +24,24 @@ code {
 /* Styling for quote blocks (labels surrounded by ` sign) */
 details code {
     background-color: var(--swm-background-quote-purple);
+}
+
+[class*='admonition-secondary'] > [class*='admonitionContent'] > p > code {
+    background-color: var(--swm-background-quote);
+}
+
+[class*='admonition-success'] > [class*='admonitionContent'] > p > code {
+    background-color: var(--swm-background-quote-green);
+}
+
+[class*='admonition-danger'] > [class*='admonitionContent'] > p > code {
+    background-color: var(--swm-background-quote-red);
+}
+
+[class*='admonition-info'] > [class*='admonitionContent'] > p > code {
+    background-color: var(--swm-background-quote-blue);
+}
+
+[class*='admonition-caution'] > [class*='admonitionContent'] > p > code {
+    background-color: var(--swm-background-quote-yellow);
 }
