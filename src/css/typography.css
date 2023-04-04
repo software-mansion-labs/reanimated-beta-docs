@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Aeonik";
+  src: url("/static/font/Aeonik-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Aeonik";
+  src: url("/static/font/Aeonik-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("/static/font/Lexend-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("/static/font/Lexend-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("/static/font/Lexend-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src: url("/static/font/DMMono-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+:root {
+  --swm-title-font: "Lexend";
+  --swm-body-font: "Aeonik";
+
+  --ifm-font-family-base: var(--swm-body-font);
+  --ifm-font-family-bold: var(--swm-body-font);
+
+  /* Heading */
+  --ifm-h1-font-size: 32px;
+  --ifm-h2-font-size: 24px;
+  --ifm-h3-font-size: 20px;
+  --ifm-h4-font-size: 18px;
+  --ifm-h5-font-size: 18px;
+  --ifm-h6-font-size: 18px;
+  --ifm-code-font-size: 90%;
+  --ifm-heading-font-family: var(--swm-title-font);
+  --ifm-heading-margin-bottom: 0;
+
+  /* Body text */
+
+  /* Admonitions */
+  --swm-admonition-heading-font-family: "Aeonik";
+  --swm-admonition-heading-font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+h6 {
+  font-family: "DM Mono", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+code {
+  background-color: var(--swm-background-quote);
+  padding: 0.25rem;
+}
+
+.markdown a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

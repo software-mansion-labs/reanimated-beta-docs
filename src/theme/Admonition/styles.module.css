@@ -1,9 +1,15 @@
+:root {
+  --ifm-alert-border-radius: 0;
+  --ifm-alert-padding-vertical: 1.5rem;
+  --ifm-alert-padding-horizontal: 1.5rem;
+}
+
 .admonition {
   margin-bottom: 1em;
 }
 
 [data-theme="dark"] .admonition {
-  color: var(--ifm-color-primary-lightest);
+  color: var(--swm-off-white);
 }
 
 .admonitionHeading {
@@ -53,6 +59,28 @@
 .alert--caution {
   background-color: var(--swm-admonition-color-caution);
   box-shadow: -8px 8px 0 var(--swm-admonition-color-caution-shadow);
+}
+
+/* Styling for quote blocks (labels surrounded by ` sign) in admonitions.
+ A direct child of `code` tag is selected, because admonitions can be nested within each other. */
+[class*="admonition-secondary"] > [class*="admonitionContent"] > p > code {
+  background-color: var(--swm-background-quote);
+}
+
+[class*="admonition-success"] > [class*="admonitionContent"] > p > code {
+  background-color: var(--swm-background-quote-green);
+}
+
+[class*="admonition-danger"] > [class*="admonitionContent"] > p > code {
+  background-color: var(--swm-background-quote-red);
+}
+
+[class*="admonition-info"] > [class*="admonitionContent"] > p > code {
+  background-color: var(--swm-background-quote-blue);
+}
+
+[class*="admonition-caution"] > [class*="admonitionContent"] > p > code {
+  background-color: var(--swm-background-quote-yellow);
 }
 
 .admonitionContent > :last-child {
