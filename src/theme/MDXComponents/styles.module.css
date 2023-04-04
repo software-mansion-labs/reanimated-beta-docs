@@ -7,7 +7,7 @@
   box-shadow: -8px 8px 0 var(--swm-details-background);
 
   color: var(--swm-details-color);
-  padding: 1.5em;
+  padding: 1.5em 2em;
 }
 
 .details a {
@@ -16,10 +16,9 @@
 
 .details > summary {
   display: flex;
-  position: relative;
+  align-items: center;
   cursor: pointer;
   list-style: none;
-  padding-left: 2rem;
 }
 
 .details > summary > p {
@@ -32,8 +31,9 @@
 }
 
 .arrow {
-  position: absolute;
-  top: 0.5rem;
+  height: 12px;
+  width: 12px;
+  margin-right: 1.5rem;
   left: 0;
 
   transition: var(--docusaurus-details-transition);
