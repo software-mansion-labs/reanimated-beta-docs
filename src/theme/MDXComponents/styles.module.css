@@ -1,8 +1,6 @@
-:root {
-  --docusaurus-details-transition: transform 200ms ease;
-}
-
 .details {
+  --docusaurus-details-transition: transform 200ms ease;
+
   background-color: var(--swm-details-foreground);
   box-shadow: -8px 8px 0 var(--swm-details-background);
 

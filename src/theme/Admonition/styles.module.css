@@ -1,10 +1,8 @@
-:root {
+.admonition {
   --ifm-alert-border-radius: 0;
   --ifm-alert-padding-vertical: 1.5rem;
   --ifm-alert-padding-horizontal: 1.5rem;
-}
 
-.admonition {
   margin-bottom: 1em;
 }
 
