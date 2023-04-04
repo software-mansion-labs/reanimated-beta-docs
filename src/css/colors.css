@@ -96,13 +96,16 @@
   --ifm-color-primary-lighter: var(--swm-navy-light-80);
   --ifm-color-primary-lightest: var(--swm-navy-light-40);
 
+  /* Main site settings */
+  --swm-background: var(--swm-white);
+  --swm-off-background: var(--swm-off-white);
+
+  --ifm-background-color: var(--swm-background);
+  --ifm-navbar-background-color: var(--swm-background);
+
   /* Typography */
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-color-base: var(--swm-navy-light-100);
-
-  /* Main site settings */
-  --ifm-background-color: var(--swm-white);
-  --ifm-navbar-background-color: var(--swm-white);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-light-20);
@@ -134,15 +137,21 @@
 
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Footer */
+  --swm-copyright-color: var(--swm-navy-light-60);
 }
 
 :root[data-theme="dark"] {
-  /* Main site settings */
-  --ifm-background-color: var(--swm-navy);
-  --ifm-navbar-background-color: var(--swm-navy);
-
   /* Infima main colors */
   --ifm-color-primary: var(--swm-navy-light-20);
+
+  /* Main site settings */
+  --swm-background: var(--swm-navy);
+  --swm-off-background: var(--swm-off-navy);
+
+  --ifm-background-color: var(--swm-background);
+  --ifm-navbar-background-color: var(--swm-background);
 
   /* Typography */
   --ifm-font-color-base: var(--swm-navy-light-20);
@@ -177,6 +186,9 @@
 
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Footer */
+  --swm-copyright-color: var(--swm-navy-light-40);
 }
 
 /* Styling for quote blocks (labels surrounded by ` sign) in details tag */
