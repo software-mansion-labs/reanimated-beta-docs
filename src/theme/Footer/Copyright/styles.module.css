@@ -1,0 +1,25 @@
+footer {
+  --ifm-footer-padding-vertical: 2.5rem;
+  --ifm-footer-padding-horizontal: 4rem;
+  --ifm-footer-background-color: var(--swm-background);
+}
+
+@media (max-width: 996px) {
+  footer {
+    --ifm-footer-padding-vertical: 1.5em;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: start;
+}
+
+footer p {
+  color: var(--swm-copyright-color);
+  margin-bottom: 0;
+}
+
+.footer__brand {
+  color: var(--ifm-font-color-base);
+}

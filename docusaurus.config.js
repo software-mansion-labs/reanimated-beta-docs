@@ -77,6 +77,8 @@ const config = {
       footer: {
         style: "light",
         links: [],
+        copyright:
+          "All trademarks and copyrights belong to their respective owners.",
       },
       prism: {
         theme: lightCodeTheme,
