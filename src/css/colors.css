@@ -128,7 +128,7 @@
   --swm-details-color: var(--swm-navy-light-100);
 
   /* Quotes */
-  --swm-background-quote: var(--swm-navy-light-20);
+  --swm-background-quote: var(--swm-navy-light-10);
   --swm-background-quote-blue: var(--swm-blue-light-40);
   --swm-background-quote-green: var(--swm-green-light-40);
   --swm-background-quote-red: var(--swm-red-light-40);
@@ -189,6 +189,10 @@
 
   /* Footer */
   --swm-copyright-color: var(--swm-navy-light-40);
+}
+
+code {
+  background-color: var(--swm-background-quote);
 }
 
 /* Styling for quote blocks (labels surrounded by ` sign) in details tag */
