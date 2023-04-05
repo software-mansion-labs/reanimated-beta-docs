@@ -129,6 +129,7 @@
 
   /* Quotes */
   --swm-background-quote: var(--swm-navy-light-10);
+  --swm-background-quote-secondary: var(--swm-navy-light-20);
   --swm-background-quote-blue: var(--swm-blue-light-40);
   --swm-background-quote-green: var(--swm-green-light-40);
   --swm-background-quote-red: var(--swm-red-light-40);
@@ -178,6 +179,7 @@
 
   /* Quotes */
   --swm-background-quote: var(--swm-light-off-navy);
+  --swm-background-quote-secondary: var(--swm-navy-dark-120);
   --swm-background-quote-blue: var(--swm-blue-dark-140);
   --swm-background-quote-green: var(--swm-green-dark-140);
   --swm-background-quote-red: var(--swm-red-dark-140);

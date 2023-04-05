@@ -62,7 +62,7 @@
 /* Styling for quote blocks (labels surrounded by ` sign) in admonitions.
  A direct child of `code` tag is selected, because admonitions can be nested within each other. */
 [class*="admonition-secondary"] > [class*="admonitionContent"] > p code {
-  background-color: var(--swm-background-quote);
+  background-color: var(--swm-background-quote-secondary);
 }
 
 [class*="admonition-success"] > [class*="admonitionContent"] > p code {
