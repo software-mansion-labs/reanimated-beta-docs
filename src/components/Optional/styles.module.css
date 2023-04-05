@@ -1,7 +1,7 @@
 .badge {
   display: inline-block;
   border: 1px solid #ccc;
-  color: #444;
+  color: var(--ifm-font-color-base);
   border-radius: 4rem;
   font-size: 12px;
   font-weight: 400;

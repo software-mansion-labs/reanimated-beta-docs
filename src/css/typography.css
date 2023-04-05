@@ -34,6 +34,12 @@
   font-weight: 500;
 }
 
+@font-face {
+  font-family: "DM Mono";
+  src: url("/static/font/DMMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
 :root {
   --swm-title-font: "Lexend";
   --swm-body-font: "Aeonik";
@@ -75,12 +81,19 @@ h6 {
 }
 
 code {
-  background-color: var(--swm-background-quote);
+  font-family: var(--swm-code-font);
+  font-weight: 400;
   padding: 0.25rem;
+}
+
+.markdown a code {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .markdown a {
   font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--ifm-font-color-base);
 }

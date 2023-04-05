@@ -128,7 +128,8 @@
   --swm-details-color: var(--swm-navy-light-100);
 
   /* Quotes */
-  --swm-background-quote: var(--swm-navy-light-20);
+  --swm-background-quote: var(--swm-navy-light-10);
+  --swm-background-quote-secondary: var(--swm-navy-light-20);
   --swm-background-quote-blue: var(--swm-blue-light-40);
   --swm-background-quote-green: var(--swm-green-light-40);
   --swm-background-quote-red: var(--swm-red-light-40);
@@ -139,12 +140,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* Footer */
+  --swm-brand-copyright-color: var(--swm-navy-light-100);
   --swm-copyright-color: var(--swm-navy-light-60);
 }
 
 :root[data-theme="dark"] {
   /* Infima main colors */
-  --ifm-color-primary: var(--swm-navy-light-20);
+  --ifm-color-primary: var(--swm-navy-light-10);
 
   /* Main site settings */
   --swm-background: var(--swm-navy);
@@ -154,7 +156,7 @@
   --ifm-navbar-background-color: var(--swm-background);
 
   /* Typography */
-  --ifm-font-color-base: var(--swm-navy-light-20);
+  --ifm-font-color-base: var(--swm-navy-light-10);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-dark-120);
@@ -178,6 +180,7 @@
 
   /* Quotes */
   --swm-background-quote: var(--swm-light-off-navy);
+  --swm-background-quote-secondary: var(--swm-navy-dark-120);
   --swm-background-quote-blue: var(--swm-blue-dark-140);
   --swm-background-quote-green: var(--swm-green-dark-140);
   --swm-background-quote-red: var(--swm-red-dark-140);
@@ -188,7 +191,12 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   /* Footer */
+  --swm-brand-copyright-color: var(--swm-navy-light-20);
   --swm-copyright-color: var(--swm-navy-light-40);
+}
+
+code {
+  background-color: var(--swm-background-quote);
 }
 
 /* Styling for quote blocks (labels surrounded by ` sign) in details tag */
