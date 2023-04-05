@@ -140,12 +140,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* Footer */
+  --swm-brand-copyright-color: var(--swm-navy-light-100);
   --swm-copyright-color: var(--swm-navy-light-60);
 }
 
 :root[data-theme="dark"] {
   /* Infima main colors */
-  --ifm-color-primary: var(--swm-navy-light-20);
+  --ifm-color-primary: var(--swm-navy-light-10);
 
   /* Main site settings */
   --swm-background: var(--swm-navy);
@@ -155,7 +156,7 @@
   --ifm-navbar-background-color: var(--swm-background);
 
   /* Typography */
-  --ifm-font-color-base: var(--swm-navy-light-20);
+  --ifm-font-color-base: var(--swm-navy-light-10);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-dark-120);
@@ -190,6 +191,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   /* Footer */
+  --swm-brand-copyright-color: var(--swm-navy-light-20);
   --swm-copyright-color: var(--swm-navy-light-40);
 }
 
