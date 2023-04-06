@@ -4,7 +4,7 @@ sidebar_position: 2
 
 import TimingBasic from "@site/src/examples/TimingBasic";
 import TimingTabs from "@site/src/examples/TimingTabs";
-import TimingConfigCompare from "@site/src/examples/TimingConfigCompare";
+import TimingEasingCompare from "@site/src/examples/TimingEasingCompare";
 import { useTimingPlayground } from "@site/src/components/ModifierPlayground";
 
 # withTiming()
@@ -69,8 +69,8 @@ The `easing` parameter lets you fine-tine the animation over the specified time 
 It all will start to make sense when you compare side by side a `linear` easing with the default `Easing.inOut(Easing.quad)` easing.
 
 <InteractiveExample
-  name="TimingConfigCompare"
-  component={<TimingConfigCompare />}
+  name="TimingEasingCompare"
+  component={<TimingEasingCompare />}
 />
 
 Reanimated provides a handful of ready-to-use easing functions in the `Easing` module. You can find a visualization of some common easing functions at [http://easings.net/](http://easings.net/).

@@ -7,17 +7,17 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 
-const duration = 2200;
+const duration = 1800;
 
 export default function App() {
+  const defaultAnim = useSharedValue(200);
   const linear = useSharedValue(200);
-  const easeIn = useSharedValue(200);
 
-  const animatedLinear = useAnimatedStyle(() => ({
-    transform: [{ translateX: linear.value }],
+  const animatedDefault = useAnimatedStyle(() => ({
+    transform: [{ translateX: defaultAnim.value }],
   }));
-  const animatedEaseIn = useAnimatedStyle(() => ({
-    transform: [{ translateX: easeIn.value }],
+  const animatedChanged = useAnimatedStyle(() => ({
+    transform: [{ translateX: linear.value }],
   }));
 
   React.useEffect(() => {
@@ -26,7 +26,7 @@ export default function App() {
         duration,
         easing: Easing.linear,
       });
-      easeIn.value = withTiming(-easeIn.value, {
+      defaultAnim.value = withTiming(-defaultAnim.value, {
         duration,
       });
     };
@@ -38,10 +38,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.box, animatedEaseIn]}>
-        <Text style={styles.text}>inOut</Text>
+      <Animated.View style={[styles.box, animatedDefault]}>
+        <Text style={styles.text}>inout</Text>
       </Animated.View>
-      <Animated.View style={[styles.box, animatedLinear]}>
+      <Animated.View style={[styles.box, animatedChanged]}>
         <Text style={styles.text}>linear</Text>
       </Animated.View>
     </View>
