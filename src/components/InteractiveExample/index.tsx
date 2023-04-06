@@ -1,9 +1,8 @@
 import React from "react";
+import CodeBlock from "@theme/CodeBlock";
 import styles from "./styles.module.css";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { useCopyToClipboard } from "usehooks-ts";
 
 interface Props {
@@ -60,9 +59,7 @@ export default function InteractiveExample({
           {showPreview ? (
             <React.Fragment key={key}>{component}</React.Fragment>
           ) : (
-            <SyntaxHighlighter language="javascript" style={docco}>
-              {sourceCode}
-            </SyntaxHighlighter>
+            <CodeBlock language="jsx">{sourceCode}</CodeBlock>
           )}
         </div>
       )}
