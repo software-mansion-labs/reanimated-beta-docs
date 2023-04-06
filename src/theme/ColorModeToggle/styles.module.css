@@ -1,6 +1,8 @@
 .toggle {
   width: 5rem;
   height: 2.5rem;
+
+  margin-right: 0;
 }
 
 .toggleButton {
@@ -45,8 +47,8 @@
   transform: scaleX(-1);
 }
 
-[data-theme='dark'] .darkToggleIcon,
-[data-theme='light'] .lightToggleIcon {
+[data-theme="dark"] .darkToggleIcon,
+[data-theme="light"] .lightToggleIcon {
   color: var(--ifm-font-color-base);
   background-color: var(--swm-color-mode-enabled);
 }

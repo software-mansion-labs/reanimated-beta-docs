@@ -1,3 +1,16 @@
+table {
+  display: table;
+  width: 100%;
+}
+
+.compatibility table {
+  table-layout: fixed;
+}
+
+.header-github {
+  margin-left: 1.5em;
+}
+
 .header-github:before {
   display: flex;
   height: 24px;
@@ -12,13 +25,4 @@
 
 .header-github:hover:before {
   background-color: var(--ifm-navbar-link-hover-color);
-}
-
-table {
-  display: table;
-  width: 100%;
-}
-
-.compatibility table {
-  table-layout: fixed;
 }
