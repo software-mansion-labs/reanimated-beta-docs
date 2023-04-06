@@ -1,3 +1,19 @@
+.header-github:before {
+  display: flex;
+  height: 24px;
+  width: 24px;
+
+  mask: url(/static/img/github.svg) no-repeat 100% 100%;
+  mask-size: cover;
+  content: "";
+
+  background-color: var(--ifm-navbar-link-color);
+}
+
+.header-github:hover:before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
+
 table {
   display: table;
   width: 100%;

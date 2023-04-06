@@ -65,13 +65,14 @@ const config = {
           {
             type: "doc",
             docId: "fundamentals/getting-started",
-            position: "left",
+            position: "right",
             label: "Docs",
           },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
+            href: "https://github.com/software-mansion/react-native-reanimated/tree/main/docs",
             position: "right",
+            className: "header-github",
+            "aria-label": "GitHub repository",
           },
         ],
       },
