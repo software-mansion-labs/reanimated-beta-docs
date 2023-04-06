@@ -22,7 +22,7 @@ function withShake() {
     withSequence(
       // start from -OFFSET
       withTiming(-OFFSET, { duration: TIME / 2, easing: EASING }),
-      // share between -OFFSET and OFFSET 5 times
+      // shake between -OFFSET and OFFSET 5 times
       withRepeat(
         withTiming(OFFSET, { duration: TIME, easing: EASING }),
         5,
@@ -34,15 +34,15 @@ function withShake() {
   );
 }
 
-export default function WobbleExample() {
-  const rotation = useSharedValue(0);
+export default function App() {
+  const offset = useSharedValue(0);
 
   const style = useAnimatedStyle(() => ({
-    transform: [{ translateX: rotation.value }],
+    transform: [{ translateX: offset.value }],
   }));
 
   const handlePress = () => {
-    rotation.value = withShake();
+    offset.value = withShake();
   };
 
   return (
