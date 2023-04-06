@@ -2,6 +2,54 @@
 sidebar_position: 5
 ---
 
+import ModifiersShake from "@site/src/examples/ModifiersShake";
+
 # Applying modifiers
 
-wobble
+Another way of customizing animations in Reanimated is by using animation modifiers. You can repeat, chain, delay, and combine animations in any way you want. For this purpose Reanimated comes with three modifiers: `withRepeat`, `withSequence`, and `withDelay`.
+
+Let's build an animation which uses all of these modifiers and learn them along the way. Let's go!
+
+## Shake it like it's hot
+
+We're going an animated box which will shake on a button press with a `500ms` delay before starting the animation.
+
+Let's start by having a simple `Animated.View` and a `Button` component on the screen:
+
+```jsx
+import Animated from "react-native-reanimated";
+import { View, Button, StyleSheet } from "react-native";
+import React from "react";
+
+export default function App() {
+  const handlePress = () => {};
+
+  return (
+    <View style={styles.container}>
+      <Animated.View style={styles.box} />
+      <Button title="start" onPress={handlePress} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  box: {
+    width: 100,
+    height: 100,
+    margin: 50,
+    borderRadius: 15,
+    backgroundColor: "#001a72",
+  },
+});
+```
+
+compose your own animation which you can easily reuse in different parts of your application.
+
+Let's see it in an interactive example:
+
+<InteractiveExample name="ModifiersShake" component={<ModifiersShake />} />
