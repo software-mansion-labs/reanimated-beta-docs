@@ -204,3 +204,7 @@ code {
 details code {
   background-color: var(--swm-background-quote-purple);
 }
+
+pre code {
+  background-color: inherit;
+}
