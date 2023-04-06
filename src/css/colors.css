@@ -197,6 +197,7 @@
 
 code {
   background-color: var(--swm-background-quote);
+  border: none;
 }
 
 /* Styling for quote blocks (labels surrounded by ` sign) in details tag */
