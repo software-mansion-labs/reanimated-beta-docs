@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import { useCopyToClipboard } from "usehooks-ts";
+import clsx from "clsx";
 
 interface Props {
   name: string;
@@ -33,15 +34,21 @@ export default function InteractiveExample({
         <div
           className={`${styles.container} ${!showPreview ? styles.code : ""}`}
         >
-          <div className={styles.buttonContainer}>
+          <div className={styles.buttonsContainer}>
             <button
-              className={showPreview ? styles.active : ""}
+              className={clsx(
+                styles.modeButton,
+                showPreview ? styles.active : ""
+              )}
               onClick={() => setShowPreview(true)}
             >
               Preview
             </button>
             <button
-              className={!showPreview ? styles.active : ""}
+              className={clsx(
+                styles.modeButton,
+                !showPreview ? styles.active : ""
+              )}
               onClick={() => setShowPreview(false)}
             >
               Code
@@ -54,12 +61,20 @@ export default function InteractiveExample({
             >
               {copied ? "Copied!" : "Copy"}
             </button>
-            <button onClick={resetExample}>Reset</button>
           </div>
-          {showPreview ? (
-            <React.Fragment key={key}>{component}</React.Fragment>
-          ) : (
-            <CodeBlock language="jsx">{sourceCode}</CodeBlock>
+          <div className={styles.previewContainer} data-ispreview={showPreview}>
+            {showPreview ? (
+              <React.Fragment key={key}>{component}</React.Fragment>
+            ) : (
+              <div className={styles.interactiveCodeBlock}>
+                <CodeBlock language="jsx">{sourceCode}</CodeBlock>
+              </div>
+            )}
+          </div>
+          {showPreview && (
+            <div className={styles.buttonsContainer}>
+              <button onClick={resetExample}>Reset</button>
+            </div>
           )}
         </div>
       )}

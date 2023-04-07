@@ -136,6 +136,11 @@
   --swm-background-quote-yellow: var(--swm-yellow-light-40);
   --swm-background-quote-purple: var(--swm-purple-light-40);
 
+  /* Interactive Examples */
+  --swm-interactive-border: var(--swm-navy-light-20);
+  --swm-interactive-button-color: var(--swm-navy-light-60);
+  --swm-interactive-button-active: var(--ifm-font-color-base);
+
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
@@ -186,6 +191,10 @@
   --swm-background-quote-red: var(--swm-red-dark-140);
   --swm-background-quote-yellow: var(--swm-yellow-dark-140);
   --swm-background-quote-purple: var(--swm-purple-dark-140);
+
+  /* Interactive Examples */
+  --swm-interactive-border: var(--swm-navy-light-60);
+  --swm-interactive-button-color: var(--swm-navy-light-40);
 
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
