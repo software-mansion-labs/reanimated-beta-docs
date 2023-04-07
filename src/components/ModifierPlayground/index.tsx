@@ -7,11 +7,18 @@ import CodeBlock from "@theme/CodeBlock";
 
 import useSpringPlayground from "./useSpringPlayground";
 import useTimingPlayground from "./useTimingPlayground";
+import { useColorMode } from "@docusaurus/theme-common";
+
+import Reset from "@site/static/img/reset.svg";
+import ResetDark from "@site/static/img/reset-dark.svg";
+import clsx from "clsx";
+
 export { useSpringPlayground, useTimingPlayground };
 
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
+  const { colorMode } = useColorMode();
 
   const { example, code, controls } = props.usePlayground();
 
@@ -25,13 +32,15 @@ export default function ModifierPlayground(props: any) {
       {() => (
         <div className={styles.container}>
           <div className={styles.buttonContainer}>
-            <button onClick={resetExample}>Reset</button>
+            <div onClick={resetExample} className={styles.actionIcon}>
+              {colorMode === "light" ? <Reset /> : <ResetDark />}
+            </div>
           </div>
           <React.Fragment key={key}>{example}</React.Fragment>
           <div className={styles.wrapper}>
             <div className={styles.controls}>{controls}</div>
             <div className={styles.codeWrapper}>
-              <CodeBlock className={styles.code} language="javascript">
+              <CodeBlock className={clsx(styles.code)} language="javascript">
                 {code}
               </CodeBlock>
             </div>

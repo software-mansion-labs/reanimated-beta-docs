@@ -141,8 +141,13 @@
   --swm-interactive-button-color: var(--swm-navy-light-60);
   --swm-interactive-button-active: var(--ifm-font-color-base);
 
+  /* --swm-navy-light-100 in rgba schema */
+  --swm-interactive-copy-button-off: rgba(0, 26, 114, 0);
+  --swm-interactive-copy-button-on: rgba(0, 26, 114, 1);
+
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --swm-scrollbar-color: #d9d9d9;
 
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-100);
@@ -196,8 +201,13 @@
   --swm-interactive-border: var(--swm-navy-light-60);
   --swm-interactive-button-color: var(--swm-navy-light-40);
 
+  /* --swm-navy-light-20 in rgba schema */
+  --swm-interactive-copy-button-off: rgba(193, 198, 229, 0);
+  --swm-interactive-copy-button-on: rgb(193, 198, 229, 1);
+
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --swm-scrollbar-color: #494e65;
 
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-20);
@@ -212,8 +222,4 @@ code {
 /* Styling for quote blocks (labels surrounded by ` sign) in details tag */
 details code {
   background-color: var(--swm-background-quote-purple);
-}
-
-pre code {
-  background-color: inherit;
 }

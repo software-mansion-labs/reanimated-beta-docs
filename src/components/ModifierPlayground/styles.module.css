@@ -1,11 +1,12 @@
 .wrapper {
   display: flex;
-  flex: 1;
+
+  align-items: stretch;
 }
 
 .controls {
   display: flex;
-  flex: 1;
+  flex: 0 1 auto;
   flex-direction: column;
   padding: 0 1rem;
   max-width: 350px;
@@ -23,21 +24,61 @@
   justify-content: space-between;
   margin-bottom: 0.5rem;
 }
+
 .row input[type="range"],
 .row input[type="checkbox"] {
   flex: 1;
   margin: 0 0.5rem;
 }
 
+.actionIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0.5em;
+  padding: 0.25em;
+
+  cursor: pointer;
+}
+
 .codeWrapper {
   display: flex;
+
+  flex: 1 1 auto;
+
   align-items: center;
   justify-content: center;
-  flex: 1;
+}
+
+[class*='codeBlockLines'] {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.codeWrapper [class*="codeBlockContent"] {
+  flex: 1 1 auto;
+
+  background-color: var(--swm-background);
+  border: 1px solid var(--swm-interactive-border);
+}
+
+.codeWrapper [class*="codeBlockContent"] pre {
+  background-color: inherit;
+}
+
+/* Special case, where every code block should be formatted,
+ * except the code block in modifier playground. */
+.codeWrapper [class*="codeBlockContent"] pre code {
+  background-color: inherit;
 }
 
 .container {
   position: relative;
+  padding-bottom: 1.5em;
+
+  background-color: var(--swm-off-background);
+  border: 1px solid var(--swm-interactive-border);
 }
 
 .buttonContainer {
