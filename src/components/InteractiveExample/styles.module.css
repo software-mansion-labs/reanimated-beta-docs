@@ -54,7 +54,9 @@
 
 .previewContainer {
   flex: 1 1 auto;
-  margin: 2em 0;
+
+  margin: 1em 0;
+  padding: 0 2em;
 }
 
 /* Style preview only when user is in the 'code' section */
