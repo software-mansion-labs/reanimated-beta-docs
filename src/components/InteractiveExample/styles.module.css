@@ -42,14 +42,8 @@
   align-items: center;
 }
 
-.upperButtonsContainer {
-  width: 100%;
-}
-
-.lowerButtonsContainer {
-  display: flex;
-  padding: 1.5em;
-  justify-content: flex-end;
+.container[data-ispreview="false"] .buttonsContainer {
+  padding-bottom: 10px;
 }
 
 .previewContainer {
