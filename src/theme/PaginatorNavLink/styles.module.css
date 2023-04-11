@@ -12,9 +12,18 @@
   display: flex;
   justify-content: space-between;
 
-  /* Reset default grid properties */
+  /* Reset default grid properties. */
   gap: 0;
   grid-template-columns: none;
+}
+
+/* Main class for sublabel, used by Docusaurus. */
+[class*="pagination-nav__sublabel"] {
+  margin-bottom: 0;
+  color: var(--swm-paginator-sublabel);
+
+  font-size: var(--swm-paginator-sublabel-font-size);
+  text-transform: var(--swm-paginator-sublabel-text-transform);
 }
 
 .paginationSublabel {
@@ -46,14 +55,7 @@
   margin-right: 12px;
 }
 
-[class*="pagination-nav__sublabel"] {
-  margin-bottom: 0;
-  color: var(--swm-paginator-sublabel);
-
-  font-size: var(--swm-paginator-sublabel-font-size);
-  text-transform: var(--swm-paginator-sublabel-text-transform);
-}
-
+/* Main class for label, used by Docusaurus. */
 [class*="pagination-nav__label"] {
   color: var(--swm-paginator-label);
   transition: color 0.25s;

@@ -1,10 +1,16 @@
 .tabs__wrapper {
 }
 
+[class*="tabs__item"]:hover {
+  background-color: inherit;
+}
+
 ul[role="tablist"] li {
   padding: 4px 16px;
 
   color: var(--swm-tab);
+  transition: color 0.15s, border-bottom-color 0.15s;
+
   border-bottom: 4px solid var(--swm-tab);
   border-radius: 0;
 }
