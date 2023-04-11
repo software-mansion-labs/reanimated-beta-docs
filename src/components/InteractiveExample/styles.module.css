@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: column;
 
-  height: 400px;
+  min-height: 400px;
   contain: content;
 
   background-color: var(--swm-off-background);
   border: 1px solid var(--swm-interactive-border);
+}
+
+.container[data-ispreview="false"] {
+  height: 400px;
 }
 
 [class*="codeBlockContainer"] {
@@ -49,7 +53,8 @@
   flex: 1 1 auto;
 }
 
-.previewContainer[data-ispreview="false"] {
+/* Style preview only when user is in the 'code' section */
+.container[data-ispreview="false"] .previewContainer {
   flex: 1 1 auto;
   overflow-y: auto;
 

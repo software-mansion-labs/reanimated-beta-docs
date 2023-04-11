@@ -46,6 +46,7 @@ export default function InteractiveExample({
       {() => (
         <div
           className={`${styles.container} ${!showPreview ? styles.code : ""}`}
+          data-ispreview={showPreview}
         >
           <div className={styles.buttonsContainer}>
             <button
@@ -82,7 +83,7 @@ export default function InteractiveExample({
               {colorMode === "light" ? <Copy /> : <CopyDark />}
             </div>
           </div>
-          <div className={styles.previewContainer} data-ispreview={showPreview}>
+          <div className={styles.previewContainer}>
             {showPreview ? (
               <React.Fragment key={key}>{component}</React.Fragment>
             ) : (
