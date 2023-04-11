@@ -97,9 +97,3 @@ code {
 
   border-bottom: 1px solid var(--ifm-font-color-base);
 }
-
-[class*="InteractiveExample"] [class*="actionButton"] {
-  font-family: var(--swm-body-font);
-  font-weight: 500;
-  font-size: 16px;
-}

@@ -79,8 +79,8 @@ export default function InteractiveExample({
               }}
               className={clsx(
                 styles.actionIcon,
-                styles.copy,
-                copied && styles.copyClicked
+                styles.copyIcon,
+                copied && styles.copyIconClicked
               )}
             >
               {colorMode === "light" ? <Copy /> : <CopyDark />}
