@@ -68,6 +68,7 @@
   color: var(--swm-paginator-label-hover);
 }
 
+/* Remove arrows from labels that are being added by default by Docusaurus. */
 [class*="pagination-nav__label"]:before,
 [class*="pagination-nav__label"]:after {
   content: none !important;
