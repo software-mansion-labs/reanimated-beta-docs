@@ -2,19 +2,19 @@
 }
 
 ul[role="tablist"] li {
-    padding: 4px 16px;
+  padding: 4px 16px;
 
-    color: var(--swm-tab);
-    border-bottom: 4px solid var(--swm-tab);
-    border-radius: 0;
+  color: var(--swm-tab);
+  border-bottom: 4px solid var(--swm-tab);
+  border-radius: 0;
 }
 
 ul[role="tablist"] li:hover {
-    color: var(--swm-tab-hover);
-    border-bottom-color: var(--swm-tab-hover);
+  color: var(--swm-tab-hover);
+  border-bottom-color: var(--swm-tab-hover);
 }
 
-ul[role="tablist"] li[class*='active'] {
-    color: var(--swm-tab-active);
-    border-bottom-color: var(--swm-tab-active);
+ul[role="tablist"] li[class*="active"] {
+  color: var(--swm-tab-active);
+  border-bottom-color: var(--swm-tab-active);
 }

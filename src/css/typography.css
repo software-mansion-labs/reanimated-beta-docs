@@ -63,6 +63,13 @@
   /* Admonitions */
   --swm-admonition-heading-font-family: var(--swm-body-font);
   --swm-admonition-heading-font-weight: 500;
+
+  /* Paginator */
+  --swm-paginator-sublabel-font-size: 14px;
+  --swm-paginator-sublabel-text-transform: uppercase;
+
+  --swm-paginator-label-font-size: 20px;
+  --swm-paginator-label-font-weight: 500;
 }
 
 h1,

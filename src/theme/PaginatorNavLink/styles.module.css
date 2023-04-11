@@ -1,0 +1,72 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1em 0;
+  border: none;
+
+  --ifm-pagination-nav-border-radius: 0;
+}
+
+[class*="pagination-nav"] {
+  display: flex;
+  justify-content: space-between;
+
+  /* Reset default grid properties */
+  gap: 0;
+  grid-template-columns: none;
+}
+
+.paginationSublabel {
+  display: flex;
+  align-items: center;
+}
+
+.paginationNext {
+  flex-direction: row-reverse;
+}
+
+.paginationPrevious {
+  justify-content: flex-start;
+}
+
+.paginationArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationNext .paginationArrow {
+  margin-left: 12px;
+  margin-right: 6px;
+}
+
+.paginationPrevious .paginationArrow {
+  margin-left: 6px;
+  margin-right: 12px;
+}
+
+[class*="pagination-nav__sublabel"] {
+  margin-bottom: 0;
+  color: var(--swm-paginator-sublabel);
+
+  font-size: var(--swm-paginator-sublabel-font-size);
+  text-transform: var(--swm-paginator-sublabel-text-transform);
+}
+
+[class*="pagination-nav__label"] {
+  color: var(--swm-paginator-label);
+  transition: color 0.25s;
+
+  font-size: var(--swm-paginator-label-font-size);
+  font-weight: var(--swm-paginator-label-font-weight);
+}
+
+.pagination:hover [class*="pagination-nav__label"] {
+  color: var(--swm-paginator-label-hover);
+}
+
+[class*="pagination-nav__label"]:before,
+[class*="pagination-nav__label"]:after {
+  content: none !important;
+}

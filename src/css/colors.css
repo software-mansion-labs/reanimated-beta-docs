@@ -144,6 +144,11 @@
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
+  /* Pagination */
+  --swm-paginator-sublabel: var(--swm-navy-light-100);
+  --swm-paginator-label: var(--swm-purple-light-80);
+  --swm-paginator-label-hover: var(--swm-purple-light-100);
+
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-100);
   --swm-copyright-color: var(--swm-navy-light-60);
@@ -199,6 +204,11 @@
 
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Pagination */
+  --swm-paginator-sublabel: var(--swm-navy-light-20);
+  --swm-paginator-label: var(--swm-purple-light-60);
+  --swm-paginator-label-hover: var(--swm-purple-light-40);
 
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-20);
