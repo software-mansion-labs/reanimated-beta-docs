@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
 
-  min-height: 400px;
   contain: content;
 
   background-color: var(--swm-off-background);
@@ -51,6 +50,7 @@
 
 .previewContainer {
   flex: 1 1 auto;
+  margin: 2em 0;
 }
 
 /* Style preview only when user is in the 'code' section */
