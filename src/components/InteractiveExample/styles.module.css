@@ -8,6 +8,10 @@
   border: 1px solid var(--swm-interactive-border);
 }
 
+.largerContainer {
+  min-height: 400px;
+}
+
 .container[data-ispreview="false"] {
   height: 400px;
 }

@@ -17,12 +17,14 @@ interface Props {
   name: string;
   component: React.ReactNode;
   showCode?: boolean; // whether to show code by default
+  larger?: boolean; // should the view be enlarged?
 }
 
 export default function InteractiveExample({
   name,
   component,
   showCode = false,
+  larger = false,
 }: Props) {
   const [_, copy] = useCopyToClipboard();
   const [key, setKey] = React.useState(0);
@@ -45,7 +47,8 @@ export default function InteractiveExample({
     <BrowserOnly fallback={<div>Loading...</div>}>
       {() => (
         <div
-          className={`${styles.container} ${!showPreview ? styles.code : ""}`}
+          className={`${styles.container} ${larger && styles.largerContainer} 
+          ${!showPreview ? styles.code : ""}`}
           data-ispreview={showPreview}
         >
           <div className={styles.buttonsContainer}>
