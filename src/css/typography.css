@@ -80,6 +80,11 @@ h6 {
   letter-spacing: 0.02em;
 }
 
+ul[role="tablist"] {
+  font-family: var(--swm-title-font);
+  font-weight: 600;
+}
+
 code {
   font-family: var(--swm-code-font);
   font-weight: 400;
