@@ -4,6 +4,11 @@
   align-items: stretch;
 }
 
+.previewWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .controls {
   display: flex;
   flex: 0 1 auto;

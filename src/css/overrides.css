@@ -3,6 +3,15 @@ table {
   width: 100%;
 }
 
+@media (max-width: 1280px) {
+  table {
+    display: block;
+    width: 100%;
+  }
+}
+
 .compatibility table {
+  display: table;
+  width: 100%;
   table-layout: fixed;
 }

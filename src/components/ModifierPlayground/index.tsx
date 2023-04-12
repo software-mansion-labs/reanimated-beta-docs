@@ -36,7 +36,9 @@ export default function ModifierPlayground(props: any) {
               {colorMode === "light" ? <Reset /> : <ResetDark />}
             </div>
           </div>
-          <React.Fragment key={key}>{example}</React.Fragment>
+          <div className={styles.previewWrapper}>
+            <React.Fragment key={key}>{example}</React.Fragment>
+          </div>
           <div className={styles.wrapper}>
             <div className={styles.controls}>{controls}</div>
             <div className={styles.codeWrapper}>
