@@ -9,12 +9,12 @@ import Animated, {
   withSequence,
 } from "react-native-reanimated";
 
-const ANGLE = 9;
+const ANGLE = 10;
 const TIME = 100;
 const EASING = Easing.elastic(1.5);
 
 export default function App() {
-  const rotation = useSharedValue(1);
+  const rotation = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ rotateZ: `${rotation.value}deg` }],
@@ -41,7 +41,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.box, animatedStyle]} />
-      <Button title="shake" onPress={handlePress} />
+      <Button title="wobble" onPress={handlePress} />
     </View>
   );
 }

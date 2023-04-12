@@ -3,8 +3,7 @@ import React, { Dispatch } from "react";
 import styles from "./styles.module.css";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import CodeBlock from "@theme/CodeBlock";
 
 import useSpringPlayground from "./useSpringPlayground";
 import useTimingPlayground from "./useTimingPlayground";
@@ -32,13 +31,9 @@ export default function ModifierPlayground(props: any) {
           <div className={styles.wrapper}>
             <div className={styles.controls}>{controls}</div>
             <div className={styles.codeWrapper}>
-              <SyntaxHighlighter
-                className={styles.code}
-                language="javascript"
-                style={docco}
-              >
+              <CodeBlock className={styles.code} language="javascript">
                 {code}
-              </SyntaxHighlighter>
+              </CodeBlock>
             </div>
           </div>
         </div>

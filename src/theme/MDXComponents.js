@@ -2,6 +2,7 @@
 import MDXComponents from "@theme-original/MDXComponents";
 import InteractiveExample from "@site/src/components/InteractiveExample";
 import ModifierPlayground from "@site/src/components/ModifierPlayground";
+import CollapsibleCode from "@site/src/components/CollapsibleCode";
 import Optional from "@site/src/components/Optional";
 
 export default {
@@ -11,5 +12,6 @@ export default {
   // `Highlight` will receive all props that were passed to `<Highlight>` in MDX
   InteractiveExample,
   ModifierPlayground,
+  CollapsibleCode,
   Optional,
 };

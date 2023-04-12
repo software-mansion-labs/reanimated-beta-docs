@@ -24,7 +24,7 @@
   --swm-purple-dark-120: #6a539a;
   --swm-purple-dark-100: #b07eff;
   --swm-purple-dark-80: #c49ffe;
-  --swm-purple-dark-60: #d0b3ff;
+  --swm-purple-dark-60: #d0b2ff;
   --swm-purple-dark-40: #e9dbff;
 
   --swm-blue-light-100: #38acdd;
@@ -111,6 +111,11 @@
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-color-base: var(--swm-navy-light-100);
 
+  /* Tabs */
+  --swm-tab: var(--swm-navy-light-20);
+  --swm-tab-hover: var(--swm-purple-light-80);
+  --swm-tab-active: var(--swm-purple-light-100);
+
   /* Details section */
   --swm-details-foreground: var(--swm-purple-light-20);
   --swm-details-background: var(--swm-purple-light-100);
@@ -143,6 +148,11 @@
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
+  /* Pagination */
+  --swm-paginator-sublabel: var(--swm-navy-light-100);
+  --swm-paginator-label: var(--swm-purple-light-80);
+  --swm-paginator-label-hover: var(--swm-purple-light-100);
+
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-100);
   --swm-copyright-color: var(--swm-navy-light-60);
@@ -165,6 +175,11 @@
 
   /* Typography */
   --ifm-font-color-base: var(--swm-navy-light-10);
+
+  /* Tabs */
+  --swm-tab: var(--swm-navy-light-60);
+  --swm-tab-hover: var(--swm-purple-dark-60);
+  --swm-tab-active: var(--swm-purple-light-80);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-dark-120);
@@ -198,6 +213,11 @@
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
+  /* Pagination */
+  --swm-paginator-sublabel: var(--swm-navy-light-20);
+  --swm-paginator-label: var(--swm-purple-light-60);
+  --swm-paginator-label-hover: var(--swm-purple-light-40);
+
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-20);
   --swm-copyright-color: var(--swm-navy-light-40);
@@ -211,4 +231,8 @@ code {
 /* Styling for quote blocks (labels surrounded by ` sign) in details tag */
 details code {
   background-color: var(--swm-background-quote-purple);
+}
+
+pre code {
+  background-color: inherit;
 }
