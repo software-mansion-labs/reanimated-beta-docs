@@ -1,10 +1,25 @@
 import React from "react";
+import CodeBlock from "@theme/CodeBlock";
 
 interface Props {
-  children: React.ReactNode;
-  shownLines: number[][]; // [[1, 2], [4, 5]] means lines 1, 2, 4, 5 are shown
+  src: string;
+  showLines: number[];
 }
-export default function CollapsibleCode({ children, shownLines }: Props) {
-  console.log(children, shownLines);
-  return <div>mleko</div>;
+
+export default function CollapsibleCode({ src, showLines }: Props) {
+  const [expand, setExpand] = React.useState(false);
+
+  const [start, end] = showLines;
+
+  const codeLines = src.split("\n");
+  const linesToShow = codeLines.slice(start, end + 1).join("\n");
+
+  return (
+    <div>
+      <button onClick={() => setExpand(!expand)}>
+        {expand ? "Collapse" : "Expand"}
+      </button>
+      <CodeBlock language="jsx">{expand ? src : linesToShow}</CodeBlock>
+    </div>
+  );
 }
