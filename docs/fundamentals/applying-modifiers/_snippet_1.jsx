@@ -1,4 +1,3 @@
-```jsx
 import Animated from "react-native-reanimated";
 import { View, Button, StyleSheet } from "react-native";
 import React from "react";
@@ -28,4 +27,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#001a72",
   },
 });
-```
