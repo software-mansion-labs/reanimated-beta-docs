@@ -9,7 +9,7 @@
 }
 
 [class*="pagination-nav"] {
-  display: flex;
+  display: grid;
   justify-content: space-between;
 
   /* Reset default grid properties. */
