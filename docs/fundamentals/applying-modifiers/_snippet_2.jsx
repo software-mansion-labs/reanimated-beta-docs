@@ -1,4 +1,3 @@
-```jsx
 import Animated, {
   useSharedValue,
   withTiming,
@@ -43,4 +42,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#001a72",
   },
 });
-```
