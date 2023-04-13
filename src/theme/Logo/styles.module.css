@@ -2,7 +2,19 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+
+  width: 241px;
   height: 40px;
+}
+
+@media (max-height: 768px) {
+  .navbar__logo {
+    height: 30px;
+  }
+
+  .navbar__logo img {
+    height: 30px;
+  }
 }
 
 .navbar__title {

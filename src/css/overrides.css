@@ -23,6 +23,13 @@ table {
   background-color: var(--ifm-navbar-link-color);
 }
 
+@media (max-height: 768px) {
+  .header-github:before {
+    height: 20px;
+    width: 20px;
+  }
+}
+
 .header-github:hover:before {
   background-color: var(--ifm-navbar-link-hover-color);
 }

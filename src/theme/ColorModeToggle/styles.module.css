@@ -5,6 +5,13 @@
   margin-right: 0;
 }
 
+@media (max-height: 768px) {
+  .toggle {
+    width: 4rem;
+    height: 2rem;
+  }
+}
+
 .toggleButton {
   -webkit-tap-highlight-color: transparent;
 
@@ -39,6 +46,13 @@
   height: 100%;
 
   color: var(--swm-color-mode-disabled-color);
+}
+
+@media (max-height: 768px) {
+  .iconContainer svg {
+    width: 65%;
+    height: 65%;
+  }
 }
 
 .darkIconContainer {

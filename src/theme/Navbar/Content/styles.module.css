@@ -6,6 +6,12 @@ nav {
   --ifm-navbar-shadow: none;
 }
 
+@media (max-height: 768px) {
+  nav {
+    --ifm-navbar-height: 56px;
+  }
+}
+
 @media (max-width: 996px) {
   nav {
     --ifm-navbar-padding-horizontal: 1.5em;
