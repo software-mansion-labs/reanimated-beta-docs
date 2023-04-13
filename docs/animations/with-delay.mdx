@@ -2,10 +2,6 @@
 sidebar_position: 6
 ---
 
-import TimingBasic from "@site/src/examples/TimingBasic";
-import TimingTabs from "@site/src/examples/TimingTabs";
-import DelayText from "@site/src/examples/DelayText";
-
 # withDelay()
 
 `withDelay` is an [animation modifier](/docs/fundamentals/glossary#animation-modifier) that lets you start an animation with a delay.
@@ -50,7 +46,10 @@ An [animation object](/docs/fundamentals/glossary#animation-object). It can be e
 
 ## Example
 
-<InteractiveExample name="DelayText" component={<DelayText />} />
+import DelayText from "@site/src/examples/DelayText";
+import DelayTextSrc from "!!raw-loader!@site/src/examples/DelayText";
+
+<InteractiveExample src={DelayTextSrc} component={<DelayText />} />
 
 ## Platform compatibility
 

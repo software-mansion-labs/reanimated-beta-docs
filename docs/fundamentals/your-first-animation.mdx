@@ -2,8 +2,6 @@
 sidebar_position: 2
 ---
 
-import FirstAnimation from "@site/src/examples/FirstAnimation";
-
 # Your First Animation
 
 In this section, we'll guide you through the basic concepts of Reanimated. If you're new to Reanimated, you're in the right hands! We're going to start by building a simple animation which will help you develop a basic understanding of the library. Then, in the following sections, we're going to build on top of this knowledge and further expand your skills. Let's go!
@@ -148,7 +146,10 @@ export default function App() {
 
 And voilà, we've made our first animation using Reanimated! You can see how it works in its full glory in a preview below:
 
-<InteractiveExample name="FirstAnimation" component={<FirstAnimation />} />
+import FirstAnimation from "@site/src/examples/FirstAnimation";
+import FirstAnimationSrc from "!!raw-loader!@site/src/examples/FirstAnimation";
+
+<InteractiveExample src={FirstAnimationSrc} component={<FirstAnimation />} />
 
 ## Summary
 

@@ -2,9 +2,6 @@
 sidebar_position: 3
 ---
 
-import AnimatingStyles from "@site/src/examples/AnimatingStyles";
-import AnimatingProps from "@site/src/examples/AnimatingProps";
-
 # Animating styles and props
 
 In [the last section](/docs/fundamentals/your-first-animation), we learned how to make simple animations, what shared values are and how to use them. Now, we'll learn a different way of passing animation styles to components. We'll also go over the difference between animating styles and props and how to handle them using `useAnimatedStyle` and `useAnimatedProps`.
@@ -73,7 +70,10 @@ function App() {
 
 You can see it in action in the example below:
 
-<InteractiveExample name="AnimatingStyles" component={<AnimatingStyles />} />
+import AnimatingStyles from "@site/src/examples/AnimatingStyles";
+import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles";
+
+<InteractiveExample src={AnimatingStylesSrc} component={<AnimatingStyles />} />
 
 ## Animating props
 
@@ -148,7 +148,10 @@ In a function which `useAnimatedProps` takes as an argument, we return an object
 
 Check out the full example below:
 
-<InteractiveExample name="AnimatingProps" component={<AnimatingProps />} larger />
+import AnimatingProps from "@site/src/examples/AnimatingProps";
+import AnimatingPropsSrc from "!!raw-loader!@site/src/examples/AnimatingProps";
+
+<InteractiveExample src={AnimatingPropsSrc} component={<AnimatingProps />} larger />
 
 ## Summary
 

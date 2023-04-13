@@ -14,14 +14,14 @@ import ResetDark from "@site/static/img/reset-dark.svg";
 import { useColorMode } from "@docusaurus/theme-common";
 
 interface Props {
-  name: string;
+  src: string;
   component: React.ReactNode;
   showCode?: boolean; // whether to show code by default
   larger?: boolean; // should the view be enlarged?
 }
 
 export default function InteractiveExample({
-  name,
+  src,
   component,
   showCode = false,
   larger = false,
@@ -30,7 +30,6 @@ export default function InteractiveExample({
   const [key, setKey] = React.useState(0);
   const [showPreview, setShowPreview] = React.useState(!showCode);
   const [copied, setCopied] = React.useState(false);
-  const sourceCode = require(`../../examples/${name}/code.txt`);
   const { colorMode } = useColorMode();
 
   useEffect(() => {
@@ -73,7 +72,7 @@ export default function InteractiveExample({
             <div
               onClick={() => {
                 if (!copied) {
-                  copy(sourceCode);
+                  copy(src);
                   setCopied(true);
                 }
               }}
@@ -91,7 +90,7 @@ export default function InteractiveExample({
               <React.Fragment key={key}>{component}</React.Fragment>
             ) : (
               <div className={styles.interactiveCodeBlock}>
-                <CodeBlock language="jsx">{sourceCode}</CodeBlock>
+                <CodeBlock language="jsx">{src}</CodeBlock>
               </div>
             )}
           </div>

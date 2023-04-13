@@ -8,25 +8,31 @@ Another way of customizing animations in Reanimated is by using animation modifi
 
 Let's build an animation which uses all of these modifiers and learn them along the way. Let's go!
 
-## Shake it like it's hot
+## Simple animation
 
 We're going make an animated box which will shake on a button press after a slight delay.
 
 Let's start by having a simple `Animated.View` and a `Button` component on the screen:
 
-import FirstStep from "!!raw-loader!./applying-modifiers/_snippet_1.jsx";
+import Timing from "!!raw-loader!@site/src/examples/ApplyingModifiers/Timing";
 
-<CollapsibleCode showLines={[4, 13]} src={FirstStep} />
+<CollapsibleCode showLines={[8, 32]} src={Timing} />
 
-We can make it animate back and forth by passing `true` to the `reverse` (third) argument.
+nothing new so far. We've learned this in Your First Animation.
+
+## Using `withRepeat`
+
+import Repeat from "!!raw-loader!@site/src/examples/ApplyingModifiers/Repeat";
+
+<CollapsibleCode showLines={[11, 32]} src={Repeat} />
+
+We can make it animate back and forth by passing `true` to the `reverse` (the third) argument.
 
 compose your own animation which you can easily reuse in different parts of your application.
 
 Let's see it in an interactive example:
 
 import ModifiersShake from "@site/src/examples/ModifiersShake";
+import ModifiersShakeSrc from "!!raw-loader!@site/src/examples/ModifiersShake";
 
-<InteractiveExample name="ModifiersShake" component={<ModifiersShake />} />
-
-TODO: spróbować użyć raw-loader do importowania snippetów kodu
-// https://docusaurus.io/docs/markdown-features/react#importing-code-snippets
+<InteractiveExample src={ModifiersShakeSrc} component={<ModifiersShake />} />
