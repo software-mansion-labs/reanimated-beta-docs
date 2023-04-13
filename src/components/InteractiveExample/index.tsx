@@ -12,6 +12,7 @@ import CopyDark from "@site/static/img/copy-dark.svg";
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
 import { useColorMode } from "@docusaurus/theme-common";
+import { reset } from "react-native-svg/lib/typescript/lib/Matrix2D";
 
 interface Props {
   src: string;
@@ -30,12 +31,18 @@ export default function InteractiveExample({
   const [key, setKey] = React.useState(0);
   const [showPreview, setShowPreview] = React.useState(!showCode);
   const [copied, setCopied] = React.useState(false);
+  const [resetClicked, setResetClicked] = React.useState(false);
   const { colorMode } = useColorMode();
 
   useEffect(() => {
     const timeout = setTimeout(() => setCopied(() => false), 1000);
     return () => clearTimeout(timeout);
   }, [copied]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setResetClicked(() => false), 1000);
+    return () => clearTimeout(timeout);
+  }, [resetClicked]);
 
   const resetExample = () => {
     setKey(key + 1);
@@ -50,25 +57,32 @@ export default function InteractiveExample({
           ${!showPreview ? styles.code : ""}`}
           data-ispreview={showPreview}
         >
-          <div className={styles.buttonsContainer}>
-            <button
-              className={clsx(
-                styles.actionButton,
-                showPreview ? styles.actionButtonActive : ""
-              )}
-              onClick={() => setShowPreview(true)}
-            >
-              Preview
-            </button>
-            <button
-              className={clsx(
-                styles.actionButton,
-                !showPreview ? styles.actionButtonActive : ""
-              )}
-              onClick={() => setShowPreview(false)}
-            >
-              Code
-            </button>
+          <div
+            className={clsx(
+              styles.buttonsContainer,
+              styles.upperButtonsContainer
+            )}
+          >
+            <div className={styles.actionButtonsContainer}>
+              <button
+                className={clsx(
+                  styles.actionButton,
+                  showPreview ? styles.actionButtonActive : ""
+                )}
+                onClick={() => setShowPreview(true)}
+              >
+                Preview
+              </button>
+              <button
+                className={clsx(
+                  styles.actionButton,
+                  !showPreview ? styles.actionButtonActive : ""
+                )}
+                onClick={() => setShowPreview(false)}
+              >
+                Code
+              </button>
+            </div>
             <div
               onClick={() => {
                 if (!copied) {
@@ -76,31 +90,44 @@ export default function InteractiveExample({
                   setCopied(true);
                 }
               }}
-              className={clsx(
-                styles.actionIcon,
-                styles.copyIcon,
-                copied && styles.copyIconClicked
-              )}
+              className={clsx(styles.actionIcon, copied && styles.iconClicked)}
             >
               {colorMode === "light" ? <Copy /> : <CopyDark />}
             </div>
           </div>
           <div className={styles.previewContainer}>
             {showPreview ? (
-              <React.Fragment key={key}>{component}</React.Fragment>
+              <>
+                <React.Fragment key={key}>{component}</React.Fragment>
+
+                <div
+                  className={clsx(
+                    styles.buttonsContainer,
+                    styles.lowerButtonsContainer
+                  )}
+                >
+                  <div
+                    onClick={() => {
+                      if (!resetClicked) {
+                        resetExample();
+                        setResetClicked(true);
+                      }
+                    }}
+                    className={clsx(
+                      styles.actionIcon,
+                      resetClicked && styles.iconClicked
+                    )}
+                  >
+                    {colorMode === "light" ? <Reset /> : <ResetDark />}
+                  </div>
+                </div>
+              </>
             ) : (
               <div className={styles.interactiveCodeBlock}>
                 <CodeBlock language="jsx">{src}</CodeBlock>
               </div>
             )}
           </div>
-          {showPreview && (
-            <div className={styles.buttonsContainer}>
-              <div onClick={resetExample} className={styles.actionIcon}>
-                {colorMode === "light" ? <Reset /> : <ResetDark />}
-              </div>
-            </div>
-          )}
         </div>
       )}
     </BrowserOnly>

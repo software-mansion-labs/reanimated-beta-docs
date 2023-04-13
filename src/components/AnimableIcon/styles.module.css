@@ -1,0 +1,15 @@
+.iconClicked {
+    animation: 1s iconClick;
+}
+
+@keyframes iconClick {
+    0% {
+        border: 1px solid var(--swm-interactive-copy-button-off);
+    }
+    50% {
+        border: 1px solid var(--swm-interactive-copy-button-on);
+    }
+    100% {
+        border: 1px solid var(--swm-interactive-copy-button-off);
+    }
+}
