@@ -103,6 +103,10 @@
   --ifm-background-color: var(--swm-background);
   --ifm-navbar-background-color: var(--swm-background);
 
+  /* Color Mode */
+  --swm-color-mode-enabled: var(--swm-navy-light-20);
+  --swm-color-mode-disabled-color: var(--swm-navy-light-20);
+
   /* Typography */
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-color-base: var(--swm-navy-light-100);
@@ -164,6 +168,10 @@
 
   --ifm-background-color: var(--swm-background);
   --ifm-navbar-background-color: var(--swm-background);
+
+  /* Color Mode */
+  --swm-color-mode-enabled: var(--swm-off-navy);
+  --swm-color-mode-disabled-color: var(--swm-navy-light-40);
 
   /* Typography */
   --ifm-font-color-base: var(--swm-navy-light-10);
