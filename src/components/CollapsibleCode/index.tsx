@@ -9,6 +9,10 @@ interface Props {
 export default function CollapsibleCode({ src, showLines }: Props) {
   const [expand, setExpand] = React.useState(false);
 
+  if (!showLines) {
+    return <CodeBlock language="jsx">{src}</CodeBlock>;
+  }
+
   const [start, end] = showLines;
 
   const codeLines = src.split("\n");
