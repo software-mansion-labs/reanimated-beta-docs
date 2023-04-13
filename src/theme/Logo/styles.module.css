@@ -20,7 +20,7 @@
 
 @media (max-width: 996px) {
   .navbar__logo {
-    width: inherit;
+    width: 69px;
     height: 30px;
   }
 }
