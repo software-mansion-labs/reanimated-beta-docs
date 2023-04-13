@@ -57,6 +57,7 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "React Native Reanimated",
+        hideOnScroll: true,
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",

@@ -9,7 +9,7 @@
 
 @media (max-width: 996px) and (max-height: 996px) {
   .navbar__logo {
-    width: 51px;
+    width: 51px !important;
     height: 30px;
   }
 }
@@ -32,6 +32,14 @@
   }
 }
 
+@media (min-width: 997px) {
+  [class*='sidebar'] [class*='navbar__logo'] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+  }
+}
 
 .navbar__title {
   margin-left: 1em;
