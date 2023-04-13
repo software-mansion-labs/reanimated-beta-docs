@@ -25,6 +25,14 @@
   }
 }
 
+@media (max-width: 996px) and (max-height: 996px) {
+  .navbar__logo {
+    width: 51px;
+    height: 30px;
+  }
+}
+
+
 .navbar__title {
   margin-left: 1em;
 }
