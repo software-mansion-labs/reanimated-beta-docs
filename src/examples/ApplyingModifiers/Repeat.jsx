@@ -12,16 +12,20 @@ const OFFSET = 100;
 export default function App() {
   const offset = useSharedValue(0);
 
+  // highlight-start
   const style = useAnimatedStyle(() => ({
     transform: [{ translateX: offset.value }],
   }));
+  // highlight-end
 
   const handlePress = () => {
+    // highlight-next-line
     offset.value = withRepeat(withTiming(OFFSET), 6, true);
   };
 
   return (
     <View style={styles.container}>
+      // highlight-next-line
       <Animated.View style={[styles.box, style]} />
       <Button title="shake" onPress={handlePress} />
     </View>

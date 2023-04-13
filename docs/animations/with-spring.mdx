@@ -2,15 +2,14 @@
 sidebar_position: 1
 ---
 
-import { useSpringPlayground } from "@site/src/components/ModifierPlayground";
-import SpringBasic from "@site/src/examples/SpringBasic";
-import SpringCarousel from "@site/src/examples/SpringCarousel";
-
 # withSpring()
 
 `withSpring` lets you create spring-based animations.
 
-<InteractiveExample name="SpringBasic" component={<SpringBasic />} />
+import SpringBasic from "@site/src/examples/SpringBasic";
+import SpringBasicSrc from "!!raw-loader!@site/src/examples/SpringBasic";
+
+<InteractiveExample src={SpringBasicSrc} component={<SpringBasic />} />
 
 ## Reference
 
@@ -57,6 +56,8 @@ The value on which the animation will come at rest.
 
 The spring animation configuration.
 
+import { useSpringPlayground } from "@site/src/components/ModifierPlayground";
+
 <ModifierPlayground usePlayground={useSpringPlayground} />
 
 Available properties:
@@ -81,7 +82,10 @@ An [animation object](/docs/fundamentals/glossary#animation-object). It can be e
 
 ## Example
 
-<InteractiveExample name="SpringCarousel" component={<SpringCarousel />} />
+import SpringCarousel from "@site/src/examples/SpringCarousel";
+import SpringCarouselSrc from "!!raw-loader!@site/src/examples/SpringCarousel";
+
+<InteractiveExample src={SpringCarouselSrc} component={<SpringCarousel />} />
 
 ## Platform compatibility
 

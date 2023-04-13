@@ -2,16 +2,14 @@
 sidebar_position: 2
 ---
 
-import TimingBasic from "@site/src/examples/TimingBasic";
-import TimingTabs from "@site/src/examples/TimingTabs";
-import TimingEasingCompare from "@site/src/examples/TimingEasingCompare";
-import { useTimingPlayground } from "@site/src/components/ModifierPlayground";
-
 # withTiming()
 
 `withTiming` lets you create an animation based on duration and [easing](https://easings.net/).
 
-<InteractiveExample name="TimingBasic" component={<TimingBasic />} />
+import TimingBasic from "@site/src/examples/TimingBasic";
+import TimingBasicSrc from "!!raw-loader!@site/src/examples/TimingBasic";
+
+<InteractiveExample src={TimingBasicSrc} component={<TimingBasic />} />
 
 ## Reference
 
@@ -53,6 +51,8 @@ The value on which the animation will come at rest.
 
 The timing animation configuration.
 
+import { useTimingPlayground } from "@site/src/components/ModifierPlayground";
+
 <ModifierPlayground usePlayground={useTimingPlayground} />
 
 Available properties:
@@ -68,8 +68,11 @@ The `easing` parameter lets you fine-tine the animation over the specified time 
 
 It all will start to make sense when you compare side by side a `linear` easing with the default `Easing.inOut(Easing.quad)` easing.
 
+import TimingEasingCompare from "@site/src/examples/TimingEasingCompare";
+import TimingEasingCompareSrc from "!!raw-loader!@site/src/examples/TimingEasingCompare";
+
 <InteractiveExample
-  name="TimingEasingCompare"
+  src={TimingEasingCompareSrc}
   component={<TimingEasingCompare />}
 />
 
@@ -116,7 +119,10 @@ An [animation object](/docs/fundamentals/glossary#animation-object). It can be e
 
 ## Example
 
-<InteractiveExample name="TimingTabs" component={<TimingTabs />} />
+import TimingTabs from "@site/src/examples/TimingTabs";
+import TimingTabsSrc from "!!raw-loader!@site/src/examples/TimingTabs";
+
+<InteractiveExample src={TimingTabsSrc} component={<TimingTabs />} />
 
 ## Platform compatibility
 
