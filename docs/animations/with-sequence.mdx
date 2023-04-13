@@ -2,14 +2,14 @@
 sidebar_position: 4
 ---
 
-import SequenceBasic from "@site/src/examples/SequenceBasic";
-import SequenceWobble from "@site/src/examples/SequenceWobble";
-
 # withSequence()
 
 `withSequence` is an [animation modifier](/docs/fundamentals/glossary#animation-modifier) that lets you run animations in a sequence.
 
-<InteractiveExample name="SequenceBasic" component={<SequenceBasic />} />
+import SequenceBasic from "@site/src/examples/SequenceBasic";
+import SequenceBasicSrc from "!!raw-loader!@site/src/examples/SequenceBasic";
+
+<InteractiveExample src={SequenceBasicSrc} component={<SequenceBasic />} />
 
 ## Reference
 
@@ -46,7 +46,10 @@ An [animation object](/docs/fundamentals/glossary#animation-object). It can be e
 
 ## Example
 
-<InteractiveExample name="SequenceWobble" component={<SequenceWobble />} />
+import SequenceWobble from "@site/src/examples/SequenceWobble";
+import SequenceWobbleSrc from "!!raw-loader!@site/src/examples/SequenceWobble";
+
+<InteractiveExample src={SequenceWobbleSrc} component={<SequenceWobble />} />
 
 ## Platform compatibility
 

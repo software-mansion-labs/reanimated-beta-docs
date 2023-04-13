@@ -6,13 +6,13 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import { useCopyToClipboard } from "usehooks-ts";
 
 interface Props {
-  name: string;
+  src: string;
   component: React.ReactNode;
   showCode?: boolean; // whether to show code by default
 }
 
 export default function InteractiveExample({
-  name,
+  src,
   component,
   showCode = false,
 }: Props) {
@@ -20,7 +20,6 @@ export default function InteractiveExample({
   const [key, setKey] = React.useState(0);
   const [showPreview, setShowPreview] = React.useState(!showCode);
   const [copied, setCopied] = React.useState(false);
-  const sourceCode = require(`../../examples/${name}/code.txt`);
 
   const resetExample = () => {
     setKey(key + 1);
@@ -48,7 +47,7 @@ export default function InteractiveExample({
             </button>
             <button
               onClick={() => {
-                copy(sourceCode);
+                copy(src);
                 setCopied(true);
               }}
             >
@@ -59,7 +58,7 @@ export default function InteractiveExample({
           {showPreview ? (
             <React.Fragment key={key}>{component}</React.Fragment>
           ) : (
-            <CodeBlock language="jsx">{sourceCode}</CodeBlock>
+            <CodeBlock language="jsx">{src}</CodeBlock>
           )}
         </div>
       )}

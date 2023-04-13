@@ -25,8 +25,6 @@ compose your own animation which you can easily reuse in different parts of your
 Let's see it in an interactive example:
 
 import ModifiersShake from "@site/src/examples/ModifiersShake";
+import ModifiersShakeSrc from "!!raw-loader!@site/src/examples/ModifiersShake";
 
-<InteractiveExample name="ModifiersShake" component={<ModifiersShake />} />
-
-TODO: spróbować użyć raw-loader do importowania snippetów kodu
-// https://docusaurus.io/docs/markdown-features/react#importing-code-snippets
+<InteractiveExample src={ModifiersShakeSrc} component={<ModifiersShake />} />

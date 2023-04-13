@@ -2,14 +2,6 @@
 sidebar_position: 4
 ---
 
-import InteractiveExample from "@site/src/components/InteractiveExample";
-import TimingEasingCompare from "@site/src/examples/TimingEasingCompare";
-import SpringMassCompare from "@site/src/examples/SpringMassCompare";
-import {
-  useTimingPlayground,
-  useSpringPlayground,
-} from "@site/src/components/ModifierPlayground";
-
 # Customizing animations
 
 Previous sections not only taught you how to use shared values in practice but also you used `withSpring` and `withTiming` functions to create animations. We think now you're more than ready to dive deeper into customizing animations!
@@ -37,8 +29,11 @@ The `easing` parameter lets you fine-tune the animation over the specified time.
 
 It all will start to make sense when you compare side by side a `linear` easing with the default easing.
 
+import TimingEasingCompare from "@site/src/examples/TimingEasingCompare";
+import TimingEasingCompareSrc from "!!raw-loader!@site/src/examples/TimingEasingCompare";
+
 <InteractiveExample
-  name="TimingEasingCompare"
+  src={TimingEasingCompareSrc}
   component={<TimingEasingCompare />}
 />
 
@@ -46,6 +41,8 @@ Reanimated comes with a handful of predefined easing functions. You can play aro
 
 <details>
 <summary><code>withTiming</code> interactive playground</summary>
+
+import { useTimingPlayground } from "@site/src/components/ModifierPlayground";
 
 <ModifierPlayground usePlayground={useTimingPlayground} />
 
@@ -69,8 +66,11 @@ withSpring(sv.value, {
 
 The mass of a spring influences how hard is it to make an object move and to bring it to a stop. Mass adds a feeling of [_inertia_](https://youtu.be/qBjmO8w-QqU?t=22) to the object you're trying to move. You can see in the playground that the heavy spring moves more "sluggish" compared to the default configuration.
 
+import SpringMassCompare from "@site/src/examples/SpringMassCompare";
+import SpringMassCompareSrc from "!!raw-loader!@site/src/examples/SpringMassCompare";
+
 <InteractiveExample
-  name="SpringMassCompare"
+  src={SpringMassCompareSrc}
   component={<SpringMassCompare />}
 />
 
@@ -82,6 +82,8 @@ Reanimated comes with a handful of other properties used to customize your sprin
 
 <details>
 <summary><code>withSpring</code> interactive playground</summary>
+
+import { useSpringPlayground } from "@site/src/components/ModifierPlayground";
 
 <ModifierPlayground usePlayground={useSpringPlayground} />
 

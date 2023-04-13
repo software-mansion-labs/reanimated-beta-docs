@@ -2,14 +2,14 @@
 sidebar_position: 6
 ---
 
-import InteractiveExample from "@site/src/components/InteractiveExample";
-import Gestures from "@site/src/examples/Gestures";
-
 # Handling interactions
 
 remember when we said that we'll come back to `withDecay` later? Now this is the time!
 
-<InteractiveExample name="Gestures" component={<Gestures />} />
+import Gestures from "@site/src/examples/Gestures";
+import GesturesSrc from "!!raw-loader!@site/src/examples/Gestures";
+
+<InteractiveExample src={GesturesSrc} component={<Gestures />} />
 
 ## Summary
 
