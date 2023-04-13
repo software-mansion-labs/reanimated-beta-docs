@@ -1,0 +1,32 @@
+nav {
+  --ifm-navbar-padding-vertical: 0;
+  --ifm-navbar-padding-horizontal: 5em;
+  --ifm-navbar-height: 88px;
+
+  --ifm-navbar-shadow: none;
+}
+
+@media (max-height: 768px) {
+  nav {
+    --ifm-navbar-height: 56px;
+  }
+}
+
+@media (max-width: 996px) {
+  nav {
+    --ifm-navbar-padding-horizontal: 1.5em;
+  }
+}
+
+.colorModeToggle {
+  margin-left: 5em;
+}
+
+/*
+Hide color mode toggle in small viewports
+ */
+@media (max-width: 996px) {
+  .colorModeToggle {
+    display: none;
+  }
+}

@@ -15,3 +15,30 @@ table {
   width: 100%;
   table-layout: fixed;
 }
+
+.header-github {
+  margin-left: 1.5em;
+}
+
+.header-github:before {
+  display: flex;
+  height: 24px;
+  width: 24px;
+
+  mask: url(/static/img/github.svg) no-repeat 100% 100%;
+  mask-size: cover;
+  content: "";
+
+  background-color: var(--ifm-navbar-link-color);
+}
+
+@media (max-height: 768px) {
+  .header-github:before {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.header-github:hover:before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
