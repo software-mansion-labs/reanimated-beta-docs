@@ -14,7 +14,7 @@ const config = {
   // Set the production url of your site here
   url: "https://beta-docs.swmansion.com",
 
-  // Change this to /react-native-reanimated/ when deploying to GitHub pages and update `serve` script in package.json to `docusaurus serve`
+  // Change this to /react-native-reanimated/ when deploying to GitHub pages
   baseUrl: "/",
 
   // GitHub pages deployment config.
