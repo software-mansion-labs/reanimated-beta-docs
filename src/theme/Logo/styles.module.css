@@ -9,10 +9,18 @@
 
 @media (max-height: 768px) {
   .navbar__logo {
+    width: 184px;
     height: 30px;
   }
 
   .navbar__logo img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar__logo {
+    width: inherit;
     height: 30px;
   }
 }
