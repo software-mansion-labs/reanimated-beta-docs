@@ -36,17 +36,6 @@
   margin: 0 0.5rem;
 }
 
-.actionIcon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin: 0.5em;
-  padding: 0.25em;
-
-  cursor: pointer;
-}
-
 .codeWrapper {
   display: flex;
 
@@ -90,6 +79,10 @@
   position: absolute;
   right: 10px;
   top: 10px;
+
+  margin: 0.5em;
+  padding: 0.25em;
+
   z-index: 1;
 }
 

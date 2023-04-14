@@ -12,7 +12,7 @@ import CopyDark from "@site/static/img/copy-dark.svg";
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
 import { useColorMode } from "@docusaurus/theme-common";
-import { reset } from "react-native-svg/lib/typescript/lib/Matrix2D";
+import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 
 interface Props {
   src: string;
@@ -30,23 +30,10 @@ export default function InteractiveExample({
   const [_, copy] = useCopyToClipboard();
   const [key, setKey] = React.useState(0);
   const [showPreview, setShowPreview] = React.useState(!showCode);
-  const [copied, setCopied] = React.useState(false);
-  const [resetClicked, setResetClicked] = React.useState(false);
   const { colorMode } = useColorMode();
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setCopied(() => false), 1000);
-    return () => clearTimeout(timeout);
-  }, [copied]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setResetClicked(() => false), 1000);
-    return () => clearTimeout(timeout);
-  }, [resetClicked]);
 
   const resetExample = () => {
     setKey(key + 1);
-    setCopied(false);
   };
 
   return (
@@ -83,17 +70,17 @@ export default function InteractiveExample({
                 Code
               </button>
             </div>
-            <div
-              onClick={() => {
-                if (!copied) {
+            <AnimableIcon
+              icon={<Copy />}
+              iconDark={<CopyDark />}
+              animation={Animation.FADE_IN_OUT}
+              onClick={(actionPerformed, setActionPerformed) => {
+                if (!actionPerformed) {
                   copy(src);
-                  setCopied(true);
+                  setActionPerformed(true);
                 }
               }}
-              className={clsx(styles.actionIcon, copied && styles.iconClicked)}
-            >
-              {colorMode === "light" ? <Copy /> : <CopyDark />}
-            </div>
+            />
           </div>
           <div className={styles.previewContainer}>
             {showPreview ? (
@@ -106,20 +93,17 @@ export default function InteractiveExample({
                     styles.lowerButtonsContainer
                   )}
                 >
-                  <div
-                    onClick={() => {
-                      if (!resetClicked) {
+                  <AnimableIcon
+                    icon={<Reset />}
+                    iconDark={<ResetDark />}
+                    animation={Animation.FADE_IN_OUT}
+                    onClick={(actionPerformed, setActionPerformed) => {
+                      if (!actionPerformed) {
                         resetExample();
-                        setResetClicked(true);
+                        setActionPerformed(true);
                       }
                     }}
-                    className={clsx(
-                      styles.actionIcon,
-                      resetClicked && styles.iconClicked
-                    )}
-                  >
-                    {colorMode === "light" ? <Reset /> : <ResetDark />}
-                  </div>
+                  />
                 </div>
               </>
             ) : (

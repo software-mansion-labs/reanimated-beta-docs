@@ -1,3 +1,16 @@
+.actionIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.25em;
+    cursor: pointer;
+
+    /* Border applied to omit enlarging icon during the animation. */
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
 .iconClicked {
     animation: 1s iconClick;
 }

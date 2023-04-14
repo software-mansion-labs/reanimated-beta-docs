@@ -7,24 +7,21 @@ import CodeBlock from "@theme/CodeBlock";
 
 import useSpringPlayground from "./useSpringPlayground";
 import useTimingPlayground from "./useTimingPlayground";
-import { useColorMode } from "@docusaurus/theme-common";
 
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
 import clsx from "clsx";
+import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 
 export { useSpringPlayground, useTimingPlayground };
 
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
-  const [copied, setCopied] = React.useState(false);
-  const { colorMode } = useColorMode();
 
   const { example, code, controls } = props.usePlayground();
 
   const resetExample = () => {
     setKey(key + 1);
-    setCopied(false);
   };
 
   return (
@@ -32,9 +29,17 @@ export default function ModifierPlayground(props: any) {
       {() => (
         <div className={styles.container}>
           <div className={styles.buttonContainer}>
-            <div onClick={resetExample} className={styles.actionIcon}>
-              {colorMode === "light" ? <Reset /> : <ResetDark />}
-            </div>
+            <AnimableIcon
+              icon={<Reset />}
+              iconDark={<ResetDark />}
+              animation={Animation.FADE_IN_OUT}
+              onClick={(actionPerformed, setActionPerformed) => {
+                if (!actionPerformed) {
+                  resetExample();
+                  setActionPerformed(true);
+                }
+              }}
+            />
           </div>
           <div className={styles.previewWrapper}>
             <React.Fragment key={key}>{example}</React.Fragment>
