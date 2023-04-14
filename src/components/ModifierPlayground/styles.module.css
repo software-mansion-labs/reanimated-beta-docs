@@ -1,7 +1,14 @@
 .wrapper {
   display: flex;
 
-  align-items: stretch;
+  justify-content: stretch;
+  align-items: center;
+}
+
+@media (max-width: 997px) {
+  .wrapper {
+    flex-direction: column;
+  }
 }
 
 .previewWrapper {
@@ -10,11 +17,25 @@
 }
 
 .controls {
+  width: 100%;
   display: flex;
-  flex: 0 1 auto;
   flex-direction: column;
   padding: 0 1rem;
   max-width: 350px;
+}
+
+@media (max-width: 997px) {
+  .controls {
+    width: 75%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .controls {
+    flex: 1;
+    max-width: none;
+  }
 }
 
 .code {
@@ -41,13 +62,31 @@
 
   flex: 1 1 auto;
 
-  align-items: center;
-  justify-content: center;
+  /*align-items: center;*/
+  /*justify-content: center;*/
 }
 
+@media (max-width: 997px) {
+  .codeWrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .codeWrapper {
+    flex: 1;
+  }
+}
+
+
+/* Prevent lines from overflowing from the code block */
 [class*="codeBlockLines"] {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  width: 0;
+}
+
+/* Add small padding, when some of the lines are too long in a code block */
+.codeWrapper [class*="codeBlockLines"] span:last-of-type {
+  margin-right: 1em;
 }
 
 .codeWrapper [class*="codeBlockContent"] {
