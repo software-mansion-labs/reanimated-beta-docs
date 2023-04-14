@@ -24,11 +24,27 @@ nothing new so far. We've learned this in Your First Animation.
 
 import Repeat from "!!raw-loader!@site/src/examples/ApplyingModifiers/Repeat";
 
-<CollapsibleCode showLines={[11, 32]} src={Repeat} />
+<CollapsibleCode showLines={[9, 29]} src={Repeat} />
+
+number of times.
 
 We can make it animate back and forth by passing `true` to the `reverse` (the third) argument.
 
 compose your own animation which you can easily reuse in different parts of your application.
+
+## Using `withSequence`
+
+import Sequence from "!!raw-loader!@site/src/examples/ApplyingModifiers/Sequence";
+
+<CollapsibleCode showLines={[18, 36]} src={Sequence} />
+
+## Using `withDecay`
+
+import Decay from "!!raw-loader!@site/src/examples/ApplyingModifiers/Decay";
+
+<CollapsibleCode showLines={[19, 40]} src={Decay} />
+
+## Shake it like it's hot
 
 Let's see it in an interactive example:
 

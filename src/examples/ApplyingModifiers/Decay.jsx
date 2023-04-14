@@ -1,13 +1,14 @@
 import Animated, {
   useSharedValue,
   withTiming,
+  Easing,
   useAnimatedStyle,
   withRepeat,
+  withSequence,
+  withDelay,
 } from "react-native-reanimated";
 import { View, Button, StyleSheet } from "react-native";
 import React from "react";
-
-const OFFSET = 100;
 
 export default function App() {
   const offset = useSharedValue(0);
@@ -16,9 +17,28 @@ export default function App() {
     transform: [{ translateX: offset.value }],
   }));
 
+  const OFFSET = 10;
+  const TIME = 100;
+  const EASING = Easing.elastic(1.5);
+  const DELAY = 250;
+
   const handlePress = () => {
     // highlight-next-line
-    offset.value = withRepeat(withTiming(OFFSET), 6, true);
+    offset.value = withDelay(
+      DELAY,
+      withSequence(
+        // start from -OFFSET
+        withTiming(-OFFSET, { duration: TIME / 2, easing: EASING }),
+        // shake between -OFFSET and OFFSET 5 times
+        withRepeat(
+          withTiming(OFFSET, { duration: TIME, easing: EASING }),
+          5,
+          true
+        ),
+        // go back to 0 at the end
+        withTiming(0, { duration: TIME / 2, easing: EASING })
+      )
+    );
   };
 
   return (
