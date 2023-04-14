@@ -10,7 +10,7 @@ Let's build a simple shake animation which uses all the modifiers and learn them
 
 ## Starting point
 
-In this example, we're going make an animated box which will shake on a button press after a slight delay.
+In this example, we're going to make an animated box which will shake on a button press after a slight delay.
 
 Let's start by having an `Animated.View` and a `Button` which moves the view to the right on press. To achieve this we can use `useAnimatedStyle` and `withTiming` function to smoothly animate our box `40px` to the right.
 
@@ -30,11 +30,12 @@ import { withRepeat } from "react-native-reanimated";
 function App() {
   sv.value = withRepeat(withTiming(0), 5);
   // ...
+}
 ```
 
-Pass a number to the second parameter of the function to make it repeat a given number of times. You can make it repeat forever by passing a non-positive value (eg. `0` or `-1`). You can make the animation go back and forth by passing `true` to the the third (i.e. `reverse`) argument.
+Pass a number to the second parameter of the function to make it repeat a given number of times. You can make it repeat forever by passing a non-positive value (eg. `0` or `-1`). You can make the animation go back and forth by passing `true` to the third (i.e. `reverse`) argument.
 
-To learn more about it you can check-out the full [`withRepeat` API reference](/docs/animations/with-repeat).
+To learn more about it you can check out the full [`withRepeat` API reference](/docs/animations/with-repeat).
 
 Let's use this function in our example:
 
@@ -57,11 +58,12 @@ import { withSequence } from "react-native-reanimated";
 function App() {
   sv.value = withSequence(withTiming(50), withTiming(0));
   // ...
+}
 ```
 
 This modifier lets you chain animations together. The next animation starts when the previous one ends. You use it by passing animations as arguments in the order you want them to run.
 
-To learn more about it you can check-out the full [`withSequence` API reference](/docs/animations/with-sequence).
+To learn more about it you can check out the full [`withSequence` API reference](/docs/animations/with-sequence).
 
 Coming back to our example - we can utilize `withSequence` to improve our animation. First, we'll sway the box to the left which we'll make it to take half of the duration of one swing. Then, we'll shake the box 5 times and finish up the animation by bringing it to starting position also with half of the animation duration.
 
@@ -71,7 +73,7 @@ import Sequence from "!!raw-loader!@site/src/examples/ApplyingModifiers/Sequence
 
 ## Using `withDecay`
 
-As a cherry on top we'll add a little bit of suspense by adding a slight delay before the animation begins. For this exact purpose Reanimated comes with a `withDelay` modifier.
+As a cherry on top, we'll add a little bit of suspense by adding a slight delay before the animation begins. For this exact purpose, Reanimated comes with a `withDelay` modifier.
 
 ```javascript
 import { withDelay } from "react-native-reanimated";
@@ -81,15 +83,15 @@ function App() {
   // ...
 ```
 
-This function as a first parameter takes the duration in milliseconds before the animation starts. Second parameter defines the animation to delay.
+This function as a first parameter takes the duration in milliseconds before the animation starts. The second parameter defines the animation to delay.
 
-To learn more about it you can check-out the full [`withDelay` API reference](/docs/animations/with-delay).
+To learn more about it you can check out the full [`withDelay` API reference](/docs/animations/with-delay).
 
 import Delay from "!!raw-loader!@site/src/examples/ApplyingModifiers/Delay";
 
 <CollapsibleCode showLines={[19, 38]} src={Delay} />
 
-Let's see the full effect it in an interactive example:
+Let's see the full effect in an interactive example:
 
 import ModifiersShake from "@site/src/examples/ModifiersShake";
 import ModifiersShakeSrc from "!!raw-loader!@site/src/examples/ModifiersShake";
@@ -101,10 +103,10 @@ import ModifiersShakeSrc from "!!raw-loader!@site/src/examples/ModifiersShake";
 In this section, we learned how to create complex animations by using animation modifiers. To sum up:
 
 - Reanimated comes with three built-in animation modifiers - `withRepeat`, `withSequence`, and `withDelay`.
-- `withRepeat` lets you repeat an animation given number of times or run it indefinitely.
+- `withRepeat` lets you repeat an animation a given number of times or run it indefinitely.
 - `withSequence` lets you run animations in a sequence.
 - `withDelay` lets you start an animation with a delay.
 
 ## What's next?
 
-In the next section we're going to learn about handling interactions and gestures. Also, we'll get to know the final missing piece of our animation functions puzzle - `withDecay`.
+In the next section, we're going to learn about handling interactions and gestures. Also, we'll get to know the final missing piece of our animation functions puzzle - `withDecay`.
