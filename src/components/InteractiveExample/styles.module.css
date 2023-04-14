@@ -55,6 +55,14 @@
   margin-bottom: 10px;
 }
 
+@media (max-width: 997px) {
+  .upperButtonsContainer {
+    justify-content: center;
+
+    margin: 1.5em 0;
+  }
+}
+
 .lowerButtonsContainer {
   margin-top: 10px;
 }
@@ -70,6 +78,14 @@
   z-index: 1;
 }
 
+@media (max-width: 997px) {
+  .container[data-ispreview="false"] .buttonsContainer {
+    position: relative;
+    width: fit-content;
+    margin: 1.5em auto;
+  }
+}
+
 .previewContainer {
   flex: 1 1 auto;
 }
@@ -81,6 +97,12 @@
 
   padding: 0 24px;
   margin: 16px 8px 8px 0;
+}
+
+@media (max-width: 997px) {
+  .container[data-ispreview="false"] .previewContainer {
+    margin-top: 0;
+  }
 }
 
 .actionButton {
