@@ -15,7 +15,7 @@ export default function useSpringPlayground() {
 
   const code = `
     withSpring(sv.value, {
-      damping: ${damping}
+      damping: ${damping},
       mass: ${mass},
       stiffness: ${stiffness},
       velocity: ${velocity},
