@@ -16,6 +16,25 @@
   overflow: hidden;
 }
 
+.container {
+  position: relative;
+  padding-bottom: 1.5em;
+
+  background-color: var(--swm-off-background);
+  border: 1px solid var(--swm-interactive-border);
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  margin: 0.5em;
+  padding: 0.25em;
+
+  z-index: 1;
+}
+
 .controls {
   width: 100%;
   display: flex;
@@ -78,7 +97,6 @@
   }
 }
 
-
 /* Prevent lines from overflowing from the code block */
 [class*="codeBlockLines"] {
   width: 0;
@@ -104,25 +122,6 @@
  * except the code block in modifier playground. */
 .codeWrapper [class*="codeBlockContent"] pre code {
   background-color: inherit;
-}
-
-.container {
-  position: relative;
-  padding-bottom: 1.5em;
-
-  background-color: var(--swm-off-background);
-  border: 1px solid var(--swm-interactive-border);
-}
-
-.buttonContainer {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-
-  margin: 0.5em;
-  padding: 0.25em;
-
-  z-index: 1;
 }
 
 .label {

@@ -34,7 +34,7 @@
 }
 
 /* Hide default action buttons, displayed by Docusaurus */
-.interactiveCodeBlock [class*='buttonGroup'] {
+.interactiveCodeBlock [class*="buttonGroup"] {
   display: none;
 }
 
