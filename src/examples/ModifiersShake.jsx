@@ -10,10 +10,9 @@ import Animated, {
 import { View, Button, StyleSheet } from "react-native";
 import React from "react";
 
-const OFFSET = 10;
-const TIME = 100;
+const OFFSET = 40;
+const TIME = 250;
 const DELAY = 250;
-const EASING = Easing.elastic(1.5);
 
 function withShake() {
   // 250 ms delay before starting
@@ -21,15 +20,11 @@ function withShake() {
     DELAY,
     withSequence(
       // start from -OFFSET
-      withTiming(-OFFSET, { duration: TIME / 2, easing: EASING }),
+      withTiming(-OFFSET, { duration: TIME / 2 }),
       // shake between -OFFSET and OFFSET 5 times
-      withRepeat(
-        withTiming(OFFSET, { duration: TIME, easing: EASING }),
-        5,
-        true
-      ),
+      withRepeat(withTiming(OFFSET, { duration: TIME }), 5, true),
       // go back to 0 at the end
-      withTiming(0, { duration: TIME / 2, easing: EASING })
+      withTiming(0, { duration: TIME / 2 })
     )
   );
 }

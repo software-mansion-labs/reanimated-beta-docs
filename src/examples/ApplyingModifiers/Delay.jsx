@@ -17,27 +17,24 @@ export default function App() {
     transform: [{ translateX: offset.value }],
   }));
 
-  const OFFSET = 10;
+  const OFFSET = 40;
   const TIME = 100;
-  const EASING = Easing.elastic(1.5);
   const DELAY = 250;
 
   const handlePress = () => {
     // highlight-next-line
     offset.value = withDelay(
+      // highlight-next-line
       DELAY,
       withSequence(
         // start from -OFFSET
-        withTiming(-OFFSET, { duration: TIME / 2, easing: EASING }),
+        withTiming(-OFFSET, { duration: TIME / 2 }),
         // shake between -OFFSET and OFFSET 5 times
-        withRepeat(
-          withTiming(OFFSET, { duration: TIME, easing: EASING }),
-          5,
-          true
-        ),
+        withRepeat(withTiming(OFFSET, { duration: TIME }), 5, true),
         // go back to 0 at the end
-        withTiming(0, { duration: TIME / 2, easing: EASING })
+        withTiming(0, { duration: TIME / 2 })
       )
+      // highlight-next-line
     );
   };
 

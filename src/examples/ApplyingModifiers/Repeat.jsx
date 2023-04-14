@@ -7,8 +7,6 @@ import Animated, {
 import { View, Button, StyleSheet } from "react-native";
 import React from "react";
 
-const OFFSET = 100;
-
 export default function App() {
   const offset = useSharedValue(0);
 
@@ -16,9 +14,11 @@ export default function App() {
     transform: [{ translateX: offset.value }],
   }));
 
+  const OFFSET = 40;
+
   const handlePress = () => {
     // highlight-next-line
-    offset.value = withRepeat(withTiming(OFFSET), 6, true);
+    offset.value = withRepeat(withTiming(OFFSET), 5, true);
   };
 
   return (
