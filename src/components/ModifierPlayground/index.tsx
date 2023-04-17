@@ -76,6 +76,30 @@ interface RangeProps {
   label: string;
 }
 
+const RangeStyling = {
+  color: "var(--swm-interactive-slider)", // color of the main path of slider
+  "& .MuiSlider-thumb": {
+    backgroundColor: "var(--swm-interactive-slider)", //color of thumb
+  },
+  "& .MuiSlider-rail": {
+    color: "var(--swm-interactive-slider-rail)", //color of the rail (remaining area of slider)
+    opacity: 1,
+  },
+};
+
+const TextFieldStyling = {
+  minWidth: 88,
+  "& .MuiInputBase-input": {
+    fontSize: 14,
+    backgroundColor: "background.default",
+    color: "text.secondary",
+  },
+  "& fieldset": {
+    borderRadius: 0,
+    borderColor: "text.secondary",
+  },
+};
+
 export function Range({
   min,
   max,
@@ -84,30 +108,6 @@ export function Range({
   label,
   step = 1,
 }: RangeProps) {
-  const SliderStyling = {
-    color: "var(--swm-interactive-slider)", // color of the main path of slider
-    "& .MuiSlider-thumb": {
-      backgroundColor: "var(--swm-interactive-slider)", //color of thumb
-    },
-    "& .MuiSlider-rail": {
-      color: "var(--swm-interactive-slider-rail)", //color of the rail (remaining area of slider)
-      opacity: 1,
-    },
-  };
-
-  const TextFieldStyling = {
-    minWidth: 88,
-    "& .MuiInputBase-input": {
-      fontSize: 14,
-      backgroundColor: "background.default",
-      color: "text.secondary",
-    },
-    "& fieldset": {
-      borderRadius: 0,
-      borderColor: "text.secondary",
-    },
-  };
-
   return (
     <>
       <div className={styles.row}>
@@ -123,12 +123,11 @@ export function Range({
         />
       </div>
       <Slider
-        aria-label="Volume"
         min={min}
         max={max}
         step={step}
         value={value}
-        sx={SliderStyling}
+        sx={RangeStyling}
         onChange={(e: Event & { target: HTMLInputElement }) =>
           onChange(parseFloat(e.target.value))
         }
@@ -165,6 +164,16 @@ interface SelectProps {
   disabled?: boolean;
 }
 
+const SelectStyling = {
+  fontSize: 14,
+  color: "text.secondary",
+  backgroundColor: "background.default",
+  borderRadius: 0,
+  "& fieldset": {
+    borderColor: "text.secondary",
+  },
+};
+
 export function SelectOption({
   value,
   onChange,
@@ -172,16 +181,6 @@ export function SelectOption({
   options,
   disabled,
 }: SelectProps) {
-  const SelectStyling = {
-    fontSize: 14,
-    color: "text.secondary",
-    backgroundColor: "background.default",
-    borderRadius: 0,
-    "& fieldset": {
-      borderColor: "text.secondary",
-    },
-  };
-
   return (
     <div className={styles.row}>
       <label>{label}</label>

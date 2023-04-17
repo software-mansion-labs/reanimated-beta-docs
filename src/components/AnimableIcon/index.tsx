@@ -30,7 +30,7 @@ const AnimableIcon = ({
 
   return (
     <div
-      onClick={onClick.bind(null, actionPerformed, setActionPerformed)}
+      onClick={() => onClick(actionPerformed, setActionPerformed)}
       className={clsx(styles.actionIcon, actionPerformed && animation)}
     >
       {colorMode === "light" ? icon : iconDark || icon}
