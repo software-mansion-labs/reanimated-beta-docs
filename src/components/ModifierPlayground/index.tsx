@@ -99,7 +99,7 @@ export function Range({
     minWidth: 88,
     "& .MuiInputBase-input": {
       fontSize: 14,
-      backgroundColor: "background.paper",
+      backgroundColor: "background.default",
       color: "text.secondary",
     },
     "& fieldset": {
@@ -151,6 +151,7 @@ export function CheckboxOption({ value, onChange, label }: CheckboxProps) {
         color="secondary"
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
+        sx={{ backgroundColor: "background.default" }}
         disableRipple
       />
     </div>
@@ -175,6 +176,7 @@ export function SelectOption({
   const SelectStyling = {
     fontSize: 14,
     color: "text.secondary",
+    backgroundColor: "background.default",
     borderRadius: 0,
     "& fieldset": {
       borderColor: "text.secondary",
