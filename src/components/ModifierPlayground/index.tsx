@@ -151,7 +151,6 @@ export function CheckboxOption({ value, onChange, label }: CheckboxProps) {
         color="secondary"
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
-        sx={{ backgroundColor: "background.default" }}
         disableRipple
       />
     </div>
