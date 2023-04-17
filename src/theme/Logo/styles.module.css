@@ -34,7 +34,7 @@
 
 /* Logo shown on the sidebar after scrolling down the page. */
 @media (min-width: 997px) {
-  [class*='sidebar'] [class*='navbar__logo'] {
+  [class*="sidebar"] [class*="navbar__logo"] {
     width: 100%;
     display: flex;
     justify-content: center;

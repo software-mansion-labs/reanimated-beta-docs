@@ -26,7 +26,7 @@ export default function App() {
         <AnimatedCircle
           cx="50%"
           cy="50%"
-          fill="#001A72"
+          fill="#b58df1"
           animatedProps={animatedProps}
         />
       </Svg>

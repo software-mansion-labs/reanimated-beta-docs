@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Example from "./Example";
 
-import { Range, Select } from "..";
+import { Range, SelectOption } from "..";
 
 import { Easing } from "react-native-reanimated";
 
@@ -78,7 +78,7 @@ export default function useTimingPlayground() {
         value={duration}
         onChange={setDamping}
       />
-      <Select
+      <SelectOption
         label="Easing"
         value={easing}
         onChange={setEasing}
@@ -101,7 +101,7 @@ export default function useTimingPlayground() {
         ]}
       />
       {canNestEasing(easing) && (
-        <Select
+        <SelectOption
           label="Easing"
           value={nestedEasing}
           onChange={setNestedEasing}
