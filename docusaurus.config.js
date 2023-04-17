@@ -88,6 +88,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: "ZYDVCHOETY",
+        apiKey: "970f691c8f65d958052968251a7b5a19",
+        indexName: "react-native-reanimated",
+      },
     }),
   plugins: [
     ...[

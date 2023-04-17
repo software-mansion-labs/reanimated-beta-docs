@@ -59,14 +59,13 @@ export default function NavbarContent() {
         </>
       }
       right={
-        // TODO Move SearchBar from navigation to sidebar
         <>
+          {!searchBarItem && (
+            <NavbarSearch>
+              <SearchBar />
+            </NavbarSearch>
+          )}
           <NavbarItems items={rightItems} />
-          {/*{!searchBarItem && (*/}
-          {/*  <NavbarSearch>*/}
-          {/*    <SearchBar />*/}
-          {/*  </NavbarSearch>*/}
-          {/*)}*/}
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
         </>
       }
