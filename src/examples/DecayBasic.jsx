@@ -39,11 +39,13 @@ export default function App() {
       offset.value += event.changeX;
     })
     .onFinalize((event) => {
+      // highlight-start
       offset.value = withDecay({
         velocity: event.velocityX,
         clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
         rubberBandEffect: true,
       });
+      // highlight-end
     });
 
   const animatedStyles = useAnimatedStyle(() => ({

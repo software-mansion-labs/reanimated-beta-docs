@@ -21,6 +21,7 @@ export default function App() {
   }));
 
   const handlePress = () => {
+    // highlight-next-line
     rotation.value = withSequence(
       // deviate left to start from -ANGLE
       withTiming(-ANGLE, { duration: TIME / 2, easing: EASING }),
@@ -35,6 +36,7 @@ export default function App() {
       ),
       // go back to 0 at the end
       withTiming(0, { duration: TIME / 2, easing: EASING })
+      // highlight-next-line
     );
   };
 
