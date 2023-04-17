@@ -43,6 +43,10 @@
   max-width: 350px;
 }
 
+.controlsInput {
+  font-family: var(--swm-body-font);
+}
+
 @media (max-width: 997px) {
   .controls {
     width: 75%;

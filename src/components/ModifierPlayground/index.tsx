@@ -15,11 +15,11 @@ import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 import {
   Checkbox,
   FormControl,
-  Input,
   MenuItem,
   Select,
   Slider,
   styled,
+  TextField,
 } from "@mui/material";
 
 export { useSpringPlayground, useTimingPlayground };
@@ -95,14 +95,29 @@ export function Range({
     },
   };
 
+  const TextFieldStyling = {
+    minWidth: 88,
+    "& .MuiInputBase-input": {
+      fontSize: 14,
+      backgroundColor: "background.paper",
+      color: "text.secondary",
+    },
+    "& fieldset": {
+      borderRadius: 0,
+      borderColor: "text.secondary",
+    },
+  };
+
   return (
     <>
       <div className={styles.row}>
         <label>{label}</label>
-        <Input
+        <TextField
           type="number"
-          sx={{ width: 55 }}
+          hiddenLabel
+          size="small"
           inputProps={{ min: min, max: max, step: step }}
+          sx={TextFieldStyling}
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
         />
@@ -136,6 +151,7 @@ export function CheckboxOption({ value, onChange, label }: CheckboxProps) {
         color="secondary"
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
+        disableRipple
       />
     </div>
   );
@@ -156,17 +172,31 @@ export function SelectOption({
   options,
   disabled,
 }: SelectProps) {
+  const SelectStyling = {
+    fontSize: 14,
+    color: "text.secondary",
+    borderRadius: 0,
+    "& fieldset": {
+      borderColor: "text.secondary",
+    },
+  };
+
   return (
     <div className={styles.row}>
       <label>{label}</label>
-      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <FormControl sx={{ minWidth: 85 }} size="small">
         <Select
           value={value}
+          sx={SelectStyling}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
         >
           {options.map((option) => (
-            <MenuItem key={option} value={option}>
+            <MenuItem
+              key={option}
+              value={option}
+              sx={{ color: "text.secondary" }}
+            >
               {option}
             </MenuItem>
           ))}
