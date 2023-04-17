@@ -39,3 +39,28 @@ $ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+### Algolia search
+
+Only applicable before Reanimated docs are fully deployed!
+
+Create .env file with:
+
+```
+APPLICATION_ID=ZYDVCHOETY
+API_KEY=<<Algolia Admin Key>>
+```
+
+Ask @kacperkapusciak or someone else from RNOS to gain Algolia Admin Key.
+
+To run crawler locally you need to install `jq` and `docker`:
+
+```
+brew install jq
+```
+
+Run crawler with:
+
+```
+docker run -it --env-file=.env -e "CONFIG=$(cat ./config.json | jq -r tostring)" algolia/docsearch-scraper
+```
