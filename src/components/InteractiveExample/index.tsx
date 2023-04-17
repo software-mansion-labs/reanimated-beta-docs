@@ -11,7 +11,6 @@ import CopyDark from "@site/static/img/copy-dark.svg";
 
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
-import { useColorMode } from "@docusaurus/theme-common";
 import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 
 interface Props {
@@ -30,7 +29,6 @@ export default function InteractiveExample({
   const [_, copy] = useCopyToClipboard();
   const [key, setKey] = React.useState(0);
   const [showPreview, setShowPreview] = React.useState(!showCode);
-  const { colorMode } = useColorMode();
 
   const resetExample = () => {
     setKey(key + 1);

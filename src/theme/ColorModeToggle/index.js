@@ -5,8 +5,12 @@ import { translate } from "@docusaurus/Translate";
 import IconLightMode from "@theme/Icon/LightMode";
 import IconDarkMode from "@theme/Icon/DarkMode";
 import styles from "./styles.module.css";
+import { useColorScheme } from "@mui/material";
 function ColorModeToggle({ className, buttonClassName, value, onChange }) {
   const isBrowser = useIsBrowser();
+  /* Color scheme switcher from MUI framework. */
+  const { setMode } = useColorScheme();
+
   const title = translate(
     {
       message: "Switch between dark and light mode (currently {mode})",
@@ -28,6 +32,12 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
             }),
     }
   );
+
+  const changeTheme = (value) => {
+    onChange(value); // Default theme switcher
+    setMode(value); // Color scheme switcher from MUI
+  };
+
   return (
     <div className={clsx(styles.toggle, className)}>
       <button
@@ -38,7 +48,7 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
           buttonClassName
         )}
         type="button"
-        onClick={() => onChange(value === "dark" ? "light" : "dark")}
+        onClick={() => changeTheme(value === "dark" ? "light" : "dark")}
         disabled={!isBrowser}
         title={title}
         aria-label={title}

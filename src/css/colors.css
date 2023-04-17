@@ -150,6 +150,9 @@
   --swm-interactive-button-color: var(--swm-navy-light-60);
   --swm-interactive-button-active: var(--ifm-font-color-base);
 
+  --swm-interactive-slider: var(--swm-purple-light-100);
+  --swm-interactive-slider-rail: var(--swm-navy-light-20);
+
   /* --swm-navy-light-100 in rgba schema */
   --swm-interactive-copy-button-off: rgba(0, 26, 114, 0);
   --swm-interactive-copy-button-on: rgba(0, 26, 114, 1);
@@ -223,6 +226,9 @@
   /* Interactive Examples */
   --swm-interactive-border: var(--swm-navy-light-60);
   --swm-interactive-button-color: var(--swm-navy-light-40);
+
+  --swm-interactive-slider: var(--swm-purple-light-80);
+  --swm-interactive-slider-rail: var(--swm-navy-light-20);
 
   /* --swm-navy-light-20 in rgba schema */
   --swm-interactive-copy-button-off: rgba(193, 198, 229, 0);

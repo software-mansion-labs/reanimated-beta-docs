@@ -12,6 +12,15 @@ import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
 import clsx from "clsx";
 import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
+import {
+  Checkbox,
+  FormControl,
+  Input,
+  MenuItem,
+  Select,
+  Slider,
+  styled,
+} from "@mui/material";
 
 export { useSpringPlayground, useTimingPlayground };
 
@@ -75,26 +84,39 @@ export function Range({
   label,
   step = 1,
 }: RangeProps) {
+  const SliderStyling = {
+    color: "var(--swm-interactive-slider)", // color of the main path of slider
+    "& .MuiSlider-thumb": {
+      backgroundColor: "var(--swm-interactive-slider)", //color of thumb
+    },
+    "& .MuiSlider-rail": {
+      color: "var(--swm-interactive-slider-rail)", //color of the rail (remaining area of slider)
+      opacity: 1,
+    },
+  };
+
   return (
     <>
       <div className={styles.row}>
         <label>{label}</label>
-        <input
+        <Input
           type="number"
-          min={min}
-          max={max}
-          step={step}
+          sx={{ width: 55 }}
+          inputProps={{ min: min, max: max, step: step }}
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
         />
       </div>
-      <input
-        type="range"
+      <Slider
+        aria-label="Volume"
         min={min}
         max={max}
         step={step}
         value={value}
-        onChange={(e) => onChange(parseFloat(e.target.value))}
+        sx={SliderStyling}
+        onChange={(e: Event & { target: HTMLInputElement }) =>
+          onChange(parseFloat(e.target.value))
+        }
       />
     </>
   );
@@ -106,12 +128,12 @@ interface CheckboxProps {
   label: string;
 }
 
-export function Checkbox({ value, onChange, label }: CheckboxProps) {
+export function CheckboxOption({ value, onChange, label }: CheckboxProps) {
   return (
     <div className={styles.row}>
       <div>{label}</div>
-      <input
-        type="checkbox"
+      <Checkbox
+        color="secondary"
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
       />
@@ -127,7 +149,7 @@ interface SelectProps {
   disabled?: boolean;
 }
 
-export function Select({
+export function SelectOption({
   value,
   onChange,
   label,
@@ -137,17 +159,19 @@ export function Select({
   return (
     <div className={styles.row}>
       <label>{label}</label>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        disabled={disabled}
-      >
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <Select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          disabled={disabled}
+        >
+          {options.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </div>
   );
 }
