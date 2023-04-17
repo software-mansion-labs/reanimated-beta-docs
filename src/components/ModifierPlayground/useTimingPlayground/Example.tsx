@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
   box: {
     height: 100,
     width: 100,
-    backgroundColor: "#001A72",
+    backgroundColor: "#b58df1",
     borderRadius: 20,
     marginVertical: 64,
   },
   ghost: {
-    opacity: 0.2,
+    opacity: 0.3,
     position: "absolute",
     transform: [{ translateX: initialOffset }],
   },

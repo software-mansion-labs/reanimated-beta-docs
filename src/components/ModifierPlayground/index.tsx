@@ -7,17 +7,30 @@ import CodeBlock from "@theme/CodeBlock";
 
 import useSpringPlayground from "./useSpringPlayground";
 import useTimingPlayground from "./useTimingPlayground";
+
+import Reset from "@site/static/img/reset.svg";
+import ResetDark from "@site/static/img/reset-dark.svg";
+import clsx from "clsx";
+import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
+import {
+  Checkbox,
+  FormControl,
+  MenuItem,
+  Select,
+  Slider,
+  styled,
+  TextField,
+} from "@mui/material";
+
 export { useSpringPlayground, useTimingPlayground };
 
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
-  const [copied, setCopied] = React.useState(false);
 
   const { example, code, controls } = props.usePlayground();
 
   const resetExample = () => {
     setKey(key + 1);
-    setCopied(false);
   };
 
   return (
@@ -25,13 +38,25 @@ export default function ModifierPlayground(props: any) {
       {() => (
         <div className={styles.container}>
           <div className={styles.buttonContainer}>
-            <button onClick={resetExample}>Reset</button>
+            <AnimableIcon
+              icon={<Reset />}
+              iconDark={<ResetDark />}
+              animation={Animation.FADE_IN_OUT}
+              onClick={(actionPerformed, setActionPerformed) => {
+                if (!actionPerformed) {
+                  resetExample();
+                  setActionPerformed(true);
+                }
+              }}
+            />
           </div>
-          <React.Fragment key={key}>{example}</React.Fragment>
+          <div className={styles.previewWrapper}>
+            <React.Fragment key={key}>{example}</React.Fragment>
+          </div>
           <div className={styles.wrapper}>
             <div className={styles.controls}>{controls}</div>
             <div className={styles.codeWrapper}>
-              <CodeBlock className={styles.code} language="javascript">
+              <CodeBlock className={clsx(styles.code)} language="javascript">
                 {code}
               </CodeBlock>
             </div>
@@ -51,6 +76,30 @@ interface RangeProps {
   label: string;
 }
 
+const RangeStyling = {
+  color: "var(--swm-interactive-slider)", // color of the main path of slider
+  "& .MuiSlider-thumb": {
+    backgroundColor: "var(--swm-interactive-slider)", //color of thumb
+  },
+  "& .MuiSlider-rail": {
+    color: "var(--swm-interactive-slider-rail)", //color of the rail (remaining area of slider)
+    opacity: 1,
+  },
+};
+
+const TextFieldStyling = {
+  minWidth: 88,
+  "& .MuiInputBase-input": {
+    fontSize: 14,
+    backgroundColor: "background.default",
+    color: "text.secondary",
+  },
+  "& fieldset": {
+    borderRadius: 0,
+    borderColor: "text.secondary",
+  },
+};
+
 export function Range({
   min,
   max,
@@ -63,22 +112,25 @@ export function Range({
     <>
       <div className={styles.row}>
         <label>{label}</label>
-        <input
+        <TextField
           type="number"
-          min={min}
-          max={max}
-          step={step}
+          hiddenLabel
+          size="small"
+          inputProps={{ min: min, max: max, step: step }}
+          sx={TextFieldStyling}
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
         />
       </div>
-      <input
-        type="range"
+      <Slider
         min={min}
         max={max}
         step={step}
         value={value}
-        onChange={(e) => onChange(parseFloat(e.target.value))}
+        sx={RangeStyling}
+        onChange={(e: Event & { target: HTMLInputElement }) =>
+          onChange(parseFloat(e.target.value))
+        }
       />
     </>
   );
@@ -90,14 +142,15 @@ interface CheckboxProps {
   label: string;
 }
 
-export function Checkbox({ value, onChange, label }: CheckboxProps) {
+export function CheckboxOption({ value, onChange, label }: CheckboxProps) {
   return (
     <div className={styles.row}>
       <div>{label}</div>
-      <input
-        type="checkbox"
+      <Checkbox
+        color="secondary"
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
+        disableRipple
       />
     </div>
   );
@@ -111,7 +164,17 @@ interface SelectProps {
   disabled?: boolean;
 }
 
-export function Select({
+const SelectStyling = {
+  fontSize: 14,
+  color: "text.secondary",
+  backgroundColor: "background.default",
+  borderRadius: 0,
+  "& fieldset": {
+    borderColor: "text.secondary",
+  },
+};
+
+export function SelectOption({
   value,
   onChange,
   label,
@@ -121,17 +184,24 @@ export function Select({
   return (
     <div className={styles.row}>
       <label>{label}</label>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        disabled={disabled}
-      >
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+      <FormControl sx={{ minWidth: 85 }} size="small">
+        <Select
+          value={value}
+          sx={SelectStyling}
+          onChange={(e) => onChange(e.target.value)}
+          disabled={disabled}
+        >
+          {options.map((option) => (
+            <MenuItem
+              key={option}
+              value={option}
+              sx={{ color: "text.secondary" }}
+            >
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </div>
   );
 }

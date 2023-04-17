@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Example from "./Example";
 
-import { Range, Checkbox } from "..";
+import { Range, CheckboxOption } from "..";
 
 export default function useSpringPlayground() {
   const [damping, setDamping] = useState(10);
@@ -56,7 +56,7 @@ export default function useSpringPlayground() {
         value={velocity}
         onChange={setVelocity}
       />
-      <Checkbox
+      <CheckboxOption
         label="Clamp"
         value={overshootClamping}
         onChange={setOvershootClamping}
