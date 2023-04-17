@@ -5,9 +5,10 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
   Easing,
+  withRepeat,
 } from "react-native-reanimated";
 
-const duration = 1800;
+const duration = 2000;
 
 export default function App() {
   const defaultAnim = useSharedValue(200);
@@ -21,19 +22,23 @@ export default function App() {
   }));
 
   React.useEffect(() => {
-    const run = () => {
-      linear.value = withTiming(-linear.value, {
+    linear.value = withRepeat(
+      // highlight-next-line
+      withTiming(-linear.value, {
         duration,
         easing: Easing.linear,
-      });
-      defaultAnim.value = withTiming(-defaultAnim.value, {
+      }),
+      -1,
+      true
+    );
+    defaultAnim.value = withRepeat(
+      // highlight-next-line
+      withTiming(-defaultAnim.value, {
         duration,
-      });
-    };
-    run();
-    const id = setInterval(run, duration * 2);
-
-    return () => clearInterval(id);
+      }),
+      -1,
+      true
+    );
   }, []);
 
   return (

@@ -33,10 +33,12 @@ export default function App() {
       (previousOffset > RIGHT_BOUNDARY && position === 1)
     ) {
       const newOffset = offset.value + (SIZE + 2 * MARGIN) * -position;
+      // highlight-start
       offset.value = withSpring(newOffset, {
         restDisplacementThreshold: 5,
         restSpeedThreshold: 5,
       });
+      // highlight-end
     }
   };
 

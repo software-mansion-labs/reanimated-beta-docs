@@ -6,6 +6,7 @@ import Animated, {
   withTiming,
   withSequence,
   Easing,
+  withRepeat,
 } from "react-native-reanimated";
 
 const initialOffset = 200;
@@ -19,14 +20,17 @@ export default function App() {
   }));
 
   React.useEffect(() => {
-    const id = setInterval(() => {
-      offset.value = withSequence(
+    offset.value = withRepeat(
+      // highlight-start
+      withSequence(
         withTiming(-initialOffset, { duration, easing: Easing.cubic }),
         withTiming(0, { duration, easing: Easing.cubic }),
         withTiming(initialOffset, { duration, easing: Easing.cubic })
-      );
-    }, duration * 3);
-    return () => clearInterval(id);
+      ),
+      // highlight-end
+      -1,
+      true
+    );
   }, []);
 
   return (

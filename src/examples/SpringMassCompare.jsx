@@ -4,6 +4,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
+  withRepeat,
 } from "react-native-reanimated";
 
 const duration = 1800;
@@ -20,17 +21,22 @@ export default function App() {
   }));
 
   React.useEffect(() => {
-    const run = () => {
-      defaultAnim.value = withSpring(-defaultAnim.value);
-      changedAnim.value = withSpring(-changedAnim.value, {
+    defaultAnim.value = withRepeat(
+      // highlight-next-line
+      withSpring(-defaultAnim.value),
+      -1,
+      true
+    );
+    changedAnim.value = withRepeat(
+      // highlight-start
+      withSpring(-changedAnim.value, {
         mass: 10,
         damping: 40,
-      });
-    };
-    run();
-    const id = setInterval(run, duration * 2);
-
-    return () => clearInterval(id);
+      }),
+      // highlight-end
+      -1,
+      true
+    );
   }, []);
 
   return (

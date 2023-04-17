@@ -15,6 +15,7 @@ export default function App() {
   const sv = useSharedValue(0);
 
   useEffect(() => {
+    // highlight-next-line
     sv.value = withRepeat(withTiming(1, { duration, easing }), -1);
   }, []);
 

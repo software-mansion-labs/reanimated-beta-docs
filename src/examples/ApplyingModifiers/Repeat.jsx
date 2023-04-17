@@ -7,25 +7,22 @@ import Animated, {
 import { View, Button, StyleSheet } from "react-native";
 import React from "react";
 
-const OFFSET = 100;
-
 export default function App() {
   const offset = useSharedValue(0);
 
-  // highlight-start
   const style = useAnimatedStyle(() => ({
     transform: [{ translateX: offset.value }],
   }));
-  // highlight-end
+
+  const OFFSET = 40;
 
   const handlePress = () => {
     // highlight-next-line
-    offset.value = withRepeat(withTiming(OFFSET), 6, true);
+    offset.value = withRepeat(withTiming(OFFSET), 5, true);
   };
 
   return (
     <View style={styles.container}>
-      // highlight-next-line
       <Animated.View style={[styles.box, style]} />
       <Button title="shake" onPress={handlePress} />
     </View>
