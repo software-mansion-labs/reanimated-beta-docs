@@ -2,14 +2,14 @@
 sidebar_position: 5
 ---
 
-import RepeatBasic from "@site/src/examples/RepeatBasic";
-import SequenceWobble from "@site/src/examples/SequenceWobble";
-
 # withRepeat()
 
-`withRepeat` lets you repeat an animation given number of times or run it indefinitely.
+`withRepeat` is an [animation modifier](/docs/fundamentals/glossary#animation-modifier) that lets you repeat an animation given number of times or run it indefinitely.
 
-<InteractiveExample name="RepeatBasic" component={<RepeatBasic />} />
+import RepeatBasic from "@site/src/examples/RepeatBasic";
+import RepeatBasicSrc from "!!raw-loader!@site/src/examples/RepeatBasic";
+
+<InteractiveExample src={RepeatBasicSrc} component={<RepeatBasic />} />
 
 ## Reference
 
@@ -61,7 +61,10 @@ A function called on animation complete. In case the animation is cancelled, the
 
 ## Example
 
-<InteractiveExample name="SequenceWobble" component={<SequenceWobble />} />
+import SequenceWobble from "@site/src/examples/SequenceWobble";
+import SequenceWobbleSrc from "!!raw-loader!@site/src/examples/SequenceWobble";
+
+<InteractiveExample src={SequenceWobbleSrc} component={<SequenceWobble />} />
 
 ## Platform compatibility
 

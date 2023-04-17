@@ -12,15 +12,15 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-test-site.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: "https://beta-docs.swmansion.com",
+
+  // Change this to /react-native-reanimated/ when deploying to GitHub pages
   baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "software-mansion", // Usually your GitHub org/user name.
+  projectName: "react-native-reanimated", // Usually your repo name.
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -39,6 +39,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          breadcrumbs: false,
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: false,
         },
@@ -56,21 +57,24 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "React Native Reanimated",
+        hideOnScroll: true,
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",
+          srcDark: "img/logo-dark.svg",
         },
         items: [
           {
             type: "doc",
             docId: "fundamentals/getting-started",
-            position: "left",
+            position: "right",
             label: "Docs",
           },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
+            href: "https://github.com/software-mansion/react-native-reanimated/tree/main/docs",
             position: "right",
+            className: "header-github",
+            "aria-label": "GitHub repository",
           },
         ],
       },
@@ -83,6 +87,11 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      algolia: {
+        appId: "ZYDVCHOETY",
+        apiKey: "970f691c8f65d958052968251a7b5a19",
+        indexName: "react-native-reanimated",
       },
     }),
   plugins: [
