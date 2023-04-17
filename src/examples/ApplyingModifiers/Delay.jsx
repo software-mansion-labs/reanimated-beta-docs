@@ -18,8 +18,8 @@ export default function App() {
   }));
 
   const OFFSET = 40;
-  const TIME = 100;
-  const DELAY = 250;
+  const TIME = 250;
+  const DELAY = 400;
 
   const handlePress = () => {
     // highlight-next-line

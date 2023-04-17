@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      // highlight-next-line
+      {/* highlight-next-line */}
       <Animated.View style={[styles.box, style]} />
       <Button title="shake" onPress={handlePress} />
     </View>

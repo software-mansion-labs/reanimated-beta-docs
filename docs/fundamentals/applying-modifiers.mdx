@@ -16,9 +16,12 @@ Let's start by having an `Animated.View` and a `Button` which moves the view to 
 
 If this sounds new to you, no worries! Start by going through the basics in [Your First Animation](/docs/fundamentals/your-first-animation) and come back here when you're ready.
 
-import Timing from "!!raw-loader!@site/src/examples/ApplyingModifiers/Timing";
+import Timing from "@site/src/examples/ApplyingModifiers/Timing";
+import TimingSrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Timing";
 
-<CollapsibleCode showLines={[8, 32]} src={Timing} />
+<CollapsibleCode showLines={[8, 32]} src={TimingSrc} />
+
+<InteractiveExample src={TimingSrc} component={<Timing />} />
 
 ## Using `withRepeat`
 
@@ -67,9 +70,12 @@ To learn more about it you can check out the full [`withSequence` API reference]
 
 Coming back to our example - we can utilize `withSequence` to improve our animation. First, we'll sway the box to the left which we'll make it to take half of the duration of one swing. Then, we'll shake the box 5 times and finish up the animation by bringing it to starting position also with half of the animation duration.
 
-import Sequence from "!!raw-loader!@site/src/examples/ApplyingModifiers/Sequence";
+import Sequence from "@site/src/examples/ApplyingModifiers/Sequence";
+import SequenceSrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Sequence";
 
-<CollapsibleCode showLines={[18, 32]} src={Sequence} />
+<CollapsibleCode showLines={[18, 32]} src={SequenceSrc} />
+
+<InteractiveExample src={SequenceSrc} component={<Sequence />} />
 
 ## Using `withDecay`
 
@@ -81,22 +87,20 @@ import { withDelay } from "react-native-reanimated";
 function App() {
   sv.value = withDelay(500, withTiming(0));
   // ...
+}
 ```
 
 This function as a first parameter takes the duration in milliseconds before the animation starts. The second parameter defines the animation to delay.
 
 To learn more about it you can check out the full [`withDelay` API reference](/docs/animations/with-delay).
 
-import Delay from "!!raw-loader!@site/src/examples/ApplyingModifiers/Delay";
+import DelaySrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Delay";
 
-<CollapsibleCode showLines={[19, 38]} src={Delay} />
+<CollapsibleCode showLines={[19, 38]} src={DelaySrc} />
 
-Let's see the full effect in an interactive example:
+import Delay from "@site/src/examples/ApplyingModifiers/Delay";
 
-import ModifiersShake from "@site/src/examples/ModifiersShake";
-import ModifiersShakeSrc from "!!raw-loader!@site/src/examples/ModifiersShake";
-
-<InteractiveExample src={ModifiersShakeSrc} component={<ModifiersShake />} />
+<InteractiveExample src={DelaySrc} component={<Delay />} />
 
 ## Summary
 
@@ -109,4 +113,4 @@ In this section, we learned how to create complex animations by using animation 
 
 ## What's next?
 
-In the next section, we're going to learn about handling interactions and gestures. Also, we'll get to know the final missing piece of our animation functions puzzle - `withDecay`.
+In the next section, we're going to learn about handling interactions and gestures. Also, we'll get to know the `withDecay` animation function.
