@@ -1,34 +1,129 @@
 .container {
-  height: 300px;
-  background: #f6f8fa;
-  overflow: scroll;
-  position: relative;
-  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+
   contain: content;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-.code {
-  height: 600px;
+
+  background-color: var(--swm-off-background);
+  border: 1px solid var(--swm-interactive-border);
 }
 
-.buttonContainer {
+.largerContainer {
+  min-height: 400px;
+}
+
+/* Preferred height in code section of container. */
+.container[data-ispreview="false"] {
+  height: 400px;
+}
+
+/* Classes used to omit default docusaurus styling. */
+[class*="codeBlockContainer"] {
+  box-shadow: none;
+}
+
+.interactiveCodeBlock [class*="codeBlockContent"] pre {
+  border-radius: 0;
+  border: none;
+}
+
+.interactiveCodeBlock [class*="codeBlockContent"] code {
+  background-color: var(--swm-off-background);
+  width: 100%;
+  padding: 0;
+}
+
+/* Hide default action buttons, displayed by Docusaurus */
+.interactiveCodeBlock [class*="buttonGroup"] {
+  display: none;
+}
+
+.code {
+  flex: 1;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding: 0.25em 0.75em 0.25em 1.25em;
+  margin: 1.5em 2em 1.5em 1.5em;
+}
+
+.upperButtonsContainer {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 997px) {
+  .upperButtonsContainer {
+    justify-content: center;
+
+    margin: 1.5em 0;
+  }
+}
+
+.lowerButtonsContainer {
+  margin-top: 10px;
+}
+
+.container[data-ispreview="false"] .buttonsContainer {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0;
+  top: 0;
+
+  border-radius: 25px;
+  background-color: var(--swm-code-lines-buttons-background);
+
   z-index: 1;
 }
 
-button {
-  background: #fff;
-  /* border: 1px solid #ccc; */
-  border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
-  margin: 0 5px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+@media (max-width: 997px) {
+  .container[data-ispreview="false"] .buttonsContainer {
+    position: relative;
+    width: fit-content;
+    margin: 1.5em auto;
+  }
 }
 
-.active {
-  background: #eee;
+.previewContainer {
+  flex: 1 1 auto;
+}
+
+/* Style preview only when user is in the 'code' section. */
+.container[data-ispreview="false"] .previewContainer {
+  flex: 1 1 auto;
+  overflow-y: auto;
+
+  padding: 0 24px;
+  margin: 16px 8px 8px 0;
+}
+
+@media (max-width: 997px) {
+  .container[data-ispreview="false"] .previewContainer {
+    margin-top: 0;
+  }
+}
+
+.actionButton {
+  margin-right: 0.5em;
+  padding: 0 0 2px 0;
+
+  border: none;
+  background-color: inherit;
+  color: var(--swm-interactive-button-color);
+  cursor: pointer;
+
+  font-family: var(--swm-body-font);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.actionButton:last-of-type {
+  margin-right: 2em;
+}
+
+.actionButtonActive {
+  color: var(--swm-interactive-button-active);
+  border-bottom: 1px solid var(--swm-interactive-button-active);
 }
