@@ -1,48 +1,48 @@
 .container {
-    background-color: var(--swm-pre-background);
-    border-radius: 0;
+  background-color: var(--swm-pre-background);
+  border-radius: 0;
 
-    --swm-expandable-transition: transform 200ms ease;
+  --swm-expandable-transition: transform 200ms ease;
 }
 
 .container pre {
-    border: 1px solid var(--swm-navy-light-20);
-    border-top: none;
+  border: 1px solid var(--swm-navy-light-20);
+  border-top: none;
 
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .buttonContainer {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-    border: 1px solid var(--swm-navy-light-20);
-    border-bottom: none;
+  border: 1px solid var(--swm-navy-light-20);
+  border-bottom: none;
 
-    padding: 1em 0 1em 1em;
+  padding: 1em 0 1em 1em;
 }
 
 .arrow {
-    height: 12px;
-    width: 12px;
-    margin-right: 1.5rem;
-    left: 0;
+  height: 12px;
+  width: 12px;
+  margin-right: 1.5rem;
+  left: 0;
 
-    transition: var(--swm-expandable-transition);
+  transition: var(--swm-expandable-transition);
 }
 
 .buttonContainer[data-isopen="true"] .arrow {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .buttonContainer button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 
-    font-family: var(--swm-body-font);
-    font-size: 16px;
-    color: var(--ifm-font-color-base);
-    cursor: pointer;
+  font-family: var(--swm-body-font);
+  font-size: 16px;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
 }

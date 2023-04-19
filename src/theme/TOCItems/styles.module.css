@@ -1,13 +1,13 @@
 .tocItems span {
-    font-weight: 500;
+  font-weight: 500;
 }
 
-.tocItems a[class*='active'] span {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.tocItems a[class*="active"] span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .tocItems a code {
-    padding: 0;
-    background-color: inherit;
+  padding: 0;
+  background-color: inherit;
 }

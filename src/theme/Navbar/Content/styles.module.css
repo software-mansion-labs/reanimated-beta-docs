@@ -18,6 +18,10 @@ nav {
     --ifm-navbar-padding-vertical: 0;
     --ifm-navbar-padding-horizontal: 1.5em;
   }
+
+  .navbarSearch {
+    position: relative;
+  }
 }
 
 @media (min-width: 997px) {
@@ -33,7 +37,7 @@ nav {
 }
 
 @media (min-width: 997px) {
-  [class*='navbar__items--left'] {
+  [class*="navbar__items--left"] {
     flex: 1;
     width: 100%;
   }
@@ -43,7 +47,7 @@ nav {
     width: 100%;
   }
 
-  button[class*='DocSearch-Button'] {
+  button[class*="DocSearch-Button"] {
     flex: 1;
     width: 100%;
     font-family: var(--swm-title-font);

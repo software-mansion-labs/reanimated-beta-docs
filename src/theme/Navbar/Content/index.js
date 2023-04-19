@@ -50,8 +50,19 @@ function NavbarContentLayout({ left, right }) {
     </div>
   );
 }
+
+function AlgoliaSearchBar() {
+  return (
+    <NavbarSearch className={styles.navbarSearch}>
+      <SearchBar />
+    </NavbarSearch>
+  );
+}
+
 export default function NavbarContent() {
   const windowSize = useWindowSize();
+  const isMobile = windowSize === "mobile";
+
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -65,16 +76,13 @@ export default function NavbarContent() {
           </div>
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           <NavbarItems items={leftItems} />
-          {!searchBarItem && windowSize !== "mobile" && (
-            <NavbarSearch className={styles.navbarSearch}>
-              <SearchBar />
-            </NavbarSearch>
-          )}
+          {!searchBarItem && !isMobile && <AlgoliaSearchBar />}
         </>
       }
       right={
         <>
           <NavbarItems items={rightItems} />
+          {!searchBarItem && isMobile && <AlgoliaSearchBar />}
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
         </>
       }

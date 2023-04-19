@@ -9,7 +9,7 @@
 }
 
 /* Hide logo on mobile sidebar */
-[class*='navbar-sidebar'] [class*='navbar__logo'] {
+[class*="navbar-sidebar"] [class*="navbar__logo"] {
   display: none;
 }
 
