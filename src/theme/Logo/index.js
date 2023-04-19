@@ -10,10 +10,12 @@ export default function LogoWrapper(props) {
   };
 
   return (
-    <LogoStyling
-      titleImages={titleImages}
-      className={styles.navbar__logo}
-      titleClassName={styles.navbar__title}
-    />
+    <div className={styles.navbar__logo__wrapper}>
+      <LogoStyling
+        titleImages={titleImages}
+        className={styles.navbar__logo}
+        titleClassName={styles.navbar__title}
+      />
+    </div>
   );
 }

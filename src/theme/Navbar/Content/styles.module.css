@@ -1,6 +1,6 @@
 nav {
-  --ifm-navbar-padding-vertical: 0;
-  --ifm-navbar-padding-horizontal: 5em;
+  --ifm-navbar-padding-vertical: 0 5em;
+  --ifm-navbar-padding-horizontal: 0 0;
   --ifm-navbar-height: 88px;
 
   --ifm-navbar-shadow: none;
@@ -8,18 +8,46 @@ nav {
 
 @media (max-height: 768px) {
   nav {
+    --ifm-navbar-padding-horizontal: 0 0;
     --ifm-navbar-height: 56px;
   }
 }
 
 @media (max-width: 996px) {
   nav {
+    --ifm-navbar-padding-vertical: 0;
     --ifm-navbar-padding-horizontal: 1.5em;
   }
 }
 
+@media (min-width: 997px) {
+  .logoWrapper {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+  }
+}
+
 .colorModeToggle {
-  margin-left: 5em;
+  margin: 0 1.5em;
+}
+
+@media (min-width: 997px) {
+  [class*='navbar__items--left'] {
+    flex: 1;
+    width: 100%;
+  }
+
+  .navbarSearch {
+    flex: 1;
+    width: 100%;
+  }
+
+  button[class*='DocSearch-Button'] {
+    flex: 1;
+    width: 100%;
+    font-family: var(--swm-title-font);
+  }
 }
 
 /*
