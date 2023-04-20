@@ -1,5 +1,9 @@
 import React from "react";
-import { useThemeConfig, ErrorCauseBoundary } from "@docusaurus/theme-common";
+import {
+  useThemeConfig,
+  ErrorCauseBoundary,
+  useWindowSize,
+} from "@docusaurus/theme-common";
 import {
   splitNavbarItems,
   useNavbarMobileSidebar,
@@ -11,6 +15,8 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
+import useIsBrowser from "@docusaurus/useIsBrowser";
+
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
@@ -44,7 +50,19 @@ function NavbarContentLayout({ left, right }) {
     </div>
   );
 }
+
+function AlgoliaSearchBar() {
+  return (
+    <NavbarSearch className={styles.navbarSearch}>
+      <SearchBar />
+    </NavbarSearch>
+  );
+}
+
 export default function NavbarContent() {
+  const windowSize = useWindowSize();
+  const isMobile = windowSize === "mobile";
+
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -53,19 +71,18 @@ export default function NavbarContent() {
     <NavbarContentLayout
       left={
         <>
-          <NavbarLogo />
+          <div className={styles.logoWrapper}>
+            <NavbarLogo />
+          </div>
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           <NavbarItems items={leftItems} />
+          {!searchBarItem && !isMobile && <AlgoliaSearchBar />}
         </>
       }
       right={
         <>
-          {!searchBarItem && (
-            <NavbarSearch>
-              <SearchBar />
-            </NavbarSearch>
-          )}
           <NavbarItems items={rightItems} />
+          {!searchBarItem && isMobile && <AlgoliaSearchBar />}
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
         </>
       }

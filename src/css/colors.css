@@ -116,6 +116,11 @@
   --swm-tab-hover: var(--swm-purple-light-80);
   --swm-tab-active: var(--swm-purple-light-100);
 
+  /* Table of Contents */
+  --ifm-toc-border-color: transparent;
+  --ifm-toc-link-color: var(--swm-navy-light-60);
+  --ifm-toc-link-color-active: var(--swm-navy-light-100);
+
   /* Details section */
   --swm-details-foreground: var(--swm-purple-light-20);
   --swm-details-background: var(--swm-purple-light-100);
@@ -160,6 +165,7 @@
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --swm-code-lines-buttons-background: rgba(145, 159, 207, 0.2);
+  --swm-pre-background: #f6f8fa;
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-100);
@@ -193,6 +199,11 @@
   --swm-tab: var(--swm-navy-light-60);
   --swm-tab-hover: var(--swm-purple-dark-60);
   --swm-tab-active: var(--swm-purple-light-80);
+
+  /* Table of Contents */
+  --ifm-toc-border-color: transparent;
+  --ifm-toc-link-color: var(--swm-navy-light-40);
+  --ifm-toc-link-color-active: var(--swm-off-white);
 
   /* Details section */
   --swm-details-foreground: var(--swm-purple-dark-120);
@@ -236,7 +247,7 @@
 
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --swm-scrollbar-color: #494e65;
+  --swm-pre-background: #282a36;
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-20);
