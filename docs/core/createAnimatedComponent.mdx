@@ -26,13 +26,11 @@ const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 ```typescript
 export function createAnimatedComponent<P extends object>(
-  component: ComponentClass<P>,
-  options?: Options<P>
+  component: ComponentClass<P>
 ): ComponentClass<AnimateProps<P>>;
 
 export function createAnimatedComponent<P extends object>(
-  component: FunctionComponent<P>,
-  options?: Options<P>
+  component: FunctionComponent<P>
 ): FunctionComponent<AnimateProps<P>>;
 ```
 
@@ -42,7 +40,11 @@ export function createAnimatedComponent<P extends object>(
 
 #### `component`
 
-#### `options` <Optional />
+The component you want to make animatable. Function components have to be wrapped with `React.forwardRef()`.
+
+### Returns
+
+A component that Reanimated is capable of animating.
 
 ## Example
 

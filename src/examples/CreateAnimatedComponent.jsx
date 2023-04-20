@@ -8,7 +8,7 @@ const MyView = React.forwardRef((props, ref) => {
 });
 
 // highlight-next-line
-const CustomAnimatedComponent = Animated.createAnimatedComponent(MyView);
+const MyAnimatedView = Animated.createAnimatedComponent(MyView);
 
 export default function App() {
   const width = useSharedValue(100);
@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <CustomAnimatedComponent style={{ ...styles.box, width }} />
+      <MyAnimatedView style={{ ...styles.box, width }} />
       <Button onPress={handlePress} title="Click me" />
     </View>
   );
