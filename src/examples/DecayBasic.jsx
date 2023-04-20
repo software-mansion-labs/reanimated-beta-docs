@@ -56,9 +56,7 @@ export default function App() {
     <GestureHandlerRootView style={styles.container}>
       <View ref={ref} style={styles.wrapper}>
         <GestureDetector gesture={pan}>
-          <Animated.View style={[styles.box, animatedStyles]}>
-            <Text style={styles.text}>Grab me</Text>
-          </Animated.View>
+          <Animated.View style={[styles.box, animatedStyles]} />
         </GestureDetector>
       </View>
     </GestureHandlerRootView>
@@ -86,10 +84,5 @@ const styles = StyleSheet.create({
     cursor: "grab",
     alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    color: "white",
-    textTransform: "uppercase",
-    fontWeight: "bold",
   },
 });

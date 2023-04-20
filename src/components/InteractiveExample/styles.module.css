@@ -64,7 +64,13 @@
 }
 
 .lowerButtonsContainer {
+  justify-content: space-between;
   margin-top: 10px;
+}
+
+.iconStub {
+  width: 30px;
+  height: 30px;
 }
 
 .container[data-ispreview="false"] .buttonsContainer {
@@ -126,4 +132,8 @@
 .actionButtonActive {
   color: var(--swm-interactive-button-active);
   border-bottom: 1px solid var(--swm-interactive-button-active);
+}
+
+.label {
+  /* position: absolute; */
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CodeBlock from "@theme/CodeBlock";
 import styles from "./styles.module.css";
 
@@ -16,6 +16,7 @@ import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 interface Props {
   src: string;
   component: React.ReactNode;
+  label?: string;
   showCode?: boolean; // whether to show code by default
   larger?: boolean; // should the view be enlarged?
 }
@@ -23,6 +24,7 @@ interface Props {
 export default function InteractiveExample({
   src,
   component,
+  label,
   showCode = false,
   larger = false,
 }: Props) {
@@ -91,6 +93,8 @@ export default function InteractiveExample({
                     styles.lowerButtonsContainer
                   )}
                 >
+                  <div className={styles.iconStub} />
+                  {label && <div className={styles.label}>{label}</div>}
                   <AnimableIcon
                     icon={<Reset />}
                     iconDark={<ResetDark />}
