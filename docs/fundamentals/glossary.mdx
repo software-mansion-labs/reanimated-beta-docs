@@ -2,6 +2,26 @@
 
 ## Animated component
 
+Animated components are components which Reanimated can animate. Reanimated comes with a bunch of wrapped React Native built-ins such as `Animated.View`, `Animated.ScrollView`, or `Animated.FlatList`.
+
+```jsx
+import Animated from "react-native-reanimated";
+
+function App() {
+  return (
+    <Animated.View
+      style={{
+        width: 100,
+        height: 100,
+        backgroundColor: "violet",
+      }}
+    />
+  );
+}
+```
+
+You can make your own React Native components animatable by wrapping them with [`createAnimatedComponent`](docs/core/createAnimatedComponent) function.
+
 ## Shared value
 
 Shared Values are a driving factor of all your animations in Reanimated.
@@ -96,14 +116,56 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 ## Worklet
 
-## Reanimated Babel plugin
+Worklets are short-running JavaScript functions that can be run on the [UI thread](/docs/fundamentals/glossary#ui-thread). They can also be run on a JavaScript thread just as you would run a function in your code.
+
+Most of the time when working with Reanimated the code is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and run on the UI thread by default.
+
+```javascript
+const style = useAnimatedStyle(() => {
+  console.log("Running on the UI thread");
+  return { opacity: 0.5 };
+});
+```
+
+You can create your own worklets using the `"worklet";` directive at the top of a function.
+
+```javascript
+function myWorklet() {
+  "worklet";
+  console.log("Running on the UI thread");
+}
+```
+
+`runOnUI()` lets you manually run worklets on the UI thread:
+
+```javascript
+function myWorklet(greeting) {
+  "worklet";
+  console.log(`${greeting} from the UI thread`);
+}
+
+function onPress() {
+  // highlight-next-line
+  runOnUI(myWorklet)("Howdy");
+}
+```
 
 ## to workletize
 
+To convert a JavaScript function into a serializable object which can be copied and run over on UI thread.
+
+Functions marked with `"worklet;"` directive are automatically picked up and workletized by the Reanimated Babel plugin.
+
+## JavaScript thread
+
+JavaScript thread (or JS thread for short) is responsible for handling JavaScript code execution in the app.
+
 ## UI thread
 
-## JS context
+UI thread is responsible for handling user interface updates. Also known as Main thread.
 
-## Snack
+## Reanimated Babel plugin
 
-An [Expo Snack](https://snack.expo.dev/) is a platform similar to CodeSandbox or StackBlitz allowing to run React Native apps in the browser. It's a great way to report issues with the library.
+The plugin performs automatic [workletization](/docs/fundamentals/glossary#to-workletize) of certain functions used with Reanimated to reduce the amount of boilerplate code.
+
+You can learn the details by reading the [Reanimated Babel plugin README](https://github.com/software-mansion/react-native-reanimated/blob/main/plugin/README.md).
