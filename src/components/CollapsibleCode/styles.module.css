@@ -20,14 +20,15 @@
   border: 1px solid var(--swm-navy-light-20);
   border-bottom: none;
 
-  padding: 1em 0 1em 1em;
+  padding-top: 1em;
+  padding-left: 1em;
 }
 
 .arrow {
   height: 12px;
   width: 12px;
-  margin-right: 1.5rem;
-  left: 0;
+  margin-right: 1rem;
+  margin-top: 2px;
 
   transition: var(--swm-expandable-transition);
 }
