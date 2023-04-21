@@ -1,12 +1,11 @@
 import "react-native-gesture-handler";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
+  withTiming,
 } from "react-native-reanimated";
-
-import React from "react";
 import {
   Gesture,
   GestureDetector,
@@ -14,26 +13,26 @@ import {
 } from "react-native-gesture-handler";
 
 export default function App() {
-  const offset = useSharedValue(0);
+  const pressed = useSharedValue(false);
 
-  const pan = Gesture.Pan()
-    .minDistance(0)
-    .onChange((event) => {
-      offset.value = event.translationX;
+  const tap = Gesture.Tap()
+    .onBegin(() => {
+      pressed.value = true;
     })
     .onFinalize(() => {
-      offset.value = withSpring(0);
+      pressed.value = false;
     });
 
   const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: offset.value }],
+    transform: [{ scale: withTiming(pressed.value ? 1.2 : 1) }],
+    backgroundColor: withTiming(pressed.value ? "#FFE04B" : "#b58df1"),
   }));
 
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.container}>
-        <GestureDetector gesture={pan}>
-          <Animated.View style={[styles.box, animatedStyles]} />
+        <GestureDetector gesture={tap}>
+          <Animated.View style={[styles.circle, animatedStyles]} />
         </GestureDetector>
       </View>
     </GestureHandlerRootView>
@@ -47,11 +46,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
   },
-  box: {
+  circle: {
     height: 120,
     width: 120,
-    backgroundColor: "#b58df1",
-    borderRadius: 20,
-    cursor: "grab",
+    borderRadius: 500,
   },
 });

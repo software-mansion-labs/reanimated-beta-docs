@@ -41,7 +41,7 @@ export default function App() {
     .onFinalize((event) => {
       // highlight-start
       offset.value = withDecay({
-        velocity: event.velocityX,
+        velocity: event.velocityX / 1000,
         clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
         rubberBandEffect: true,
       });

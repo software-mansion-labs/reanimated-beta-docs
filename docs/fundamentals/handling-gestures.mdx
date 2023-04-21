@@ -4,25 +4,57 @@ sidebar_position: 6
 
 # Handling gestures
 
+In this section, we'll learn how to handle gestures with Reanimated. For this purpose, Reanimated makes use of a sibling library called [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/).
+
+We'll get into `Tap` and `Pan` gestures as well as the `withDecay` animation function.
+
+Just make sure to go through the [Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) installation steps first and come back here to learn how to use it with Reanimated.
+
 ## Handling tap gestures
 
-import TapGesture from "@site/src/examples/HandlingGestures/TapGesture";
-import TapGestureSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGesture";
+First, let's wrap our app with `GestureHandlerRootView`. It's important to keep the [`GestureHandlerRootView`](https://docs.swmansion.com/react-native-gesture-handler/docs/installation/#js) as close to the actual root view as possible.
+
+```jsx
+function App() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      {/* rest of the app */}
+    </GestureHandlerRootView>
+  );
+}
+```
+
+you create and configure the gesture by using `Gesture.Tap()`.
+
+import TapGestureSimpleSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGestureSimple";
+
+<CollapsibleCode showLines={[11, 18]} src={TapGestureSimpleSrc} />
+
+by wrapping the component with `GestureDetector` and passing your tap gesture the via `gesture` prop.
+
+<CollapsibleCode showLines={[21, 29]} src={TapGestureSimpleSrc} />
+
+import TapGestureFinal from "@site/src/examples/HandlingGestures/TapGestureFinal";
+import TapGestureFinalSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGestureFinal";
 
 <InteractiveExample
-  src={TapGestureSrc}
-  component={<TapGesture />}
+  src={TapGestureFinalSrc}
+  component={<TapGestureFinal />}
   label="Tap the circle"
 />
 
+That works great for a simple tap but what if we'd like to create something a bit more interesting?
+
 ## Handling pan gestures
 
-import PanGesture from "@site/src/examples/HandlingGestures/PanGesture";
-import PanGestureSrc from "!!raw-loader!@site/src/examples/HandlingGestures/PanGesture";
+bouncing back to it's staring position keeping the color highlight we've added in the previous example.
+
+import PanGestureFinal from "@site/src/examples/HandlingGestures/PanGestureFinal";
+import PanGestureFinalSrc from "!!raw-loader!@site/src/examples/HandlingGestures/PanGestureFinal";
 
 <InteractiveExample
-  src={PanGestureSrc}
-  component={<PanGesture />}
+  src={PanGestureFinalSrc}
+  component={<PanGestureFinal />}
   label="Grab and drag the square"
 />
 
@@ -47,6 +79,6 @@ In this section, we went through basics of handling gestures with Reanimated and
 
 ## What's next?
 
-In this article, we've barely scratched the surface of what's possible with gestures in Reanimated. Besides [Tap](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture) and [Pan](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pan-gesture) gestures Gesture Handler comes with many, many more e.g. [Pinch](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pinch-gesture) or [Fling](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/fling-gesture). We welcome you to dive into the full [React Native Gesture Handler documentation](https://docs.swmansion.com/react-native-gesture-handler/docs/) and explore all the available gestures.
+In this article, we've barely scratched the surface of what's possible with gestures in Reanimated. Besides [Tap](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture) and [Pan](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pan-gesture) gestures Gesture Handler comes with many more e.g. [Pinch](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pinch-gesture) or [Fling](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/fling-gesture). We welcome you to dive into the [Quick start](https://docs.swmansion.com/react-native-gesture-handler/docs/quickstart) section of the React Native Gesture Handler documentation and explore all the possibilities that this library comes with.
 
 In [the next section](/docs/fundamentals/customizing-animation), we'll learn more about animating colors.
