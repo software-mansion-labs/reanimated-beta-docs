@@ -1,0 +1,128 @@
+.hero {
+    height: 100vh;
+    min-height: 600px;
+}
+
+.heroBackground {
+    position: absolute;
+    background: linear-gradient(357.23deg, #FCFCFF 2.25%, rgba(252, 252, 255, 0) 53.95%), linear-gradient(180deg, #D1BBF3 0%, #FFD2D7 39.23%, #FFF1B2 84.63%);
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+
+    overflow: hidden;
+    z-index: -100;
+}
+
+.foregroundLabel {
+    margin-top: 25vh;
+    margin-left: 10vw;
+
+}
+
+.heading {
+    width: 80%;
+    height: fit-content;
+}
+
+.headingLabel {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.subheadingLabel {
+    font-size: 32px;
+    margin-top: 32px;
+    margin-bottom: 56px;
+    width: 600px;
+}
+
+.swirl {
+    position: absolute;
+    top: -6vh;
+    right: -15vw;
+}
+
+@media (max-width: 1550px) {
+    .swirl {
+        right: -10vw;
+    }
+}
+
+@media (max-width: 1280px) {
+    .swirl {
+        top: -3vh;
+        right: -8vw;
+    }
+}
+
+@media (max-width: 997px) {
+    .swirl {
+        top: -3.5vh;
+        right: -20vw;
+    }
+}
+
+.horse {
+    position: absolute;
+    right: 15vw;
+    bottom: 10vh;
+}
+
+@media (max-width: 1280px) {
+
+    .horse {
+        bottom: 10vh;
+        scale: 80%;
+    }
+}
+
+@media (max-width: 997px) {
+    .horse {
+        right: 5vw;
+        bottom: 0;
+
+        scale: 75%;
+    }
+}
+
+@media (max-height: 997px), (max-width: 768px) {
+    .heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+    }
+
+    .foregroundLabel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        height: 80%;
+
+        margin-top: 64px;
+        margin-left: 0;
+    }
+
+    .headingLabel {
+        font-size: 26px;
+    }
+
+    .subheadingLabel {
+        font-size: 20px;
+        width: 90%;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-height: 997px), (max-width: 768px) {
+    .horse {
+        display: flex;
+        position: static;
+        justify-content: center;
+        scale: 75%;
+    }
+}

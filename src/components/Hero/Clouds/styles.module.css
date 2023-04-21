@@ -1,0 +1,22 @@
+.clouds {
+    position: relative;
+    /*z-index: -1;*/
+}
+
+.upperCloud {
+    position: absolute;
+    top: 10vh;
+    left: -3vw;
+}
+
+.rightCloud {
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
+}
+
+.lowerCloud {
+    position: absolute;
+    top: 45vh;
+    left: 1vw;
+}

@@ -1,0 +1,35 @@
+.getStartedButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 200px;
+    height: 60px;
+
+    font-weight: 500;
+    font-size: 20px;
+
+    color: var(--swm-off-white);
+    background-color: var(--swm-purple-light-100);
+
+    cursor: pointer;
+}
+
+@media (max-height: 997px), (max-width: 768px) {
+    .getStartedButton {
+        width: 100%;
+    }
+}
+
+.getStartedButton p {
+    margin: 0;
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
+}
