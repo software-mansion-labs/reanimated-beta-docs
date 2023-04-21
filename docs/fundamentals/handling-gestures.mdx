@@ -4,17 +4,49 @@ sidebar_position: 6
 
 # Handling gestures
 
-remember when we said that we'll come back to `withDecay` later? Now this is the time!
+## Handling tap gestures
 
-import Gestures from "@site/src/examples/Gestures";
-import GesturesSrc from "!!raw-loader!@site/src/examples/Gestures";
+import TapGesture from "@site/src/examples/HandlingGestures/TapGesture";
+import TapGestureSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGesture";
 
 <InteractiveExample
-  src={GesturesSrc}
-  component={<Gestures />}
+  src={TapGestureSrc}
+  component={<TapGesture />}
+  label="Tap the circle"
+/>
+
+## Handling pan gestures
+
+import PanGesture from "@site/src/examples/HandlingGestures/PanGesture";
+import PanGestureSrc from "!!raw-loader!@site/src/examples/HandlingGestures/PanGesture";
+
+<InteractiveExample
+  src={PanGestureSrc}
+  component={<PanGesture />}
+  label="Grab and drag the square"
+/>
+
+## Using `withDecay`
+
+remember when we said that we'll come back to `withDecay` later? Now this is the time!
+
+import DecayBasic from "@site/src/examples/DecayBasic";
+import DecayBasicSrc from "!!raw-loader!@site/src/examples/DecayBasic";
+
+<InteractiveExample
+  src={DecayBasicSrc}
+  component={<DecayBasic />}
   label="Grab and drag the square"
 />
 
 ## Summary
 
+In this section, we went through basics of handling gestures with Reanimated and Gesture Handler. We learned about `Tap` and `Pan` gestures. To sum up:
+
+-
+
 ## What's next?
+
+In this article, we've barely scratched the surface of what's possible with gestures in Reanimated. Besides [Tap](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture) and [Pan](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pan-gesture) gestures Gesture Handler comes with many, many more e.g. [Pinch](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pinch-gesture) or [Fling](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/fling-gesture). We welcome you to dive into the full [React Native Gesture Handler documentation](https://docs.swmansion.com/react-native-gesture-handler/docs/) and explore all the available gestures.
+
+In [the next section](/docs/fundamentals/customizing-animation), we'll learn more about animating colors.
