@@ -23,7 +23,7 @@ import TimingSrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Timing"
 
 <InteractiveExample src={TimingSrc} component={<Timing />} />
 
-## Using `withRepeat`
+## Repeating an animation
 
 To implement our desired shake animation we can use [`withRepeat`](/docs/animations/with-repeat) modifier. This modifier lets you repeat a provided animation.
 
@@ -51,7 +51,7 @@ When we run this code we can see that the box jiggles left to right between the 
 
 <InteractiveExample src={RepeatSrc} component={<Repeat />} />
 
-## Using `withSequence`
+## Running animations in sequence
 
 One way to improve our animation is to start it with a left offset and reset it back to starting position after the animation ends. That's a perfect use case for the `withSequence` modifier.
 
@@ -77,7 +77,7 @@ import SequenceSrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Seque
 
 <InteractiveExample src={SequenceSrc} component={<Sequence />} />
 
-## Using `withDelay`
+## Starting the animation with delay
 
 As a cherry on top, we'll add a little bit of suspense by adding a slight delay before the animation begins. For this exact purpose, Reanimated comes with a `withDelay` modifier.
 
