@@ -15,7 +15,7 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
-import useIsBrowser from "@docusaurus/useIsBrowser";
+import { useLocation } from "@docusaurus/router";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -61,8 +61,10 @@ function AlgoliaSearchBar() {
 
 export default function NavbarContent() {
   const windowSize = useWindowSize();
+  const location = useLocation();
   const isMobile = windowSize === "mobile";
 
+  const isDocumentation = location.pathname.startsWith("/docs");
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -76,13 +78,17 @@ export default function NavbarContent() {
           </div>
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           <NavbarItems items={leftItems} />
-          {!searchBarItem && !isMobile && <AlgoliaSearchBar />}
+          {!searchBarItem && !isMobile && isDocumentation && (
+            <AlgoliaSearchBar />
+          )}
         </>
       }
       right={
         <>
           <NavbarItems items={rightItems} />
-          {!searchBarItem && isMobile && <AlgoliaSearchBar />}
+          {!searchBarItem && isMobile && isDocumentation && (
+            <AlgoliaSearchBar />
+          )}
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
         </>
       }
