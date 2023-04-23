@@ -1,5 +1,5 @@
 .hero {
-    height: 100vh;
+    height: calc(100vh - var(--ifm-navbar-height));
     min-height: 600px;
 }
 
@@ -7,7 +7,7 @@
     position: absolute;
     background: linear-gradient(357.23deg, #FCFCFF 2.25%, rgba(252, 252, 255, 0) 53.95%), linear-gradient(180deg, #D1BBF3 0%, #FFD2D7 39.23%, #FFF1B2 84.63%);
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - var(--ifm-navbar-height));
     min-height: 600px;
 
     overflow: hidden;
@@ -41,6 +41,7 @@
     position: absolute;
     top: -6vh;
     right: -15vw;
+    z-index: 2;
 }
 
 @media (max-width: 1550px) {
@@ -70,7 +71,6 @@
 }
 
 @media (max-width: 1280px) {
-
     .horse {
         bottom: 10vh;
         scale: 80%;
@@ -86,7 +86,32 @@
     }
 }
 
-@media (max-height: 997px), (max-width: 768px) {
+@media (max-height: 997px) {
+    .horse {
+        right: 20vw;
+        bottom: 0;
+
+        /*scale: 75%;*/
+    }
+}
+
+@media (max-width: 768px) {
+    .headingLabel {
+        font-size: 26px;
+    }
+
+    .subheadingLabel {
+        font-size: 20px;
+        width: 90%;
+        margin-bottom: 0;
+    }
+
+    .heading {
+        margin: 2em 0;
+    }
+}
+
+@media (max-height: 768px), (max-width: 768px) {
     .heading {
         display: flex;
         flex-direction: column;
@@ -107,18 +132,6 @@
         margin-left: 0;
     }
 
-    .headingLabel {
-        font-size: 26px;
-    }
-
-    .subheadingLabel {
-        font-size: 20px;
-        width: 90%;
-        margin-bottom: 0;
-    }
-}
-
-@media (max-height: 997px), (max-width: 768px) {
     .horse {
         display: flex;
         position: static;

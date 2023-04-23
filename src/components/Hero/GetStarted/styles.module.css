@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 
-@media (max-height: 997px), (max-width: 768px) {
+@media (max-width: 768px) {
     .getStartedButton {
         width: 100%;
     }

@@ -1,0 +1,7 @@
+.stars {
+    position: absolute;
+    top: 0;
+    left: 2vw;
+    scale: 120%;
+    z-index: 1;
+}

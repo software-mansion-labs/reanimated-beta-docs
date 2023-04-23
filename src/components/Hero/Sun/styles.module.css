@@ -1,0 +1,19 @@
+.sun {
+    position: absolute;
+    top: -10vh;
+    right: 15vw;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .sun {
+        top: -15vh;
+    }
+}
+
+@media (max-width: 420px) {
+    .sun {
+        scale: 75%;
+        right: -5vw;
+    }
+}
