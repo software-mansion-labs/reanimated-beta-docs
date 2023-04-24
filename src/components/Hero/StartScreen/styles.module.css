@@ -54,6 +54,15 @@
     }
 }
 
+@media (max-height: 768px) {
+    .foregroundLabel {
+        display: flex;
+        justify-content: center;
+
+        margin-left: 0;
+    }
+}
+
 @media (max-height: 768px) and (min-width: 768px) {
     .lowerHeading {
         display: flex;
@@ -61,46 +70,33 @@
     }
 }
 
-@media (max-height: 768px) {
+@media (max-width: 1124px) and (max-height: 768px) {
     .hero {
         min-height: 768px;
     }
 
     .heroBackground {
         min-height: 768px;
-    }
-
-    .foregroundLabel {
-        display: flex;
-        justify-content: center;
-
-        margin: 0;
-    }
-
-    .lowerHeading {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
     }
 }
 
-@media (min-width: 680px) and (max-height: 997px) {
+@media (min-width: 680px) and (max-width: 997px) and (max-height: 997px) {
     .hero {
-        min-height: 1124px;
+        min-height: 1124px !important;
     }
 
     .heroBackground {
-        min-height: 1124px;
+        min-height: 1124px !important;
     }
 }
 
 @media (min-width: 1600px) and (max-height: 997px) {
     .hero {
-        min-height: 70vw;
+        min-height: 70vw !important;
     }
 
     .heroBackground {
-        min-height: 70vw;
+        min-height: 70vw !important;
     }
 }
 
