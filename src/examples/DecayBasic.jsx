@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,39 +11,27 @@ import {
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 
-// hack, Gesture.Pan doesn't rerender on window resize for some reason
-const store = { width: 0 };
 const SIZE = 120;
 
 export default function App() {
+  const [width, setWidth] = useState(null);
   const offset = useSharedValue(0);
-  const ref = useRef(null);
 
-  const [width, setWidth] = useState(0);
-  store.width = width;
-
-  const setWrapperWidth = () => {
-    setWidth(ref?.current?.clientWidth);
+  const onLayout = (event) => {
+    setWidth(event.nativeEvent.layout.width);
   };
-
-  useEffect(() => {
-    setWrapperWidth();
-    window.addEventListener("resize", setWrapperWidth);
-    return () => {
-      window.removeEventListener("resize", setWrapperWidth);
-    };
-  }, []);
 
   const pan = Gesture.Pan()
     .onChange((event) => {
+      // highlight-next-line
       offset.value += event.changeX;
     })
     .onFinalize((event) => {
       // highlight-start
       offset.value = withDecay({
         velocity: event.velocityX / 1000,
-        clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
         rubberBandEffect: true,
+        clamp: [-(width / 2) + SIZE / 2, width / 2 - SIZE / 2],
       });
       // highlight-end
     });
@@ -54,7 +42,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <View ref={ref} style={styles.wrapper}>
+      <View onLayout={onLayout} style={styles.wrapper}>
         <GestureDetector gesture={pan}>
           <Animated.View style={[styles.box, animatedStyles]} />
         </GestureDetector>

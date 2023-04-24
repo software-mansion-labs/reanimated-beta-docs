@@ -18,23 +18,27 @@ enableExperimentalWebImplementation();
 
 export default function App() {
   const pressed = useSharedValue(false);
+  // highlight-next-line
   const offset = useSharedValue(0);
 
   const pan = Gesture.Pan()
-    .minDistance(0)
     .onBegin(() => {
       pressed.value = true;
     })
+    // highlight-start
     .onChange((event) => {
       offset.value = event.translationX;
     })
+    // highlight-end
     .onFinalize(() => {
+      // highlight-next-line
       offset.value = withSpring(0);
       pressed.value = false;
     });
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [
+      // highlight-next-line
       { translateX: offset.value },
       { scale: withTiming(pressed.value ? 1.2 : 1) },
     ],
