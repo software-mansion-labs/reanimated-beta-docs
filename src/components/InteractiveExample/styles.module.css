@@ -6,6 +6,7 @@
 
   background-color: var(--swm-off-background);
   border: 1px solid var(--swm-interactive-border);
+  margin-bottom: var(--ifm-leading);
 }
 
 .largerContainer {

@@ -4,17 +4,23 @@ sidebar_position: 6
 
 # Handling gestures
 
-In this section, we'll learn how to handle gestures with Reanimated. For this purpose, Reanimated makes use of a sibling library called [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/).
+In this section, we'll learn how to handle gestures with Reanimated. To achieve this, Reanimated integrates tightly with [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/), another library created by Software Mansion.
 
-We'll get into `Tap` and `Pan` gestures as well as the `withDecay` animation function.
+Gesture Handler comes with plentiful gestures like [`Pinch`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pinch-gesture) or [`Fling`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/fling-gesture). Right now we'll start simple and get to know [`Tap`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture) and [`Pan`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/pan-gesture) gestures as well as how to use [`withDecay`](http://localhost:3000/docs/animations/with-decay) animation function.
 
-Just make sure to go through the [Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) installation steps first and come back here to learn how to use it with Reanimated.
+Just make sure to go through the Gesture Handler [installation steps](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) first and come back here to learn how to use it with Reanimated.
 
 ## Handling tap gestures
 
-First, let's wrap our app with `GestureHandlerRootView`. It's important to keep the [`GestureHandlerRootView`](https://docs.swmansion.com/react-native-gesture-handler/docs/installation/#js) as close to the actual root view as possible.
+Let's start with the simplest gesture - tapping. Tap gesture detects fingers touching the screen for a short period of time. You can use them to implement custom buttons or pressable elements from scratch.
+
+In this example, we'll create a circle which will grow and change color on touch.
+
+First, let's wrap our app with [`GestureHandlerRootView`](https://docs.swmansion.com/react-native-gesture-handler/docs/installation/#js). Make sure to keep the `GestureHandlerRootView` as close to the actual root view as possible. That'll ensure that our gestures will resolve correctly.
 
 ```jsx
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -24,43 +30,49 @@ function App() {
 }
 ```
 
-you create and configure the gesture by using `Gesture.Tap()`.
+New tap gestures are defined with `Gesture.Tap()` in your component's body. You can define the behavior of the gesture by chaining methods like [`onBegin`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture/#onbegincallback), [`onStart`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture/#onstartcallback), [`onEnd`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture/#onendcallback), or [`onFinalize`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/tap-gesture/#onfinalizecallback) on the gesture.
 
-import TapGestureSimpleSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGestureSimple";
+import TapGesture from "@site/src/examples/HandlingGestures/TapGesture";
+import TapGestureSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGesture";
 
-<CollapsibleCode showLines={[11, 18]} src={TapGestureSimpleSrc} />
+<CollapsibleCode showLines={[17, 25]} src={TapGestureSrc} />
 
-by wrapping the component with `GestureDetector` and passing your tap gesture the via `gesture` prop.
+You can safely access the shared values because callbacks passed to gestures are automatically [workletized](/docs/fundamentals/glossary#to-workletize) for you.
 
-<CollapsibleCode showLines={[21, 29]} src={TapGestureSimpleSrc} />
+We'd like our circle to smoothly change color from violet to yellow and scale just slightly on users tap. Let's define that animation logic using `withTiming` in the `useAnimatedStyles`:
 
-import TapGestureFinal from "@site/src/examples/HandlingGestures/TapGestureFinal";
-import TapGestureFinalSrc from "!!raw-loader!@site/src/examples/HandlingGestures/TapGestureFinal";
+<CollapsibleCode showLines={[27, 30]} src={TapGestureSrc} />
+
+You need to pass your defined gesture to the `gesture` prop of the [`GestureDetector`](https://docs.swmansion.com/react-native-gesture-handler/docs/api/gestures/gesture-detector) component. That component should wrap the views you'd like to handle gestures on. Also, remember to pass the defined `animatedStyles` to the view you want to animate:
+
+<CollapsibleCode showLines={[33, 41]} src={TapGestureSrc} />
+
+And that's it! Pretty straightforward, isn't it? Let's see it in the full glory in an interactive example:
 
 <InteractiveExample
-  src={TapGestureFinalSrc}
-  component={<TapGestureFinal />}
+  src={TapGestureSrc}
+  component={<TapGesture />}
   label="Tap the circle"
 />
 
-That works great for a simple tap but what if we'd like to create something a bit more interesting?
+You can make the use of [composing gestures](https://docs.swmansion.com/react-native-gesture-handler/docs/gesture-composition/) to implement double or triple taps. But what if we'd like to create something a bit more interesting?
 
 ## Handling pan gestures
 
 bouncing back to it's staring position keeping the color highlight we've added in the previous example.
 
-import PanGestureFinal from "@site/src/examples/HandlingGestures/PanGestureFinal";
-import PanGestureFinalSrc from "!!raw-loader!@site/src/examples/HandlingGestures/PanGestureFinal";
+import PanGesture from "@site/src/examples/HandlingGestures/PanGesture";
+import PanGestureSrc from "!!raw-loader!@site/src/examples/HandlingGestures/PanGesture";
 
 <InteractiveExample
-  src={PanGestureFinalSrc}
-  component={<PanGestureFinal />}
+  src={PanGestureSrc}
+  component={<PanGesture />}
   label="Grab and drag the square"
 />
 
 ## Using `withDecay`
 
-remember when we said that we'll come back to `withDecay` later? Now this is the time!
+remember when we said that we'll come back to `withDecay` later? Now this is the time! `withDecay` lets you retain the velocity and animate the deceleration of an object. when you let go of an object the animation will in the direction of the gesture.
 
 import DecayBasic from "@site/src/examples/DecayBasic";
 import DecayBasicSrc from "!!raw-loader!@site/src/examples/DecayBasic";

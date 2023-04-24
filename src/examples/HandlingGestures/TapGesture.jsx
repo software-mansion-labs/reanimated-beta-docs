@@ -6,11 +6,13 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+// highlight-start
 import {
   Gesture,
   GestureDetector,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
+// highlight-end
 
 export default function App() {
   const pressed = useSharedValue(false);
@@ -24,15 +26,17 @@ export default function App() {
     });
 
   const animatedStyles = useAnimatedStyle(() => ({
+    backgroundColor: withTiming(pressed.value ? "#FFE04B" : "#B58DF1"),
     transform: [{ scale: withTiming(pressed.value ? 1.2 : 1) }],
-    backgroundColor: withTiming(pressed.value ? "#FFE04B" : "#b58df1"),
   }));
 
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.container}>
+        {/* highlight-next-line */}
         <GestureDetector gesture={tap}>
           <Animated.View style={[styles.circle, animatedStyles]} />
+          {/* highlight-next-line */}
         </GestureDetector>
       </View>
     </GestureHandlerRootView>
