@@ -8,8 +8,6 @@ import Sun from "@site/src/components/Hero/Sun";
 import Stars from "@site/src/components/Hero/Stars";
 import Horse from "@site/src/components/Hero/Horse";
 
-import horse from "../../../../static/img/horse.gif";
-
 const StartScreen = () => {
   return (
     <section className={styles.hero}>

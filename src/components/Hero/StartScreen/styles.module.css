@@ -19,7 +19,6 @@
 .foregroundLabel {
     margin-top: 25vh;
     margin-left: 10vw;
-
 }
 
 .heading {
@@ -70,6 +69,19 @@
     .heroBackground {
         min-height: 768px;
     }
+
+    .foregroundLabel {
+        display: flex;
+        justify-content: center;
+
+        margin: 0;
+    }
+
+    .lowerHeading {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
 }
 
 @media (min-width: 680px) and (max-height: 997px) {
@@ -111,5 +123,14 @@
 
         margin-top: 64px;
         margin-left: 0;
+    }
+
+    .lowerHeading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+
+        width: fit-content;
     }
 }

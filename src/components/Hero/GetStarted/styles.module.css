@@ -1,7 +1,7 @@
 .getStartedButton {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 
     width: 200px;
     height: 60px;
@@ -22,7 +22,7 @@
 }
 
 .getStartedButton p {
-    margin: 0;
+    margin: 0 1em 0 0;
 }
 
 .arrow {

@@ -1,19 +1,35 @@
 .sun {
     position: absolute;
-    top: -10vh;
+    top: -5vh;
     right: 15vw;
     z-index: 0;
+}
+
+@media (min-width: 1680px) {
+    .sun {
+        right: 25vw;
+    }
 }
 
 @media (max-width: 768px) {
     .sun {
         top: -15vh;
+        scale: 75%;
     }
 }
 
 @media (max-width: 420px) {
     .sun {
         scale: 75%;
-        right: -5vw;
+        top: -15vh;
+        right: -15vw;
+    }
+}
+
+@media (max-width: 290px) {
+    .sun {
+        scale: 50%;
+        top: -20vh;
+        right: -30vw;
     }
 }
