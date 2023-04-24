@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 import SelectedLabel from "@site/src/components/Hero/SelectedLabel";
 import GetStarted from "@site/src/components/Hero/GetStarted";
@@ -6,6 +6,7 @@ import Clouds from "@site/src/components/Hero/Clouds";
 import Swirl from "@site/src/components/Hero/Swirl";
 import Sun from "@site/src/components/Hero/Sun";
 import Stars from "@site/src/components/Hero/Stars";
+import Horse from "@site/src/components/Hero/Horse";
 
 import horse from "../../../../static/img/horse.gif";
 
@@ -16,9 +17,7 @@ const StartScreen = () => {
         <Clouds />
         <Stars />
         <Sun />
-        <div className={styles.swirl}>
-          <Swirl />
-        </div>
+        <Swirl />
       </div>
       <div className={styles.foregroundLabel}>
         <div className={styles.heading}>
@@ -31,9 +30,7 @@ const StartScreen = () => {
             </h2>
           </div>
           <div className={styles.lowerHeading}>
-            <div className={styles.horse}>
-              <img src={horse} alt="" />
-            </div>
+            <Horse />
             <GetStarted />
           </div>
         </div>

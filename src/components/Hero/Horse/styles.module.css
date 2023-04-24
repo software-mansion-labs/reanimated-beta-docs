@@ -1,0 +1,57 @@
+.horse {
+    position: absolute;
+    right: 15vw;
+    bottom: 10vh;
+}
+
+@media (max-width: 1280px) {
+    .horse {
+        bottom: 10vh;
+        scale: 80%;
+    }
+}
+
+@media (max-width: 997px) {
+    .horse {
+        right: 5vw;
+        bottom: 0;
+
+        scale: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .horse {
+        display: flex;
+        position: static;
+        justify-content: center;
+        scale: 75%;
+    }
+}
+
+@media (max-height: 997px) {
+    .horse {
+        /*right: 20vw;*/
+        bottom: 0;
+    }
+}
+
+@media (max-height: 768px) and (min-width: 768px) {
+    .horse {
+        position: static;
+        width: 100%;
+        scale: 80%;
+
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media (min-height: 768px) and (max-width: 768px) {
+    .horse {
+        display: flex;
+        position: static;
+        justify-content: center;
+        scale: 75%;
+    }
+}
