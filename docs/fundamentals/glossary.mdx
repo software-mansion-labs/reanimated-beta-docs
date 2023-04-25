@@ -2,7 +2,7 @@
 
 ## Animated component
 
-Animated components are components which Reanimated can animate. Reanimated comes with a bunch of wrapped React Native built-ins such as `Animated.View`, `Animated.ScrollView`, or `Animated.FlatList`.
+Animated components are components which Reanimated can animate. Reanimated comes with just a handful of built-in components like `Animated.View`, `Animated.ScrollView`, or `Animated.ScrollView`. For components which aren't a part of Reanimated, to make their props animatable, you wrap them with [`createAnimatedComponent`](/docs/core/createAnimatedComponent):
 
 ```jsx
 import Animated from "react-native-reanimated";
@@ -21,6 +21,13 @@ function App() {
 ```
 
 You can make your own React Native components animatable by wrapping them with [`createAnimatedComponent`](docs/core/createAnimatedComponent) function.
+
+```jsx
+import Animated from "react-native-reanimated";
+import { Circle } from "react-native-svg";
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+```
 
 ## Shared value
 
@@ -104,17 +111,6 @@ function App() {
 }
 ```
 
-## Custom Animated components
-
-Reanimated comes with just a handful of built-in components like `Animated.View` or `Animated.ScrollView`. For components which aren't a part of Reanimated, to make their props animatable, you wrap them with [`createAnimatedComponent`](/docs/core/createAnimatedComponent):
-
-```jsx
-import Animated from "react-native-reanimated";
-import { Circle } from "react-native-svg";
-
-const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-```
-
 ## Worklet
 
 Worklets are short-running JavaScript functions that can be run on the [UI thread](/docs/fundamentals/glossary#ui-thread). They can also be run on a JavaScript thread just as you would run a function in your code.
@@ -155,7 +151,7 @@ function onPress() {
 
 To convert a JavaScript function into a serializable object which can be copied and run over on UI thread.
 
-Functions marked with `"worklet;"` directive are automatically picked up and workletized by the Reanimated Babel plugin.
+Functions marked with `"worklet";` directive are automatically picked up and workletized by the Reanimated Babel plugin.
 
 ## JavaScript thread
 
@@ -164,6 +160,8 @@ JavaScript thread (or JS thread for short) is responsible for handling JavaScrip
 ## UI thread
 
 UI thread is responsible for handling user interface updates. Also known as Main thread.
+
+You can learn more about it by reading the [Threading model](https://reactnative.dev/architecture/threading-model) article in the official React Native docs.
 
 ## Reanimated Babel plugin
 
