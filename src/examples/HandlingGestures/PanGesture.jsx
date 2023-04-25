@@ -39,7 +39,7 @@ export default function App() {
       { translateX: offset.value },
       { scale: withTiming(pressed.value ? 1.2 : 1) },
     ],
-    backgroundColor: withTiming(pressed.value ? "#FFE04B" : "#b58df1"),
+    backgroundColor: pressed.value ? "#FFE04B" : "#b58df1",
   }));
 
   return (

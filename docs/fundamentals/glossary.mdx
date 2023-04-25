@@ -24,7 +24,7 @@ You can make your own React Native components animatable by wrapping them with [
 
 ## Shared value
 
-Shared Values are a driving factor of all your animations in Reanimated.
+Shared values are a driving factor of all your animations in Reanimated.
 
 They are defined using `useSharedValue` hook:
 
@@ -46,7 +46,7 @@ function App() {
 }
 ```
 
-When used, the data stored in Shared Value is automatically synchronized between the JS thread and the UI thread.
+When used, the data stored in a shared value is automatically synchronized between the JS thread and the UI thread.
 
 ## Animatable value
 
@@ -92,7 +92,7 @@ Even though, the `withSpring` returns an animation object the final result that 
 
 ## Animations in inline styling
 
-Passing Shared Values directly to `style` property without the use of `useAnimatedStyle`.
+Passing shared values directly to `style` property without the use of `useAnimatedStyle`.
 
 For example:
 
@@ -101,6 +101,7 @@ function App() {
   const width = useSharedValue(100);
 
   return <Animated.View style={{ width }} />;
+}
 ```
 
 ## Custom Animated components

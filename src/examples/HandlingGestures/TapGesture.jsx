@@ -26,7 +26,7 @@ export default function App() {
     });
 
   const animatedStyles = useAnimatedStyle(() => ({
-    backgroundColor: withTiming(pressed.value ? "#FFE04B" : "#B58DF1"),
+    backgroundColor: pressed.value ? "#FFE04B" : "#B58DF1",
     transform: [{ scale: withTiming(pressed.value ? 1.2 : 1) }],
   }));
 
