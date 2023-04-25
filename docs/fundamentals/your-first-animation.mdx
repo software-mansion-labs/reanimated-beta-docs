@@ -42,7 +42,7 @@ You can create your own custom Animated components with [`createAnimatedComponen
 
 ## Defining a shared value
 
-A [shared value](/learn-more/shared-value) is a driving factor of all your animations. You can think of it as a React state which is automagically kept in sync between the “JavaScript” and the “native” side of your app (hence the name). You create shared values using a `useSharedValue` hook:
+A [shared value](/docs/fundamentals/glossary#shared-value) is a driving factor of all your animations. You can think of it as a React state which is automagically kept in sync between the “JavaScript” and the “native” side of your app (hence the name). You create shared values using a `useSharedValue` hook:
 
 ```bash
 import { useSharedValue } from 'react-native-reanimated';
@@ -74,7 +74,7 @@ export default function App() {
 
 Let's create a very simple animation that will animate a `width` of an element. We'll make it expand by `50px` on each button press. We can do this by modifying a shared value connected to the `width` property of an `Animated.View` component. I know it might sound complicated, but it's actually quite simple.
 
-Shared values are accessed and modified by their `.value` property.
+Values stored in shared values are accessed and modified by their `.value` property.
 
 There's no setter or anything - you simply mutate the `.value` property like there's no tomorrow.
 
@@ -110,7 +110,7 @@ Please hold on a second before you shorten `width.value = width.value + 50` to `
 
 :::caution
 
-It's a very common mistake to try to modify a shared value directly, like using ~~`sv = sv + 100;`~~. Always remember to access the shared value by using the `.value` property instead! Here, the correct usage would be `sv.value = sv.value + 100;`.
+It's a common mistake to modify a shared value directly like this: ~~`sv = sv + 100;`~~. Always remember to access the shared value by using the `.value` property instead. Here, the correct usage would be `sv.value = sv.value + 100;`.
 
 :::
 
