@@ -11,10 +11,7 @@ import {
   Gesture,
   GestureDetector,
   GestureHandlerRootView,
-  enableExperimentalWebImplementation,
 } from "react-native-gesture-handler";
-
-enableExperimentalWebImplementation();
 
 export default function App() {
   const pressed = useSharedValue(false);

@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -12,12 +12,12 @@ import {
 } from "react-native-gesture-handler";
 
 const SIZE = 180;
+const store = { width: 0 };
 
 export default function App() {
-  const [width, setWidth] = useState(null);
   const offset = useSharedValue(0);
   const onLayout = (event) => {
-    setWidth(event.nativeEvent.layout.width);
+    store.width = event.nativeEvent.layout.width;
   };
 
   const pan = Gesture.Pan()
@@ -26,9 +26,9 @@ export default function App() {
     })
     .onFinalize((event) => {
       offset.value = withDecay({
-        velocity: event.velocityX / 1000,
+        velocity: event.velocityX / 500,
         rubberBandEffect: true,
-        clamp: [-(width / 2) + SIZE / 2, width / 2 - SIZE / 2],
+        clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
       });
     });
 

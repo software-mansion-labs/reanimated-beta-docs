@@ -1,17 +1,21 @@
 import React from "react";
-import CodeBlock from "@theme/CodeBlock";
-import styles from "./styles.module.css";
+
+import clsx from "clsx";
+import { useCopyToClipboard } from "usehooks-ts";
+import { enableExperimentalWebImplementation } from "react-native-gesture-handler";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
-import { useCopyToClipboard } from "usehooks-ts";
-import clsx from "clsx";
+import CodeBlock from "@theme/CodeBlock";
+import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 
 import Copy from "@site/static/img/copy.svg";
 import CopyDark from "@site/static/img/copy-dark.svg";
-
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
-import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
+
+import styles from "./styles.module.css";
+
+enableExperimentalWebImplementation();
 
 interface Props {
   src: string;
