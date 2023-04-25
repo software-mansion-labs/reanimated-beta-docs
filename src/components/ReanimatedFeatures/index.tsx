@@ -1,0 +1,26 @@
+import React from "react";
+import styles from "./styles.module.css";
+import ReanimatedFeatureList from "@site/src/components/ReanimatedFeatures/ReanimatedFeatureList";
+import HomepageButton, {
+  ButtonStyling,
+} from "@site/src/components/HomepageButton";
+
+const ReanimatedFeatures = () => {
+  return (
+    <div className={styles.featuresContainer}>
+      <h2>Why Reanimated?</h2>
+      <ReanimatedFeatureList />
+      <div className={styles.featuresLowerContainer}>
+        <h4>
+          Learn more about the features in the newest article about Reanimated 3
+        </h4>
+        <HomepageButton
+          title="See blog post"
+          backgroundStyling={ButtonStyling.TO_PURPLE}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default ReanimatedFeatures;

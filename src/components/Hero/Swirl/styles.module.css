@@ -13,14 +13,14 @@
 
 @media (max-width: 1280px) {
     .swirl {
-        top: -3vh;
+        top: -5vh;
         right: -8vw;
     }
 }
 
 @media (max-width: 997px) {
     .swirl {
-        top: -3.5vh;
+        top: -7vh;
         right: -20vw;
     }
 }

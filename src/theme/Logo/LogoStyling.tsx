@@ -58,7 +58,13 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   const location = useLocation();
 
   const isDocumentation = location.pathname.startsWith("/docs");
-  const { titleImages, imageClassName, titleClassName, ...propsRest } = props;
+  const {
+    titleImages,
+    heroImages,
+    imageClassName,
+    titleClassName,
+    ...propsRest
+  } = props;
   const logoLink = useBaseUrl(logo?.href || "/");
 
   // If visible title is shown, fallback alt text should be

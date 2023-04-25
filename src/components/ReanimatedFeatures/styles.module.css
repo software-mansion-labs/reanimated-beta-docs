@@ -1,0 +1,28 @@
+.featuresContainer {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.featuresContainer h2 {
+    font-size: 32px;
+    margin-bottom: 80px;
+}
+
+.featuresContainer h4 {
+    font-size: 24px;
+}
+
+.featuresLowerContainer {
+    display: flex;
+    align-items: center;
+
+    margin-top: 80px;
+}
+
+.featuresLowerContainer h4 {
+    flex: 1 0;
+}
+
+.featuresLowerContainer [class*='homepageButton'] {
+    margin-left: 8px;
+}

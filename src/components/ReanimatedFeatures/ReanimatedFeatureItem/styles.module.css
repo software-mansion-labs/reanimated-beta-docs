@@ -1,0 +1,14 @@
+.featureItem {
+    background-color: var(--swm-purple-light-40);
+    box-shadow: -12px 12px 0px var(--swm-details-background);
+
+    padding: 1.5em;
+}
+
+.featureItem h3 {
+    margin-bottom: 40px;
+}
+
+.featureItem:not(:last-of-type) {
+    margin-right: 3em;
+}

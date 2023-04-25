@@ -7,6 +7,7 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
 import styles from "./index.module.css";
 import HomepageStartScreen from "@site/src/components/Hero/StartScreen";
+import ReanimatedFeatures from "@site/src/components/ReanimatedFeatures";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -36,10 +37,7 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />"
     >
       <HomepageStartScreen />
-      {/*<HomepageHeader />*/}
-      <main>
-        <HomepageFeatures />
-      </main>
+      <ReanimatedFeatures />
     </Layout>
   );
 }

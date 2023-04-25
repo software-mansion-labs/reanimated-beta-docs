@@ -42,8 +42,8 @@ const HeroSwirl = () => {
             y2="1054.36"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#782AEB" />
-            <stop offset="1" stop-color="#FF6259" />
+            <stop stopColor="#782AEB" />
+            <stop offset="1" stopColor="#FF6259" />
           </linearGradient>
         </defs>
       </svg>

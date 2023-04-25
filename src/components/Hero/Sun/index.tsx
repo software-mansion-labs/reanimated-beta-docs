@@ -30,9 +30,9 @@ const HeroSun = () => {
             y2="364.671"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFD61E" />
-            <stop offset="0.0001" stop-color="#FFE04B" />
-            <stop offset="1" stop-color="#FF6259" />
+            <stop stopColor="#FFD61E" />
+            <stop offset="0.0001" stopColor="#FFE04B" />
+            <stop offset="1" stopColor="#FF6259" />
           </linearGradient>
         </defs>
       </svg>
