@@ -1,6 +1,6 @@
 .featureItem {
-    background-color: var(--swm-purple-light-40);
-    box-shadow: -12px 12px 0px var(--swm-details-background);
+    background-color: var(--swm-landing-feature-item);
+    box-shadow: -12px 12px 0px var(--swm-landing-feature-item-shadow);
 
     padding: 1.5em;
 }

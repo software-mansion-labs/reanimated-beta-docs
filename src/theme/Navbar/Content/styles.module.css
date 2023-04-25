@@ -35,6 +35,10 @@ nav {
   margin: 0 1.5em;
 }
 
+.navbarItemLanding, .navbarItemLanding:hover {
+  color: var(--swm-off-white);
+}
+
 @media (min-width: 997px) {
   [class*="navbar__items--left"] {
     flex: 1;

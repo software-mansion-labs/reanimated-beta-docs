@@ -3,6 +3,10 @@
     /*z-index: -1;*/
 }
 
+[data-theme="dark"] .clouds {
+    opacity: 0.25;
+}
+
 .upperCloud {
     position: absolute;
     top: 10vh;

@@ -33,6 +33,14 @@
   background: var(--ifm-color-emphasis-200);
 }
 
+.toggleButtonLanding.toggleButton:hover {
+  background: var(--swm-navy-light-20);
+}
+
+.toggleButtonLanding {
+  border: 1px solid var(--swm-color-mode-enabled-landing);
+}
+
 .toggleButtonDisabled {
   cursor: not-allowed;
 }
@@ -46,6 +54,10 @@
   height: 100%;
 
   color: var(--swm-color-mode-disabled-color);
+}
+
+.iconLandingContainer {
+  color: var(--swm-color-mode-disabled-color-landing);
 }
 
 @media (max-height: 768px) {
@@ -65,4 +77,10 @@
 [data-theme="light"] .lightToggleIcon {
   color: var(--ifm-font-color-base);
   background-color: var(--swm-color-mode-enabled);
+}
+
+[data-theme="dark"] .iconLandingContainer.darkToggleIcon,
+[data-theme="light"] .iconLandingContainer.lightToggleIcon {
+  color: var(--swm-color-mode-enabled-color-landing);
+  background-color: var(--swm-color-mode-enabled-landing);
 }

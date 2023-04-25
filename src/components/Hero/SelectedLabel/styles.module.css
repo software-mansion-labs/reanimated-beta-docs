@@ -1,8 +1,8 @@
 .selection {
     display: inline-block;
     padding: 2px;
-    color: var(--swm-tab-active);
-    border: 2px dashed var(--swm-navy-light-100);
+    color: var(--swm-landing-heading-selected);
+    border: 2px dashed var(--swm-landing-heading-selected-border);
 }
 
 .selectionContainer {
@@ -15,7 +15,7 @@
     height: 12px;
 
     background: #FCFCFF;
-    border: 2px solid var(--swm-navy-light-100);
+    border: 2px solid var(--swm-landing-heading-selected-border);
 }
 
 .boxUpper {

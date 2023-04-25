@@ -6,11 +6,14 @@ import IconLightMode from "@theme/Icon/LightMode";
 import IconDarkMode from "@theme/Icon/DarkMode";
 import styles from "./styles.module.css";
 import { useColorScheme } from "@mui/material";
+import { useLocation } from "@docusaurus/router";
 function ColorModeToggle({ className, buttonClassName, value, onChange }) {
   const isBrowser = useIsBrowser();
+  const location = useLocation();
   /* Color scheme switcher from MUI framework. */
   const { setMode } = useColorScheme();
 
+  const isDocumentation = location.pathname.startsWith("/docs");
   const title = translate(
     {
       message: "Switch between dark and light mode (currently {mode})",
@@ -45,6 +48,7 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
           "clean-btn",
           styles.toggleButton,
           !isBrowser && styles.toggleButtonDisabled,
+          !isDocumentation && styles.toggleButtonLanding,
           buttonClassName
         )}
         type="button"
@@ -54,14 +58,21 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
         aria-label={title}
         aria-live="polite"
       >
-        <div className={clsx(styles.iconContainer, styles.lightToggleIcon)}>
+        <div
+          className={clsx(
+            styles.iconContainer,
+            styles.lightToggleIcon,
+            !isDocumentation && styles.iconLandingContainer
+          )}
+        >
           <IconLightMode />
         </div>
         <div
           className={clsx(
             styles.iconContainer,
             styles.darkIconContainer,
-            styles.darkToggleIcon
+            styles.darkToggleIcon,
+            !isDocumentation && styles.iconLandingContainer
           )}
         >
           <IconDarkMode />

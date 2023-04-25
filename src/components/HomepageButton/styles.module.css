@@ -7,7 +7,7 @@
     font-size: 20px;
 
     color: var(--swm-off-white);
-    background-color: var(--swm-purple-light-100);
+    background-color: var(--swm-landing-button-purple);
 
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -63,15 +63,15 @@
 
 .buttonTransparentStyling {
     background-color: transparent;
-    color: var(--swm-purple-light-100)
+    color: var(--swm-landing-button-purple)
 }
 
 .buttonTransparentStyling svg {
-    stroke: var(--swm-purple-light-100);
+    stroke: var(--swm-landing-button-purple);
 }
 
 .buttonTransparentStyling:hover {
-    background-color: var(--swm-purple-light-100);
+    background-color: var(--swm-landing-button-purple);
     color: var(--swm-off-white);
 }
 
@@ -83,7 +83,7 @@
 /* Button - purple styling */
 
 .buttonPurpleStyling {
-    background-color: var(--swm-purple-light-100);
+    background-color: var(--swm-landing-button-purple);
     color: var(--swm-off-white)
 }
 
@@ -93,16 +93,16 @@
 
 .buttonPurpleStyling:hover {
     background-color: transparent;
-    color: var(--swm-purple-light-100);
+    color: var(--swm-landing-button-purple);
 }
 
 
 .buttonPurpleStyling:hover svg {
-    stroke: var(--swm-purple-light-100);
+    stroke: var(--swm-landing-button-purple);
 }
 
 .buttonPurpleBorderStyling {
-    border: 1px solid var(--swm-purple-light-100);
+    border: 1px solid var(--swm-landing-button-purple);
 }
 
 .arrow {

@@ -2,12 +2,27 @@ import React from "react";
 import styles from "./styles.module.css";
 
 import ExpoLogo from "@site/static/img/expo.svg";
+import ExpoLogoDark from "@site/static/img/expo-dark.svg";
+
 import ShopifyLogo from "@site/static/img/shopify.svg";
+import ShopifyLogoDark from "@site/static/img/shopify-dark.svg";
+import ThemedImage from "@theme/ThemedImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const ReanimatedSponsors = () => {
+  const sponsorsLogos = {
+    expo: {
+      light: useBaseUrl("/img/expo.svg"),
+      dark: useBaseUrl("/img/expo-dark.svg"),
+    },
+    shopify: {
+      light: useBaseUrl("/img/shopify.svg"),
+      dark: useBaseUrl("/img/shopify-dark.svg"),
+    },
+  };
+
   return (
     <div className={styles.sponsors}>
-      <div className={styles.sponsorsBackground}></div>
       <div className={styles.sponsorsWrapper}>
         <div className={styles.sponsorsLabel}>
           <h3>Sponsors</h3>
@@ -17,8 +32,14 @@ const ReanimatedSponsors = () => {
           </p>
         </div>
         <div className={styles.sponsorsBrands}>
-          <ExpoLogo className={styles.sponsorsBrand} />
-          <ShopifyLogo />
+          <ThemedImage
+            sources={sponsorsLogos.expo}
+            className={styles.sponsorsBrand}
+          />
+          <ThemedImage
+            sources={sponsorsLogos.shopify}
+            className={styles.sponsorsBrand}
+          />
         </div>
       </div>
     </div>

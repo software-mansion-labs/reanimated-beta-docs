@@ -9,10 +9,11 @@ export default function FooterLayout({ style, links, logo, copyright }) {
 
   return (
     <footer
-      className={clsx("footer", !isDocumentation && styles.footerTransparent, {
+      className={clsx("footer", !isDocumentation && styles.footerLanding, {
         "footer--dark": style === "dark",
       })}
     >
+      {!isDocumentation && <div className={styles.sponsorsBackground}></div>}
       <div className="container container-fluid">
         {links}
         {(logo || copyright) && (

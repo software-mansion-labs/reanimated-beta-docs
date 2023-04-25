@@ -1,3 +1,23 @@
-.footerTransparent {
+footer {
+    position: relative;
+}
+
+.footerLanding {
     --ifm-footer-background-color: transparent;
+    --ifm-footer-padding-horizontal: 0;
+}
+
+.sponsorsBackground {
+    position: absolute;
+    bottom: 0;
+
+    background: linear-gradient(180deg, #FCFCFF 0%, rgba(252, 252, 255, 0) 60.77%), linear-gradient(180deg, #FFFAE1 0%, #FFD2D7 50%, #E8DAFC 100%);
+    width: 100%;
+    height: 50vh;
+
+    z-index: -100;
+}
+
+[data-theme="dark"] .sponsorsBackground {
+    background: linear-gradient(180deg, #232736 0%, #B07EFF 143%);
 }

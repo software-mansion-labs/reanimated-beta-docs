@@ -4,10 +4,25 @@
     bottom: 10vh;
 }
 
+.horseAnimation {
+    position: relative;
+    width: 400px;
+    height: 330px;
+}
+
+.horseAnimation svg {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    fill: var(--swm-landing-horse);
+    stroke: var(--swm-landing-horse);
+}
+
 @media (max-width: 1280px) {
     .horse {
         bottom: 10vh;
-        scale: 80%;
     }
 }
 
@@ -17,6 +32,10 @@
         bottom: 0;
 
         scale: 75%;
+    }
+
+    .horse, .horseAnimation {
+
     }
 }
 
@@ -54,4 +73,76 @@
         justify-content: center;
         scale: 75%;
     }
+}
+
+.variantA {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+}
+
+.variantB {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.045s;
+}
+
+.variantC {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.09s;
+}
+
+.variantD {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.135s;
+}
+
+.variantE {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.18s;
+}
+
+.variantF {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.228s;
+}
+
+.variantG {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.272s;
+}
+
+.variantH {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.32s;
+}
+
+.variantI {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.363s;
+}
+
+.variantJ {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.41s;
+}
+
+.variantK {
+    visibility: hidden;
+    animation: 0.5s show infinite;
+    animation-delay: 0.454s;
+}
+
+@keyframes show {
+    0%   { visibility: visible;}
+    4.54%  { visibility: visible; }
+    10%  { visibility: hidden; }
+    100% { visibility: hidden; }
 }

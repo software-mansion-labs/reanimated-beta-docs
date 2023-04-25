@@ -16,12 +16,13 @@ import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
 import { useLocation } from "@docusaurus/router";
+import clsx from "clsx";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
 }
-function NavbarItems({ items }) {
+function NavbarItems({ items, isDocumentation = true }) {
   return (
     <>
       {items.map((item, i) => (
@@ -36,7 +37,10 @@ ${JSON.stringify(item, null, 2)}`,
             )
           }
         >
-          <NavbarItem {...item} />
+          <NavbarItem
+            className={clsx(!isDocumentation && styles.navbarItemLanding)}
+            {...item}
+          />
         </ErrorCauseBoundary>
       ))}
     </>
@@ -85,7 +89,7 @@ export default function NavbarContent() {
       }
       right={
         <>
-          <NavbarItems items={rightItems} />
+          <NavbarItems items={rightItems} isDocumentation={isDocumentation} />
           {!searchBarItem && isMobile && isDocumentation && (
             <AlgoliaSearchBar />
           )}

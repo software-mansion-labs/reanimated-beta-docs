@@ -38,7 +38,7 @@ export default function NavbarLayout({ children }) {
       className={clsx(
         "navbar",
         isDocumentation && "navbar--fixed-top",
-        !isDocumentation && styles.navbarTransparent,
+        !isDocumentation && styles.navbarLanding,
         hideOnScroll && [
           styles.navbarHideable,
           !isNavbarVisible && styles.navbarHidden,

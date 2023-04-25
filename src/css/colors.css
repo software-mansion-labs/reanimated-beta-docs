@@ -107,6 +107,10 @@
   --swm-color-mode-enabled: var(--swm-navy-light-20);
   --swm-color-mode-disabled-color: var(--swm-navy-light-20);
 
+  --swm-color-mode-enabled-landing: var(--swm-off-white);
+  --swm-color-mode-enabled-color-landing: var(--ifm-font-color-base);
+  --swm-color-mode-disabled-color-landing: var(--swm-off-white);
+
   /* Typography */
   --ifm-heading-color: var(--ifm-color-primary);
   --ifm-font-color-base: var(--swm-navy-light-100);
@@ -175,6 +179,23 @@
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-100);
   --swm-copyright-color: var(--swm-navy-light-60);
+
+  --swm-brand-copyright-color-landing: var(--swm-brand-copyright-color);
+  --swm-copyright-color-landing: var(--swm-copyright-color);
+
+  /* Landing */
+  --swm-landing-heading: var(--ifm-font-color-base);
+  --swm-landing-heading-selected: var(--swm-purple-light-100);
+  --swm-landing-heading-selected-border: var(--swm-navy-light-100);
+
+  --swm-landing-horse: var(--swm-navy-light-100);
+
+  --swm-landing-button-purple: var(--swm-purple-light-100);
+
+  --swm-landing-feature-item: var(--swm-purple-light-40);
+  --swm-landing-feature-item-shadow: var(--swm-purple-light-100);
+
+  --swm-landing-sponsors-color: var(--ifm-font-color-base);
 }
 
 :root[data-theme="dark"] {
@@ -190,6 +211,7 @@
 
   /* Color Mode */
   --swm-color-mode-enabled: var(--swm-off-navy);
+  --swm-color-mode-enabled-color-landing: var(--swm-purple-dark-120);
   --swm-color-mode-disabled-color: var(--swm-navy-light-40);
 
   /* Typography */
@@ -257,6 +279,23 @@
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-20);
   --swm-copyright-color: var(--swm-navy-light-40);
+
+  --swm-brand-copyright-color-landing: var(--swm-navy-light-20);
+  --swm-copyright-color-landing: var(--swm-off-white);
+
+  /* Landing */
+  --swm-landing-heading: var(--swm-off-white);
+  --swm-landing-heading-selected: var(--swm-purple-dark-40);
+  --swm-landing-heading-selected-border: var(--swm-navy-light-20);
+
+  --swm-landing-horse: var(--swm-off-white);
+
+  --swm-landing-button-purple: var(--swm-purple-dark-100);
+
+  --swm-landing-feature-item: var(--swm-purple-dark-100);
+  --swm-landing-feature-item-shadow: var(--swm-purple-dark-140);
+
+  --swm-landing-sponsors-color: var(--swm-off-white);
 }
 
 code {

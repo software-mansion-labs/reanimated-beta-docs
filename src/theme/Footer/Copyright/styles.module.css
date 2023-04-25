@@ -13,10 +13,7 @@ footer {
 .footer {
   display: flex;
   justify-content: start;
-}
-
-.footerTransparent {
-  --ifm-footer-background-color: transparent;
+  align-items: center;
 }
 
 footer p {
@@ -24,6 +21,27 @@ footer p {
   margin-bottom: 0;
 }
 
+footer p.landing {
+  color: var(--swm-copyright-color-landing);
+}
+
 .footer__brand {
   color: var(--swm-brand-copyright-color);
+}
+
+.landing .footer__brand {
+  color: var(--swm-brand-copyright-color-landing);
+}
+
+.footer__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 40px;
+}
+
+
+[data-theme="dark"] .footer__logo svg {
+
 }
