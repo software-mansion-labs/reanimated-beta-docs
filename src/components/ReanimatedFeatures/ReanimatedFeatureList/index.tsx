@@ -5,23 +5,23 @@ import ReanimatedFeatureItem from "@site/src/components/ReanimatedFeatures/Reani
 const ReanimatedFeatureList = () => {
   return (
     <div className={styles.featureList}>
-      <ReanimatedFeatureItem title="120 FPS">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </ReanimatedFeatureItem>
       <ReanimatedFeatureItem title="Declarative">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        Reanimated comes with declarative API for creating animations.
+        Complexity reduced from tens of methods to just a few. Define what the
+        animation should look like and leave Reanimated to animate the styles
+        and properties for you.
       </ReanimatedFeatureItem>
-      <ReanimatedFeatureItem title="Feature">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+      <ReanimatedFeatureItem title="Performant">
+        Reanimated lets you define animations in plain JavaScript which run
+        natively on the UI thread by default. Smooth animations and interactions
+        up to 120 fps and beyond. Reanimated delivers a native experience your
+        users deserve.
+      </ReanimatedFeatureItem>
+      <ReanimatedFeatureItem title="Feature-rich">
+        Reanimated’s power doesn’t end on animating only simple views or images.
+        Hook your animations into device sensors or keyboard. Create amazing
+        experiences using Layout Animations or animate elements between
+        navigation screens with ease.
       </ReanimatedFeatureItem>
     </div>
   );

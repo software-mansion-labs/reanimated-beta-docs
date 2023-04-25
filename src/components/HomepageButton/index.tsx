@@ -16,22 +16,30 @@ export const BorderStyling = {
 
 const HomepageButton: React.FC<{
   title: string;
+  href: string;
+  target?: "_blank" | "_parent" | "_self" | "_top";
   backgroundStyling?: string;
   borderStyling?: string;
+  enlarged?: boolean;
 }> = ({
   title,
+  href,
+  target = "_self",
   backgroundStyling = ButtonStyling.TO_TRANSPARENT,
   borderStyling = BorderStyling.PURPLE,
+  enlarged = false,
 }) => {
   return (
     <div
       className={clsx(styles.homepageButton, backgroundStyling, borderStyling)}
     >
-      <p>{title}</p>
+      <a href={href} target={target} className={styles.homepageButtonLink}>
+        <p>{title}</p>
 
-      <div className={styles.arrow}>
-        <ArrowRight />
-      </div>
+        <div className={styles.arrow}>
+          <ArrowRight />
+        </div>
+      </a>
     </div>
   );
 };

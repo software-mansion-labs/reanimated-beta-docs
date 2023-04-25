@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import SelectedLabel from "@site/src/components/Hero/SelectedLabel";
-import GetStarted from "@site/src/components/HomepageButton";
+import HomepageButton from "@site/src/components/HomepageButton";
 import Clouds from "@site/src/components/Hero/Clouds";
 import Swirl from "@site/src/components/Hero/Swirl";
 import Sun from "@site/src/components/Hero/Sun";
@@ -48,7 +48,7 @@ const StartScreen = () => {
           </div>
           <div className={styles.lowerHeading}>
             <Horse />
-            <GetStarted title="Get started" />
+            <HomepageButton href="#features" title="Get started" />
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import HomepageButton, {
 
 const ReanimatedFeatures = () => {
   return (
-    <div className={styles.featuresContainer}>
+    <div className={styles.featuresContainer} id="features">
       <h2>Why Reanimated?</h2>
       <ReanimatedFeatureList />
       <div className={styles.featuresLowerContainer}>
@@ -16,7 +16,10 @@ const ReanimatedFeatures = () => {
         </h4>
         <HomepageButton
           title="See blog post"
+          href="https://blog.swmansion.com/releasing-reanimated-3-0-17fab4cb2394"
+          target="_blank"
           backgroundStyling={ButtonStyling.TO_PURPLE}
+          enlarged
         />
       </div>
     </div>

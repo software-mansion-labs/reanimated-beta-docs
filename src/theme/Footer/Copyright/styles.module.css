@@ -15,6 +15,10 @@ footer {
   justify-content: start;
 }
 
+.footerTransparent {
+  --ifm-footer-background-color: transparent;
+}
+
 footer p {
   color: var(--swm-copyright-color);
   margin-bottom: 0;

@@ -3,6 +3,14 @@
  * and scoped locally.
  */
 
+html {
+  scroll-behavior: smooth;
+}
+
+/*.landingContainer {*/
+/*  position: relative;*/
+/*}*/
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
