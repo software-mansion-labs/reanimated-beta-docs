@@ -15,7 +15,7 @@
     }
 }
 
-.featuresContainer h2, .featuresLowerContainer h4 {
+.featuresContainer h2, .featuresLowerContainer {
     /* Move heading label of features section to the start of the box-shadow */
     position: relative;
     left: -12px;
@@ -40,6 +40,10 @@
     display: flex;
     align-items: center;
 
+    /* Add 12px to container width, as we're already moving this container to the left
+     * for the purpose of the feature-boxes shadows.
+     */
+    width: calc(100% + 12px);
     margin-top: 80px;
 }
 
