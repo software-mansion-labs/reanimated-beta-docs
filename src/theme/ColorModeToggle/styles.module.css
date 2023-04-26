@@ -1,6 +1,7 @@
 .toggle {
-  width: 5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: var(--swm-logo-height);
+  width: calc(2 * var(--swm-logo-height));
 
   margin-right: 0;
 }

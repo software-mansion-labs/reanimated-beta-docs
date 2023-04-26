@@ -176,6 +176,10 @@
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-100);
   --swm-copyright-color: var(--swm-navy-light-60);
+
+  /* Search */
+  --swm-searchbar-text-color: var(--swm-navy-light-60);
+  --swm-searchbar-background: var(--swm-off-white);
 }
 
 :root[data-theme="dark"] {
@@ -259,6 +263,10 @@
   /* Footer */
   --swm-brand-copyright-color: var(--swm-navy-light-20);
   --swm-copyright-color: var(--swm-navy-light-40);
+
+  /* Search */
+  --swm-searchbar-text-color: var(--swm-navy-light-40);
+  --swm-searchbar-background: var(--swm-off-background);
 }
 
 code {

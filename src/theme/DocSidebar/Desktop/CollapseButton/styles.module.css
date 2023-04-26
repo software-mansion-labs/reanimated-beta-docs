@@ -12,7 +12,7 @@
   .collapseSidebarButton {
     display: block !important;
     background-color: var(--docusaurus-collapse-button-bg);
-    height: 40px;
+    height: var(--swm-logo-height);
     position: sticky;
     bottom: 0;
     border-radius: 0;

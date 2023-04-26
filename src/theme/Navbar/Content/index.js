@@ -15,7 +15,6 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
-import useIsBrowser from "@docusaurus/useIsBrowser";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -53,9 +52,11 @@ function NavbarContentLayout({ left, right }) {
 
 function AlgoliaSearchBar() {
   return (
-    <NavbarSearch className={styles.navbarSearch}>
-      <SearchBar />
-    </NavbarSearch>
+    <div className={styles.navbarSearchWrapper}>
+      <NavbarSearch className={styles.navbarSearch}>
+        <SearchBar />
+      </NavbarSearch>
+    </div>
   );
 }
 
@@ -74,9 +75,9 @@ export default function NavbarContent() {
           <div className={styles.logoWrapper}>
             <NavbarLogo />
           </div>
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
           <NavbarItems items={leftItems} />
           {!searchBarItem && !isMobile && <AlgoliaSearchBar />}
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }
       right={
