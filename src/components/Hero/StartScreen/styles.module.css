@@ -32,6 +32,7 @@
 }
 
 .headingLabel {
+    font-family: var(--swm-title-font);
     font-size: 64px;
     font-weight: 700;
 
@@ -39,6 +40,7 @@
 }
 
 .subheadingLabel {
+    font-family: var(--swm-title-font);
     font-size: 32px;
     margin-top: 32px;
     margin-bottom: 56px;
@@ -74,13 +76,6 @@
         justify-content: center;
 
         margin-left: 0;
-    }
-}
-
-@media (max-height: 768px) and (min-width: 768px) {
-    .lowerHeading {
-        display: flex;
-        flex-direction: column-reverse;
     }
 }
 

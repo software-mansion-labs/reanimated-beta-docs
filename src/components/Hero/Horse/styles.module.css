@@ -40,17 +40,6 @@
     }
 }
 
-@media (max-height: 768px) and (min-width: 768px) {
-    .horse {
-        position: static;
-        width: 100%;
-        scale: 80%;
-
-        display: flex;
-        justify-content: flex-end;
-    }
-}
-
 @media (min-height: 768px) and (max-width: 768px) {
     .horse {
         display: flex;

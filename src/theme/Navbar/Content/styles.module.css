@@ -52,6 +52,13 @@ nav {
   margin: 0 1.5em;
 }
 
+/* In other pages than documentation, Docusaurus disables margin-right for the last element on the right side.
+ * This block disables this behavior.
+ */
+[class*='navbar__items--right'] > :last-child {
+  padding: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal);
+}
+
 .navbarItemsLanding a, .navbarItemsLanding:hover a {
   display: inline-block;
   color: var(--swm-off-white);
