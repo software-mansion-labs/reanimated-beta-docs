@@ -14,12 +14,16 @@ const StartScreen = () => {
               React Native <SelectedLabel>Reanimated</SelectedLabel>
             </h1>
             <h2 className={styles.subheadingLabel}>
-              Where declarative animations meet native performance at 120 fps
+              Where declarative animations meet native performance at{" "}
+              <span>120 fps</span>
             </h2>
           </div>
           <div className={styles.lowerHeading}>
             <Horse />
-            <HomepageButton href="#features" title="Get started" />
+            <HomepageButton
+              href="/docs/fundamentals/getting-started"
+              title="Get started"
+            />
           </div>
         </div>
       </div>

@@ -46,11 +46,18 @@ ${JSON.stringify(item, null, 2)}`,
     </>
   );
 }
-function NavbarContentLayout({ left, right }) {
+function NavbarContentLayout({ left, right, isDocumentation }) {
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
-      <div className="navbar__items navbar__items--right">{right}</div>
+      <div
+        className={clsx(
+          "navbar__items navbar__items--right",
+          !isDocumentation && styles.navbarItemsLanding
+        )}
+      >
+        {right}
+      </div>
     </div>
   );
 }
@@ -93,9 +100,12 @@ export default function NavbarContent() {
           {!searchBarItem && isMobile && isDocumentation && (
             <AlgoliaSearchBar />
           )}
-          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+          {!mobileSidebar.disabled && isDocumentation && (
+            <NavbarMobileSidebarToggle />
+          )}
         </>
       }
+      isDocumentation={isDocumentation}
     />
   );
 }

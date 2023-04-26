@@ -16,6 +16,12 @@ footer {
   align-items: center;
 }
 
+@media (max-width: 997px) {
+  .footer {
+    justify-content: center;
+  }
+}
+
 footer p {
   color: var(--swm-copyright-color);
   margin-bottom: 0;
@@ -41,7 +47,8 @@ footer p.landing {
   margin-right: 40px;
 }
 
-
-[data-theme="dark"] .footer__logo svg {
-
+@media (max-width: 997px) {
+  .footer__logo {
+    display: none;
+  }
 }

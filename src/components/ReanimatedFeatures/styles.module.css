@@ -1,6 +1,6 @@
 .featuresContainer {
     margin: 0 auto;
-    width: 50%;
+    width: 60%;
 }
 
 @media (max-width: 1440px) {
@@ -11,8 +11,14 @@
 
 @media (max-width: 768px) {
     .featuresContainer {
-        width: 90%;
+        width: 80%;
     }
+}
+
+.featuresContainer h2, .featuresLowerContainer h4 {
+    /* Move heading label of features section to the start of the box-shadow */
+    position: relative;
+    left: -12px;
 }
 
 .featuresContainer h2 {

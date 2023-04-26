@@ -35,7 +35,8 @@ nav {
   margin: 0 1.5em;
 }
 
-.navbarItemLanding, .navbarItemLanding:hover {
+.navbarItemsLanding a, .navbarItemsLanding:hover a {
+  display: inline-block;
   color: var(--swm-off-white);
 }
 

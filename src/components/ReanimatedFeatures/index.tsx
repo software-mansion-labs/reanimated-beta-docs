@@ -7,7 +7,7 @@ import HomepageButton, {
 
 const ReanimatedFeatures = () => {
   return (
-    <div className={styles.featuresContainer} id="features">
+    <div className={styles.featuresContainer}>
       <h2>Why Reanimated?</h2>
       <ReanimatedFeatureList />
       <div className={styles.featuresLowerContainer}>
