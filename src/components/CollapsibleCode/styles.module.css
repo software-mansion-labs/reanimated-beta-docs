@@ -1,24 +1,21 @@
 .container {
   background-color: var(--swm-off-background);
   border-radius: 0;
+  border: 1px solid var(--swm-interactive-border);
+  margin-bottom: 1em;
 
   --swm-expandable-transition: transform 200ms ease;
 }
 
-.container pre {
-  border: 1px solid var(--swm-navy-light-20);
-  border-top: none;
-
-  border-radius: 0;
+.container pre,
+.container code {
+  border: none;
 }
 
 .buttonContainer {
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  border: 1px solid var(--swm-navy-light-20);
-  border-bottom: none;
 
   padding-top: 1em;
   padding-left: 1em;
