@@ -15,9 +15,21 @@ footer {
     width: 100%;
     height: 50vh;
 
+    /*overflow: hidden;*/
     z-index: -100;
 }
 
 [data-theme="dark"] .sponsorsBackground {
     background: linear-gradient(180deg, #232736 0%, #B07EFF 143%);
+}
+
+.sponsorsBackground svg {
+    position: absolute;
+    bottom: 10%;
+
+    width: 50%;
+}
+
+.sponsorsBackground svg:last-child {
+    left: 50%;
 }

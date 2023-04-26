@@ -1,7 +1,6 @@
 .horse {
     position: absolute;
     right: 15vw;
-    bottom: 10vh;
 }
 
 .horseAnimation {
@@ -20,22 +19,9 @@
     stroke: var(--swm-landing-horse);
 }
 
-@media (max-width: 1280px) {
-    .horse {
-        bottom: 10vh;
-    }
-}
-
 @media (max-width: 997px) {
     .horse {
         right: 5vw;
-        bottom: 0;
-
-        scale: 75%;
-    }
-
-    .horse, .horseAnimation {
-
     }
 }
 
@@ -46,12 +32,11 @@
         justify-content: center;
         scale: 75%;
     }
-}
 
-@media (max-height: 997px) {
-    .horse {
-        /*right: 20vw;*/
-        bottom: 0;
+
+    .horseAnimation {
+        width: 300px;
+        height: 248px;
     }
 }
 

@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      description="Where declarative animations meet native performance at 120 fps"
     >
       <div className={styles.landingContainer}>
         <HomepageStartScreen />

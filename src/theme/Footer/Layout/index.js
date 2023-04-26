@@ -3,6 +3,8 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 import { useLocation } from "@docusaurus/router";
 
+import Stars from "@site/static/img/stars-footer.svg";
+
 export default function FooterLayout({ style, links, logo, copyright }) {
   const location = useLocation();
   const isDocumentation = location.pathname.startsWith("/docs");
@@ -13,7 +15,12 @@ export default function FooterLayout({ style, links, logo, copyright }) {
         "footer--dark": style === "dark",
       })}
     >
-      {!isDocumentation && <div className={styles.sponsorsBackground}></div>}
+      {!isDocumentation && (
+        <div className={styles.sponsorsBackground}>
+          <Stars />
+          <Stars />
+        </div>
+      )}
       <div className="container container-fluid">
         {links}
         {(logo || copyright) && (

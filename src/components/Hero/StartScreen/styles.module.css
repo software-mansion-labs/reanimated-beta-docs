@@ -1,6 +1,9 @@
 .hero {
+    position: relative;
+    top: 0;
+
     height: 100vh;
-    min-height: 55vw;
+    min-height: 70vw;
     background-color: transparent;
 }
 
@@ -8,7 +11,6 @@
     position: absolute;
     top: 0;
 
-    background: linear-gradient(357.23deg, #FCFCFF 2.25%, rgba(252, 252, 255, 0) 53.95%), linear-gradient(180deg, #D1BBF3 0%, #FFD2D7 40%, #FFF1B2 85%);
     width: 100%;
     height: 100vh;
     min-height: 70vw;
@@ -20,12 +22,11 @@
     background: linear-gradient(180deg, #B07EFF 0%, #232736 85%);
 }
 
-.foregroundLabel {
+.heading {
+    position: absolute;
     margin-top: 25vh;
     margin-left: 10vw;
-}
 
-.heading {
     width: 80%;
     height: fit-content;
 }
@@ -79,29 +80,6 @@
 @media (max-width: 1124px) and (max-height: 768px) {
     .hero {
         min-height: 768px;
-    }
-
-    .heroBackground {
-        min-height: 768px;
-    }
-}
-
-@media (min-width: 680px) and (max-width: 997px) and (max-height: 997px) {
-    .hero {
-        min-height: 1124px !important;
-    }
-
-    .heroBackground {
-        min-height: 1124px !important;
-    }
-}
-
-@media (min-width: 1600px) and (max-height: 997px) {
-    .hero {
-    }
-
-    .heroBackground {
-        min-height: 70vw !important;
     }
 }
 
