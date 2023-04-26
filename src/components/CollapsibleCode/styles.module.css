@@ -1,5 +1,5 @@
 .container {
-  background-color: var(--swm-pre-background);
+  background-color: var(--swm-off-background);
   border-radius: 0;
 
   --swm-expandable-transition: transform 200ms ease;

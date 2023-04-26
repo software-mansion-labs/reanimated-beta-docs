@@ -165,7 +165,6 @@
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --swm-code-lines-buttons-background: rgba(145, 159, 207, 0.2);
-  --swm-pre-background: #f6f8fa;
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-100);
@@ -247,7 +246,6 @@
 
   /* Code lines */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --swm-pre-background: #282a36;
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-20);

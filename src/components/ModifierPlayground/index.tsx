@@ -10,7 +10,6 @@ import useTimingPlayground from "./useTimingPlayground";
 
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
-import clsx from "clsx";
 import AnimableIcon, { Animation } from "@site/src/components/AnimableIcon";
 import {
   Checkbox,
@@ -18,7 +17,6 @@ import {
   MenuItem,
   Select,
   Slider,
-  styled,
   TextField,
 } from "@mui/material";
 
@@ -56,7 +54,7 @@ export default function ModifierPlayground(props: any) {
           <div className={styles.wrapper}>
             <div className={styles.controls}>{controls}</div>
             <div className={styles.codeWrapper}>
-              <CodeBlock className={clsx(styles.code)} language="javascript">
+              <CodeBlock className={styles.code} language="javascript">
                 {code}
               </CodeBlock>
             </div>

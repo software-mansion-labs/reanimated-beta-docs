@@ -101,6 +101,7 @@
 /* Prevent lines from overflowing from the code block */
 [class*="codeBlockLines"] {
   width: 0;
+  border: 1px solid var(--swm-interactive-border);
 }
 
 /* Add small padding, when some of the lines are too long in a code block */
@@ -112,7 +113,6 @@
   flex: 1 1 auto;
 
   background-color: var(--swm-background);
-  border: 1px solid var(--swm-interactive-border);
 }
 
 .codeWrapper [class*="codeBlockContent"] pre {

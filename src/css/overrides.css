@@ -42,3 +42,9 @@ table {
 .header-github:hover:before {
   background-color: var(--ifm-navbar-link-hover-color);
 }
+
+[class*="codeBlockContent"] pre,
+[class*="codeBlockContent"] code {
+  border-radius: 0;
+  background-color: var(--swm-off-background);
+}

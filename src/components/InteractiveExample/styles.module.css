@@ -24,7 +24,6 @@
 }
 
 .interactiveCodeBlock [class*="codeBlockContent"] pre {
-  border-radius: 0;
   border: none;
 }
 
@@ -32,6 +31,7 @@
   background-color: var(--swm-off-background);
   width: 100%;
   padding: 0;
+  border: none;
 }
 
 /* Hide default action buttons, displayed by Docusaurus */
