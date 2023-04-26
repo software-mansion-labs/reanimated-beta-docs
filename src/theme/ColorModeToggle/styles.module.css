@@ -1,16 +1,8 @@
 .toggle {
-  width: 4rem;
   height: var(--swm-logo-height);
   width: calc(2 * var(--swm-logo-height));
 
   margin-right: 0;
-}
-
-@media (max-height: 768px) {
-  .toggle {
-    width: 4rem;
-    height: 2rem;
-  }
 }
 
 .toggleButton {

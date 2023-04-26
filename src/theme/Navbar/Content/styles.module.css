@@ -16,7 +16,7 @@ nav {
 .navbarSearch button {
   border-radius: 0;
   color: var(--swm-searchbar-text-color);
-  border: 1px solid var(--swm-border);
+  border: 1px solid var(--swm-color-mode-enabled);
   background: var(--swm-searchbar-background);
   height: 38px; /* should be --swm-logo-height but optical illusion makes the search bar smaller then the theme picker*/
 }
