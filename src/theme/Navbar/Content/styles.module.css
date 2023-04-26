@@ -1,9 +1,24 @@
 nav {
-  --ifm-navbar-padding-vertical: 0 5em;
+  --ifm-navbar-padding-vertical: 0 1.25rem;
   --ifm-navbar-padding-horizontal: 0 0;
-  --ifm-navbar-height: 88px;
+  --ifm-navbar-height: 60px;
 
   --ifm-navbar-shadow: none;
+}
+
+.navbarSearchWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbarSearch button {
+  border-radius: 0;
+  color: var(--swm-searchbar-text-color);
+  border: 1px solid var(--swm-color-mode-enabled);
+  background: var(--swm-searchbar-background);
+  height: 38px; /* should be --swm-logo-height but optical illusion makes the search bar smaller then the theme picker*/
 }
 
 @media (max-height: 768px) {
@@ -19,7 +34,9 @@ nav {
   }
 
   .navbarSearch {
-    position: relative;
+    position: static;
+    margin-right: 1em;
+    padding: 0;
   }
 }
 
@@ -47,8 +64,9 @@ nav {
   }
 
   .navbarSearch {
-    flex: 1;
     width: 100%;
+    max-width: 600px;
+    justify-self: flex-end;
   }
 
   button[class*="DocSearch-Button"] {

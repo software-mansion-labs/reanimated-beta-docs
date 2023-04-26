@@ -64,9 +64,11 @@ function NavbarContentLayout({ left, right, isDocumentation }) {
 
 function AlgoliaSearchBar() {
   return (
-    <NavbarSearch className={styles.navbarSearch}>
-      <SearchBar />
-    </NavbarSearch>
+    <div className={styles.navbarSearchWrapper}>
+      <NavbarSearch className={styles.navbarSearch}>
+        <SearchBar />
+      </NavbarSearch>
+    </div>
   );
 }
 
@@ -87,11 +89,9 @@ export default function NavbarContent() {
           <div className={styles.logoWrapper}>
             <NavbarLogo />
           </div>
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
           <NavbarItems items={leftItems} />
-          {!searchBarItem && !isMobile && isDocumentation && (
-            <AlgoliaSearchBar />
-          )}
+          {!searchBarItem && !isMobile && isDocumentation && <AlgoliaSearchBar />}
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }
       right={

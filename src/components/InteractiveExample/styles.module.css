@@ -5,7 +5,8 @@
   contain: content;
 
   background-color: var(--swm-off-background);
-  border: 1px solid var(--swm-interactive-border);
+  border: 1px solid var(--swm-border);
+  margin-bottom: var(--ifm-leading);
 }
 
 .largerContainer {
@@ -23,7 +24,6 @@
 }
 
 .interactiveCodeBlock [class*="codeBlockContent"] pre {
-  border-radius: 0;
   border: none;
 }
 
@@ -31,6 +31,7 @@
   background-color: var(--swm-off-background);
   width: 100%;
   padding: 0;
+  border: none;
 }
 
 /* Hide default action buttons, displayed by Docusaurus */
@@ -64,7 +65,13 @@
 }
 
 .lowerButtonsContainer {
+  justify-content: space-between;
   margin-top: 10px;
+}
+
+.iconStub {
+  width: 30px;
+  height: 30px;
 }
 
 .container[data-ispreview="false"] .buttonsContainer {
@@ -126,4 +133,8 @@
 .actionButtonActive {
   color: var(--swm-interactive-button-active);
   border-bottom: 1px solid var(--swm-interactive-button-active);
+}
+
+.label {
+  /* position: absolute; */
 }

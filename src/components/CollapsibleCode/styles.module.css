@@ -1,15 +1,15 @@
 .container {
-  background-color: var(--swm-pre-background);
+  background-color: var(--swm-off-background);
   border-radius: 0;
+  border: 1px solid var(--swm-border);
+  margin-bottom: 1em;
 
   --swm-expandable-transition: transform 200ms ease;
 }
 
-.container pre {
-  border: 1px solid var(--swm-navy-light-20);
-  border-top: none;
-
-  border-radius: 0;
+.container pre,
+.container code {
+  border: none;
 }
 
 .buttonContainer {
@@ -17,17 +17,15 @@
   align-items: center;
   cursor: pointer;
 
-  border: 1px solid var(--swm-navy-light-20);
-  border-bottom: none;
-
-  padding: 1em 0 1em 1em;
+  padding-top: 1em;
+  padding-left: 1em;
 }
 
 .arrow {
   height: 12px;
   width: 12px;
-  margin-right: 1.5rem;
-  left: 0;
+  margin-right: 1rem;
+  margin-top: 2px;
 
   transition: var(--swm-expandable-transition);
 }

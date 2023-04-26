@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -11,39 +11,27 @@ import {
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 
-// hack, Gesture.Pan doesn't rerender on window resize for some reason
-const store = { width: 0 };
 const SIZE = 120;
+const store = { width: 0 };
 
 export default function App() {
   const offset = useSharedValue(0);
-  const ref = useRef(null);
 
-  const [width, setWidth] = useState(0);
-  store.width = width;
-
-  const setWrapperWidth = () => {
-    setWidth(ref?.current?.clientWidth);
+  const onLayout = (event) => {
+    store.width = event.nativeEvent.layout.width;
   };
-
-  useEffect(() => {
-    setWrapperWidth();
-    window.addEventListener("resize", setWrapperWidth);
-    return () => {
-      window.removeEventListener("resize", setWrapperWidth);
-    };
-  }, []);
 
   const pan = Gesture.Pan()
     .onChange((event) => {
+      // highlight-next-line
       offset.value += event.changeX;
     })
     .onFinalize((event) => {
       // highlight-start
       offset.value = withDecay({
-        velocity: event.velocityX,
-        clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
+        velocity: event.velocityX / 500,
         rubberBandEffect: true,
+        clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
       });
       // highlight-end
     });
@@ -54,11 +42,9 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <View ref={ref} style={styles.wrapper}>
+      <View onLayout={onLayout} style={styles.wrapper}>
         <GestureDetector gesture={pan}>
-          <Animated.View style={[styles.box, animatedStyles]}>
-            <Text style={styles.text}>Grab me</Text>
-          </Animated.View>
+          <Animated.View style={[styles.box, animatedStyles]} />
         </GestureDetector>
       </View>
     </GestureHandlerRootView>
@@ -86,10 +72,5 @@ const styles = StyleSheet.create({
     cursor: "grab",
     alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    color: "white",
-    textTransform: "uppercase",
-    fontWeight: "bold",
   },
 });

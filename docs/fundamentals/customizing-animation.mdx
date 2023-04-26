@@ -64,7 +64,7 @@ withSpring(sv.value, {
 });
 ```
 
-The mass of a spring influences how hard is it to make an object move and to bring it to a stop. Mass adds a feeling of [_inertia_](https://youtu.be/qBjmO8w-QqU?t=22) to the object you're trying to move. You can see in the playground that the heavy spring moves more "sluggish" compared to the default configuration.
+The mass of a spring influences how hard is it to make an object move and to bring it to a stop. Mass adds a feeling of [_inertia_](https://youtu.be/qBjmO8w-QqU?t=22) to the object you're trying to move. You can see in the playground that the spring with greater mass moves more "sluggish" compared to the default configuration.
 
 import SpringMassCompare from "@site/src/examples/SpringMassCompare";
 import SpringMassCompareSrc from "!!raw-loader!@site/src/examples/SpringMassCompare";
@@ -76,7 +76,7 @@ import SpringMassCompareSrc from "!!raw-loader!@site/src/examples/SpringMassComp
 
 Stiffness affects how bouncy the spring is. As an example, think about the difference between a steel spring (with very high stiffness) and a spring made out of soft plastic (with low stiffness).
 
-Damping describes how quickly the spring slows down. In the real world, you could think about the same spring bouncing in the air and underwater. For example, a spring in a vacuum would have zero friction and thus zero damping. Higher damping means the spring will come to rest faster.
+Damping describes how quickly the spring animation finishes. Higher damping means the spring will come to rest faster. In the real world, you could think about the same spring bouncing in the air and underwater. For example, a spring in a vacuum would have zero friction and thus zero damping.
 
 Reanimated comes with a handful of other properties used to customize your spring animation. You can play around with them in our interactive playground or check the full [`withSpring` API reference](/docs/animations/with-spring).
 

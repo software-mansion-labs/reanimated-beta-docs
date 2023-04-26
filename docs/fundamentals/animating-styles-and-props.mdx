@@ -20,6 +20,10 @@ function App() {
 
 In basic cases, this syntax works well but it has one big downside. It doesn't allow to access the value stored in a shared value. For example, it's not possible to build more complex animations by using inline styling to multiply this value (or do any other mathematical operation) before assigning it to the `style` prop.
 
+```jsx
+<Animated.View style={{ width: width * 5 }} /> // this won't work
+```
+
 Let's suppose we have an example with a box which moves to the right on every button press:
 
 ```jsx {5,10}
@@ -151,7 +155,11 @@ Check out the full example below:
 import AnimatingProps from "@site/src/examples/AnimatingProps";
 import AnimatingPropsSrc from "!!raw-loader!@site/src/examples/AnimatingProps";
 
-<InteractiveExample src={AnimatingPropsSrc} component={<AnimatingProps />} larger />
+<InteractiveExample
+  src={AnimatingPropsSrc}
+  component={<AnimatingProps />}
+  larger
+/>
 
 ## Summary
 

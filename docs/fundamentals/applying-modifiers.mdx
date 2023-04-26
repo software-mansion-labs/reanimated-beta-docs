@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Applying modifiers
 
-Another way of customizing animations in Reanimated is by using animation modifiers. Reanimated comes with three built-in modifiers: [`withRepeat`](/docs/animations/with-repeat), [`withSequence`](/docs/animations/with-sequence), and [`withDelay`](/docs/animations/with-delay).
+Another way of [customizing animations](/docs/fundamentals/customizing-animation) in Reanimated is by using animation modifiers. Reanimated comes with three built-in modifiers: [`withRepeat`](/docs/animations/with-repeat), [`withSequence`](/docs/animations/with-sequence), and [`withDelay`](/docs/animations/with-delay).
 
 Let's build a simple shake animation which uses all the modifiers and learn them along the way. Let's go!
 
@@ -23,7 +23,7 @@ import TimingSrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Timing"
 
 <InteractiveExample src={TimingSrc} component={<Timing />} />
 
-## Using `withRepeat`
+## Repeating an animation
 
 To implement our desired shake animation we can use [`withRepeat`](/docs/animations/with-repeat) modifier. This modifier lets you repeat a provided animation.
 
@@ -31,7 +31,7 @@ To implement our desired shake animation we can use [`withRepeat`](/docs/animati
 import { withRepeat } from "react-native-reanimated";
 
 function App() {
-  sv.value = withRepeat(withTiming(0), 5);
+  sv.value = withRepeat(withTiming(50), 5);
   // ...
 }
 ```
@@ -51,7 +51,7 @@ When we run this code we can see that the box jiggles left to right between the 
 
 <InteractiveExample src={RepeatSrc} component={<Repeat />} />
 
-## Using `withSequence`
+## Running animations in a sequence
 
 One way to improve our animation is to start it with a left offset and reset it back to starting position after the animation ends. That's a perfect use case for the `withSequence` modifier.
 
@@ -77,7 +77,7 @@ import SequenceSrc from "!!raw-loader!@site/src/examples/ApplyingModifiers/Seque
 
 <InteractiveExample src={SequenceSrc} component={<Sequence />} />
 
-## Using `withDecay`
+## Starting the animation with delay
 
 As a cherry on top, we'll add a little bit of suspense by adding a slight delay before the animation begins. For this exact purpose, Reanimated comes with a `withDelay` modifier.
 
@@ -113,4 +113,4 @@ In this section, we learned how to create complex animations by using animation 
 
 ## What's next?
 
-In the next section, we're going to learn about handling interactions and gestures. Also, we'll get to know the `withDecay` animation function.
+In the next section, we're going to learn about handling `Tap` and `Pan` gestures. Also, we'll get to know the `withDecay` animation function.

@@ -3,7 +3,6 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 /** @type {import('@docusaurus/types').Config} */
@@ -92,6 +91,14 @@ const config = {
         appId: "ZYDVCHOETY",
         apiKey: "970f691c8f65d958052968251a7b5a19",
         indexName: "react-native-reanimated",
+      },
+      announcementBar: {
+        id: "beta_banner",
+        content:
+          "This is a beta version of the documentation. For stable version, please visit <a href='https://docs.swmansion.com/react-native-reanimated/'>docs.swmansion.com/react-native-reanimated</a>.",
+        backgroundColor: "#ffffff",
+        textColor: "#091E42",
+        isCloseable: false,
       },
     }),
   plugins: [

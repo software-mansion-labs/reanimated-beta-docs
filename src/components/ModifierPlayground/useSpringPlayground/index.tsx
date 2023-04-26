@@ -7,7 +7,7 @@ export default function useSpringPlayground() {
   const [damping, setDamping] = useState(10);
   const [mass, setMass] = useState(1);
   const [stiffness, setStiffness] = useState(100);
-  const [velocity, setVelocity] = useState(0);
+  // const [velocity, setVelocity] = useState(0);
   const [overshootClamping, setOvershootClamping] = useState(false);
   const [restDisplacementThreshold, setRestDisplacementThreshold] =
     useState(0.01);
@@ -18,12 +18,12 @@ export default function useSpringPlayground() {
       damping: ${damping},
       mass: ${mass},
       stiffness: ${stiffness},
-      velocity: ${velocity},
       overshootClamping: ${overshootClamping},
       restDisplacementThreshold: ${restDisplacementThreshold},
       restSpeedThreshold: ${restSpeedThreshold},
     })
-  `;
+    `;
+  // velocity: ${velocity},
 
   const controls = (
     <>
@@ -49,13 +49,13 @@ export default function useSpringPlayground() {
         value={stiffness}
         onChange={setStiffness}
       />
-      <Range
+      {/* <Range
         label="Velocity"
         min={-50}
         max={50}
         value={velocity}
         onChange={setVelocity}
-      />
+      /> */}
       <CheckboxOption
         label="Clamp"
         value={overshootClamping}
@@ -86,7 +86,7 @@ export default function useSpringPlayground() {
         damping,
         mass,
         stiffness,
-        velocity,
+        // velocity,
         overshootClamping,
         restDisplacementThreshold,
         restSpeedThreshold,
