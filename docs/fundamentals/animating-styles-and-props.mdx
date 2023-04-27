@@ -49,33 +49,14 @@ Luckily, the `useAnimatedStyle` hook comes to the rescue. It adds additional con
 
 Let's see it in action:
 
-```jsx {8-10,14}
-function App() {
-  const translateX = useSharedValue(0);
+import AnimatingStyles from "@site/src/examples/AnimatingStyles";
+import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles";
 
-  const handlePress = () => {
-    translateX.value += 50;
-  };
-
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: withSpring(translateX.value * 2) }],
-  }));
-
-  return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.box, animatedStyles]} />
-      <Button onPress={handlePress} title="Click me" />
-    </View>
-  );
-}
-```
+<CollapsibleCode showLines={[8, 29]} src={AnimatingStylesSrc} />
 
 `useAnimatedStyle` lets you access the value stored in a shared value. Thanks to that we could multiply the value by `2` before assigning it to `style`. This hook has one more advantage over passing animations to inline styles. It allows you to keep all the animation-related logic in one place.
 
 You can see it in action in the example below:
-
-import AnimatingStyles from "@site/src/examples/AnimatingStyles";
-import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles";
 
 <InteractiveExample src={AnimatingStylesSrc} component={<AnimatingStyles />} />
 
@@ -118,42 +99,14 @@ This approach works just fine but same as `useAnimatedStyle` for animating style
 
 So if we'd like to smoothly increase the radius of a circle by `10px` on each button press we could use `useAnimatedProps`:
 
-```jsx {10-12,21}
-const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+import AnimatingProps from "@site/src/examples/AnimatingProps";
+import AnimatingPropsSrc from "!!raw-loader!@site/src/examples/AnimatingProps";
 
-function App() {
-  const r = useSharedValue(50);
-
-  const handlePress = () => {
-    r.value += 10;
-  };
-
-  const animatedProps = useAnimatedProps(() => ({
-    r: withTiming(r.value),
-  }));
-
-  return (
-    <>
-      <Svg>
-        <AnimatedCircle
-          cx="50%"
-          cy="50%"
-          fill="violet"
-          animatedProps={animatedProps}
-        />
-      </Svg>
-      <Button onPress={handlePress} title="Click me" />
-    </>
-  );
-}
-```
+<CollapsibleCode showLines={[9, 39]} src={AnimatingPropsSrc} />
 
 In a function which `useAnimatedProps` takes as an argument, we return an object with all the props we'd like to animate. Then we can pass the value which `useAnimatedProps` returns to the `animatedProps` prop of an Animated component.
 
 Check out the full example below:
-
-import AnimatingProps from "@site/src/examples/AnimatingProps";
-import AnimatingPropsSrc from "!!raw-loader!@site/src/examples/AnimatingProps";
 
 <InteractiveExample
   src={AnimatingPropsSrc}
