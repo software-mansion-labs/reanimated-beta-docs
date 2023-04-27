@@ -6,7 +6,7 @@
     top: -5vh;
     right: 15vw;
 
-    animation: 45s flowSun infinite linear;
+    animation: 30s flowSun infinite linear;
 }
 
 .sun {
@@ -54,22 +54,21 @@
       transform: rotate(0) translate(0, 0);
     }
 
-    75% {
+    85% {
         transform: rotate(45deg) translate(60%, 0);
         opacity: 1;
     }
 
-    80% {
+    90% {
         transform: rotate(45deg) translate(60%, 0);
-
         opacity: 0;
     }
 
-    80.001% {
+    90.001% {
         transform: rotate(0) translate(0, 0);
     }
 
-    90% {
+    95% {
         opacity: 1;
     }
 
@@ -88,12 +87,12 @@
         }
 
         75% {
-            transform: rotate(45deg) translate(95%, 0);
+            transform: rotate(30deg) translate(95%, 0);
             opacity: 1;
         }
 
         80% {
-            transform: rotate(45deg) translate(95%, 0);
+            transform: rotate(30deg) translate(95%, 0);
 
             opacity: 0;
         }

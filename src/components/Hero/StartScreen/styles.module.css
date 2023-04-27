@@ -7,21 +7,6 @@
     background-color: transparent;
 }
 
-.heroBackground {
-    position: absolute;
-    top: 0;
-
-    width: 100%;
-    height: 100vh;
-    min-height: 70vw;
-    overflow: hidden;
-    z-index: -100;
-}
-
-[data-theme="dark"] .heroBackground {
-    background: linear-gradient(180deg, #B07EFF 0%, #232736 85%);
-}
-
 .heading {
     position: absolute;
     margin-top: 25vh;
@@ -74,18 +59,34 @@
 
 @media (max-width: 1124px) and (max-height: 768px) {
     .hero {
-        min-height: 768px;
+        min-height: 660px;
     }
 }
 
 @media (min-height: 768px) and (max-width: 768px) {
+    .hero {
+        position: relative;
+        top: 0;
+
+        height: calc(100vh - var(--ifm-navbar-height));
+    }
+
+    /* Height of hero: 100vh - height of navbar - possible height of announcement bar.
+     * Using variable --docusaurus-announcement-bar-height is not possible here, as the height
+     * of announcement bar is being calculated automatically there.
+     */
+    .hero[data-announcement-bar="true"] {
+        height: calc(100vh - var(--ifm-navbar-height) - 2.5em);
+    }
+
     .heading {
         position: static;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        height: 100vh;
+        margin-top: 64px;
+        height: 100%;
     }
 
     .foregroundLabel {
@@ -94,9 +95,8 @@
         align-items: center;
 
         width: 100%;
-        height: 80%;
+        height: 90%;
 
-        margin-top: 64px;
         margin-left: 0;
     }
 
@@ -107,6 +107,6 @@
         align-self: center;
 
         width: fit-content;
-        margin-top: 6em;
+        /*margin-top: 6em;*/
     }
 }

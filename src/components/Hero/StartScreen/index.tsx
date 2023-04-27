@@ -3,10 +3,12 @@ import styles from "./styles.module.css";
 import SelectedLabel from "@site/src/components/Hero/SelectedLabel";
 import HomepageButton from "@site/src/components/HomepageButton";
 import Horse from "@site/src/components/Hero/Horse";
+import { useAnnouncementBar } from "@docusaurus/theme-common/internal";
 
 const StartScreen = () => {
+  const { isActive } = useAnnouncementBar();
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} data-announcement-bar={isActive}>
       <div className={styles.foregroundLabel}>
         <div className={styles.heading}>
           <div className={styles.upperHeading}>
