@@ -14,8 +14,7 @@ const StartScreen = () => {
               React Native <SelectedLabel>Reanimated</SelectedLabel>
             </h1>
             <h2 className={styles.subheadingLabel}>
-              Where declarative animations meet native performance at{" "}
-              <span>120 fps</span>
+              Where declarative animations meet native performance at 120 fps
             </h2>
           </div>
           <div className={styles.lowerHeading}>
