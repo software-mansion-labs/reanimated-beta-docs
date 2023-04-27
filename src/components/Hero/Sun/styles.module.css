@@ -18,20 +18,23 @@
 }
 
 @media (max-width: 1680px) {
-    .sun {
-        right: 25vw;
+    .sunAnimation {
+        top: -15vh;
+        right: 15vw;
+        scale: 80%;
     }
 }
 
 @media (max-width: 768px) {
-    .sun {
-        top: -15vh;
-        scale: 75%;
+    .sunAnimation {
+        top: -20vh;
+        right: 0;
+        scale: 60%;
     }
 }
 
 @media (max-width: 420px) {
-    .sun {
+    .sunAnimation {
         scale: 75%;
         top: -15vh;
         right: -15vw;
@@ -39,7 +42,7 @@
 }
 
 @media (max-width: 290px) {
-    .sun {
+    .sunAnimation {
         scale: 50%;
         top: -20vh;
         right: -30vw;
@@ -72,5 +75,39 @@
 
     100% {
         transform: rotate(0) translate(0, 0);
+    }
+}
+
+/* On smaller devices, the sun is still visible behind the swirl on translate(60%, 0) transformation.
+ * To prevent this behavior, we need to increase this translation to 95% on x-axis.
+ */
+@media (max-width: 1680px) {
+    @keyframes flowSun {
+        0% {
+            transform: rotate(0) translate(0, 0);
+        }
+
+        75% {
+            transform: rotate(45deg) translate(95%, 0);
+            opacity: 1;
+        }
+
+        80% {
+            transform: rotate(45deg) translate(95%, 0);
+
+            opacity: 0;
+        }
+
+        80.001% {
+            transform: rotate(0) translate(0, 0);
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: rotate(0) translate(0, 0);
+        }
     }
 }

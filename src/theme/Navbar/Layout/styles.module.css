@@ -23,6 +23,10 @@
   z-index: -100;
 }
 
+.heroBackground[data-announcement-bar="true"] {
+  top: var(--docusaurus-announcement-bar-height);
+}
+
 @media (max-width: 1124px) and (max-height: 768px) {
   .heroBackground {
     min-height: 768px;

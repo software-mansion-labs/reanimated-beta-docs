@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import {
+  useAnnouncementBar,
   useHideableNavbar,
   useNavbarMobileSidebar,
 } from "@docusaurus/theme-common/internal";
@@ -25,9 +26,12 @@ function NavbarBackdrop(props) {
   );
 }
 
-const LandingBackground = () => {
+const LandingBackground = ({ isAnnouncementBarActive = false }) => {
   return (
-    <div className={styles.heroBackground}>
+    <div
+      className={styles.heroBackground}
+      data-announcement-bar={isAnnouncementBarActive}
+    >
       <Clouds />
       <Stars />
 
@@ -51,13 +55,16 @@ export default function NavbarLayout({ children }) {
     navbar: { hideOnScroll, style },
   } = useThemeConfig();
   const location = useLocation();
+  const { isActive: announcementBarActive } = useAnnouncementBar();
   const mobileSidebar = useNavbarMobileSidebar();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
 
   const isDocumentation = location.pathname.startsWith("/docs");
   return (
     <div>
-      {!isDocumentation && <LandingBackground />}
+      {!isDocumentation && (
+        <LandingBackground isAnnouncementBarActive={announcementBarActive} />
+      )}
       <nav
         ref={navbarRef}
         aria-label={translate({
