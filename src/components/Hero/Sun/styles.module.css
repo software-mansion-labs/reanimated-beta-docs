@@ -28,24 +28,16 @@
 @media (max-width: 768px) {
     .sunAnimation {
         top: -20vh;
-        right: 0;
+        right: -5vh;
         scale: 60%;
     }
 }
 
 @media (max-width: 420px) {
     .sunAnimation {
-        scale: 75%;
-        top: -15vh;
+        top: -35vh;
         right: -15vw;
-    }
-}
-
-@media (max-width: 290px) {
-    .sunAnimation {
-        scale: 50%;
-        top: -20vh;
-        right: -30vw;
+        scale: 40%
     }
 }
 
@@ -54,22 +46,8 @@
       transform: rotate(0) translate(0, 0);
     }
 
-    85% {
+    50% {
         transform: rotate(45deg) translate(60%, 0);
-        opacity: 1;
-    }
-
-    90% {
-        transform: rotate(45deg) translate(60%, 0);
-        opacity: 0;
-    }
-
-    90.001% {
-        transform: rotate(0) translate(0, 0);
-    }
-
-    95% {
-        opacity: 1;
     }
 
     100% {
@@ -86,22 +64,8 @@
             transform: rotate(0) translate(0, 0);
         }
 
-        75% {
+        50% {
             transform: rotate(30deg) translate(95%, 0);
-            opacity: 1;
-        }
-
-        80% {
-            transform: rotate(30deg) translate(95%, 0);
-
-            opacity: 0;
-        }
-
-        80.001% {
-            transform: rotate(0) translate(0, 0);
-        }
-
-        90% {
             opacity: 1;
         }
 

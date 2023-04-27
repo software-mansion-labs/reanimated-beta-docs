@@ -1,6 +1,6 @@
 .clouds {
     position: relative;
-    /*z-index: -1;*/
+    z-index: 1;
 }
 
 [data-theme="dark"] .clouds {
