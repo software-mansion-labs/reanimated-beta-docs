@@ -24,12 +24,13 @@
 }
 
 .subheadingLabel {
-    font-size: 32px;
     margin-top: 32px;
     margin-bottom: 56px;
     width: 600px;
 
     color: var(--swm-landing-heading);
+    font-size: 32px;
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {

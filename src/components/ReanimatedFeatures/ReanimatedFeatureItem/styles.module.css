@@ -18,5 +18,6 @@
 
 .featureItem h3 {
     margin-bottom: 40px;
+    font-weight: 600;
     text-transform: uppercase;
 }

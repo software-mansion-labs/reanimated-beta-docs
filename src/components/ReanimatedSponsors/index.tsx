@@ -22,25 +22,23 @@ const ReanimatedSponsors = () => {
   };
 
   return (
-    <div className={styles.sponsors}>
-      <div className={styles.sponsorsWrapper}>
-        <div className={styles.sponsorsLabel}>
-          <h3>Sponsors</h3>
-          <p>
-            Thanks to our Sponsors we can still develop our library and make the
-            React Native world a better place!
-          </p>
-        </div>
-        <div className={styles.sponsorsBrands}>
-          <ThemedImage
-            sources={sponsorsLogos.expo}
-            className={styles.sponsorsBrand}
-          />
-          <ThemedImage
-            sources={sponsorsLogos.shopify}
-            className={styles.sponsorsBrand}
-          />
-        </div>
+    <div className={styles.sponsorsWrapper}>
+      <div className={styles.sponsorsLabel}>
+        <h3>Sponsors</h3>
+        <p>
+          Thanks to our Sponsors we can still develop our library and make the
+          React Native world a better place!
+        </p>
+      </div>
+      <div className={styles.sponsorsBrands}>
+        <ThemedImage
+          sources={sponsorsLogos.expo}
+          className={styles.sponsorsBrand}
+        />
+        <ThemedImage
+          sources={sponsorsLogos.shopify}
+          className={styles.sponsorsBrand}
+        />
       </div>
     </div>
   );
