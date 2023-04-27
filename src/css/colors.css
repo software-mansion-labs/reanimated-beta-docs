@@ -188,6 +188,9 @@
   --swm-searchbar-text-color: var(--swm-navy-light-60);
   --swm-searchbar-background: var(--swm-off-white);
 
+  /* Sidebar */
+  --swm-sidebar-menu-color: var(--swm-navy-light-60);
+
   /* Landing */
   --swm-landing-heading: var(--ifm-font-color-base);
   --swm-landing-heading-selected: var(--swm-purple-light-100);
@@ -292,6 +295,9 @@
   /* Search */
   --swm-searchbar-text-color: var(--swm-navy-light-40);
   --swm-searchbar-background: var(--swm-off-background);
+
+  /* Sidebar */
+  --swm-sidebar-menu-color: var(--swm-navy-light-20);
 
   /* Landing */
   --swm-landing-heading: var(--swm-off-white);

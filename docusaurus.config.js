@@ -11,7 +11,7 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://beta-docs.swmansion.com",
+  url: "https://reanimated-beta-docs.swmansion.com",
 
   // Change this to /react-native-reanimated/ when deploying to GitHub pages
   baseUrl: "/",
@@ -41,6 +41,8 @@ const config = {
           breadcrumbs: false,
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: false,
+          editUrl:
+            "https://github.com/software-mansion-labs/reanimated-3-docs/edit/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/index.css"),
@@ -70,7 +72,7 @@ const config = {
             label: "Docs",
           },
           {
-            href: "https://github.com/software-mansion/react-native-reanimated/tree/main/docs",
+            href: "https://github.com/software-mansion/react-native-reanimated/",
             position: "right",
             className: "header-github",
             "aria-label": "GitHub repository",
