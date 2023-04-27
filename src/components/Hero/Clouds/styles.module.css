@@ -46,26 +46,18 @@
         transform: translate(0, 0);
     }
 
-    33% {
-        transform: translate(-75%, 0);
+    50% {
+        transform: translate(-150%, 0);
         opacity: 1;
     }
 
-    33.1% {
-        opacity: 0;
-    }
-
-    50% {
+    50.001% {
         opacity: 0;
         transform: translate(100%, 0);
     }
 
-    50.1% {
+    50.002% {
         opacity: 1;
-    }
-
-    75% {
-        transform: translate(50%, 0);
     }
 
     100% {
