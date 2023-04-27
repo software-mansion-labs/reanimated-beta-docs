@@ -35,26 +35,28 @@ const HeroSun = () => {
   const { colorMode } = useColorMode();
   /* TODO: Implement sunset animation for svg */
   return (
-    <div className={styles.sun}>
-      <svg
-        width="344"
-        height="343"
-        viewBox="0 0 344 343"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="172.015"
-          cy="171.404"
-          r="171.386"
-          transform="rotate(-52.7839 172.015 171.404)"
-          fill="url(#sunGradient)"
-        />
-        <defs>
-          {colorMode === "light" && sunLightDefs}
-          {colorMode === "dark" && sunDarkDefs}
-        </defs>
-      </svg>
+    <div className={styles.sunAnimation}>
+      <div className={styles.sun}>
+        <svg
+          width="344"
+          height="343"
+          viewBox="0 0 344 343"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="172.015"
+            cy="171.404"
+            r="171.386"
+            transform="rotate(-52.7839 172.015 171.404)"
+            fill="url(#sunGradient)"
+          />
+          <defs>
+            {colorMode === "light" && sunLightDefs}
+            {colorMode === "dark" && sunDarkDefs}
+          </defs>
+        </svg>
+      </div>
     </div>
   );
 };

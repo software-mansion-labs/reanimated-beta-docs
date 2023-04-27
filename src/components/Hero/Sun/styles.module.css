@@ -1,11 +1,23 @@
-.sun {
-    position: absolute;
+.sunAnimation {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
     top: -5vh;
     right: 15vw;
+
+    animation: 20s flowSun infinite linear;
+}
+
+.sun {
+    position: absolute;
+    top: 0;
+    right: 0;
+
     z-index: 0;
 }
 
-@media (min-width: 1680px) {
+@media (max-width: 1680px) {
     .sun {
         right: 25vw;
     }
@@ -31,5 +43,34 @@
         scale: 50%;
         top: -20vh;
         right: -30vw;
+    }
+}
+
+@keyframes flowSun {
+    0% {
+      transform: rotate(0) translate(0, 0);
+    }
+
+    75% {
+        transform: rotate(45deg) translate(60%, 0);
+        opacity: 1;
+    }
+
+    80% {
+        transform: rotate(45deg) translate(60%, 0);
+
+        opacity: 0;
+    }
+
+    80.001% {
+        transform: rotate(0) translate(0, 0);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(0) translate(0, 0);
     }
 }

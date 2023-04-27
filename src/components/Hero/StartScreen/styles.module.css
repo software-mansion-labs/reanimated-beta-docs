@@ -32,7 +32,6 @@
 }
 
 .headingLabel {
-    font-family: var(--swm-title-font);
     font-size: 64px;
     font-weight: 700;
 
@@ -40,18 +39,12 @@
 }
 
 .subheadingLabel {
-    font-family: var(--swm-title-font);
     font-size: 32px;
     margin-top: 32px;
     margin-bottom: 56px;
     width: 600px;
 
     color: var(--swm-landing-heading);
-}
-
-.subheadingLabel span {
-    padding-bottom: 2px;
-    border-bottom: 4px solid var(--swm-landing-heading);
 }
 
 @media (max-width: 768px) {
