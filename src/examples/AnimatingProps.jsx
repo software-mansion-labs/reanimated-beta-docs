@@ -16,9 +16,11 @@ export default function App() {
     r.value += 10;
   };
 
+  // highlight-start
   const animatedProps = useAnimatedProps(() => ({
     r: withTiming(r.value),
   }));
+  // highlight-end
 
   return (
     <View style={styles.container}>
@@ -27,6 +29,7 @@ export default function App() {
           cx="50%"
           cy="50%"
           fill="#b58df1"
+          // highlight-next-line
           animatedProps={animatedProps}
         />
       </Svg>

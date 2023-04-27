@@ -1,0 +1,114 @@
+---
+sidebar_position: 2
+---
+
+# useAnimatedStyle
+
+`useAnimatedStyle` lets you create a styles object, similar to `StyleSheet` styles, which can be animated using [shared values](/docs/fundamentals/glossary#shared-value).
+
+Styles defined using `useAnimatedStyle` are automatically recalculated when an associated shared value is changed.
+
+## Reference
+
+```javascript
+import { useAnimatedStyle } from "react-native-reanimated";
+
+function App() {
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      opacity: sv.value ? 1 : 0;
+    };
+  });
+
+  // ...
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+type AnimatedStyleProp<T> = AnimateStyle<T> | RegisteredStyle<AnimateStyle<T>>;
+
+function useAnimatedStyle<
+  T extends AnimatedStyleProp<ViewStyle | ImageStyle | TextStyle>
+>(updater: () => T, deps?: DependencyList | null): T;
+```
+
+</details>
+
+### Arguments
+
+#### `updater`
+
+A function returning an object with style properties you want to animate.
+
+#### `dependencies` <Optional/>
+
+An optional array of dependencies. dependant on the React state. The dependencies have to be listed inline as `[dep1, dep2, dep3]` with a constant number of items.
+
+## Returns
+
+`useAnimatedStyle` returns an animated style object which has to be passed to the `style` property of an [Animated component](/docs/fundamentals/glossary#animated-component) that you want to animate.
+
+## Example
+
+import AnimatingStyles from "@site/src/examples/AnimatingStyles";
+import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles";
+
+<InteractiveExample
+  src={AnimatingStylesSrc}
+  component={<AnimatingStyles />}
+  showCode
+/>
+
+## Caveats
+
+- Only define the dynamic part of your styles with `useAnimatedStyle` and keep the static ones separately using `StyleSheet` API or (if you really have to) with inline styles. That way you avoid lots of unnecessary style recalculations. Static and dynamic styles can be freely mixed like so:
+
+```jsx
+function App() {
+  const animatedStyles = useAnimatedStyle(() => ({
+    offset: sv.value,
+  }));
+
+  // highlight-next-line
+  return <Animated.View style={[styles.box, animatedStyles]} />;
+}
+
+const styles = StyleSheet.create({
+  box: {
+    height: 120,
+    width: 120,
+    backgroundColor: "#b58df1",
+  },
+});
+```
+
+- Animated styles can't be shared between views. Each view must have its own animated style. So for example, sharing an animated opacity between views won't work:
+
+```jsx
+function App() {
+  // ...
+  const animatedOpacity = useAnimatedStyle(() => ({
+    opacity: sv.value ? 1 : 0,
+  }));
+
+  return (
+    <>
+      <Animated.View style={[styles.blueBox, animatedOpacity]} />
+      <Animated.View style={[styles.redBox, animatedOpacity]} /> // this won't work!
+    </>
+  );
+}
+```
+
+## Platform compatibility
+
+<div class="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
