@@ -20,9 +20,8 @@
     flex-direction: column;
 
     position: relative;
-    left: -12px;
 
-    width: calc(60% + 12px);
+    width: calc(60% + 24px);
     margin: 0 auto;
 
     color: var(--swm-landing-sponsors-color);
@@ -32,7 +31,7 @@
     .sponsorsLabel {
         justify-content: center;
 
-        width: calc(75% + 12px);
+        width: calc(75% + 24px);
         margin: 0 auto;
     }
 }
