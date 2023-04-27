@@ -35,6 +35,10 @@ footer p.landing {
   color: var(--swm-brand-copyright-color);
 }
 
+.footer__brand a {
+  text-decoration: none;
+}
+
 .landing .footer__brand {
   color: var(--swm-brand-copyright-color-landing);
 }
