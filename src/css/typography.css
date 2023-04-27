@@ -11,21 +11,9 @@
 }
 
 @font-face {
-  font-family: "Lexend";
-  src: url("/static/font/Lexend-Bold.ttf") format("truetype");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Lexend";
-  src: url("/static/font/Lexend-SemiBold.ttf") format("truetype");
+  font-family: "Aeonik";
+  src: url("/static/font/Aeonik-Bold.otf") format("opentype");
   font-weight: 600;
-}
-
-@font-face {
-  font-family: "Lexend";
-  src: url("/static/font/Lexend-Light.ttf") format("truetype");
-  font-weight: 300;
 }
 
 @font-face {
@@ -77,19 +65,16 @@ h2,
 h3,
 h4,
 h5 {
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 500;
 }
 
 h6 {
   font-family: var(--swm-code-font);
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 ul[role="tablist"] {
   font-family: var(--swm-title-font);
-  font-weight: 600;
 }
 
 code {
@@ -113,6 +98,5 @@ code {
 /* Sidebar */
 [class*="menu__list-item-collapsible"] a {
   font-family: var(--swm-title-font);
-  font-weight: 600;
   font-size: 16px;
 }
