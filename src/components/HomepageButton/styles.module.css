@@ -35,14 +35,6 @@
     stroke-linejoin: round;
 }
 
-.homepageButton a {
-    color: inherit;
-    text-decoration: none;
-    transition: none;
-
-    width: 100%;
-}
-
 .arrow {
     transition: left 0.3s;
 }
