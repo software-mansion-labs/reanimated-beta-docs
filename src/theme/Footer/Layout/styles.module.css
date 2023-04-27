@@ -33,3 +33,21 @@ footer {
 .sponsorsBackground svg:last-child {
     left: 50%;
 }
+
+.sponsorsBackgroundStars {
+    animation: 5s starBlink infinite;
+}
+
+@keyframes starBlink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

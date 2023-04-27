@@ -17,8 +17,10 @@ export default function FooterLayout({ style, links, logo, copyright }) {
     >
       {!isDocumentation && (
         <div className={styles.sponsorsBackground}>
-          <Stars />
-          <Stars />
+          <div className={styles.sponsorsBackgroundStars}>
+            <Stars />
+            <Stars />
+          </div>
         </div>
       )}
       <div className="container container-fluid">

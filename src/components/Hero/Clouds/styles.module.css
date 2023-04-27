@@ -7,10 +7,18 @@
     opacity: 0.25;
 }
 
+.cloudAnimation {
+    position: relative;
+}
+
 .upperCloud {
     position: absolute;
     top: 10vh;
     left: -3vw;
+}
+
+.upperCloudAnimation {
+    animation: 30s flowClouds infinite linear;
 }
 
 .rightCloud {
@@ -19,8 +27,48 @@
     left: 35vw;
 }
 
+.rightCloudAnimation {
+    animation: 45s flowClouds infinite linear;
+}
+
 .lowerCloud {
     position: absolute;
     top: 45vh;
-    left: 1vw;
+    left: 5vw;
+}
+
+.lowerCloudAnimation {
+    animation: 35s flowClouds infinite linear;
+}
+
+@keyframes flowClouds {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    33% {
+        transform: translate(-75%, 0);
+        opacity: 1;
+    }
+
+    33.1% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+        transform: translate(100%, 0);
+    }
+
+    50.1% {
+        opacity: 1;
+    }
+
+    75% {
+        transform: translate(50%, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
