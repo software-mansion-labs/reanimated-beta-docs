@@ -12,13 +12,13 @@ sidebar_position: 1
 import { useSharedValue } from "react-native-reanimated";
 
 function App() {
-  const sharedValue = useSharedValue(100);
+  const sv = useSharedValue(100);
 
   // read a shared value
-  console.log(sharedValue.value);
+  console.log(sv.value);
 
   // and modify it
-  sharedValue.value += 50;
+  sv.value += 50;
 }
 ```
 
@@ -54,16 +54,16 @@ import SharedValueSrc from "!!raw-loader!@site/src/examples/SharedValue";
 
 ## Caveats
 
-- When you change the `sharedValue.value` Reanimated will update the styles and keep the shared value in sync between the threads. However, this won't trigger a typical React re-render because a shared value is a plain JavaScript object.
-- When you change the `sharedValue.value` update on the [UI thread](/docs/fundamentals/glossary#ui-thread) will happen synchronously. On the other hand, on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) update is asynchronous. This means when you try to immediately log the `value` after the change it will log the previously stored value.
+- When you change the `sv.value` Reanimated will update the styles and keep the shared value in sync between the threads. However, this won't trigger a typical React re-render because a shared value is a plain JavaScript object.
+- When you change the `sv.value` update on the [UI thread](/docs/fundamentals/glossary#ui-thread) will happen synchronously. On the other hand, on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) update is asynchronous. This means when you try to immediately log the `value` after the change it will log the previously stored value.
 
 ```javascript
 function App() {
-  const sharedValue = useSharedValue(100); // initially set 100
+  const sv = useSharedValue(100); // initially set 100
 
-  sharedValue.value += 50; // changing value stored in a shared value
+  sv.value += 50; // changing value stored in a shared value
 
-  console.log(value); // will still log 100
+  console.log(sv.value); // will still log 100
 }
 ```
 
@@ -71,7 +71,7 @@ function App() {
 
 ```javascript
 function App() {
-  let { value } = sharedValue; // don't do this
+  let { value } = sv; // don't do this
 
   console.log(value); // you can read the value just fine
 

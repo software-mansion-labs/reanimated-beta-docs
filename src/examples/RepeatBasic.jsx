@@ -1,3 +1,4 @@
+import React from "react";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -6,7 +7,6 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { StyleSheet, View } from "react-native";
-import React, { useEffect } from "react";
 
 const duration = 2000;
 const easing = Easing.bezier(0.25, -0.5, 0.25, 1);
@@ -14,7 +14,7 @@ const easing = Easing.bezier(0.25, -0.5, 0.25, 1);
 export default function App() {
   const sv = useSharedValue(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // highlight-next-line
     sv.value = withRepeat(withTiming(1, { duration, easing }), -1);
   }, []);
