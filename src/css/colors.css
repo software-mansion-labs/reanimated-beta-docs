@@ -180,6 +180,9 @@
   /* Search */
   --swm-searchbar-text-color: var(--swm-navy-light-60);
   --swm-searchbar-background: var(--swm-off-white);
+
+  /* Sidebar */
+  --swm-sidebar-menu-color: var(--swm-navy-light-60);
 }
 
 :root[data-theme="dark"] {
@@ -267,6 +270,9 @@
   /* Search */
   --swm-searchbar-text-color: var(--swm-navy-light-40);
   --swm-searchbar-background: var(--swm-off-background);
+
+  /* Sidebar */
+  --swm-sidebar-menu-color: var(--swm-navy-light-20);
 }
 
 code {

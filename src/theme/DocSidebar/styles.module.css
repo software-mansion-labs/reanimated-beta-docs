@@ -49,7 +49,7 @@
 }
 
 [class*="menu__link"]:not(.menu__link--sublist) {
-  --ifm-menu-color: var(--swm-navy-light-40);
+  --ifm-menu-color: var(--swm-sidebar-menu-color);
   background-color: transparent;
 
   transition: color 0.25s;
