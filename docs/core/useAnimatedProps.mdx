@@ -4,30 +4,61 @@ sidebar_position: 3
 
 # useAnimatedProps
 
-`useAnimatedProps` lets you
+`useAnimatedProps` lets you animate properties
 
 ## Reference
 
 ```javascript
+import { useAnimatedProps } from "react-native-reanimated";
 
+function App() {
+  const animatedProps = useAnimatedProps(() => {
+    return {
+      opacity: sv.value ? 1 : 0;
+    };
+  });
+
+  return <Animated.View animatedProps={animatedProps} />
+}
 ```
 
 <details>
 <summary>Type definitions</summary>
 
 ```typescript
-
+function useAnimatedProps<T extends {}>(
+  updater: () => Partial<T>,
+  deps?: DependencyList | null,
+  adapters?: PropsAdapterFunction | PropsAdapterFunction[] | null
+): Partial<T>;
 ```
 
 </details>
 
 ### Arguments
 
-#### ``
+#### `updater`
+
+A function returning an object with properties you want to animate.
+
+#### `dependencies` <Optional/>
+
+An optional array of dependencies.
+
+Only used when using Reanimated [without the Babel plugin on the Web](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/web-support#web-without-a-babel-plugin).
 
 ## Returns
 
+`useAnimatedProps` returns an animated props object which has to be passed to `animatedProps` property of an [Animated component](/docs/fundamentals/glossary#animated-component) that you want to animate.
+
 ## Example
+
+import AnimatingProps from "@site/src/examples/AnimatingProps";
+import AnimatingPropsSrc from "!!raw-loader!@site/src/examples/AnimatingProps";
+
+<InteractiveExample src={AnimatingPropsSrc} component={<AnimatingProps />} />
+
+## Caveats
 
 ## Platform compatibility
 
