@@ -4,6 +4,7 @@ import InteractiveExample from "@site/src/components/InteractiveExample";
 import ModifierPlayground from "@site/src/components/ModifierPlayground";
 import CollapsibleCode from "@site/src/components/CollapsibleCode";
 import Optional from "@site/src/components/Optional";
+import Indent from "@site/src/components/Indent";
 
 export default {
   // Re-use the default mapping
@@ -14,4 +15,5 @@ export default {
   ModifierPlayground,
   CollapsibleCode,
   Optional,
+  Indent,
 };
