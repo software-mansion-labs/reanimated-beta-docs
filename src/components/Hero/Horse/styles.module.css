@@ -57,6 +57,10 @@
 .variantB {
     visibility: hidden;
     animation: 0.5s show infinite;
+
+    /* Each delay of animation (where delay is ~0.045) is multiplied by 2, 3, 4...,
+     * where the multiplier is a position of the frame (except first frame).
+     */
     animation-delay: 0.045s;
 }
 
@@ -116,6 +120,7 @@
 
 @keyframes show {
     0%   { visibility: visible;}
+    /* 0.5 second divided by 11 frames. */
     4.54%  { visibility: visible; }
     10%  { visibility: hidden; }
     100% { visibility: hidden; }

@@ -18,7 +18,7 @@
 }
 
 .upperCloudAnimation {
-    animation: 30s flowClouds infinite linear;
+    animation: 45s flowClouds infinite linear;
 }
 
 .rightCloud {
@@ -28,7 +28,7 @@
 }
 
 .rightCloudAnimation {
-    animation: 45s flowClouds infinite linear;
+    animation: 75s flowClouds infinite linear;
 }
 
 .lowerCloud {
@@ -38,7 +38,7 @@
 }
 
 .lowerCloudAnimation {
-    animation: 35s flowClouds infinite linear;
+    animation: 60s flowClouds infinite linear;
 }
 
 @keyframes flowClouds {
