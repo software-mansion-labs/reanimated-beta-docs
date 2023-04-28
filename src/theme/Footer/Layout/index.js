@@ -1,13 +1,12 @@
 import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import { useLocation } from "@docusaurus/router";
 
 import Stars from "@site/static/img/stars-footer.svg";
+import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 
 export default function FooterLayout({ style, links, logo, copyright }) {
-  const location = useLocation();
-  const isDocumentation = location.pathname.startsWith("/docs");
+  const { isDocumentation } = useDocumentationPath();
 
   return (
     <footer

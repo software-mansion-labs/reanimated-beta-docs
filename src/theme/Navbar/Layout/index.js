@@ -9,12 +9,12 @@ import {
 import { translate } from "@docusaurus/Translate";
 import NavbarMobileSidebar from "@theme/Navbar/MobileSidebar";
 import styles from "./styles.module.css";
-import { useLocation } from "@docusaurus/router";
 import Clouds from "@site/src/components/Hero/Clouds";
 import Stars from "@site/src/components/Hero/Stars";
 import Sun from "@site/src/components/Hero/Sun";
 import Swirl from "@site/src/components/Hero/Swirl";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 
 function NavbarBackdrop(props) {
   return (
@@ -54,12 +54,11 @@ export default function NavbarLayout({ children }) {
   const {
     navbar: { hideOnScroll, style },
   } = useThemeConfig();
-  const location = useLocation();
   const { isActive: announcementBarActive } = useAnnouncementBar();
   const mobileSidebar = useNavbarMobileSidebar();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
+  const { isDocumentation } = useDocumentationPath();
 
-  const isDocumentation = location.pathname.startsWith("/docs");
   return (
     <div>
       {!isDocumentation && (

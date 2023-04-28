@@ -31,16 +31,13 @@ const swirlDarkDefs = (
 );
 
 const HeroSwirl = () => {
-  const [windowSize, setWindowSize] = useState([
-    window.innerWidth,
-    window.innerHeight,
-  ]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const { colorMode } = useColorMode();
 
   useEffect(() => {
     const handleWindowResize = () => {
-      setWindowSize([window.innerWidth, window.innerHeight]);
+      setWindowWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleWindowResize);
@@ -52,9 +49,12 @@ const HeroSwirl = () => {
 
   return (
     <div className={styles.swirl}>
+      {/* As the screen width decreases, it would be better to increase the width of the swirl on mobile devices.
+       * Thus, if the screen width is below 997 pixels, multiply the width of the swirl 1.8 times,
+       * instead of multiplying it 1.1 times.
+       */}
       <svg
-        width={windowSize[0] * (windowSize[0] < 996 ? 1.8 : 1.1)}
-        // height={windowSize[1]}
+        width={windowWidth * (windowWidth < 997 ? 1.8 : 1.1)}
         viewBox="0 0 1653 1048"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

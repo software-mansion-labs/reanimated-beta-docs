@@ -30,22 +30,21 @@ const HomepageButton: React.FC<{
   enlarged = false,
 }) => {
   return (
-    <div
-      className={clsx(styles.homepageButton, backgroundStyling, borderStyling)}
-      onClick={() => {
-        /* Unfortunately, CSS behaves strangely when the whole div is inside the <a> tag.
-         * For example, it doesn't allow to disable text-decoration for the <p> tag.
-         * Hence, it's possible to achieve similar result with `windows.open()`.
-         */
-        window.open(href, target);
-      }}
-    >
-      <p>{title}</p>
+    <a href={href} target={target} className={styles.homepageButtonLink}>
+      <div
+        className={clsx(
+          styles.homepageButton,
+          backgroundStyling,
+          borderStyling
+        )}
+      >
+        {title}
 
-      <div className={styles.arrow}>
-        <ArrowRight />
+        <div className={styles.arrow}>
+          <ArrowRight />
+        </div>
       </div>
-    </div>
+    </a>
   );
 };
 

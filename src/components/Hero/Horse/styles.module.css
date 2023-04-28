@@ -49,72 +49,51 @@
     }
 }
 
-.variantA {
+.variantAnimation {
     visibility: hidden;
     animation: 0.5s show infinite;
 }
 
+/* Each delay of animation (where delay is ~0.045) is multiplied by 2, 3, 4...,
+ * where the multiplier is a position of the frame (starting from the second frame).
+ */
 .variantB {
-    visibility: hidden;
-    animation: 0.5s show infinite;
-
-    /* Each delay of animation (where delay is ~0.045) is multiplied by 2, 3, 4...,
-     * where the multiplier is a position of the frame (except first frame).
-     */
     animation-delay: 0.045s;
 }
 
 .variantC {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.09s;
 }
 
 .variantD {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.135s;
 }
 
 .variantE {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.18s;
 }
 
 .variantF {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.228s;
 }
 
 .variantG {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.272s;
 }
 
 .variantH {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.32s;
 }
 
 .variantI {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.363s;
 }
 
 .variantJ {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.41s;
 }
 
 .variantK {
-    visibility: hidden;
-    animation: 0.5s show infinite;
     animation-delay: 0.454s;
 }
 

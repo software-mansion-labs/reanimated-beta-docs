@@ -15,8 +15,8 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
-import { useLocation } from "@docusaurus/router";
 import clsx from "clsx";
+import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -74,10 +74,9 @@ function AlgoliaSearchBar() {
 
 export default function NavbarContent() {
   const windowSize = useWindowSize();
-  const location = useLocation();
   const isMobile = windowSize === "mobile";
 
-  const isDocumentation = location.pathname.startsWith("/docs");
+  const { isDocumentation } = useDocumentationPath();
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -90,7 +89,9 @@ export default function NavbarContent() {
             <NavbarLogo />
           </div>
           <NavbarItems items={leftItems} />
-          {!searchBarItem && !isMobile && isDocumentation && <AlgoliaSearchBar />}
+          {!searchBarItem && !isMobile && isDocumentation && (
+            <AlgoliaSearchBar />
+          )}
           <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }

@@ -33,7 +33,6 @@ const sunDarkDefs = (
 
 const HeroSun = () => {
   const { colorMode } = useColorMode();
-  /* TODO: Implement sunset animation for svg */
   return (
     <div className={styles.sunAnimation}>
       <div className={styles.sun}>

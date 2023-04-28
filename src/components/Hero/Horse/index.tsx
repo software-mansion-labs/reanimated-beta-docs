@@ -12,22 +12,43 @@ import HorseVariantH from "@site/static/img/horse/8.svg";
 import HorseVariantI from "@site/static/img/horse/9.svg";
 import HorseVariantJ from "@site/static/img/horse/10.svg";
 import HorseVariantK from "@site/static/img/horse/11.svg";
+import clsx from "clsx";
 
 const HeroHorse = () => {
   return (
     <div className={styles.horse}>
       <div className={styles.horseAnimation}>
-        <HorseVariantA className={styles.variantA} />
-        <HorseVariantB className={styles.variantB} />
-        <HorseVariantC className={styles.variantC} />
-        <HorseVariantD className={styles.variantD} />
-        <HorseVariantE className={styles.variantE} />
-        <HorseVariantF className={styles.variantF} />
-        <HorseVariantG className={styles.variantG} />
-        <HorseVariantH className={styles.variantH} />
-        <HorseVariantI className={styles.variantI} />
-        <HorseVariantJ className={styles.variantJ} />
-        <HorseVariantK className={styles.variantK} />
+        <HorseVariantA className={styles.variantAnimation} />
+        <HorseVariantB
+          className={clsx(styles.variantAnimation, styles.variantB)}
+        />
+        <HorseVariantC
+          className={clsx(styles.variantAnimation, styles.variantC)}
+        />
+        <HorseVariantD
+          className={clsx(styles.variantAnimation, styles.variantD)}
+        />
+        <HorseVariantE
+          className={clsx(styles.variantAnimation, styles.variantE)}
+        />
+        <HorseVariantF
+          className={clsx(styles.variantAnimation, styles.variantF)}
+        />
+        <HorseVariantG
+          className={clsx(styles.variantAnimation, styles.variantG)}
+        />
+        <HorseVariantH
+          className={clsx(styles.variantAnimation, styles.variantH)}
+        />
+        <HorseVariantI
+          className={clsx(styles.variantAnimation, styles.variantI)}
+        />
+        <HorseVariantJ
+          className={clsx(styles.variantAnimation, styles.variantJ)}
+        />
+        <HorseVariantK
+          className={clsx(styles.variantAnimation, styles.variantK)}
+        />
       </div>
     </div>
   );

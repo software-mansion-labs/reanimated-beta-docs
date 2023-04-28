@@ -6,7 +6,7 @@
     top: -33vh;
     right: 35vw;
 
-    animation: 30s flowSun infinite linear;
+    animation: 45s flowSun infinite linear;
 }
 
 .sun {
@@ -27,7 +27,8 @@
 
 @media (max-width: 997px) {
     .sunAnimation {
-        right: 25vw;
+        top: -40vh;
+        right: 35vw;
         scale: 80%;
     }
 }
@@ -42,8 +43,8 @@
 
 @media (max-width: 420px) {
     .sunAnimation {
-        top: -45vh;
-        right: -15vw;
+        top: -47vh;
+        right: -5vw;
         scale: 40%
     }
 }
@@ -63,7 +64,7 @@
     }
 }
 
-/* Change the trajectory of sun on smaller devices, as the swirl is getting smaller as the width decreases. */
+/* Change the trajectory of sun on smaller devices, as the swirl is getting smaller when the width decreases. */
 @media (max-width: 1680px) {
     @keyframes flowSun {
         0% {
@@ -81,6 +82,23 @@
     }
 }
 
+@media (max-width: 997px) {
+    @keyframes flowSun {
+        0% {
+            transform: rotate(0) translate(0, 0);
+        }
+
+        80% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: rotate(15deg) translate(85%, 65%);
+        }
+    }
+}
+
 @media (max-width: 768px) {
     @keyframes flowSun {
         0% {
@@ -93,7 +111,7 @@
 
         to {
             opacity: 0;
-            transform: rotate(14.5deg) translate(80%, 60%);
+            transform: rotate(15deg) translate(80%, 60%);
         }
     }
 }

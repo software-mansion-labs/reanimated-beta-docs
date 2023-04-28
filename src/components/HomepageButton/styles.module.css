@@ -13,14 +13,18 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
-.homepageButton, .homepageButton a {
+a.homepageButtonLink:hover {
+    text-decoration: none !important;
+}
+
+.homepageButton {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 @media (max-width: 768px) {
-    .homepageButton {
+    .homepageButton, .homepageButtonLink {
         width: 100%;
     }
 }

@@ -6,14 +6,13 @@ import IconLightMode from "@theme/Icon/LightMode";
 import IconDarkMode from "@theme/Icon/DarkMode";
 import styles from "./styles.module.css";
 import { useColorScheme } from "@mui/material";
-import { useLocation } from "@docusaurus/router";
+import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 function ColorModeToggle({ className, buttonClassName, value, onChange }) {
   const isBrowser = useIsBrowser();
-  const location = useLocation();
   /* Color scheme switcher from MUI framework. */
   const { setMode } = useColorScheme();
+  const { isDocumentation } = useDocumentationPath();
 
-  const isDocumentation = location.pathname.startsWith("/docs");
   const title = translate(
     {
       message: "Switch between dark and light mode (currently {mode})",
