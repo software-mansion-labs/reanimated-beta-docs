@@ -19,7 +19,6 @@ export default function FooterLayout({ style, links, logo, copyright }) {
         <div className={styles.sponsorsBackground}>
           <div className={styles.sponsorsBackgroundStars}>
             <Stars />
-            <Stars />
           </div>
         </div>
       )}

@@ -15,7 +15,6 @@ footer {
     width: 100%;
     height: 50vh;
 
-    /*overflow: hidden;*/
     z-index: -100;
 }
 
@@ -23,15 +22,11 @@ footer {
     background: linear-gradient(180deg, #232736 0%, #B07EFF 143%);
 }
 
-.sponsorsBackground svg {
+.sponsorsBackgroundStars svg {
     position: absolute;
     bottom: 10%;
 
-    width: 50%;
-}
-
-.sponsorsBackground svg:last-child {
-    left: 50%;
+    width: 100%;
 }
 
 .sponsorsBackgroundStars {
