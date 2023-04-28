@@ -17,6 +17,13 @@
   z-index: 0;
 }
 
+@media (min-width: 2048px) {
+  .sunAnimation {
+    right: 38vw;
+  }
+}
+
+
 @media (max-width: 1680px) {
   .sunAnimation {
     top: -35vh;
@@ -61,6 +68,23 @@
   100% {
     opacity: 0;
     transform: rotate(15deg) translate(75%, 45%);
+  }
+}
+
+@media (min-width: 2048px) {
+  @keyframes flowSun {
+    0% {
+      transform: rotate(0) translate(0, 0);
+    }
+
+    80% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: rotate(10deg) translate(60%, 65%);
+    }
   }
 }
 
