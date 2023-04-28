@@ -1,48 +1,14 @@
-import React, { useEffect } from "react";
-import clsx from "clsx";
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import React from "react";
 import Layout from "@theme/Layout";
 
 import styles from "./index.module.css";
 import HomepageStartScreen from "@site/src/components/Hero/StartScreen";
 import ReanimatedFeatures from "@site/src/components/ReanimatedFeatures";
 import ReanimatedSponsors from "@site/src/components/ReanimatedSponsors";
-import { useLocation } from "@docusaurus/router";
-
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
-          >
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 export default function Home(): JSX.Element {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.log(location.pathname);
-  });
-
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="Where declarative animations meet native performance at 120 fps"
-    >
+    <Layout description="Where declarative animations meet native performance at 120 fps">
       <div className={styles.landingContainer}>
         <HomepageStartScreen />
         <ReanimatedFeatures />
