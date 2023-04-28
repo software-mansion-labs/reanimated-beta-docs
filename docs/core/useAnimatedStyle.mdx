@@ -6,20 +6,25 @@ sidebar_position: 2
 
 `useAnimatedStyle` lets you create a styles object, similar to `StyleSheet` styles, which can be animated using [shared values](/docs/fundamentals/glossary#shared-value).
 
-Styles defined using `useAnimatedStyle` automatically updates whenever an associated shared value or React state changes.
+Styles defined using `useAnimatedStyle` have to be passed to `style` property of an [Animated component](/docs/fundamentals/glossary#animated-component). Styles are automatically updated whenever an associated shared value or React state changes.
+
+For animating properties use [`useAnimatedProps`](/docs/core/useAnimatedProps) instead.
 
 ## Reference
 
-```javascript
+```jsx
 import { useAnimatedStyle } from "react-native-reanimated";
 
 function App() {
+  // highlight-next-line
   const animatedStyles = useAnimatedStyle(() => {
     return {
       opacity: sv.value ? 1 : 0;
     };
+  // highlight-next-line
   });
 
+  // highlight-next-line
   return <Animated.View style={[styles.box, animatedStyles]} />
 }
 ```
@@ -47,7 +52,7 @@ A function returning an object with style properties you want to animate. You ca
 
 An optional array of dependencies.
 
-Only used when using Reanimated [without the Babel plugin on the Web](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/web-support#web-without-a-babel-plugin).
+Only relevant when using Reanimated [without the Babel plugin on the Web](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/web-support#web-without-a-babel-plugin).
 
 ## Returns
 
@@ -93,27 +98,7 @@ const styles = StyleSheet.create({
 
 </Indent>
 
-- Animated styles can't be shared between views. Each view must have its own animated style. So for example, sharing an animated opacity between views won't work:
-
-<Indent>
-
-```jsx
-function App() {
-  // ...
-  const animatedOpacity = useAnimatedStyle(() => ({
-    opacity: sv.value ? 1 : 0,
-  }));
-
-  return (
-    <>
-      <Animated.View style={[styles.blueBox, animatedOpacity]} />
-      <Animated.View style={[styles.redBox, animatedOpacity]} /> // this won't work!
-    </>
-  );
-}
-```
-
-</Indent>
+- You can share animated props between components to avoid code duplication.
 
 ## Platform compatibility
 
