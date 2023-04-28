@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
 import styles from "./index.module.css";
+import HomepageStartScreen from "@site/src/components/Hero/StartScreen";
+import ReanimatedFeatures from "@site/src/components/ReanimatedFeatures";
+import ReanimatedSponsors from "@site/src/components/ReanimatedSponsors";
+import { useLocation } from "@docusaurus/router";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -28,16 +31,23 @@ function HomepageHeader() {
 }
 
 export default function Home(): JSX.Element {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+  });
+
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={siteConfig.title}
+      description="Where declarative animations meet native performance at 120 fps"
     >
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      <div className={styles.landingContainer}>
+        <HomepageStartScreen />
+        <ReanimatedFeatures />
+        <ReanimatedSponsors />
+      </div>
     </Layout>
   );
 }

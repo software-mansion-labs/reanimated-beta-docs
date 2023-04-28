@@ -54,13 +54,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/social-card.jpg",
       navbar: {
         title: "React Native Reanimated",
         hideOnScroll: true,
         logo: {
-          alt: "My Site Logo",
+          alt: "React Native Reanimated",
           src: "img/logo.svg",
           srcDark: "img/logo-dark.svg",
         },

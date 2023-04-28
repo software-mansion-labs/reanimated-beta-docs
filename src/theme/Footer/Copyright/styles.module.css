@@ -13,6 +13,13 @@ footer {
 .footer {
   display: flex;
   justify-content: start;
+  align-items: center;
+}
+
+@media (max-width: 997px) {
+  .footer {
+    justify-content: center;
+  }
 }
 
 footer p {
@@ -20,6 +27,32 @@ footer p {
   margin-bottom: 0;
 }
 
+footer p.landing {
+  color: var(--swm-copyright-color-landing);
+}
+
 .footer__brand {
   color: var(--swm-brand-copyright-color);
+}
+
+.footer__brand a {
+  text-decoration: none;
+}
+
+.landing .footer__brand {
+  color: var(--swm-brand-copyright-color-landing);
+}
+
+.footer__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 40px;
+}
+
+@media (max-width: 997px) {
+  .footer__logo {
+    display: none;
+  }
 }

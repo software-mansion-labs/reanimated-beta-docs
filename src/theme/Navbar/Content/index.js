@@ -15,12 +15,14 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
+import clsx from "clsx";
+import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
 }
-function NavbarItems({ items }) {
+function NavbarItems({ items, isDocumentation = true }) {
   return (
     <>
       {items.map((item, i) => (
@@ -35,17 +37,27 @@ ${JSON.stringify(item, null, 2)}`,
             )
           }
         >
-          <NavbarItem {...item} />
+          <NavbarItem
+            className={clsx(!isDocumentation && styles.navbarItemLanding)}
+            {...item}
+          />
         </ErrorCauseBoundary>
       ))}
     </>
   );
 }
-function NavbarContentLayout({ left, right }) {
+function NavbarContentLayout({ left, right, isDocumentation }) {
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
-      <div className="navbar__items navbar__items--right">{right}</div>
+      <div
+        className={clsx(
+          "navbar__items navbar__items--right",
+          !isDocumentation && styles.navbarItemsLanding
+        )}
+      >
+        {right}
+      </div>
     </div>
   );
 }
@@ -64,6 +76,7 @@ export default function NavbarContent() {
   const windowSize = useWindowSize();
   const isMobile = windowSize === "mobile";
 
+  const { isDocumentation } = useDocumentationPath();
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -76,17 +89,34 @@ export default function NavbarContent() {
             <NavbarLogo />
           </div>
           <NavbarItems items={leftItems} />
-          {!searchBarItem && !isMobile && <AlgoliaSearchBar />}
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
+          {!searchBarItem && !isMobile && isDocumentation && (
+            <AlgoliaSearchBar />
+          )}
+          {isDocumentation && (
+            <NavbarColorModeToggle
+              className={clsx(
+                styles.colorModeToggle,
+                styles.colorModeToggleMobileOnDocs
+              )}
+            />
+          )}
         </>
       }
       right={
         <>
-          <NavbarItems items={rightItems} />
-          {!searchBarItem && isMobile && <AlgoliaSearchBar />}
-          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+          {!isDocumentation && (
+            <NavbarColorModeToggle className={styles.colorModeToggle} />
+          )}
+          <NavbarItems items={rightItems} isDocumentation={isDocumentation} />
+          {!searchBarItem && isMobile && isDocumentation && (
+            <AlgoliaSearchBar />
+          )}
+          {!mobileSidebar.disabled && isDocumentation && (
+            <NavbarMobileSidebarToggle />
+          )}
         </>
       }
+      isDocumentation={isDocumentation}
     />
   );
 }

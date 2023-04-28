@@ -1,0 +1,23 @@
+.stars {
+  position: absolute;
+  top: 5vh;
+  left: 2vw;
+  scale: 120%;
+  z-index: 1;
+
+  animation: 5s starBlink infinite;
+}
+
+@keyframes starBlink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
