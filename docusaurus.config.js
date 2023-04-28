@@ -59,7 +59,7 @@ const config = {
         title: "React Native Reanimated",
         hideOnScroll: true,
         logo: {
-          alt: "My Site Logo",
+          alt: "React Native Reanimated",
           src: "img/logo.svg",
           srcDark: "img/logo-dark.svg",
         },
