@@ -6,7 +6,7 @@ sidebar_position: 2
 
 `useAnimatedStyle` lets you create a styles object, similar to `StyleSheet` styles, which can be animated using [shared values](/docs/fundamentals/glossary#shared-value).
 
-Styles defined using `useAnimatedStyle` are automatically recalculated when an associated shared value is changed.
+Styles defined using `useAnimatedStyle` automatically updates whenever an associated shared value or React state changes.
 
 ## Reference
 
@@ -41,11 +41,13 @@ function useAnimatedStyle<
 
 #### `updater`
 
-A function returning an object with style properties you want to animate.
+A function returning an object with style properties you want to animate. You can animate any style property available in React Native.
 
 #### `dependencies` <Optional/>
 
-An optional array of dependencies. dependant on the React state. The dependencies have to be listed inline as `[dep1, dep2, dep3]` with a constant number of items.
+An optional array of dependencies.
+
+Only used when using Reanimated [without the Babel plugin on the Web](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/web-support#web-without-a-babel-plugin).
 
 ## Returns
 
@@ -64,7 +66,11 @@ import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles"
 
 ## Caveats
 
-- Only define the dynamic part of your styles with `useAnimatedStyle` and keep the static ones separately using `StyleSheet` API or (if you really have to) with inline styles. That way you avoid lots of unnecessary style recalculations. Static and dynamic styles can be freely mixed like so:
+- Only define the dynamic part of your styles with `useAnimatedStyle` and keep the static ones separately using `StyleSheet` API or (if you really have to) with inline styles. That way you avoid lots of unnecessary style recalculations.
+
+  Static and dynamic styles can be easily merged using the `[]` syntax:
+
+<Indent>
 
 ```jsx
 function App() {
@@ -85,7 +91,11 @@ const styles = StyleSheet.create({
 });
 ```
 
+</Indent>
+
 - Animated styles can't be shared between views. Each view must have its own animated style. So for example, sharing an animated opacity between views won't work:
+
+<Indent>
 
 ```jsx
 function App() {
@@ -102,6 +112,8 @@ function App() {
   );
 }
 ```
+
+</Indent>
 
 ## Platform compatibility
 
