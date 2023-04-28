@@ -33,23 +33,18 @@ export default function App() {
           animatedProps={animatedProps}
         />
       </Svg>
-
       <Button onPress={handlePress} title="Click me" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  svg: {
-    position: "absolute",
-    height: 300,
-    top: 0,
-    width: "100%",
-  },
   container: {
     flex: 1,
-    height: "100%",
     alignItems: "center",
-    justifyContent: "flex-end",
+  },
+  svg: {
+    height: 250,
+    width: "100%",
   },
 });
