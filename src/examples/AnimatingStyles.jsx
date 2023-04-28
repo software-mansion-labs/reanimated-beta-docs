@@ -13,12 +13,15 @@ export default function App() {
     translateX.value += 50;
   };
 
+  // highlight-start
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [{ translateX: withSpring(translateX.value * 2) }],
   }));
+  // highlight-end
 
   return (
     <>
+      {/* highlight-next-line */}
       <Animated.View style={[styles.box, animatedStyles]} />
       <View style={styles.container}>
         <Button onPress={handlePress} title="Click me" />
