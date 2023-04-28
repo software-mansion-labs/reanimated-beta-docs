@@ -1,35 +1,35 @@
 .selection {
-    display: inline-block;
-    padding: 2px;
-    color: var(--swm-landing-heading-selected);
-    border: 2px dashed var(--swm-landing-heading-selected-border);
+  display: inline-block;
+  padding: 2px;
+  color: var(--swm-landing-heading-selected);
+  border: 2px dashed var(--swm-landing-heading-selected-border);
 }
 
 .selectionContainer {
-    position: relative;
+  position: relative;
 }
 
 .selectionBox {
-    position: absolute;
-    width: 12px;
-    height: 12px;
+  position: absolute;
+  width: 12px;
+  height: 12px;
 
-    background: var(--swm-white);
-    border: 2px solid var(--swm-landing-heading-selected-border);
+  background: var(--swm-white);
+  border: 2px solid var(--swm-landing-heading-selected-border);
 }
 
 .boxUpper {
-    top: -8px;
+  top: -8px;
 }
 
 .boxLower {
-    bottom: -8px;
+  bottom: -8px;
 }
 
 .boxLeft {
-    left: -8px;
+  left: -8px;
 }
 
 .boxRight {
-    right: -8px;
+  right: -8px;
 }

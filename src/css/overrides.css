@@ -43,8 +43,8 @@ table {
   background-color: var(--ifm-navbar-link-hover-color);
 }
 
-[class*='navbarLanding'] .header-github:before,
-[class*='navbarLanding'] .header-github:hover:before {
+[class*="navbarLanding"] .header-github:before,
+[class*="navbarLanding"] .header-github:hover:before {
   background-color: var(--swm-off-white);
 }
 
