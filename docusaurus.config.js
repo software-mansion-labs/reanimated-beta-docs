@@ -55,6 +55,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image: "img/social-card.jpg",
+      metadata: [
+        { name: "og:image:width", content: "1200" },
+        { name: "og:image:height", content: "630" },
+      ],
       navbar: {
         title: "React Native Reanimated",
         hideOnScroll: true,
