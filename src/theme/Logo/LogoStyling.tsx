@@ -5,9 +5,14 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useThemeConfig, type NavbarLogo } from "@docusaurus/theme-common";
 import ThemedImage from "@theme/ThemedImage";
 import type { Props } from "@theme/Logo";
+import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 
 interface LogoProps extends Props {
   readonly titleImages?: { light: string; dark: string };
+  readonly heroImages?: {
+    logo: string;
+    title: string;
+  };
 }
 
 const getWrappedImage = (className: string, image: JSX.Element) => {
@@ -50,8 +55,14 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   const {
     navbar: { title: navbarTitle, logo },
   } = useThemeConfig();
-
-  const { titleImages, imageClassName, titleClassName, ...propsRest } = props;
+  const { isDocumentation } = useDocumentationPath();
+  const {
+    titleImages,
+    heroImages,
+    imageClassName,
+    titleClassName,
+    ...propsRest
+  } = props;
   const logoLink = useBaseUrl(logo?.href || "/");
 
   // If visible title is shown, fallback alt text should be
@@ -62,7 +73,21 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   // and provide a sensible fallback otherwise.
   const alt = logo?.alt ?? fallbackAlt;
 
-  const titleImage = <ThemedImage sources={titleImages} />;
+  const HeroLogo: NavbarLogo = {
+    src: props.heroImages.logo,
+  };
+
+  const titleImage = {
+    docs: <ThemedImage sources={titleImages} />,
+    hero: (
+      <ThemedImage
+        sources={{
+          light: props.heroImages.title,
+          dark: props.heroImages.title,
+        }}
+      />
+    ),
+  };
 
   return (
     <Link
@@ -70,15 +95,23 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
       {...propsRest}
       {...(logo?.target && { target: logo.target })}
     >
-      {logo && (
+      {logo && isDocumentation ? (
         <LogoThemedImage
           logo={logo}
           alt={alt}
           imageClassName={imageClassName}
         />
+      ) : (
+        <LogoThemedImage
+          logo={HeroLogo}
+          alt={alt}
+          imageClassName={imageClassName}
+        />
       )}
 
-      {titleImages && getWrappedImage(titleClassName, titleImage)}
+      {titleImages && isDocumentation
+        ? getWrappedImage(titleClassName, titleImage.docs)
+        : getWrappedImage(titleClassName, titleImage.hero)}
     </Link>
   );
 };

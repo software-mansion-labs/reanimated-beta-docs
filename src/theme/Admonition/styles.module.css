@@ -26,6 +26,9 @@
 .admonitionIcon {
   display: inline-block;
   margin-right: 0.4em;
+
+  width: 21px;
+  height: 27px;
 }
 
 .admonitionIcon svg {

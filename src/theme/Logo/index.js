@@ -9,10 +9,16 @@ export default function LogoWrapper(props) {
     dark: useBaseUrl("/img/title-dark.svg"),
   };
 
+  const heroImages = {
+    logo: "/img/logo-hero.svg",
+    title: "/img/title-hero.svg",
+  };
+
   return (
-    <div className={styles.navbar__logo__wrapper}>
+    <div>
       <LogoStyling
         titleImages={titleImages}
+        heroImages={heroImages}
         className={styles.navbar__logo}
         titleClassName={styles.navbar__title}
       />
