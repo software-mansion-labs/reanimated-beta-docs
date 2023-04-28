@@ -92,11 +92,21 @@ export default function NavbarContent() {
           {!searchBarItem && !isMobile && isDocumentation && (
             <AlgoliaSearchBar />
           )}
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
+          {isDocumentation && (
+            <NavbarColorModeToggle
+              className={clsx(
+                styles.colorModeToggle,
+                styles.colorModeToggleMobileOnDocs
+              )}
+            />
+          )}
         </>
       }
       right={
         <>
+          {!isDocumentation && (
+            <NavbarColorModeToggle className={styles.colorModeToggle} />
+          )}
           <NavbarItems items={rightItems} isDocumentation={isDocumentation} />
           {!searchBarItem && isMobile && isDocumentation && (
             <AlgoliaSearchBar />
