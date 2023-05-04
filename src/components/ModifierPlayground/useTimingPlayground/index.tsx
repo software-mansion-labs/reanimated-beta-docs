@@ -239,14 +239,18 @@ export default function useTimingPlayground() {
     />
   );
 
+  const functionName = canNestEasing(easing) ? nestedEasing : easing;
+  const overflowingEasings = ["back", "bezier", "bezierFn"];
+
   const chart = (
     <PlaygroundChart
-      easingFunctionName={canNestEasing(easing) ? nestedEasing : easing}
+      easingFunctionName={functionName}
       easingFunction={
         easing !== "bezier"
           ? formatEasing(easing).fn
           : formatEasing(easing).fn.factory()
       }
+      enlargeCanvasSpace={overflowingEasings.includes(functionName)}
     />
   );
 

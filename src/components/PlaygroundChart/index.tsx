@@ -4,30 +4,38 @@ import styles from "./styles.module.css";
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
   easingFunction: (t) => number;
-}> = ({ easingFunctionName, easingFunction }) => {
+  enlargeCanvasSpace?: boolean;
+}> = ({ easingFunctionName, easingFunction, enlargeCanvasSpace = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
   const initializeCanvas = () => {
     const ctx = canvasRef.current.getContext("2d");
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
+
+    if (enlargeCanvasSpace) prepareAdditionalSpace(ctx);
     drawEquation(ctx);
   };
 
   const chooseMinMaxCoordinates = (canvas: HTMLCanvasElement) => {
-    // Default translate parameters for most of the charts
-    let translate = {
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      scaleX: 2,
+    // Initial values for all charts
+    const minX = 0;
+    const minY = -1;
+    const maxX = 1;
+    const maxY = 1;
+    const translate = {
+      x: enlargeCanvasSpace ? 50 : 0,
+      y: enlargeCanvasSpace ? canvas.height - 50 : canvas.height,
+      scaleX: 1,
       scaleY: 2,
     };
 
     if (easingFunctionName === "elastic") {
       return {
-        minX: 0,
-        minY: -1,
-        maxX: 1,
-        maxY: 1,
+        minX,
+        minY,
+        maxX,
+        maxY,
         translate: {
           x: 0,
           y: canvas.height,
@@ -38,31 +46,37 @@ const PlaygroundChart: React.FC<{
     }
 
     return {
-      minX: 0,
-      minY: -1,
-      maxX: 1,
-      maxY: 1,
-      translate: {
-        x: 0,
-        y: canvas.height,
-        scaleX: 1,
-        scaleY: 2,
-      },
+      minX,
+      minY,
+      maxX,
+      maxY,
+      translate,
     };
   };
 
-  const drawEquation = (ctx: CanvasRenderingContext2D) => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  const prepareAdditionalSpace = (ctx: CanvasRenderingContext2D) => {
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(50, 50, ctx.canvas.width - 100, ctx.canvas.height - 100);
+  };
 
+  const drawEquation = (ctx: CanvasRenderingContext2D) => {
     const { minX, minY, maxX, maxY, translate } = chooseMinMaxCoordinates(
       ctx.canvas
     );
 
+    const canvasWidth = !enlargeCanvasSpace
+      ? ctx.canvas.width
+      : ctx.canvas.width - 100;
+
+    const canvasHeight = !enlargeCanvasSpace
+      ? ctx.canvas.height
+      : ctx.canvas.height - 100;
+
     const rangeX = maxX - minX;
     const rangeY = maxY - minY;
     const iteration = (maxX - minX) / 1000;
-    const scaleX = (ctx.canvas.width / rangeX) * translate.scaleX;
-    const scaleY = (ctx.canvas.height / rangeY) * translate.scaleY;
+    const scaleX = (canvasWidth / rangeX) * translate.scaleX;
+    const scaleY = (canvasHeight / rangeY) * translate.scaleY;
 
     // Move graph to the center of the canvas
     ctx.translate(translate.x, translate.y);
@@ -90,7 +104,7 @@ const PlaygroundChart: React.FC<{
 
   return (
     <div className={styles.graph}>
-      <canvas ref={canvasRef} width={300} height={300}></canvas>
+      <canvas ref={canvasRef} width={250} height={250}></canvas>
     </div>
   );
 };
