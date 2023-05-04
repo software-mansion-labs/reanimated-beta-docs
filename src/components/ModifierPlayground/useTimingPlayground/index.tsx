@@ -210,14 +210,22 @@ export default function useTimingPlayground() {
         />
       )}
       {(easing === "steps" || nestedEasing === "steps") && (
-        <Range
-          label="Steps"
-          min={1}
-          max={15}
-          step={1}
-          value={steps}
-          onChange={setSteps}
-        />
+        <>
+          <Range
+            label="Steps"
+            min={1}
+            max={15}
+            step={1}
+            value={steps}
+            onChange={setSteps}
+          />
+          <SelectOption
+            label="Round to next step"
+            value={"" + roundToNextStep}
+            onChange={(option) => setRoundToNextStep(option === "true")}
+            options={["true", "false"]}
+          />
+        </>
       )}
     </>
   );
@@ -233,6 +241,7 @@ export default function useTimingPlayground() {
 
   const chart = (
     <PlaygroundChart
+      easingFunctionName={canNestEasing(easing) ? nestedEasing : easing}
       easingFunction={
         easing !== "bezier"
           ? formatEasing(easing).fn

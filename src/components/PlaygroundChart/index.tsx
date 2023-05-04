@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 
 const PlaygroundChart: React.FC<{
+  easingFunctionName: string;
   easingFunction: (t) => number;
-}> = ({ easingFunction }) => {
+}> = ({ easingFunctionName, easingFunction }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
   const initializeCanvas = () => {
@@ -12,27 +13,63 @@ const PlaygroundChart: React.FC<{
     drawEquation(ctx);
   };
 
+  const chooseMinMaxCoordinates = (canvas: HTMLCanvasElement) => {
+    // Default translate parameters for most of the charts
+    let translate = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      scaleX: 2,
+      scaleY: 2,
+    };
+
+    if (easingFunctionName === "elastic") {
+      return {
+        minX: 0,
+        minY: -1,
+        maxX: 1,
+        maxY: 1,
+        translate: {
+          x: 0,
+          y: canvas.height,
+          scaleX: 1,
+          scaleY: 1,
+        },
+      };
+    }
+
+    return {
+      minX: 0,
+      minY: -1,
+      maxX: 1,
+      maxY: 1,
+      translate: {
+        x: 0,
+        y: canvas.height,
+        scaleX: 1,
+        scaleY: 2,
+      },
+    };
+  };
+
   const drawEquation = (ctx: CanvasRenderingContext2D) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    const minX = -10;
-    const minY = -10;
-    const maxX = 10;
-    const maxY = 10;
+    const { minX, minY, maxX, maxY, translate } = chooseMinMaxCoordinates(
+      ctx.canvas
+    );
 
     const rangeX = maxX - minX;
     const rangeY = maxY - minY;
     const iteration = (maxX - minX) / 1000;
-    const scaleX = (ctx.canvas.width / rangeX) * 2;
-    const scaleY = (ctx.canvas.height / rangeY) * 2;
+    const scaleX = (ctx.canvas.width / rangeX) * translate.scaleX;
+    const scaleY = (ctx.canvas.height / rangeY) * translate.scaleY;
 
     // Move graph to the center of the canvas
-    ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
+    ctx.translate(translate.x, translate.y);
     ctx.scale(scaleX, -scaleY);
 
     ctx.beginPath();
     ctx.moveTo(minX, easingFunction(minX));
-
     for (let x = minX + iteration; x <= maxX; x += iteration) {
       ctx.lineTo(x, easingFunction(x));
     }
