@@ -98,5 +98,6 @@ export default function useSpringPlayground() {
     example,
     controls,
     code,
+    additionalComponents: {},
   };
 }

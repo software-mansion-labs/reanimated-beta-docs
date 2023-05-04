@@ -1,0 +1,3 @@
+.graph canvas {
+    border: 1px solid var(--swm-border);
+}

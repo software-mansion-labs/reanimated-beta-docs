@@ -4,11 +4,15 @@ import Example from "./Example";
 import { Range, SelectOption } from "..";
 
 import { Easing } from "react-native-reanimated";
+import PlaygroundChart from "@site/src/components/PlaygroundChart";
 
 export default function useTimingPlayground() {
   const [duration, setDamping] = useState(1000);
   const [easing, setEasing] = useState("inOut");
   const [nestedEasing, setNestedEasing] = useState("quad");
+
+  // back
+  const [stepToBack, setStepToBack] = useState(3);
 
   // bezier
   const [x1, setX1] = useState(0.25);
@@ -22,6 +26,10 @@ export default function useTimingPlayground() {
   // elastic
   const [bounciness, setBounciness] = useState(2);
 
+  // steps
+  const [steps, setSteps] = useState(5);
+  const [roundToNextStep, setRoundToNextStep] = useState(true);
+
   const canNestEasing = (easing: string) => {
     return easing === "inOut" || easing === "in" || easing === "out";
   };
@@ -34,6 +42,11 @@ export default function useTimingPlayground() {
       };
     }
     switch (easing) {
+      case "back":
+        return {
+          fn: Easing.back(stepToBack),
+          code: `Easing.back(${stepToBack})`,
+        };
       case "bezierFn":
         return {
           fn: Easing.bezierFn(x1, y1, x2, y2),
@@ -53,6 +66,11 @@ export default function useTimingPlayground() {
         return {
           fn: Easing.elastic(bounciness),
           code: `Easing.elastic(${bounciness})`,
+        };
+      case "steps":
+        return {
+          fn: Easing.steps(steps, roundToNextStep),
+          code: `Easing.steps(${steps}, ${roundToNextStep})`,
         };
     }
     return {
@@ -95,6 +113,7 @@ export default function useTimingPlayground() {
           "poly",
           "quad",
           "sin",
+          "steps",
           "in",
           "inOut",
           "out",
@@ -119,7 +138,18 @@ export default function useTimingPlayground() {
             "poly",
             "quad",
             "sin",
+            "steps",
           ]}
+        />
+      )}
+      {(easing === "back" || nestedEasing === "back") && (
+        <Range
+          label="Step to back"
+          min={0}
+          max={10}
+          step={0.1}
+          value={stepToBack}
+          onChange={setStepToBack}
         />
       )}
       {(easing === "bezier" ||
@@ -179,6 +209,16 @@ export default function useTimingPlayground() {
           onChange={setBounciness}
         />
       )}
+      {(easing === "steps" || nestedEasing === "steps") && (
+        <Range
+          label="Steps"
+          min={1}
+          max={15}
+          step={1}
+          value={steps}
+          onChange={setSteps}
+        />
+      )}
     </>
   );
 
@@ -191,9 +231,20 @@ export default function useTimingPlayground() {
     />
   );
 
+  const chart = (
+    <PlaygroundChart
+      easingFunction={
+        easing !== "bezier"
+          ? formatEasing(easing).fn
+          : formatEasing(easing).fn.factory()
+      }
+    />
+  );
+
   return {
     code,
     controls,
     example,
+    additionalComponents: { chart },
   };
 }
