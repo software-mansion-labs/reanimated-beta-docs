@@ -25,11 +25,12 @@ export { useSpringPlayground, useTimingPlayground };
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
 
-  const { example, code, controls, additionalComponents } =
+  const { example, code, controls, resetOptions, additionalComponents } =
     props.usePlayground();
 
   const resetExample = () => {
     setKey(key + 1);
+    resetOptions();
   };
 
   return (

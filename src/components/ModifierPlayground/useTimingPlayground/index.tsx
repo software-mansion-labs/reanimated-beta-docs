@@ -6,29 +6,63 @@ import { Range, SelectOption } from "..";
 import { Easing } from "react-native-reanimated";
 import PlaygroundChart from "@site/src/components/PlaygroundChart";
 
-export default function useTimingPlayground() {
-  const [duration, setDamping] = useState(1000);
-  const [easing, setEasing] = useState("inOut");
-  const [nestedEasing, setNestedEasing] = useState("quad");
+const initialState = {
+  duration: 1000,
+  easing: "inOut",
+  nestedEasing: "quad",
 
-  // back
-  const [stepToBack, setStepToBack] = useState(3);
+  x1: 0.25,
+  y1: 0.1,
+  x2: 0.25,
+  y2: 1,
+
+  stepToBack: 3,
+  power: 4,
+  bounciness: 2,
+  steps: 5,
+  roundToNextStep: true,
+};
+
+export default function useTimingPlayground() {
+  const [duration, setDuration] = useState(initialState.duration);
+  const [easing, setEasing] = useState(initialState.easing);
+  const [nestedEasing, setNestedEasing] = useState(initialState.nestedEasing);
 
   // bezier
-  const [x1, setX1] = useState(0.25);
-  const [y1, setY1] = useState(0.1);
-  const [x2, setX2] = useState(0.25);
-  const [y2, setY2] = useState(1);
+  const [x1, setX1] = useState(initialState.x1);
+  const [y1, setY1] = useState(initialState.y1);
+  const [x2, setX2] = useState(initialState.x2);
+  const [y2, setY2] = useState(initialState.y2);
+
+  // back
+  const [stepToBack, setStepToBack] = useState(initialState.stepToBack);
 
   // poly
-  const [power, setPower] = useState(4);
+  const [power, setPower] = useState(initialState.power);
 
   // elastic
-  const [bounciness, setBounciness] = useState(2);
+  const [bounciness, setBounciness] = useState(initialState.bounciness);
 
   // steps
-  const [steps, setSteps] = useState(5);
-  const [roundToNextStep, setRoundToNextStep] = useState(true);
+  const [steps, setSteps] = useState(initialState.steps);
+  const [roundToNextStep, setRoundToNextStep] = useState(
+    initialState.roundToNextStep
+  );
+
+  const resetOptions = () => {
+    setDuration(() => initialState.duration);
+
+    setX1(() => initialState.x1);
+    setY1(() => initialState.y1);
+    setX2(() => initialState.x2);
+    setY2(() => initialState.y2);
+
+    setStepToBack(() => initialState.stepToBack);
+    setPower(() => initialState.power);
+    setBounciness(() => initialState.bounciness);
+    setSteps(() => initialState.steps);
+    setRoundToNextStep(() => initialState.roundToNextStep);
+  };
 
   const canNestEasing = (easing: string) => {
     return easing === "inOut" || easing === "in" || easing === "out";
@@ -94,7 +128,7 @@ export default function useTimingPlayground() {
         max={2000}
         step={10}
         value={duration}
-        onChange={setDamping}
+        onChange={setDuration}
       />
       <SelectOption
         label="Easing"
@@ -258,6 +292,7 @@ export default function useTimingPlayground() {
     code,
     controls,
     example,
+    resetOptions,
     additionalComponents: { chart },
   };
 }
