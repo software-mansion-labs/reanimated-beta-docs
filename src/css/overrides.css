@@ -48,10 +48,19 @@ table {
   background-color: var(--swm-off-white);
 }
 
+[class*='codeBlockContent'] pre {
+  border: 1px solid var(--swm-border);
+}
+
 [class*="codeBlockContent"] pre,
 [class*="codeBlockContent"] code {
   border-radius: 0;
   background-color: var(--swm-off-background);
+}
+
+/* Add small padding, when some of the lines are too long in a code block */
+[class*="codeBlockLines"] span:last-of-type {
+  margin-right: 1em;
 }
 
 .theme-code-block-highlighted-line {

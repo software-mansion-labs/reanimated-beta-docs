@@ -101,12 +101,6 @@
 /* Prevent lines from overflowing from the code block */
 [class*="codeBlockLines"] {
   width: 0;
-  border: 1px solid var(--swm-border);
-}
-
-/* Add small padding, when some of the lines are too long in a code block */
-.codeWrapper [class*="codeBlockLines"] span:last-of-type {
-  margin-right: 1em;
 }
 
 .codeWrapper [class*="codeBlockContent"] {
