@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
+import { useWindowSize } from "@docusaurus/theme-common";
 
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
@@ -7,6 +8,9 @@ const PlaygroundChart: React.FC<{
   enlargeCanvasSpace?: boolean;
 }> = ({ easingFunctionName, easingFunction, enlargeCanvasSpace = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
+
+  const windowSize = useWindowSize();
+  const isMobile = windowSize === "mobile";
 
   const initializeCanvas = () => {
     const ctx = canvasRef.current.getContext("2d");
@@ -24,8 +28,10 @@ const PlaygroundChart: React.FC<{
     const maxX = 1;
     const maxY = 1;
     const translate = {
-      x: enlargeCanvasSpace ? 50 : 0,
-      y: enlargeCanvasSpace ? canvas.height - 50 : canvas.height,
+      x: enlargeCanvasSpace ? (!isMobile ? 50 : 25) : 0,
+      y: enlargeCanvasSpace
+        ? canvas.height - (!isMobile ? 50 : 25)
+        : canvas.height,
       scaleX: 1,
       scaleY: 2,
     };
@@ -54,11 +60,28 @@ const PlaygroundChart: React.FC<{
     };
   };
 
-  const prepareAdditionalSpace = (ctx: CanvasRenderingContext2D) => {
-    ctx.lineWidth = 1;
+  const additionalSpaceValues = {
+    lineWidth: 1,
     // var(--swm-navy-light-20)
-    ctx.strokeStyle = "#c1c6e5";
-    ctx.strokeRect(50, 50, ctx.canvas.width - 100, ctx.canvas.height - 100);
+    strokeStyle: "#c1c6e5",
+    rect: {
+      x: !isMobile ? 50 : 25,
+      y: !isMobile ? 50 : 25,
+      scaleFactor: !isMobile ? 100 : 50,
+    },
+  };
+
+  const prepareAdditionalSpace = (ctx: CanvasRenderingContext2D) => {
+    const { lineWidth, strokeStyle, rect } = additionalSpaceValues;
+
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = strokeStyle;
+    ctx.strokeRect(
+      rect.x,
+      rect.y,
+      ctx.canvas.width - rect.scaleFactor,
+      ctx.canvas.height - rect.scaleFactor
+    );
   };
 
   const drawEquation = (ctx: CanvasRenderingContext2D) => {
@@ -68,11 +91,11 @@ const PlaygroundChart: React.FC<{
 
     const canvasWidth = !enlargeCanvasSpace
       ? ctx.canvas.width
-      : ctx.canvas.width - 100;
+      : ctx.canvas.width - (!isMobile ? 100 : 50);
 
     const canvasHeight = !enlargeCanvasSpace
       ? ctx.canvas.height
-      : ctx.canvas.height - 100;
+      : ctx.canvas.height - (!isMobile ? 100 : 50);
 
     const rangeX = maxX - minX;
     const rangeY = maxY - minY;
@@ -106,7 +129,11 @@ const PlaygroundChart: React.FC<{
 
   return (
     <div className={styles.graph}>
-      <canvas ref={canvasRef} width={250} height={250}></canvas>
+      <canvas
+        ref={canvasRef}
+        width={!isMobile ? 250 : 175}
+        height={!isMobile ? 250 : 175}
+      ></canvas>
     </div>
   );
 };
