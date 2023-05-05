@@ -22,7 +22,7 @@ const PlaygroundChart: React.FC<{
     drawEquation(ctx);
   };
 
-  const chooseMinMaxCoordinates = (canvas: HTMLCanvasElement) => {
+  const prepareChartValues = (canvas: HTMLCanvasElement) => {
     // Initial values for all charts
     const minX = 0;
     const minY = -1;
@@ -37,6 +37,9 @@ const PlaygroundChart: React.FC<{
       scaleY: 2,
     };
 
+    /* For elastic easing, it would be better to decrease the scaling
+     * of the Y-axis, as the bouncing segments could overflow beyond the canvas.
+     */
     if (easingFunctionName === "elastic") {
       return {
         minX,
@@ -86,7 +89,7 @@ const PlaygroundChart: React.FC<{
   };
 
   const drawEquation = (ctx: CanvasRenderingContext2D) => {
-    const { minX, minY, maxX, maxY, translate } = chooseMinMaxCoordinates(
+    const { minX, minY, maxX, maxY, translate } = prepareChartValues(
       ctx.canvas
     );
 
