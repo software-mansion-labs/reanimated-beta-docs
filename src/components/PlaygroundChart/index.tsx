@@ -2,12 +2,23 @@ import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import PlaygroundChartPoint from "@site/src/components/PlaygroundChart/PlaygroundChartPoint";
 
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
   easingFunction: (t) => number;
   enlargeCanvasSpace?: boolean;
-}> = ({ easingFunctionName, easingFunction, enlargeCanvasSpace = false }) => {
+  bezierPointsMoveHandler: {
+    firstPointMoveHandler: (x, y, canvasWidth, canvasHeight) => void;
+    secondPointMoveHandler: (x, y, canvasWidth, canvasHeight) => void;
+  };
+  bezierControlsValues: { x1: number; y1: number; x2: number; y2: number };
+}> = ({
+  easingFunctionName,
+  easingFunction,
+  enlargeCanvasSpace = false,
+  bezierPointsMoveHandler,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
   const { windowWidth } = useScreenSize();
@@ -132,13 +143,55 @@ const PlaygroundChart: React.FC<{
     initializeCanvas();
   });
 
+  const canvasSize = !isMobile ? 250 : 175;
+
   return (
     <div className={styles.graph}>
-      <canvas
-        ref={canvasRef}
-        width={!isMobile ? 250 : 175}
-        height={!isMobile ? 250 : 175}
-      ></canvas>
+      <div
+        className={styles.pointArea}
+        style={{ width: canvasSize + 2, height: canvasSize + 2 }}
+      >
+        {(easingFunctionName === "bezier" ||
+          easingFunctionName === "bezierFn") && (
+          <>
+            <PlaygroundChartPoint
+              label="L"
+              startingPoint={{
+                x: 0,
+                y: 0,
+              }}
+              bounds={{ x: canvasSize, y: canvasSize }}
+              pointMoveHandler={(x, y) =>
+                bezierPointsMoveHandler.firstPointMoveHandler(
+                  x,
+                  y,
+                  canvasSize,
+                  canvasSize
+                )
+              }
+            />
+
+            <PlaygroundChartPoint
+              label="R"
+              startingPoint={{
+                x: canvasSize - 24,
+                y: canvasSize - 24,
+              }}
+              bounds={{ x: canvasSize, y: canvasSize }}
+              pointMoveHandler={(x, y) =>
+                bezierPointsMoveHandler.secondPointMoveHandler(
+                  x,
+                  y,
+                  canvasSize,
+                  canvasSize
+                )
+              }
+            />
+          </>
+        )}
+
+        <canvas ref={canvasRef} width={canvasSize} height={canvasSize}></canvas>
+      </div>
     </div>
   );
 };
