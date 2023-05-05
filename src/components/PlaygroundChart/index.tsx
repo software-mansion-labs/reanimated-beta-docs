@@ -55,7 +55,9 @@ const PlaygroundChart: React.FC<{
   };
 
   const prepareAdditionalSpace = (ctx: CanvasRenderingContext2D) => {
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = 1;
+    // var(--swm-navy-light-20)
+    ctx.strokeStyle = "#c1c6e5";
     ctx.strokeRect(50, 50, ctx.canvas.width - 100, ctx.canvas.height - 100);
   };
 
@@ -92,8 +94,8 @@ const PlaygroundChart: React.FC<{
     ctx.lineJoin = "round";
     ctx.lineWidth = 3;
 
-    // var(--swm-navy-light-60)
-    ctx.strokeStyle = "#6676aa";
+    // var(--swm-navy-light-80)
+    ctx.strokeStyle = "#b58df1";
     ctx.stroke();
     ctx.restore();
   };
