@@ -19,9 +19,9 @@ import clsx from "clsx";
 import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
 
 function useNavbarItems() {
-  // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
 }
+
 function NavbarItems({ items, isDocumentation = true }) {
   return (
     <>
@@ -46,7 +46,9 @@ ${JSON.stringify(item, null, 2)}`,
     </>
   );
 }
-function NavbarContentLayout({ left, right, isDocumentation }) {
+function NavbarContentLayout({ left, right }) {
+  const { isDocumentation } = useDocumentationPath();
+
   return (
     <div className="navbar__inner">
       <div className="navbar__items">{left}</div>
@@ -92,13 +94,8 @@ export default function NavbarContent() {
           {!searchBarItem && !isMobile && isDocumentation && (
             <AlgoliaSearchBar />
           )}
-          {isDocumentation && (
-            <NavbarColorModeToggle
-              className={clsx(
-                styles.colorModeToggle,
-                styles.colorModeToggleMobileOnDocs
-              )}
-            />
+          {!isMobile && isDocumentation && (
+            <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
         </>
       }
@@ -116,7 +113,6 @@ export default function NavbarContent() {
           )}
         </>
       }
-      isDocumentation={isDocumentation}
     />
   );
 }
