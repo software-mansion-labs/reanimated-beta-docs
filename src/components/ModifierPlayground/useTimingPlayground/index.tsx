@@ -5,6 +5,7 @@ import { Range, SelectOption } from "..";
 
 import { Easing } from "react-native-reanimated";
 import PlaygroundChart from "@site/src/components/PlaygroundChart";
+import useChartPoint from "@site/src/components/PlaygroundChart/PlaygroundChartPoint";
 
 const initialState = {
   duration: 1000,
@@ -264,6 +265,20 @@ export default function useTimingPlayground() {
     </>
   );
 
+  const handleFirstPointMove = (x, y, canvasWidth, canvasHeight) => {
+    setX1(() => parseFloat((x / (canvasWidth - 24)).toFixed(2)));
+    setY1(() =>
+      parseFloat((1 - ((y * 3) / (canvasHeight - 24) - 1)).toFixed(2))
+    );
+  };
+
+  const handleSecondPointMove = (x, y, canvasWidth, canvasHeight) => {
+    setX2(() => parseFloat((x / (canvasWidth - 24)).toFixed(2)));
+    setY2(() =>
+      parseFloat((1 - ((y * 3) / (canvasHeight - 24) - 1)).toFixed(2))
+    );
+  };
+
   const example = (
     <Example
       options={{
@@ -285,6 +300,16 @@ export default function useTimingPlayground() {
           : formatEasing(easing).fn.factory()
       }
       enlargeCanvasSpace={overflowingEasings.includes(functionName)}
+      bezierPointsMoveHandler={{
+        firstPointMoveHandler: handleFirstPointMove,
+        secondPointMoveHandler: handleSecondPointMove,
+      }}
+      bezierControlsValues={{
+        x1,
+        y1,
+        x2,
+        y2,
+      }}
     />
   );
 
