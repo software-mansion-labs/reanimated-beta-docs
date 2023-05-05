@@ -36,7 +36,7 @@ const LandingBackground = ({ isAnnouncementBarActive = false }) => {
       <Stars />
 
       {
-        /* Swirl uses viewport behind the hood to calculate appropriate with.
+        /* Swirl uses viewport behind the hood to calculate appropriate width.
          * Thus, access to the viewport is required to render the Swirl component.
          */
         ExecutionEnvironment.canUseViewport && (
