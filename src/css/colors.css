@@ -204,6 +204,11 @@
   --swm-landing-feature-item-shadow: var(--swm-purple-light-100);
 
   --swm-landing-sponsors-color: var(--ifm-font-color-base);
+
+  /* Cards */
+  --swm-card-background: var(--swm-background);
+  --swm-card-border: var(--swm-navy-light-20);
+  --swm-card-border-hover: var(--swm-purple-light-100);
 }
 
 :root[data-theme="dark"] {
@@ -312,6 +317,11 @@
   --swm-landing-feature-item-shadow: var(--swm-purple-dark-140);
 
   --swm-landing-sponsors-color: var(--swm-off-white);
+
+  /* Cards */
+  --swm-card-background: var(--swm-navy);
+  --swm-card-border: var(--swm-navy-dark-60);
+  --swm-card-border-hover: var(--swm-purple-dark-80);
 }
 
 code {

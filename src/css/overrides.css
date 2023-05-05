@@ -74,3 +74,18 @@ table {
     var(--swm-yellow-dark-120) 0 0 10px, var(--swm-yellow-dark-120) 0 0 10px,
     var(--swm-yellow-dark-120) 0 0 10px;
 }
+
+[class*="cardContainer"] {
+  box-shadow: none !important;
+  border: 2px solid var(--swm-card-border) !important;
+  border-radius: 0;
+  background-color: var(--swm-card-background);
+}
+
+[class*="cardContainer"]:hover {
+  border: 2px solid var(--swm-card-border-hover) !important;
+}
+
+[class*="cardContainer"] p {
+  color: var(--ifm-font-color-base);
+}
