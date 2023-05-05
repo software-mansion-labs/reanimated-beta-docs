@@ -186,7 +186,9 @@
 
   /* Search */
   --swm-searchbar-text-color: var(--swm-navy-light-60);
-  --swm-searchbar-background: var(--swm-off-white);
+  --swm-searchbar-background: var(--swm-white);
+  --swm-searchbar-border: var(--swm-navy-light-20);
+  --swm-searchbar-border-hover: var(--swm-purple-light-100);
 
   /* Sidebar */
   --swm-sidebar-menu-color: var(--swm-navy-light-60);
@@ -298,8 +300,10 @@
   --swm-copyright-color-landing: var(--swm-off-white);
 
   /* Search */
-  --swm-searchbar-text-color: var(--swm-navy-light-40);
-  --swm-searchbar-background: var(--swm-off-background);
+  --swm-searchbar-text-color: var(--swm-navy-dark-40);
+  --swm-searchbar-background: var(--swm-background);
+  --swm-searchbar-border: var(--swm-navy-dark-60);
+  --swm-searchbar-border-hover: var(--swm-purple-dark-80);
 
   /* Sidebar */
   --swm-sidebar-menu-color: var(--swm-navy-light-20);
