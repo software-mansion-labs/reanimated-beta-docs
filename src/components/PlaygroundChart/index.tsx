@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
-import { useWindowSize } from "@docusaurus/theme-common";
+import useScreenSize from "@site/src/hooks/useScreenSize";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
@@ -9,8 +10,8 @@ const PlaygroundChart: React.FC<{
 }> = ({ easingFunctionName, easingFunction, enlargeCanvasSpace = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
-  const windowSize = useWindowSize();
-  const isMobile = windowSize === "mobile";
+  const { windowWidth } = useScreenSize();
+  const isMobile = ExecutionEnvironment.canUseViewport && windowWidth < 768;
 
   const initializeCanvas = () => {
     const ctx = canvasRef.current.getContext("2d");
