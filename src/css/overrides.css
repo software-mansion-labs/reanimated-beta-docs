@@ -48,7 +48,7 @@ table {
   background-color: var(--swm-off-white);
 }
 
-[class*='codeBlockContent'] pre {
+[class*="codeBlockContent"] pre {
   border: 1px solid var(--swm-border);
 }
 

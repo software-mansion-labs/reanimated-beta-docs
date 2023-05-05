@@ -113,6 +113,7 @@ const PlaygroundChart: React.FC<{
 
     ctx.beginPath();
     ctx.moveTo(minX, easingFunction(minX));
+
     for (let x = minX + iteration; x <= maxX; x += iteration) {
       ctx.lineTo(x, easingFunction(x));
     }
