@@ -3,15 +3,38 @@ import Example from "./Example";
 
 import { Range, CheckboxOption } from "..";
 
+const initialState = {
+  damping: 10,
+  mass: 1,
+  stiffness: 100,
+  overshootClamping: false,
+  restDisplacementThreshold: 0.01,
+  restSpeedThreshold: 2,
+};
+
 export default function useSpringPlayground() {
-  const [damping, setDamping] = useState(10);
-  const [mass, setMass] = useState(1);
-  const [stiffness, setStiffness] = useState(100);
+  const [damping, setDamping] = useState(initialState.damping);
+  const [mass, setMass] = useState(initialState.mass);
+  const [stiffness, setStiffness] = useState(initialState.stiffness);
   // const [velocity, setVelocity] = useState(0);
-  const [overshootClamping, setOvershootClamping] = useState(false);
-  const [restDisplacementThreshold, setRestDisplacementThreshold] =
-    useState(0.01);
-  const [restSpeedThreshold, setRestSpeedThreshold] = useState(2);
+  const [overshootClamping, setOvershootClamping] = useState(
+    initialState.overshootClamping
+  );
+  const [restDisplacementThreshold, setRestDisplacementThreshold] = useState(
+    initialState.restDisplacementThreshold
+  );
+  const [restSpeedThreshold, setRestSpeedThreshold] = useState(
+    initialState.restSpeedThreshold
+  );
+
+  const resetOptions = () => {
+    setDamping(() => initialState.damping);
+    setMass(() => initialState.mass);
+    setStiffness(() => initialState.stiffness);
+    setOvershootClamping(() => initialState.overshootClamping);
+    setRestDisplacementThreshold(() => initialState.restDisplacementThreshold);
+    setRestSpeedThreshold(() => initialState.restSpeedThreshold);
+  };
 
   const code = `
     withSpring(sv.value, {
@@ -23,7 +46,6 @@ export default function useSpringPlayground() {
       restSpeedThreshold: ${restSpeedThreshold},
     })
     `;
-  // velocity: ${velocity},
 
   const controls = (
     <>
@@ -98,5 +120,7 @@ export default function useSpringPlayground() {
     example,
     controls,
     code,
+    resetOptions,
+    additionalComponents: {},
   };
 }

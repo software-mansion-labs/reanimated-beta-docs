@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
+import useScreenSize from "@site/src/hooks/useScreenSize";
 
 const swirlLightDefs = (
   <linearGradient
@@ -31,21 +32,8 @@ const swirlDarkDefs = (
 );
 
 const HeroSwirl = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const { windowWidth } = useScreenSize();
   const { colorMode } = useColorMode();
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   return (
     <div className={styles.swirl}>

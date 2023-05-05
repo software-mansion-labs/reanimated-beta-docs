@@ -25,10 +25,12 @@ export { useSpringPlayground, useTimingPlayground };
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
 
-  const { example, code, controls } = props.usePlayground();
+  const { example, code, controls, resetOptions, additionalComponents } =
+    props.usePlayground();
 
   const resetExample = () => {
     setKey(key + 1);
+    resetOptions();
   };
 
   return (
@@ -52,7 +54,10 @@ export default function ModifierPlayground(props: any) {
             <React.Fragment key={key}>{example}</React.Fragment>
           </div>
           <div className={styles.wrapper}>
-            <div className={styles.controls}>{controls}</div>
+            <div className={styles.controls}>
+              {controls}
+              {additionalComponents.chart}
+            </div>
             <div className={styles.codeWrapper}>
               <CodeBlock className={styles.code} language="javascript">
                 {code}
