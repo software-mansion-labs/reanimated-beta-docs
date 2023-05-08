@@ -57,43 +57,43 @@
  * where the multiplier is a position of the frame (starting from the second frame).
  */
 .variantB {
-  animation-delay: 0.045s;
+  animation-delay: 0.05s;
 }
 
 .variantC {
-  animation-delay: 0.09s;
+  animation-delay: 0.1s;
 }
 
 .variantD {
-  animation-delay: 0.135s;
+  animation-delay: 0.15s;
 }
 
 .variantE {
-  animation-delay: 0.18s;
+  animation-delay: 0.2s;
 }
 
 .variantF {
-  animation-delay: 0.228s;
+  animation-delay: 0.25s;
 }
 
 .variantG {
-  animation-delay: 0.272s;
+  animation-delay: 0.3s;
 }
 
 .variantH {
-  animation-delay: 0.32s;
+  animation-delay: 0.35s;
 }
 
 .variantI {
-  animation-delay: 0.363s;
+  animation-delay: 0.4s;
 }
 
 .variantJ {
-  animation-delay: 0.41s;
+  animation-delay: 0.45s;
 }
 
 .variantK {
-  animation-delay: 0.454s;
+  animation-delay: 0.5s;
 }
 
 @keyframes show {
