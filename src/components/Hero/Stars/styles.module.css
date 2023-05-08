@@ -14,12 +14,28 @@
   animation: 2.4s starBlink infinite;
 }
 
-.stars svg path:nth-child(2n) {
+.stars svg circle:nth-child(3n) {
   animation: 3.2s starBlink infinite;
 }
 
+.stars svg circle:nth-child(3n + 1) {
+  animation: 4.6s starBlink infinite;
+}
+
+.stars svg path:nth-child(2n) {
+  animation: 2.7s starBlink infinite;
+}
+
 .stars svg path:nth-child(2n + 1) {
-  animation: 4.7s starBlink infinite;
+  animation: 2.1s starBlink infinite;
+}
+
+.stars svg path:nth-child(3n) {
+  animation: 3.6s starBlink infinite;
+}
+
+.stars svg path:nth-child(3n + 1) {
+  animation: 4.2s starBlink infinite;
 }
 
 @keyframes starBlink {

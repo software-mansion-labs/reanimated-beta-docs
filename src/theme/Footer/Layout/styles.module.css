@@ -51,12 +51,28 @@ footer {
   animation: 2.4s starBlink infinite;
 }
 
-.sponsorsBackgroundStars svg path:nth-child(2n) {
+.sponsorsBackgroundStars svg circle:nth-child(3n) {
   animation: 3.2s starBlink infinite;
 }
 
+.sponsorsBackgroundStars svg circle:nth-child(3n + 1) {
+  animation: 4.6s starBlink infinite;
+}
+
+.sponsorsBackgroundStars svg path:nth-child(2n) {
+  animation: 2.7s starBlink infinite;
+}
+
 .sponsorsBackgroundStars svg path:nth-child(2n + 1) {
-  animation: 4.7s starBlink infinite;
+  animation: 2.1s starBlink infinite;
+}
+
+.sponsorsBackgroundStars svg path:nth-child(3n) {
+  animation: 3.6s starBlink infinite;
+}
+
+.sponsorsBackgroundStars svg path:nth-child(3n + 1) {
+  animation: 4.2s starBlink infinite;
 }
 
 @keyframes starBlink {
