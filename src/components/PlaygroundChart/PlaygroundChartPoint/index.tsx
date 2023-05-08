@@ -17,7 +17,6 @@ const PlaygroundChartPoint: React.FC<{
     y: startingPoint.y,
   });
 
-  // TODO Leverage handlePointDrag to the higher component and ommit recursive call
   const handlePointDrag = (e: DraggableEvent, position) => {
     const { x, y } = position;
 
