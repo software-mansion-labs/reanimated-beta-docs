@@ -18,6 +18,7 @@ const PlaygroundChart: React.FC<{
   easingFunction,
   enlargeCanvasSpace = false,
   bezierPointsMoveHandler,
+  bezierControlsValues,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
@@ -145,6 +146,12 @@ const PlaygroundChart: React.FC<{
 
   const canvasSize = !isMobile ? 250 : 175;
 
+  const x1 = bezierControlsValues.x1 * (canvasSize - 24);
+  const y1 = ((bezierControlsValues.y1 + 1) * (canvasSize - 24)) / 3;
+
+  const x2 = bezierControlsValues.x2 * (canvasSize - 24);
+  const y2 = ((bezierControlsValues.y2 + 1) * (canvasSize - 24)) / 3;
+
   return (
     <div className={styles.graph}>
       <div
@@ -169,6 +176,10 @@ const PlaygroundChart: React.FC<{
                   canvasSize
                 )
               }
+              pointControls={{
+                x: x1,
+                y: y1,
+              }}
             />
 
             <PlaygroundChartPoint
@@ -186,6 +197,10 @@ const PlaygroundChart: React.FC<{
                   canvasSize
                 )
               }
+              pointControls={{
+                x: x2,
+                y: y2,
+              }}
             />
           </>
         )}
