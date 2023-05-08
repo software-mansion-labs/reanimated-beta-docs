@@ -7,19 +7,19 @@
 }
 
 .stars svg circle:nth-child(2n) {
-  animation: 2s starBlink infinite;
+  animation: 2.9s starBlink infinite;
 }
 
 .stars svg circle:nth-child(2n + 1) {
-  animation: 2.5s starBlink infinite;
+  animation: 2.4s starBlink infinite;
 }
 
 .stars svg path:nth-child(2n) {
-  animation: 3s starBlink infinite;
+  animation: 3.2s starBlink infinite;
 }
 
 .stars svg path:nth-child(2n + 1) {
-  animation: 3.75s starBlink infinite;
+  animation: 4.7s starBlink infinite;
 }
 
 @keyframes starBlink {
