@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Draggable from "react-draggable";
 
@@ -7,18 +7,30 @@ const PlaygroundChartPoint: React.FC<{
   startingPoint: { x: number; y: number };
   bounds: { x: number; y: number };
   pointMoveHandler?: (x: number, y: number) => void;
-}> = ({ label, startingPoint, bounds, pointMoveHandler }) => {
-  const [place, setPlace] = useState({
+  pointControls?: { x: number; y: number };
+}> = ({ label, startingPoint, bounds, pointMoveHandler, pointControls }) => {
+  const [place, setPlace] = useState<{
+    x: number;
+    y: number;
+  }>({
     x: startingPoint.x,
     y: startingPoint.y,
   });
 
+  // TODO Leverage handlePointDrag to the higher component and ommit recursive call
   const handlePointDrag = (e, position) => {
     const { x, y } = position;
 
     setPlace({ x, y });
     pointMoveHandler(x, y);
   };
+
+  useEffect(() => {
+    setPlace({
+      x: pointControls.x,
+      y: pointControls.y,
+    });
+  }, [pointControls.x, pointControls.y]);
 
   return (
     <>
@@ -29,7 +41,7 @@ const PlaygroundChartPoint: React.FC<{
           top: 0,
           left: 0,
 
-          // Limit bound to the
+          // Limit bound to the borders,
           right: bounds.x - 24,
           bottom: bounds.y - 24,
         }}

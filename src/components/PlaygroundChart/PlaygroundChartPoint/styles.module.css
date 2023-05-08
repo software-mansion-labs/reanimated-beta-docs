@@ -11,7 +11,9 @@
     border: 2px solid var(--swm-navy-light-60);
     border-radius: 50%;
     box-shadow: none;
-    background-color: inherit;
+
+    background-color: var(--swm-off-background);
+    opacity: 0.6;
 
     font-family: var(--swm-body-font);
     cursor: pointer;
