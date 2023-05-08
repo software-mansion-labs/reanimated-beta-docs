@@ -267,16 +267,12 @@ export default function useTimingPlayground() {
 
   const handleFirstPointMove = (x, y, canvasWidth, canvasHeight) => {
     setX1(() => parseFloat((x / (canvasWidth - 24)).toFixed(2)));
-    setY1(() =>
-      parseFloat((1 - ((y * 3) / (canvasHeight - 24) - 1)).toFixed(2))
-    );
+    setY1(() => parseFloat(((1 - y / (canvasHeight - 24)) * 3 - 1).toFixed(2)));
   };
 
   const handleSecondPointMove = (x, y, canvasWidth, canvasHeight) => {
     setX2(() => parseFloat((x / (canvasWidth - 24)).toFixed(2)));
-    setY2(() =>
-      parseFloat((1 - ((y * 3) / (canvasHeight - 24) - 1)).toFixed(2))
-    );
+    setY2(() => parseFloat(((1 - y / (canvasHeight - 24)) * 3 - 1).toFixed(2)));
   };
 
   const example = (

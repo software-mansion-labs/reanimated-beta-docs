@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
-import Draggable from "react-draggable";
+import Draggable, { DraggableEvent } from "react-draggable";
 
 const PlaygroundChartPoint: React.FC<{
   label: string;
@@ -18,7 +18,7 @@ const PlaygroundChartPoint: React.FC<{
   });
 
   // TODO Leverage handlePointDrag to the higher component and ommit recursive call
-  const handlePointDrag = (e, position) => {
+  const handlePointDrag = (e: DraggableEvent, position) => {
     const { x, y } = position;
 
     setPlace({ x, y });
