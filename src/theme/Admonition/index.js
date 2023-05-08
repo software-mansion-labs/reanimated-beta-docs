@@ -73,7 +73,7 @@ const aliases = {
 };
 
 export default function Admonition(props) {
-  const { isDarkTheme } = useColorMode();
+  const { colorMode } = useColorMode();
   const {
     children,
     type,
@@ -95,7 +95,7 @@ export default function Admonition(props) {
     >
       <div className={styles.admonitionHeading}>
         <div className={styles.admonitionIcon}>
-          {!isDarkTheme ? <Danger /> : <DangerDark />}
+          {colorMode === "light" ? <Danger /> : <DangerDark />}
         </div>
 
         {titleLabel}
