@@ -13,7 +13,6 @@
     box-shadow: none;
 
     background-color: var(--swm-off-background);
-    opacity: 0.6;
 
     font-family: var(--swm-body-font);
     cursor: pointer;
