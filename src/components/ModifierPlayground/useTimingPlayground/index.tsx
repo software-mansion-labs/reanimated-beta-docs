@@ -5,7 +5,6 @@ import { Range, SelectOption } from "..";
 
 import { Easing } from "react-native-reanimated";
 import PlaygroundChart from "@site/src/components/PlaygroundChart";
-import useChartPoint from "@site/src/components/PlaygroundChart/PlaygroundChartPoint";
 
 const initialState = {
   duration: 1000,

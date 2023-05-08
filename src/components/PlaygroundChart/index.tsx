@@ -32,6 +32,10 @@ const PlaygroundChart: React.FC<{
 
     if (enlargeCanvasSpace) prepareAdditionalSpace(ctx);
     drawEquation(ctx);
+
+    // Draw lines to points only if current easing is a cubic bezier function
+    if (easingFunctionName === "bezier" || easingFunctionName === "bezierFn")
+      bezierDrawLineToPoints(ctx);
   };
 
   const prepareChartValues = (canvas: HTMLCanvasElement) => {
@@ -152,7 +156,26 @@ const PlaygroundChart: React.FC<{
   const x2 = bezierControlsValues.x2 * (canvasSize - 24);
   const y2 = (1 - (bezierControlsValues.y2 + 1) / 3) * (canvasSize - 24);
 
-  console.log(x1, y1, x2, y2);
+  const bezierDrawLineToPoint = (
+    ctx: CanvasRenderingContext2D,
+    startX,
+    startY,
+    endX,
+    endY
+  ) => {
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(endX + 12, endY + 12);
+    ctx.lineWidth = 1;
+    // var(--swm-navy-light-60) in rgba
+    ctx.strokeStyle = "rgba(102, 118, 170, 0.3)";
+    ctx.stroke();
+  };
+
+  const bezierDrawLineToPoints = (ctx: CanvasRenderingContext2D) => {
+    const { rect } = additionalSpaceValues;
+    bezierDrawLineToPoint(ctx, rect.x, ctx.canvas.height - rect.y, x1, y1);
+    bezierDrawLineToPoint(ctx, ctx.canvas.width - rect.x, rect.y, x2, y2);
+  };
 
   return (
     <div className={styles.graph}>
