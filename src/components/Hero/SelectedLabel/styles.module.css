@@ -1,8 +1,21 @@
+:root {
+  --swm-dash-width: 2px;
+  --swm-dash-spacing: 22px;
+}
+
 .selection {
   display: inline-block;
-  padding: 2px;
+  padding: 2px 10px 8px;
   color: var(--swm-landing-heading-selected);
-  border: 2px dashed var(--swm-landing-heading-selected-border);
+  line-height: 1;
+
+  /* normally one would do this with border dashed but that doesn't allow for modifying spacing between dashes */
+  /* prettier-ignore */
+  background:
+    linear-gradient(to right, var(--swm-landing-heading-selected-border) 50%, transparent 0%) top/var(--swm-dash-spacing) var(--swm-dash-width) repeat-x, /* top */
+    linear-gradient(var(--swm-landing-heading-selected-border) 50%, transparent 0%) right/var(--swm-dash-width) var(--swm-dash-spacing) repeat-y, /* right */
+    linear-gradient(to right, var(--swm-landing-heading-selected-border) 50%, transparent 0%) bottom/var(--swm-dash-spacing) var(--swm-dash-width) repeat-x, /* bottom */
+    linear-gradient(var(--swm-landing-heading-selected-border) 50%, transparent 0%) left/var(--swm-dash-width) var(--swm-dash-spacing) repeat-y; /* left */
 }
 
 .selectionContainer {
@@ -19,17 +32,17 @@
 }
 
 .boxUpper {
-  top: -8px;
+  top: -6px;
 }
 
 .boxLower {
-  bottom: -8px;
+  bottom: -14px;
 }
 
 .boxLeft {
-  left: -8px;
+  left: -14px;
 }
 
 .boxRight {
-  right: -8px;
+  right: -14px;
 }

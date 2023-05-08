@@ -13,7 +13,8 @@ const StartScreen = () => {
         <div className={styles.heading}>
           <div className={styles.upperHeading}>
             <h1 className={styles.headingLabel}>
-              React Native <SelectedLabel>Reanimated</SelectedLabel>
+              <span>React Native</span>
+              <SelectedLabel>Reanimated</SelectedLabel>
             </h1>
             <h2 className={styles.subheadingLabel}>
               Where declarative animations meet native performance at 120 fps

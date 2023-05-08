@@ -23,6 +23,10 @@
   color: var(--swm-landing-heading);
 }
 
+.headingLabel span {
+  margin-right: 8px;
+}
+
 .subheadingLabel {
   margin-top: 32px;
   margin-bottom: 56px;
