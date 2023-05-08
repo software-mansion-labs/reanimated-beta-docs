@@ -34,7 +34,10 @@ const PlaygroundChart: React.FC<{
     drawEquation(ctx);
 
     // Draw lines to points only if current easing is a cubic bezier function
-    if (easingFunctionName === "bezier" || easingFunctionName === "bezierFn")
+    if (
+      (easingFunctionName === "bezier" || easingFunctionName === "bezierFn") &&
+      !isMobile
+    )
       bezierDrawLineToPoints(ctx);
   };
 
@@ -183,52 +186,53 @@ const PlaygroundChart: React.FC<{
         className={styles.pointArea}
         style={{ width: canvasSize + 2, height: canvasSize + 2 }}
       >
-        {(easingFunctionName === "bezier" ||
-          easingFunctionName === "bezierFn") && (
-          <>
-            <PlaygroundChartPoint
-              label="L"
-              startingPoint={{
-                x: 0,
-                y: 0,
-              }}
-              bounds={{ x: canvasSize, y: canvasSize }}
-              pointMoveHandler={(x, y) =>
-                bezierPointsMoveHandler.firstPointMoveHandler(
-                  x,
-                  y,
-                  canvasSize,
-                  canvasSize
-                )
-              }
-              pointControls={{
-                x: x1,
-                y: y1,
-              }}
-            />
+        {!isMobile &&
+          (easingFunctionName === "bezier" ||
+            easingFunctionName === "bezierFn") && (
+            <>
+              <PlaygroundChartPoint
+                label="L"
+                startingPoint={{
+                  x: 0,
+                  y: 0,
+                }}
+                bounds={{ x: canvasSize, y: canvasSize }}
+                pointMoveHandler={(x, y) =>
+                  bezierPointsMoveHandler.firstPointMoveHandler(
+                    x,
+                    y,
+                    canvasSize,
+                    canvasSize
+                  )
+                }
+                pointControls={{
+                  x: x1,
+                  y: y1,
+                }}
+              />
 
-            <PlaygroundChartPoint
-              label="R"
-              startingPoint={{
-                x: canvasSize - 24,
-                y: canvasSize - 24,
-              }}
-              bounds={{ x: canvasSize, y: canvasSize }}
-              pointMoveHandler={(x, y) =>
-                bezierPointsMoveHandler.secondPointMoveHandler(
-                  x,
-                  y,
-                  canvasSize,
-                  canvasSize
-                )
-              }
-              pointControls={{
-                x: x2,
-                y: y2,
-              }}
-            />
-          </>
-        )}
+              <PlaygroundChartPoint
+                label="R"
+                startingPoint={{
+                  x: canvasSize - 24,
+                  y: canvasSize - 24,
+                }}
+                bounds={{ x: canvasSize, y: canvasSize }}
+                pointMoveHandler={(x, y) =>
+                  bezierPointsMoveHandler.secondPointMoveHandler(
+                    x,
+                    y,
+                    canvasSize,
+                    canvasSize
+                  )
+                }
+                pointControls={{
+                  x: x2,
+                  y: y2,
+                }}
+              />
+            </>
+          )}
 
         <canvas ref={canvasRef} width={canvasSize} height={canvasSize}></canvas>
       </div>
