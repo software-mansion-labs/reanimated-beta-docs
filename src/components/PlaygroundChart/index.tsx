@@ -170,7 +170,7 @@ const PlaygroundChart: React.FC<{
     ctx.lineTo(endX + 12, endY + 12);
     ctx.lineWidth = 1;
     // var(--swm-navy-light-60) in rgba
-    ctx.strokeStyle = "rgba(102, 118, 170, 0.3)";
+    ctx.strokeStyle = "rgba(102, 118, 170, 0.4)";
     ctx.stroke();
   };
 
