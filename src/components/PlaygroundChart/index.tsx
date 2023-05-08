@@ -147,10 +147,12 @@ const PlaygroundChart: React.FC<{
   const canvasSize = !isMobile ? 250 : 175;
 
   const x1 = bezierControlsValues.x1 * (canvasSize - 24);
-  const y1 = ((bezierControlsValues.y1 + 1) * (canvasSize - 24)) / 3;
+  const y1 = (1 - (bezierControlsValues.y1 + 1) / 3) * (canvasSize - 24);
 
   const x2 = bezierControlsValues.x2 * (canvasSize - 24);
-  const y2 = ((bezierControlsValues.y2 + 1) * (canvasSize - 24)) / 3;
+  const y2 = (1 - (bezierControlsValues.y2 + 1) / 3) * (canvasSize - 24);
+
+  console.log(x1, y1, x2, y2);
 
   return (
     <div className={styles.graph}>
