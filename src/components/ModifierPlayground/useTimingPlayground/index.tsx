@@ -7,7 +7,7 @@ import { Easing } from "react-native-reanimated";
 import PlaygroundChart, {
   bezierEasingValues,
   HandleMoveHandlerProps,
-} from "@site/src/components/PlaygroundChart";
+} from "@site/src/components/ModifierPlayground/PlaygroundChart";
 
 const initialState = {
   duration: 1000,

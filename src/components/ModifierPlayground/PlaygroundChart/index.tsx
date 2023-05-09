@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import PlaygroundChartPoint from "@site/src/components/PlaygroundChart/PlaygroundChartPoint";
+import PlaygroundChartPoint from "@site/src/components/ModifierPlayground/PlaygroundChart/PlaygroundChartPoint";
 
 export interface HandleMoveHandlerProps {
   x: number;
