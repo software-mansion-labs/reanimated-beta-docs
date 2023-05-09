@@ -33,4 +33,4 @@ All feedback in all forms ranging from general to tiny fixes is highly appreciat
 - [Tymoteusz Boba](https://twitter.com/IceMeltt): site development
 - [Kacper Kapuściak](https://twitter.com/kacperkapusciak): content, interactive examples
 
-Special thanks to the whole React Native Open Source team at Software Mansion for a constant flow of feedback and ideas.
+Special thanks to the whole React Native Open Source team at [Software Mansion](https://swmansion.com/community/open-source/) for a constant flow of feedback and ideas.
