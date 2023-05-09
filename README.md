@@ -1,10 +1,14 @@
 # New Reanimated Documentation
 
-This project aims to take place of the current stable documentation which is hosted on [https://docs.swmansion.com/react-native-reanimated/](https://docs.swmansion.com/react-native-reanimated/).
+👉 [reanimated-beta-docs.swmansion.com](https://reanimated-beta-docs.swmansion.com/)
 
-<!-- ## What's in the docs
+This project aims to supersede the current stable Reanimated documentation which is hosted on [https://docs.swmansion.com/react-native-reanimated/](https://docs.swmansion.com/react-native-reanimated/).
 
-comes with new Fundamentals section, która wprowadza step-by-step into the world of Reanimated. -->
+## What's in the docs
+
+The new docs comes with a [Fundamentals](https://reanimated-beta-docs.swmansion.com/docs/fundamentals/getting-started) section which step-by-step introduction into the world of Reanimated.
+
+All sections are sprinkled with interactive examples, playground and code snippets designed to be easily copyable to be run in your projects.
 
 ## How can I help?
 
