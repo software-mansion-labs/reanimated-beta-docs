@@ -19,6 +19,7 @@
 .container {
   position: relative;
   padding-bottom: 1.5em;
+  margin-bottom: 1em;
 
   background-color: var(--swm-off-background);
   border: 1px solid var(--swm-border);
