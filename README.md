@@ -2,6 +2,13 @@
 
 👉 [reanimated-beta-docs.swmansion.com](https://reanimated-beta-docs.swmansion.com/)
 
+
+
+https://github.com/software-mansion-labs/reanimated-beta-docs/assets/39658211/f31477cc-1f9e-47b0-aceb-a6cd7e0cc08a
+
+
+
+
 This project aims to supersede the current stable Reanimated documentation which is hosted on [https://docs.swmansion.com/react-native-reanimated/](https://docs.swmansion.com/react-native-reanimated/).
 
 ## What's in the docs
