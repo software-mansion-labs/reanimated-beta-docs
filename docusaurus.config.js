@@ -21,8 +21,8 @@ const config = {
   organizationName: "software-mansion", // Usually your GitHub org/user name.
   projectName: "react-native-reanimated", // Usually your repo name.
 
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
