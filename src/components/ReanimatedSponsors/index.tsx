@@ -25,10 +25,10 @@ const ReanimatedSponsors = () => {
     <div className={styles.sponsorsWrapper}>
       <div className={styles.sponsorsLabel}>
         <h3>Sponsors</h3>
-        <p>
+        {/* <p>
           Thanks to our Sponsors we can still develop our library and make the
           React Native world a better place!
-        </p>
+        </p> */}
       </div>
       <div className={styles.sponsorsBrands}>
         <ThemedImage
