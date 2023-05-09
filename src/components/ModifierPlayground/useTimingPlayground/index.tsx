@@ -4,7 +4,10 @@ import Example from "./Example";
 import { Range, SelectOption } from "..";
 
 import { Easing } from "react-native-reanimated";
-import PlaygroundChart from "@site/src/components/PlaygroundChart";
+import PlaygroundChart, {
+  bezierEasingValues,
+  HandleMoveHandlerProps,
+} from "@site/src/components/PlaygroundChart";
 
 const initialState = {
   duration: 1000,
@@ -264,14 +267,37 @@ export default function useTimingPlayground() {
     </>
   );
 
-  const handleFirstPointMove = (x, y, canvasWidth, canvasHeight) => {
-    setX1(() => parseFloat((x / (canvasWidth - 24)).toFixed(2)));
-    setY1(() => parseFloat(((1 - y / (canvasHeight - 24)) * 3 - 1).toFixed(2)));
+  const preparePointTransformX = (x, canvasWidth) => {
+    return parseFloat(
+      (x / (canvasWidth - bezierEasingValues.handleSize)).toFixed(2)
+    );
   };
 
-  const handleSecondPointMove = (x, y, canvasWidth, canvasHeight) => {
-    setX2(() => parseFloat((x / (canvasWidth - 24)).toFixed(2)));
-    setY2(() => parseFloat(((1 - y / (canvasHeight - 24)) * 3 - 1).toFixed(2)));
+  const preparePointTransformY = (y, canvasHeight) => {
+    return parseFloat(
+      (
+        (1 - y / (canvasHeight - bezierEasingValues.handleSize)) * 3 -
+        1
+      ).toFixed(2)
+    );
+  };
+
+  const handleFirstPointMove = ({
+    x,
+    y,
+    canvasSize,
+  }: HandleMoveHandlerProps) => {
+    setX1(() => preparePointTransformX(x, canvasSize));
+    setY1(() => preparePointTransformY(y, canvasSize));
+  };
+
+  const handleSecondPointMove = ({
+    x,
+    y,
+    canvasSize,
+  }: HandleMoveHandlerProps) => {
+    setX2(() => preparePointTransformX(x, canvasSize));
+    setY2(() => preparePointTransformY(y, canvasSize));
   };
 
   const example = (
@@ -295,9 +321,9 @@ export default function useTimingPlayground() {
           : formatEasing(easing).fn.factory()
       }
       enlargeCanvasSpace={overflowingEasings.includes(functionName)}
-      bezierPointsMoveHandler={{
-        firstPointMoveHandler: handleFirstPointMove,
-        secondPointMoveHandler: handleSecondPointMove,
+      bezierHandlesMoveHandler={{
+        left: handleFirstPointMove,
+        right: handleSecondPointMove,
       }}
       bezierControlsValues={{
         x1,

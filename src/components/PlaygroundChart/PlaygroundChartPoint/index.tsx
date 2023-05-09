@@ -1,13 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Draggable, { DraggableEvent } from "react-draggable";
 
+import { bezierEasingValues } from "@site/src/components/PlaygroundChart";
+
+interface Point {
+  x: number;
+  y: number;
+}
+
 const PlaygroundChartPoint: React.FC<{
   label: string;
-  startingPoint: { x: number; y: number };
-  bounds: { x: number; y: number };
-  pointMoveHandler?: (x: number, y: number) => void;
-  pointControls?: { x: number; y: number };
+  startingPoint: Point;
+  bounds: Point;
+  pointMoveHandler?: (point: Point) => void;
+  pointControls?: Point;
 }> = ({ label, startingPoint, bounds, pointMoveHandler, pointControls }) => {
   const [place, setPlace] = useState<{
     x: number;
@@ -21,7 +28,7 @@ const PlaygroundChartPoint: React.FC<{
     const { x, y } = position;
 
     setPlace({ x, y });
-    pointMoveHandler(x, y);
+    pointMoveHandler({ x, y });
   };
 
   useEffect(() => {
@@ -40,12 +47,12 @@ const PlaygroundChartPoint: React.FC<{
           top: 0,
           left: 0,
 
-          // Limit bound to the borders,
-          right: bounds.x - 24,
-          bottom: bounds.y - 24,
+          // Limit bound to the borders
+          right: bounds.x - bezierEasingValues.handleSize,
+          bottom: bounds.y - bezierEasingValues.handleSize,
         }}
       >
-        <button className={styles.point}>{label}</button>
+        <button className={styles.handle}>{label}</button>
       </Draggable>
     </>
   );
