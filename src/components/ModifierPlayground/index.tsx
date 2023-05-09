@@ -122,7 +122,10 @@ export function Range({
           inputProps={{ min: min, max: max, step: step }}
           sx={TextFieldStyling}
           value={value}
-          onChange={(e) => onChange(parseFloat(e.target.value))}
+          onChange={(e) => {
+            const newValue = parseFloat(e.target.value);
+            onChange(newValue > max ? max : newValue <= min ? min : newValue);
+          }}
         />
       </div>
       <Slider

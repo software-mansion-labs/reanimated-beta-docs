@@ -50,18 +50,18 @@ export default function useTimingPlayground() {
   );
 
   const resetOptions = () => {
-    setDuration(() => initialState.duration);
+    setDuration(initialState.duration);
 
-    setX1(() => initialState.x1);
-    setY1(() => initialState.y1);
-    setX2(() => initialState.x2);
-    setY2(() => initialState.y2);
+    setX1(initialState.x1);
+    setY1(initialState.y1);
+    setX2(initialState.x2);
+    setY2(initialState.y2);
 
-    setStepToBack(() => initialState.stepToBack);
-    setPower(() => initialState.power);
-    setBounciness(() => initialState.bounciness);
-    setSteps(() => initialState.steps);
-    setRoundToNextStep(() => initialState.roundToNextStep);
+    setStepToBack(initialState.stepToBack);
+    setPower(initialState.power);
+    setBounciness(initialState.bounciness);
+    setSteps(initialState.steps);
+    setRoundToNextStep(initialState.roundToNextStep);
   };
 
   const canNestEasing = (easing: string) => {
@@ -75,6 +75,11 @@ export default function useTimingPlayground() {
         code: `Easing.${easing}(${formatEasing(nestedEasing).code})`,
       };
     }
+    const nomalizedX1 = x1 || 0;
+    const nomalizedY1 = y1 || 0;
+    const nomalizedX2 = x2 || 0;
+    const nomalizedY2 = y2 || 0;
+
     switch (easing) {
       case "back":
         return {
@@ -83,13 +88,18 @@ export default function useTimingPlayground() {
         };
       case "bezierFn":
         return {
-          fn: Easing.bezierFn(x1, y1, x2, y2),
-          code: `Easing.bezierFn(${x1}, ${y1}, ${x2}, ${y2})`,
+          fn: Easing.bezierFn(
+            nomalizedX1,
+            nomalizedY1,
+            nomalizedX2,
+            nomalizedY2
+          ),
+          code: `Easing.bezierFn(${nomalizedX1}, ${nomalizedY1}, ${nomalizedX2}, ${nomalizedY2})`,
         };
       case "bezier":
         return {
-          fn: Easing.bezier(x1, y1, x2, y2),
-          code: `Easing.bezier(${x1}, ${y1}, ${x2}, ${y2})`,
+          fn: Easing.bezier(nomalizedX1, nomalizedY1, nomalizedX2, nomalizedY2),
+          code: `Easing.bezier(${nomalizedX1}, ${nomalizedY1}, ${nomalizedX2}, ${nomalizedY2})`,
         };
       case "poly":
         return {
@@ -255,7 +265,7 @@ export default function useTimingPlayground() {
           />
           <SelectOption
             label="Round to next step"
-            value={"" + roundToNextStep}
+            value={String(roundToNextStep)}
             onChange={(option) => setRoundToNextStep(option === "true")}
             options={["true", "false"]}
           />
