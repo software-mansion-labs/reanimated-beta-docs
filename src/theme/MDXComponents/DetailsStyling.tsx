@@ -16,7 +16,7 @@ import ArrowDark from "@site/static/img/Arrow-dark.svg";
 
 const DetailsStyling = ({ summary, children, ...props }): JSX.Element => {
   const isBrowser = useIsBrowser();
-  const { isDarkTheme } = useColorMode();
+  const { colorMode } = useColorMode();
   const { collapsed, setCollapsed } = useCollapsible({
     initialState: !props.open,
   });
@@ -67,7 +67,7 @@ const DetailsStyling = ({ summary, children, ...props }): JSX.Element => {
       }}
     >
       <summary>
-        {!isDarkTheme ? (
+        {colorMode === "light" ? (
           <Arrow className={styles.arrow} />
         ) : (
           <ArrowDark className={styles.arrow} />

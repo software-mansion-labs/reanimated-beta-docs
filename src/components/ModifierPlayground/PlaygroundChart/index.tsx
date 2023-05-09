@@ -2,12 +2,34 @@ import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import PlaygroundChartPoint from "@site/src/components/ModifierPlayground/PlaygroundChart/PlaygroundChartPoint";
+
+export interface HandleMoveHandlerProps {
+  x: number;
+  y: number;
+  canvasSize: number;
+}
+
+export const bezierEasingValues = {
+  handleSize: 24,
+};
 
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
   easingFunction: (t) => number;
   enlargeCanvasSpace?: boolean;
-}> = ({ easingFunctionName, easingFunction, enlargeCanvasSpace = false }) => {
+  bezierHandlesMoveHandler: {
+    left: (props: HandleMoveHandlerProps) => void;
+    right: (props: HandleMoveHandlerProps) => void;
+  };
+  bezierControlsValues: { x1: number; y1: number; x2: number; y2: number };
+}> = ({
+  easingFunctionName,
+  easingFunction,
+  enlargeCanvasSpace = false,
+  bezierHandlesMoveHandler,
+  bezierControlsValues,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
   const { windowWidth } = useScreenSize();
@@ -20,6 +42,13 @@ const PlaygroundChart: React.FC<{
 
     if (enlargeCanvasSpace) prepareAdditionalSpace(ctx);
     drawEquation(ctx);
+
+    // Draw lines to points only if current easing is a cubic bezier function
+    if (
+      (easingFunctionName === "bezier" || easingFunctionName === "bezierFn") &&
+      !isMobile
+    )
+      bezierDrawLineToPoints(ctx);
   };
 
   const prepareChartValues = (canvas: HTMLCanvasElement) => {
@@ -132,13 +161,88 @@ const PlaygroundChart: React.FC<{
     initializeCanvas();
   });
 
+  const canvasSize = !isMobile ? 250 : 175;
+
+  const x1 =
+    bezierControlsValues.x1 * (canvasSize - bezierEasingValues.handleSize);
+  const y1 =
+    (1 - (bezierControlsValues.y1 + 1) / 3) *
+    (canvasSize - bezierEasingValues.handleSize);
+
+  const x2 =
+    bezierControlsValues.x2 * (canvasSize - bezierEasingValues.handleSize);
+  const y2 =
+    (1 - (bezierControlsValues.y2 + 1) / 3) *
+    (canvasSize - bezierEasingValues.handleSize);
+
+  const bezierDrawLineToPoint = (
+    ctx: CanvasRenderingContext2D,
+    startX,
+    startY,
+    endX,
+    endY
+  ) => {
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(
+      endX + bezierEasingValues.handleSize / 2,
+      endY + bezierEasingValues.handleSize / 2
+    );
+
+    ctx.lineWidth = 1;
+    // var(--swm-navy-light-60) in rgba
+    ctx.strokeStyle = "rgba(102, 118, 170, 0.4)";
+    ctx.stroke();
+  };
+
+  const bezierDrawLineToPoints = (ctx: CanvasRenderingContext2D) => {
+    const { rect } = additionalSpaceValues;
+    bezierDrawLineToPoint(ctx, rect.x, ctx.canvas.height - rect.y, x1, y1);
+    bezierDrawLineToPoint(ctx, ctx.canvas.width - rect.x, rect.y, x2, y2);
+  };
+
   return (
     <div className={styles.graph}>
-      <canvas
-        ref={canvasRef}
-        width={!isMobile ? 250 : 175}
-        height={!isMobile ? 250 : 175}
-      ></canvas>
+      <div style={{ width: canvasSize + 2, height: canvasSize + 2 }}>
+        {!isMobile &&
+          (easingFunctionName === "bezier" ||
+            easingFunctionName === "bezierFn") && (
+            <>
+              <PlaygroundChartPoint
+                label="L"
+                startingPoint={{
+                  x: 0,
+                  y: 0,
+                }}
+                bounds={{ x: canvasSize, y: canvasSize }}
+                pointMoveHandler={({ x, y }) =>
+                  bezierHandlesMoveHandler.left({ x, y, canvasSize })
+                }
+                pointControls={{
+                  x: x1,
+                  y: y1,
+                }}
+              />
+
+              <PlaygroundChartPoint
+                label="R"
+                startingPoint={{
+                  x: canvasSize - bezierEasingValues.handleSize,
+                  y: canvasSize - bezierEasingValues.handleSize,
+                }}
+                bounds={{ x: canvasSize, y: canvasSize }}
+                pointMoveHandler={({ x, y }) =>
+                  bezierHandlesMoveHandler.right({ x, y, canvasSize })
+                }
+                pointControls={{
+                  x: x2,
+                  y: y2,
+                }}
+              />
+            </>
+          )}
+
+        <canvas ref={canvasRef} width={canvasSize} height={canvasSize}></canvas>
+      </div>
     </div>
   );
 };
