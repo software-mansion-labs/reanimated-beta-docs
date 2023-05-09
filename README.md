@@ -1,68 +1,25 @@
-# Website
+# New Reanimated Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This project aims to take place of the current stable documentation which is hosted on [https://docs.swmansion.com/react-native-reanimated/](https://docs.swmansion.com/react-native-reanimated/).
 
-### Installation
+<!-- ## What's in the docs
 
-```
-$ yarn
-```
+comes with new Fundamentals section, która wprowadza step-by-step into the world of Reanimated. -->
 
-### Local Development
+## How can I help?
 
-```
-$ yarn start
-```
+Glad you asked! You can help the project in many ways e.g. by:
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+- _Reading and sharing_ the docs with friends and co-workers
+- _Sending feedback_ in the discussion or issues on GitHub
+- _Submitting PRs_ with fixes and improvements to the docs content and styles
 
-### Build
+All feedback in all forms ranging from general to tiny fixes is highly appreciated!
 
-```
-$ yarn build
-```
+## Meet the team
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+- [Aleksandra Niewiadomksa-Ptak](https://dribbble.com/aleksandranie): design
+- [Tymoteusz Boba](https://twitter.com/IceMeltt): site development
+- [Kacper Kapuściak](https://twitter.com/kacperkapusciak): content, interactive examples
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
-## Note to maintainers:
-
-### Algolia search
-
-Only applicable before Reanimated docs are fully deployed!
-
-Create .env file with:
-
-```
-APPLICATION_ID=ZYDVCHOETY
-API_KEY=<<Algolia Admin Key>>
-```
-
-Ask @kacperkapusciak or someone else from SWM RNOS to gain Algolia Admin Key.
-
-To run crawler locally you need to install `jq` and `docker`:
-
-```
-brew install jq
-```
-
-Run crawler with:
-
-```
-docker run -it --env-file=.env -e "CONFIG=$(cat ./config.json | jq -r tostring)" algolia/docsearch-scraper
-```
+Special thanks to the whole React Native Open Source team at Software Mansion for a constant flow of feedback and ideas.
