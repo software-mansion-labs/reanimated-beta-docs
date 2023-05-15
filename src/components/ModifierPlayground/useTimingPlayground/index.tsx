@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Example from "./Example";
 import styles from "./styles.module.css";
 
@@ -9,28 +9,34 @@ import PlaygroundChart, {
   bezierEasingValues,
   HandleMoveHandlerProps,
 } from "@site/src/components/ModifierPlayground/PlaygroundChart";
-import { Collapsible, useColorMode } from "@docusaurus/theme-common";
+import { Collapsible } from "@docusaurus/theme-common";
 import CollapseButton from "@site/src/components/CollapseButton";
+import useScreenSize from "@site/src/hooks/useScreenSize";
 
-const initialState = {
-  duration: 1000,
-  easing: "inOut",
-  nestedEasing: "quad",
+const prepareInitialState = (isMobile) => {
+  return {
+    duration: 1000,
+    easing: "inOut",
+    nestedEasing: "quad",
 
-  x1: 0.25,
-  y1: 0.1,
-  x2: 0.25,
-  y2: 1,
-  bezierCollapsed: true,
+    x1: 0.25,
+    y1: 0.1,
+    x2: 0.25,
+    y2: 1,
+    bezierCollapsed: true,
 
-  stepToBack: 3,
-  power: 4,
-  bounciness: 2,
-  steps: 5,
-  roundToNextStep: true,
+    stepToBack: 3,
+    power: 4,
+    bounciness: 2,
+    steps: 5,
+    roundToNextStep: true,
+  };
 };
 
 export default function useTimingPlayground() {
+  const { isMobile } = useScreenSize();
+  const initialState = prepareInitialState(isMobile);
+
   const [duration, setDuration] = useState(initialState.duration);
   const [easing, setEasing] = useState(initialState.easing);
   const [nestedEasing, setNestedEasing] = useState(initialState.nestedEasing);
@@ -59,7 +65,11 @@ export default function useTimingPlayground() {
     initialState.roundToNextStep
   );
 
-  const { colorMode } = useColorMode();
+  useEffect(() => {
+    if (isMobile && bezierCollapsed) {
+      setBezierCollapsed(false);
+    }
+  }, [isMobile]);
 
   const resetOptions = () => {
     setDuration(initialState.duration);
@@ -211,13 +221,15 @@ export default function useTimingPlayground() {
       {(easing === "bezier" ||
         (nestedEasing === "bezierFn" && canNestEasing(easing))) && (
         <>
-          <CollapseButton
-            label="Collapse the controls section"
-            labelCollapsed="Expand the controls section"
-            collapsed={bezierCollapsed}
-            onCollapse={() => setBezierCollapsed((prevState) => !prevState)}
-            className={styles.collapseButton}
-          />
+          {!isMobile && (
+            <CollapseButton
+              label="Collapse the controls section"
+              labelCollapsed="Expand the controls section"
+              collapsed={bezierCollapsed}
+              onCollapse={() => setBezierCollapsed((prevState) => !prevState)}
+              className={styles.collapseButton}
+            />
+          )}
           <Collapsible
             collapsed={bezierCollapsed}
             className={styles.bezierCollapsedBox}
@@ -225,6 +237,9 @@ export default function useTimingPlayground() {
             onCollapseTransitionEnd={(newCollapsed) => {
               setBezierCollapsed(newCollapsed);
             }}
+            /* As range sliders may hide their overflow on the boundaries during the collapse animation,
+             * we need to shorten the duration of the animation to 1ms (as 0ms will just not show it). */
+            animation={{ duration: 1 }}
           >
             <Range
               label="x1"

@@ -32,8 +32,7 @@ const PlaygroundChart: React.FC<{
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
-  const { windowWidth } = useScreenSize();
-  const isMobile = ExecutionEnvironment.canUseViewport && windowWidth < 768;
+  const { isMobile } = useScreenSize();
 
   const initializeCanvas = () => {
     const ctx = canvasRef.current.getContext("2d");
