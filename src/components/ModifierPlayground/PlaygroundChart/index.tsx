@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import PlaygroundChartPoint from "@site/src/components/ModifierPlayground/PlaygroundChart/PlaygroundChartPoint";
+import useChartValues from "@site/src/components/ModifierPlayground/PlaygroundChart/useChartValues";
 
 export interface HandleMoveHandlerProps {
   x: number;
@@ -17,6 +17,7 @@ export const bezierEasingValues = {
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
   easingFunction: (t) => number;
+  easingNestType: string | undefined;
   enlargeCanvasSpace?: boolean;
   bezierHandlesMoveHandler: {
     left: (props: HandleMoveHandlerProps) => void;
@@ -26,6 +27,7 @@ const PlaygroundChart: React.FC<{
 }> = ({
   easingFunctionName,
   easingFunction,
+  easingNestType,
   enlargeCanvasSpace = false,
   bezierHandlesMoveHandler,
   bezierControlsValues,
@@ -48,48 +50,6 @@ const PlaygroundChart: React.FC<{
       !isMobile
     )
       bezierDrawLineToPoints(ctx);
-  };
-
-  const prepareChartValues = (canvas: HTMLCanvasElement) => {
-    // Initial values for all charts
-    const minX = 0;
-    const minY = -1;
-    const maxX = 1;
-    const maxY = 1;
-    const translate = {
-      x: enlargeCanvasSpace ? (!isMobile ? 50 : 25) : 0,
-      y: enlargeCanvasSpace
-        ? canvas.height - (!isMobile ? 50 : 25)
-        : canvas.height,
-      scaleX: 1,
-      scaleY: 2,
-    };
-
-    /* For elastic easing, it would be better to decrease the scaling
-     * of the Y-axis, as the bouncing segments could overflow beyond the canvas.
-     */
-    if (easingFunctionName === "elastic") {
-      return {
-        minX,
-        minY,
-        maxX,
-        maxY,
-        translate: {
-          x: 0,
-          y: canvas.height,
-          scaleX: 1,
-          scaleY: 1,
-        },
-      };
-    }
-
-    return {
-      minX,
-      minY,
-      maxX,
-      maxY,
-      translate,
-    };
   };
 
   const additionalSpaceValues = {
@@ -117,9 +77,14 @@ const PlaygroundChart: React.FC<{
   };
 
   const drawEquation = (ctx: CanvasRenderingContext2D) => {
-    const { minX, minY, maxX, maxY, translate } = prepareChartValues(
-      ctx.canvas
-    );
+    const canvas = ctx.canvas;
+    const { minX, minY, maxX, maxY, translate } = useChartValues({
+      canvas,
+      easingFunctionName,
+      easingNestType,
+      enlargeCanvasSpace,
+      isMobile,
+    });
 
     const canvasWidth = !enlargeCanvasSpace
       ? ctx.canvas.width

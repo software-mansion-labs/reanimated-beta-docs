@@ -369,6 +369,7 @@ export default function useTimingPlayground() {
           ? formatEasing(easing).fn
           : formatEasing(easing).fn.factory()
       }
+      easingNestType={canNestEasing(easing) && easing}
       enlargeCanvasSpace={overflowingEasings.includes(functionName)}
       bezierHandlesMoveHandler={{
         left: handleFirstPointMove,
