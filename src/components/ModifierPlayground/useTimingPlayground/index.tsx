@@ -14,31 +14,28 @@ import CollapseButton from "@site/src/components/CollapseButton";
 import useScreenSize from "@site/src/hooks/useScreenSize";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-const prepareInitialState = (isMobile) => {
-  return {
-    duration: 1000,
-    easing: "inOut",
-    nestedEasing: "quad",
+const initialState = {
+  duration: 1000,
+  easing: "inOut",
+  nestedEasing: "quad",
 
-    x1: 0.25,
-    y1: 0.1,
-    x2: 0.25,
-    y2: 1,
-    bezierCollapsed: true,
+  x1: 0.25,
+  y1: 0.1,
+  x2: 0.25,
+  y2: 1,
+  bezierCollapsed: true,
 
-    stepToBack: 3,
-    power: 4,
-    bounciness: 2,
-    steps: 5,
-    roundToNextStep: true,
-  };
+  stepToBack: 3,
+  power: 4,
+  bounciness: 2,
+  steps: 5,
+  roundToNextStep: true,
 };
 
 export default function useTimingPlayground() {
-  const { windowWidth } = useScreenSize();
-  const isMobile = ExecutionEnvironment.canUseViewport && windowWidth < 768;
-
-  const initialState = prepareInitialState(isMobile);
+  const { windowWidth } =
+    ExecutionEnvironment.canUseViewport && useScreenSize();
+  const isMobile = windowWidth < 768;
 
   const [duration, setDuration] = useState(initialState.duration);
   const [easing, setEasing] = useState(initialState.easing);
