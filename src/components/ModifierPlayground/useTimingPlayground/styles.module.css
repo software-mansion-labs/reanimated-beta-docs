@@ -8,10 +8,6 @@
     }
 }
 
-.bezierCollapsedBox [class*='MuiSlider-thumb'] {
-    overflow: visible;
-}
-
 .collapseButton {
     margin: auto;
 
