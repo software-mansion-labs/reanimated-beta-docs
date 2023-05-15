@@ -17,7 +17,7 @@ const CollapseButton: React.FC<{
   return (
     <div
       className={clsx(styles.collapseButton, className)}
-      data-collapsed={!collapsed}
+      data-collapsed={collapsed}
       onClick={() => onCollapse()}
     >
       {colorMode === "light" ? (
