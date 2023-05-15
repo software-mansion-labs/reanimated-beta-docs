@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import CodeBlock from "@theme/CodeBlock";
 import styles from "./styles.module.css";
 
-import { useColorMode } from "@docusaurus/theme-common";
 import CollapseButton from "@site/src/components/CollapseButton";
 
 interface Props {
@@ -11,8 +10,7 @@ interface Props {
 }
 
 export default function CollapsibleCode({ src, showLines }: Props) {
-  const [expand, setExpand] = React.useState(false);
-  const { colorMode } = useColorMode();
+  const [collapsed, setCollapsed] = useState(true);
 
   if (!showLines) {
     return <CodeBlock language="jsx">{src}</CodeBlock>;
@@ -28,11 +26,11 @@ export default function CollapsibleCode({ src, showLines }: Props) {
       <CollapseButton
         label="Collapse the full code"
         labelCollapsed="Expand the full code"
-        collapsed={expand}
-        onCollapse={() => setExpand(!expand)}
+        collapsed={collapsed}
+        onCollapse={() => setCollapsed(!collapsed)}
         className={styles.collapseButton}
       />
-      <CodeBlock language="jsx">{expand ? src : linesToShow}</CodeBlock>
+      <CodeBlock language="jsx">{collapsed ? linesToShow : src}</CodeBlock>
     </div>
   );
 }

@@ -2,8 +2,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  --swm-expandable-transition: transform 200ms ease;
 }
 
 .collapseButton button {
