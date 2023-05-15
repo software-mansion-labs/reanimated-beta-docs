@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 /*
  * Caution - read before use!
@@ -27,7 +26,6 @@ const useScreenSize = () => {
 
   return {
     windowWidth,
-    isMobile: ExecutionEnvironment.canUseViewport && windowWidth < 768,
   };
 };
 

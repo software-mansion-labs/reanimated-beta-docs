@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
 import PlaygroundChartPoint from "@site/src/components/ModifierPlayground/PlaygroundChart/PlaygroundChartPoint";
 import useChartValues from "@site/src/components/ModifierPlayground/PlaygroundChart/useChartValues";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 export interface HandleMoveHandlerProps {
   x: number;
@@ -34,7 +35,8 @@ const PlaygroundChart: React.FC<{
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>();
 
-  const { isMobile } = useScreenSize();
+  const { windowWidth } = useScreenSize();
+  const isMobile = ExecutionEnvironment.canUseViewport && windowWidth < 768;
 
   const initializeCanvas = () => {
     const ctx = canvasRef.current.getContext("2d");

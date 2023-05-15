@@ -12,6 +12,7 @@ import PlaygroundChart, {
 import { Collapsible } from "@docusaurus/theme-common";
 import CollapseButton from "@site/src/components/CollapseButton";
 import useScreenSize from "@site/src/hooks/useScreenSize";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 const prepareInitialState = (isMobile) => {
   return {
@@ -34,7 +35,9 @@ const prepareInitialState = (isMobile) => {
 };
 
 export default function useTimingPlayground() {
-  const { isMobile } = useScreenSize();
+  const { windowWidth } = useScreenSize();
+  const isMobile = ExecutionEnvironment.canUseViewport && windowWidth < 768;
+
   const initialState = prepareInitialState(isMobile);
 
   const [duration, setDuration] = useState(initialState.duration);
