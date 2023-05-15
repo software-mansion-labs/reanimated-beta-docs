@@ -232,7 +232,6 @@ export default function useTimingPlayground() {
           )}
           <Collapsible
             collapsed={bezierCollapsed}
-            className={styles.bezierCollapsedBox}
             lazy={false}
             onCollapseTransitionEnd={(newCollapsed) => {
               setBezierCollapsed(newCollapsed);
