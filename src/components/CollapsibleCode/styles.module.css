@@ -12,35 +12,6 @@
   border: none;
 }
 
-.buttonContainer {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  padding-top: 1em;
-  padding-left: 1em;
-}
-
-.arrow {
-  height: 12px;
-  width: 12px;
-  margin-right: 1rem;
-  margin-top: 2px;
-
-  transition: var(--swm-expandable-transition);
-}
-
-.buttonContainer[data-isopen="true"] .arrow {
-  transform: rotate(180deg);
-}
-
-.buttonContainer button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-
-  font-family: var(--swm-body-font);
-  font-size: 16px;
-  color: var(--ifm-font-color-base);
-  cursor: pointer;
+.collapseButton {
+  padding: 1em 0 0 1em;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Example from "./Example";
+import styles from "./styles.module.css";
 
 import { Range, SelectOption } from "..";
 
@@ -8,6 +9,8 @@ import PlaygroundChart, {
   bezierEasingValues,
   HandleMoveHandlerProps,
 } from "@site/src/components/ModifierPlayground/PlaygroundChart";
+import { Collapsible, useColorMode } from "@docusaurus/theme-common";
+import CollapseButton from "@site/src/components/CollapseButton";
 
 const initialState = {
   duration: 1000,
@@ -18,6 +21,7 @@ const initialState = {
   y1: 0.1,
   x2: 0.25,
   y2: 1,
+  bezierCollapsed: true,
 
   stepToBack: 3,
   power: 4,
@@ -36,6 +40,9 @@ export default function useTimingPlayground() {
   const [y1, setY1] = useState(initialState.y1);
   const [x2, setX2] = useState(initialState.x2);
   const [y2, setY2] = useState(initialState.y2);
+  const [bezierCollapsed, setBezierCollapsed] = useState(
+    initialState.bezierCollapsed
+  );
 
   // back
   const [stepToBack, setStepToBack] = useState(initialState.stepToBack);
@@ -51,6 +58,8 @@ export default function useTimingPlayground() {
   const [roundToNextStep, setRoundToNextStep] = useState(
     initialState.roundToNextStep
   );
+
+  const { colorMode } = useColorMode();
 
   const resetOptions = () => {
     setDuration(initialState.duration);
@@ -202,38 +211,54 @@ export default function useTimingPlayground() {
       {(easing === "bezier" ||
         (nestedEasing === "bezierFn" && canNestEasing(easing))) && (
         <>
-          <Range
-            label="x1"
-            min={0}
-            max={1}
-            step={0.01}
-            value={x1}
-            onChange={setX1}
+          <CollapseButton
+            label="Collapse the controls section"
+            labelCollapsed="Expand the controls section"
+            collapsed={bezierCollapsed}
+            onCollapse={() => setBezierCollapsed((prevState) => !prevState)}
+            className={styles.collapseButton}
           />
-          <Range
-            label="y1"
-            min={-1}
-            max={2}
-            step={0.01}
-            value={y1}
-            onChange={setY1}
-          />
-          <Range
-            label="x2"
-            min={0}
-            max={1}
-            step={0.01}
-            value={x2}
-            onChange={setX2}
-          />
-          <Range
-            label="y2"
-            min={-1}
-            max={2}
-            step={0.01}
-            value={y2}
-            onChange={setY2}
-          />
+          <Collapsible
+            collapsed={bezierCollapsed}
+            className={styles.bezierCollapsedBox}
+            lazy={false}
+            onCollapseTransitionEnd={(newCollapsed) => {
+              setBezierCollapsed(newCollapsed);
+            }}
+          >
+            <Range
+              label="x1"
+              min={0}
+              max={1}
+              step={0.01}
+              value={x1}
+              onChange={setX1}
+            />
+            <Range
+              label="y1"
+              min={-1}
+              max={2}
+              step={0.01}
+              value={y1}
+              onChange={setY1}
+            />
+            <Range
+              label="x2"
+              min={0}
+              max={1}
+              step={0.01}
+              value={x2}
+              onChange={setX2}
+            />
+            <Range
+              label="y2"
+              min={-1}
+              max={2}
+              step={0.01}
+              value={y2}
+              onChange={setY2}
+            />
+          </Collapsible>
         </>
       )}
       {(easing === "poly" || nestedEasing === "poly") && (

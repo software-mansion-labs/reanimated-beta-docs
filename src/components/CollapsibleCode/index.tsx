@@ -2,9 +2,8 @@ import React from "react";
 import CodeBlock from "@theme/CodeBlock";
 import styles from "./styles.module.css";
 
-import Arrow from "@site/static/img/Arrow.svg";
-import ArrowDark from "@site/static/img/Arrow-dark.svg";
 import { useColorMode } from "@docusaurus/theme-common";
+import CollapseButton from "@site/src/components/CollapseButton";
 
 interface Props {
   src: string;
@@ -26,21 +25,13 @@ export default function CollapsibleCode({ src, showLines }: Props) {
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.buttonContainer}
-        data-isopen={expand}
-        onClick={() => setExpand(!expand)}
-      >
-        {colorMode === "light" ? (
-          <Arrow className={styles.arrow} />
-        ) : (
-          <ArrowDark className={styles.arrow} />
-        )}
-
-        <button>
-          {expand ? "Collapse the full code" : "Expand the full code"}
-        </button>
-      </div>
+      <CollapseButton
+        label="Collapse the full code"
+        labelCollapsed="Expand the full code"
+        collapsed={expand}
+        onCollapse={() => setExpand(!expand)}
+        className={styles.collapseButton}
+      />
       <CodeBlock language="jsx">{expand ? src : linesToShow}</CodeBlock>
     </div>
   );
