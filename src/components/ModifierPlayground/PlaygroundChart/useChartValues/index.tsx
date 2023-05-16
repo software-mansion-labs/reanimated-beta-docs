@@ -40,7 +40,7 @@ const useChartValues = ({
 
     if (easingNestType === "inOut")
       /* The midpoint between numbers 1.25 and 1.5 that represents starting points
-       * of the left and right side of the elastic easing function. */
+       * on the y-axis of the left and right side of the elastic easing function. */
       elasticEasingTranslate.y = canvas.height / 1.375;
     else if (easingNestType === "out")
       elasticEasingTranslate.y = canvas.height / 2;
