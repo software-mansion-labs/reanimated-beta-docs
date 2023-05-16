@@ -12,13 +12,13 @@ import {
 } from "react-native-gesture-handler";
 
 const SIZE = 120;
-const store = { width: 0 };
 
 export default function App() {
   const offset = useSharedValue(0);
+  const width = useSharedValue(0);
 
   const onLayout = (event) => {
-    store.width = event.nativeEvent.layout.width;
+    width.value = event.nativeEvent.layout.width;
   };
 
   const pan = Gesture.Pan()
@@ -29,9 +29,9 @@ export default function App() {
     .onFinalize((event) => {
       // highlight-start
       offset.value = withDecay({
-        velocity: event.velocityX / 500,
+        velocity: event.velocityX,
         rubberBandEffect: true,
-        clamp: [-(store.width / 2) + SIZE / 2, store.width / 2 - SIZE / 2],
+        clamp: [-(width.value / 2) + SIZE / 2, width.value / 2 - SIZE / 2],
       });
       // highlight-end
     });
