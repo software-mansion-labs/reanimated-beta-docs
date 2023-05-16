@@ -29,11 +29,11 @@ const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 <summary>Type definitions</summary>
 
 ```typescript
-export function createAnimatedComponent<P extends object>(
+function createAnimatedComponent<P extends object>(
   component: ComponentClass<P>
 ): ComponentClass<AnimateProps<P>>;
 
-export function createAnimatedComponent<P extends object>(
+function createAnimatedComponent<P extends object>(
   component: FunctionComponent<P>
 ): FunctionComponent<AnimateProps<P>>;
 ```
