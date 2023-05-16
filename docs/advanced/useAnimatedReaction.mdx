@@ -1,0 +1,45 @@
+# useAnimatedReaction()
+
+`useAnimatedReaction` lets you react to a [shared value](/docs/fundamentals/glossary#shared-value) change.
+
+## Reference
+
+```javascript
+import { withSequence } from "react-native-reanimated";
+
+function App() {
+  sv.value = withSequence(withTiming(50), withTiming(0));
+  // ...
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+type AnimatableValue = number | string | number[];
+
+export function withSequence<T extends AnimatableValue>(
+  ...animations: [T, ...T[]]
+): T;
+```
+
+</details>
+
+### Arguments
+
+#### `...animations`
+
+Any number of [animation objects](docs/fundamentals/glossary#animation-object) to be run in a sequence.
+
+### Returns
+
+## Example
+
+import AnimatedReactionMeasure from "@site/src/examples/AnimatedReactionMeasure";
+import AnimatedReactionMeasureSrc from "!!raw-loader!@site/src/examples/AnimatedReactionMeasure";
+
+<InteractiveExample
+  src={AnimatedReactionMeasureSrc}
+  component={<AnimatedReactionMeasure />}
+/>

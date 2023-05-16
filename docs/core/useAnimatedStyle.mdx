@@ -71,9 +71,15 @@ import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles"
 
 ## Caveats
 
-- Only define the dynamic part of your styles with `useAnimatedStyle` and keep the static ones separately using `StyleSheet` API or (if you really have to) with inline styles. That way you avoid lots of unnecessary style recalculations.
+- The callback passed to the `useAnimatedStyle` is first run on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) and immediately after on the [UI thread](/docs/fundamentals/glossary#ui-thread). Some functions like `measure` and `scrollTo` have implementations only on the UI thread. To safely use them inside of `useAnimatedStyle` callback wrap your code with a check:
 
-  Static and dynamic styles can be easily merged using the `[]` syntax:
+<Indent>
+
+</Indent>
+
+- Stay away from mutating shared values in `useAnimatedStyle`'s callback. In many cases this can cause an infinite loop.
+
+- Only define the dynamic part of your styles with `useAnimatedStyle` and keep the static ones separately using `StyleSheet` API or (if you really have to) with inline styles. That way you avoid lots of unnecessary style recalculations. Static and dynamic styles can be easily merged using the `[]` syntax:
 
 <Indent>
 
