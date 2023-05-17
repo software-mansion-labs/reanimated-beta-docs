@@ -1,6 +1,6 @@
 # useAnimatedReaction()
 
-`useAnimatedReaction` lets you react to a change of any JavaScript value. Especially useful when reacting to changes of [shared values](/docs/fundamentals/glossary#shared-value) and comparing values previously stored in shared value with the current one.
+`useAnimatedReaction` lets you react to a change of a [shared value](/docs/fundamentals/glossary#shared-value). Especially useful when comparing values previously stored in shared value with the current one.
 
 ## Reference
 
@@ -123,6 +123,8 @@ function App() {
 </Indent>
 
 - Functions passed to `prepare` and `result` arguments are automatically [workletized](/docs/fundamentals/glossary#to-workletize) and run on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+- You can technically react to any stateful React value using `useAnimatedReaction` but you should most probably use a `useEffect` for that instead.
 
 ## Platform compatibility
 
