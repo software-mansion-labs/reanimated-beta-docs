@@ -49,7 +49,7 @@ function App() {
   useAnimatedReaction(
     // highlight-start
     () => {
-      return sv.value / 100;
+      return Math.floor(sv.value);
     },
     // highlight-end
     (currentValue, previousValue) => {
@@ -67,7 +67,7 @@ A function that reacts to the change of a value returned by the `prepare` functi
 function App() {
   useAnimatedReaction(
     () => {
-      return sv.value / 100;
+      return Math.floor(sv.value);
     },
     // highlight-next-line
     (currentValue, previousValue) => {
