@@ -25,7 +25,8 @@ export default function App() {
       const measurement = measure(aref);
 
       if (measurement !== null) {
-        runOnJS(setText)(parseInt(measurement.width, 10));
+        const measuredWidth = parseInt(measurement.width, 10);
+        runOnJS(setText)(measuredWidth);
       }
     }
   );
