@@ -28,9 +28,7 @@ function App() {
 ```typescript
 type AnimatableValue = number | string | number[];
 
-export function withSequence<T extends AnimatableValue>(
-  ...animations: [T, ...T[]]
-): T;
+function withSequence<T extends AnimatableValue>(...animations: [T, ...T[]]): T;
 ```
 
 </details>
