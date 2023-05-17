@@ -21,9 +21,9 @@ function App() {
 <summary>Type definitions</summary>
 
 ```typescript
-export type AnimatableValue = number | string | number[];
+type AnimatableValue = number | string | number[];
 
-export function withDelay<T extends AnimatableValue>(
+function withDelay<T extends AnimatableValue>(
   delayMs: number,
   delayedAnimation: T
 ): T;
