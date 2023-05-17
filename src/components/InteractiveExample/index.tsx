@@ -2,7 +2,6 @@ import React from "react";
 
 import clsx from "clsx";
 import { useCopyToClipboard } from "usehooks-ts";
-import { enableExperimentalWebImplementation } from "react-native-gesture-handler";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import CodeBlock from "@theme/CodeBlock";
@@ -14,8 +13,6 @@ import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
 
 import styles from "./styles.module.css";
-
-enableExperimentalWebImplementation();
 
 interface Props {
   src: string;
