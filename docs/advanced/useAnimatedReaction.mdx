@@ -1,6 +1,6 @@
 # useAnimatedReaction()
 
-`useAnimatedReaction` lets you react to a change of a [shared value](/docs/fundamentals/glossary#shared-value). Especially useful for comparing the current value stored in shared value with the previous one.
+`useAnimatedReaction` lets you react to a change of any JavaScript value. Especially useful when reacting to changes of [shared values](/docs/fundamentals/glossary#shared-value) and comparing values previously stored in shared value with the current one.
 
 ## Reference
 
@@ -29,9 +29,9 @@ function App() {
 ```typescript
 type DependencyList = ReadonlyArray<any>;
 
-function useAnimatedReaction<D>(
-  prepare: () => D,
-  react: (prepareResult: D, preparePreviousResult: D | null) => void,
+function useAnimatedReaction<T>(
+  prepare: () => T,
+  react: (prepareResult: T, preparePreviousResult: T | null) => void,
   deps?: DependencyList
 ): void;
 ```
@@ -42,7 +42,7 @@ function useAnimatedReaction<D>(
 
 #### `prepare`
 
-A function which has to return a value you'd like to react to the changes of. A value returned from this function is used as a first parameter of the `react` argument.
+A function that has to return a value you'd like to react to the changes of. A value returned from this function is used as a first parameter of the `react` argument.
 
 ```jsx
 function App() {
@@ -100,7 +100,7 @@ import AnimatedReactionMeasureSrc from "!!raw-loader!@site/src/examples/Animated
 
 ## Caveats
 
-- Make sure not to mutate in the shared value you've used in the `prepare` function in the `result` function as this can cause an infinite loop.
+- Make sure not to mutate the same shared value in the `result` function that you've used in the `prepare` function as this will cause an infinite loop.
 
 <Indent>
 
@@ -121,3 +121,15 @@ function App() {
 ```
 
 </Indent>
+
+- Functions passed to `prepare` and `result` arguments are automatically [workletized](/docs/fundamentals/glossary#to-workletize) and run on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+## Platform compatibility
+
+<div className="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
