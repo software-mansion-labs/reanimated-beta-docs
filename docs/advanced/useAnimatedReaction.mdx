@@ -1,14 +1,24 @@
 # useAnimatedReaction()
 
-`useAnimatedReaction` lets you react to a [shared value](/docs/fundamentals/glossary#shared-value) change.
+`useAnimatedReaction` lets you react to a change of a [shared value](/docs/fundamentals/glossary#shared-value). Especially useful for comparing the current value stored in shared value with the previous one.
 
 ## Reference
 
 ```javascript
-import { withSequence } from "react-native-reanimated";
+import { useAnimatedReaction } from "react-native-reanimated";
 
 function App() {
-  sv.value = withSequence(withTiming(50), withTiming(0));
+  useAnimatedReaction(
+    () => {
+      return sv.value;
+    },
+    (currentValue, previousValue) => {
+      if (currentValue !== previousValue) {
+        // do something ✨
+      }
+    }
+  );
+
   // ...
 }
 ```
@@ -17,22 +27,66 @@ function App() {
 <summary>Type definitions</summary>
 
 ```typescript
-type AnimatableValue = number | string | number[];
+type DependencyList = ReadonlyArray<any>;
 
-export function withSequence<T extends AnimatableValue>(
-  ...animations: [T, ...T[]]
-): T;
+function useAnimatedReaction<D>(
+  prepare: () => D,
+  react: (prepareResult: D, preparePreviousResult: D | null) => void,
+  deps?: DependencyList
+): void;
 ```
 
 </details>
 
 ### Arguments
 
-#### `...animations`
+#### `prepare`
 
-Any number of [animation objects](docs/fundamentals/glossary#animation-object) to be run in a sequence.
+A function which has to return a value you'd like to react to the changes of. A value returned from this function is used as a first parameter of the `react` argument.
+
+```jsx
+function App() {
+  useAnimatedReaction(
+    // highlight-start
+    () => {
+      return sv.value / 100;
+    },
+    // highlight-end
+    (currentValue, previousValue) => {
+      // ...
+    }
+  );
+}
+```
+
+#### `react`
+
+A function that reacts to the change of a value returned by the `prepare` function. The `react` function comes with 2 parameters: the current value returned from the `prepare` function and the previous value which is initially set to `null`.
+
+```jsx
+function App() {
+  useAnimatedReaction(
+    () => {
+      return sv.value / 100;
+    },
+    // highlight-next-line
+    (currentValue, previousValue) => {
+      // ...
+      // highlight-next-line
+    }
+  );
+}
+```
+
+#### `dependencies` <Optional/>
+
+An optional array of dependencies.
+
+Only relevant when using Reanimated [without the Babel plugin on the Web](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/web-support#web-without-a-babel-plugin).
 
 ### Returns
+
+`useAnimatedReaction` returns `undefined`.
 
 ## Example
 
@@ -43,3 +97,27 @@ import AnimatedReactionMeasureSrc from "!!raw-loader!@site/src/examples/Animated
   src={AnimatedReactionMeasureSrc}
   component={<AnimatedReactionMeasure />}
 />
+
+## Caveats
+
+- Make sure not to mutate in the shared value you've used in the `prepare` function in the `result` function as this can cause an infinite loop.
+
+<Indent>
+
+```jsx
+function App() {
+  useAnimatedReaction(
+    () => {
+      // highlight-next-line
+      return width.value;
+    },
+    (currentValue) => {
+      // 🚨 An infinite loop!
+      // highlight-next-line
+      width.value += currentValue;
+    }
+  );
+}
+```
+
+</Indent>
