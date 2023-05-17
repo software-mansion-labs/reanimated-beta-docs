@@ -1,0 +1,85 @@
+# measure
+
+`measure` lets you synchronously get the dimensions and the position of a view on the screen.
+
+If you need the measurements as soon as possible and you don't need `pageX` and `pageY`, consider using the [`onLayout`](https://reactnative.dev/docs/view#onlayout) property instead.
+
+## Reference
+
+```javascript
+import { measure } from "react-native-reanimated";
+
+function App() {
+  const animatedRef = useAnimatedRef();
+
+  const handlePress = () => {
+    runOnUI(() => {
+      // highlight-next-line
+      const measurement = measure(animatedRef);
+    })();
+  };
+
+  // ...
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+interface MeasuredDimensions {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  pageX: number;
+  pageY: number;
+}
+
+function measure<T extends Component>(
+  ref: RefObject<T>
+): MeasuredDimensions | null;
+```
+
+</details>
+
+### Arguments
+
+#### `animatedRef`
+
+An [animated ref](/) connected to the component you'd want to get the measurements from. The animated ref has to be passed to an [Animated component](/docs/fundamentals/glossary#animated-component).
+
+### Returns
+
+`measure` returns an object containing these fields:
+
+- `x`
+- `y`
+- `width`
+- `height`
+- `pageX`
+- `pageY`
+
+It returns `null` when the measurement couldn't be performed.
+
+## Example
+
+import MeasureBasic from "@site/src/examples/MeasureBasic";
+import MeasureBasicSrc from "!!raw-loader!@site/src/examples/MeasureBasic";
+
+<InteractiveExample src={MeasureBasicSrc} component={<MeasureBasic />} />
+
+## Caveats
+
+- `measure` is only implemented on the [UI thread](/docs/fundamentals/glossary#ui-thread)
+-
+
+## Platform compatibility
+
+<div className="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>

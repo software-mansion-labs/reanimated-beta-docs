@@ -3,10 +3,9 @@ import { Button, StyleSheet, View, Text } from "react-native";
 import Animated, {
   measure,
   runOnJS,
-  useAnimatedReaction,
   useAnimatedRef,
   useSharedValue,
-  withSpring,
+  withTiming,
 } from "react-native-reanimated";
 
 export default function App() {
@@ -15,22 +14,16 @@ export default function App() {
   const [text, setText] = React.useState(width.value);
 
   const handlePress = () => {
-    width.value = withSpring(width.value + 50);
-  };
-
-  // highlight-start
-  useAnimatedReaction(
-    () => width.value,
-    () => {
+    width.value = withTiming(width.value + 50, {}, () => {
+      // highlight-next-line
       const measurement = measure(animatedRef);
-
-      if (measurement !== null) {
-        const measuredWidth = parseInt(measurement.width, 10);
-        runOnJS(setText)(measuredWidth);
+      if (measurement === null) {
+        return;
       }
-    }
-  );
-  // highlight-end
+
+      runOnJS(setText)(Math.floor(measurement.width));
+    });
+  };
 
   return (
     <View style={styles.container}>
