@@ -35,7 +35,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Animated.View ref={aref} style={{ ...styles.box, width }} />
-      <Text style={styles.label}>Width: {text}</Text>
+      <Text style={styles.label}>width: {text}</Text>
       <Button onPress={handlePress} title="Click me" />
     </View>
   );
