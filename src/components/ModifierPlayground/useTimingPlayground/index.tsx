@@ -223,8 +223,8 @@ export default function useTimingPlayground() {
         <>
           {!isMobile && (
             <CollapseButton
-              label="Collapse the controls section"
-              labelCollapsed="Expand the controls section"
+              label="Hide controls"
+              labelCollapsed="Show controls"
               collapsed={bezierCollapsed}
               onCollapse={() => setBezierCollapsed((prevState) => !prevState)}
               className={styles.collapseButton}
