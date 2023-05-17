@@ -71,13 +71,26 @@ import AnimatingStylesSrc from "!!raw-loader!@site/src/examples/AnimatingStyles"
 
 ## Caveats
 
-- The callback passed to the `useAnimatedStyle` is first run on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) and immediately after on the [UI thread](/docs/fundamentals/glossary#ui-thread). Some functions like `measure` and `scrollTo` have implementations only on the UI thread. To safely use them inside of `useAnimatedStyle` callback wrap your code with a check:
+- The callback passed to the `useAnimatedStyle` is first run on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) and immediately after on the [UI thread](/docs/fundamentals/glossary#ui-thread). Some functions like [`measure`](/) and [`scrollTo`](/) have implementations only on the UI thread. To safely use them inside of `useAnimatedStyle` callback add a check to your code:
 
 <Indent>
 
+```jsx
+function App() {
+  const animatedStyles = useAnimatedStyle(() => {
+    // highlight-next-line
+    if (!_WORKLET) {
+      return { offset: 0 };
+    }
+
+    // safely use measure or scrollTo functions
+  });
+}
+```
+
 </Indent>
 
-- Stay away from mutating shared values in `useAnimatedStyle`'s callback. In many cases this can cause an infinite loop.
+- Make sure not to mutate shared values in `useAnimatedStyle`'s callback. In many cases this can cause an infinite loop.
 
 - Only define the dynamic part of your styles with `useAnimatedStyle` and keep the static ones separately using `StyleSheet` API or (if you really have to) with inline styles. That way you avoid lots of unnecessary style recalculations. Static and dynamic styles can be easily merged using the `[]` syntax:
 
