@@ -54,5 +54,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 24,
     marginVertical: 16,
+    color: "#b58df1",
   },
 });
