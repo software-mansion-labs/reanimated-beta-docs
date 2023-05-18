@@ -57,14 +57,14 @@ An [animated ref](/) connected to the component you'd want to get the measuremen
 
 `measure` returns an object containing these fields:
 
-- `x`
-- `y`
-- `width`
-- `height`
-- `pageX`
-- `pageY`
+- `x` a number representing X coordinate relative to the parent component,
+- `y` a number representing Y coordinate relative to the parent component,
+- `width` a number representing the width of the component,
+- `height` a number representing the height of the component,
+- `pageX` a number representing X coordinate relative to the screen,
+- `pageY `a number representing Y coordinate relative to the screen,
 
-It returns `null` when the measurement couldn't be performed.
+or returns `null` when the measurement couldn't be performed.
 
 ## Example
 
