@@ -6,7 +6,7 @@ If you need the measurements as soon as possible and you don't need `pageX` and 
 
 ## Reference
 
-```javascript
+```jsx
 import { measure } from "react-native-reanimated";
 
 function App() {
@@ -16,10 +16,14 @@ function App() {
     runOnUI(() => {
       // highlight-next-line
       const measurement = measure(animatedRef);
+      if (measurement === null) {
+        return;
+      }
+      // ...
     })();
   };
 
-  // ...
+  return <Animated.View ref={animatedRef} />;
 }
 ```
 
@@ -37,7 +41,7 @@ interface MeasuredDimensions {
 }
 
 function measure<T extends Component>(
-  ref: RefObject<T>
+  animatedRef: RefObject<T>
 ): MeasuredDimensions | null;
 ```
 
@@ -69,10 +73,57 @@ import MeasureBasicSrc from "!!raw-loader!@site/src/examples/MeasureBasic";
 
 <InteractiveExample src={MeasureBasicSrc} component={<MeasureBasic />} />
 
-## Caveats
+## Pit falls
 
-- `measure` is only implemented on the [UI thread](/docs/fundamentals/glossary#ui-thread)
--
+- `measure` has an implementation only on the [UI thread](/docs/fundamentals/glossary#ui-thread). When using `measure` inside [event handlers](https://react.dev/learn/responding-to-events#adding-event-handlers) it has to be wrapped with [`runOnUI`](/) function.
+
+- The `useAnimatedStyle` function is first evaluated in the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) just before the views are attached on the native side. For this reason, to safely use the measure within `useAnimatedStyle`, add this check to your code:
+
+<Indent>
+
+```jsx
+function App() {
+  const animatedStyles = useAnimatedStyle(() => {
+    // highlight-next-line
+    if (_WORKLET) {
+      // safely use measure
+      const measurement = measure(animatedRef);
+    }
+  });
+}
+```
+
+The consecutive runs of `useAnimatedStyle` are made on the UI thread.
+
+</Indent>
+
+- Sometimes (e.g. when ref couldn't attach to the view) the `measure` may return a `null`. It's best to add a `null` check after the measurement for additional safety:
+
+<Indent>
+
+```jsx
+const animatedRef = useAnimatedRef();
+
+const handlePress = () => {
+  runOnUI(() => {
+    const measurement = measure(animatedRef);
+
+    // highlight-start
+    if (measurement === null) {
+      return;
+    }
+    // highlight-end
+  })();
+};
+```
+
+</Indent>
+
+- `measure` can be used only on rendered components. For example, trying to `measure` off-screen items in a `FlatList` will result in a `null` value.
+
+- `measure` isn't available with Remote JS Debugger. For debugging React Native apps, we highly recommend using Chrome DevTools (aka `chrome://inspect`) instead.
+
+- `measure` can be used to measure both [Animated components](/docs/fundamentals/glossary#animated-component) and plain React Native built-ins.
 
 ## Platform compatibility
 
