@@ -1,8 +1,6 @@
 # measure
 
-`measure` lets you synchronously get the dimensions and the position of a view on the screen.
-
-If you need the measurements as soon as possible and you don't need `pageX` and `pageY`, consider using the [`onLayout`](https://reactnative.dev/docs/view#onlayout) property instead.
+`measure` lets you synchronously get the dimensions and the position of a view on the screen on the [UI thread](/docs/fundamentals/glossary#ui-thread).
 
 ## Reference
 
@@ -51,7 +49,7 @@ function measure<T extends Component>(
 
 #### `animatedRef`
 
-An [animated ref](/) connected to the component you'd want to get the measurements from. The animated ref has to be passed to an [Animated component](/docs/fundamentals/glossary#animated-component).
+An [animated ref](/) connected to the component you'd want to get the measurements from. The animated ref has to be passed either to an [Animated component](/docs/fundamentals/glossary#animated-component) or a React Native built-in component.
 
 ### Returns
 
@@ -62,7 +60,7 @@ An [animated ref](/) connected to the component you'd want to get the measuremen
 - `width` a number representing the width of the component,
 - `height` a number representing the height of the component,
 - `pageX` a number representing X coordinate relative to the screen,
-- `pageY `a number representing Y coordinate relative to the screen,
+- `pageY` a number representing Y coordinate relative to the screen,
 
 or returns `null` when the measurement couldn't be performed.
 
@@ -77,7 +75,7 @@ import MeasureBasicSrc from "!!raw-loader!@site/src/examples/MeasureBasic";
 
 - `measure` has an implementation only on the [UI thread](/docs/fundamentals/glossary#ui-thread). When using `measure` inside [event handlers](https://react.dev/learn/responding-to-events#adding-event-handlers) it has to be wrapped with [`runOnUI`](/) function.
 
-- The `useAnimatedStyle` function is first evaluated in the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) just before the views are attached on the native side. For this reason, to safely use the measure within `useAnimatedStyle`, add this check to your code:
+- The `useAnimatedStyle` function is first evaluated in the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) just before the views are attached on the native side. For this reason, in order to safely use the measure within `useAnimatedStyle`, a condition similar to the one below has to be added to the code:
 
 <Indent>
 
@@ -93,11 +91,13 @@ function App() {
 }
 ```
 
-The consecutive runs of `useAnimatedStyle` are made on the UI thread.
+Consecutive runs of `useAnimatedStyle` are executed on the UI thread.
 
 </Indent>
 
-- Sometimes (e.g. when ref couldn't attach to the view) the `measure` may return a `null`. It's best to add a `null` check after the measurement for additional safety:
+- When you only need the dimensions of the component and you won't use the measurements during the animation consider using [`onLayout`](https://reactnative.dev/docs/view#onlayout) property instead.
+
+- Sometimes `measure` returns `null` (e.g. when `ref` still hasn't attached to the view). It's best to add a `null` check after the measurement for additional safety:
 
 <Indent>
 
@@ -113,17 +113,16 @@ const handlePress = () => {
       return;
     }
     // highlight-end
+    // ...
   })();
 };
 ```
 
 </Indent>
 
-- `measure` can be used only on rendered components. For example, trying to `measure` off-screen items in a `FlatList` will result in a `null` value.
+- `measure` can be used only on rendered components. For example, trying to `measure` off-screen items in a `FlatList` results in a `null` value.
 
-- `measure` isn't available with Remote JS Debugger. For debugging React Native apps, we highly recommend using Chrome DevTools (aka `chrome://inspect`) instead.
-
-- `measure` can be used to measure both [Animated components](/docs/fundamentals/glossary#animated-component) and plain React Native built-ins.
+- `measure` isn't available with Remote JS Debugger. We highly recommend using Chrome DevTools (aka `chrome://inspect`) instead for debugging React Native apps,
 
 ## Platform compatibility
 
