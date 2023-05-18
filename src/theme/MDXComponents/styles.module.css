@@ -1,6 +1,4 @@
 .details {
-  --docusaurus-details-transition: transform 200ms ease;
-
   background-color: var(--swm-details-foreground);
   box-shadow: -8px 8px 0 var(--swm-details-background);
 
@@ -34,7 +32,7 @@
   margin-right: 1.5rem;
   left: 0;
 
-  transition: var(--docusaurus-details-transition);
+  transition: var(--swm-expandable-transition);
 }
 
 .details[open]:not(.isBrowser) > summary > .arrow,

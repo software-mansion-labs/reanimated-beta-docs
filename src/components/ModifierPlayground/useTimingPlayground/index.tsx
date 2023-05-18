@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Example from "./Example";
+import styles from "./styles.module.css";
 
 import { Range, SelectOption } from "..";
 
@@ -8,6 +9,10 @@ import PlaygroundChart, {
   bezierEasingValues,
   HandleMoveHandlerProps,
 } from "@site/src/components/ModifierPlayground/PlaygroundChart";
+import { Collapsible } from "@docusaurus/theme-common";
+import CollapseButton from "@site/src/components/CollapseButton";
+import useScreenSize from "@site/src/hooks/useScreenSize";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 const initialState = {
   duration: 1000,
@@ -18,6 +23,7 @@ const initialState = {
   y1: 0.1,
   x2: 0.25,
   y2: 1,
+  bezierCollapsed: true,
 
   stepToBack: 3,
   power: 4,
@@ -27,6 +33,10 @@ const initialState = {
 };
 
 export default function useTimingPlayground() {
+  const { windowWidth } =
+    ExecutionEnvironment.canUseViewport && useScreenSize();
+  const isMobile = windowWidth < 768;
+
   const [duration, setDuration] = useState(initialState.duration);
   const [easing, setEasing] = useState(initialState.easing);
   const [nestedEasing, setNestedEasing] = useState(initialState.nestedEasing);
@@ -36,6 +46,9 @@ export default function useTimingPlayground() {
   const [y1, setY1] = useState(initialState.y1);
   const [x2, setX2] = useState(initialState.x2);
   const [y2, setY2] = useState(initialState.y2);
+  const [bezierCollapsed, setBezierCollapsed] = useState(
+    initialState.bezierCollapsed
+  );
 
   // back
   const [stepToBack, setStepToBack] = useState(initialState.stepToBack);
@@ -51,6 +64,12 @@ export default function useTimingPlayground() {
   const [roundToNextStep, setRoundToNextStep] = useState(
     initialState.roundToNextStep
   );
+
+  useEffect(() => {
+    if (isMobile && bezierCollapsed) {
+      setBezierCollapsed(false);
+    }
+  }, [isMobile]);
 
   const resetOptions = () => {
     setDuration(initialState.duration);
@@ -202,38 +221,58 @@ export default function useTimingPlayground() {
       {(easing === "bezier" ||
         (nestedEasing === "bezierFn" && canNestEasing(easing))) && (
         <>
-          <Range
-            label="x1"
-            min={0}
-            max={1}
-            step={0.01}
-            value={x1}
-            onChange={setX1}
-          />
-          <Range
-            label="y1"
-            min={-1}
-            max={2}
-            step={0.01}
-            value={y1}
-            onChange={setY1}
-          />
-          <Range
-            label="x2"
-            min={0}
-            max={1}
-            step={0.01}
-            value={x2}
-            onChange={setX2}
-          />
-          <Range
-            label="y2"
-            min={-1}
-            max={2}
-            step={0.01}
-            value={y2}
-            onChange={setY2}
-          />
+          {!isMobile && (
+            <CollapseButton
+              label="Hide controls"
+              labelCollapsed="Show controls"
+              collapsed={bezierCollapsed}
+              onCollapse={() => setBezierCollapsed((prevState) => !prevState)}
+              className={styles.collapseButton}
+            />
+          )}
+          <Collapsible
+            collapsed={bezierCollapsed}
+            lazy={false}
+            onCollapseTransitionEnd={(newCollapsed) => {
+              setBezierCollapsed(newCollapsed);
+            }}
+            /* As range sliders may hide their overflow on the boundaries during the collapse animation,
+             * we need to shorten the duration of the animation to 1ms (as 0ms will just not show it). */
+            animation={{ duration: 1 }}
+          >
+            <Range
+              label="x1"
+              min={0}
+              max={1}
+              step={0.01}
+              value={x1}
+              onChange={setX1}
+            />
+            <Range
+              label="y1"
+              min={-1}
+              max={2}
+              step={0.01}
+              value={y1}
+              onChange={setY1}
+            />
+            <Range
+              label="x2"
+              min={0}
+              max={1}
+              step={0.01}
+              value={x2}
+              onChange={setX2}
+            />
+            <Range
+              label="y2"
+              min={-1}
+              max={2}
+              step={0.01}
+              value={y2}
+              onChange={setY2}
+            />
+          </Collapsible>
         </>
       )}
       {(easing === "poly" || nestedEasing === "poly") && (
@@ -330,6 +369,7 @@ export default function useTimingPlayground() {
           ? formatEasing(easing).fn
           : formatEasing(easing).fn.factory()
       }
+      easingNestType={canNestEasing(easing) && easing}
       enlargeCanvasSpace={overflowingEasings.includes(functionName)}
       bezierHandlesMoveHandler={{
         left: handleFirstPointMove,

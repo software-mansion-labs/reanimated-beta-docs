@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import PlaygroundChartPoint from "@site/src/components/ModifierPlayground/PlaygroundChart/PlaygroundChartPoint";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 export interface HandleMoveHandlerProps {
   x: number;
@@ -17,6 +17,7 @@ export const bezierEasingValues = {
 const PlaygroundChart: React.FC<{
   easingFunctionName: string;
   easingFunction: (t) => number;
+  easingNestType: string | undefined;
   enlargeCanvasSpace?: boolean;
   bezierHandlesMoveHandler: {
     left: (props: HandleMoveHandlerProps) => void;
@@ -26,6 +27,7 @@ const PlaygroundChart: React.FC<{
 }> = ({
   easingFunctionName,
   easingFunction,
+  easingNestType,
   enlargeCanvasSpace = false,
   bezierHandlesMoveHandler,
   bezierControlsValues,
@@ -49,48 +51,6 @@ const PlaygroundChart: React.FC<{
       !isMobile
     )
       bezierDrawLineToPoints(ctx);
-  };
-
-  const prepareChartValues = (canvas: HTMLCanvasElement) => {
-    // Initial values for all charts
-    const minX = 0;
-    const minY = -1;
-    const maxX = 1;
-    const maxY = 1;
-    const translate = {
-      x: enlargeCanvasSpace ? (!isMobile ? 50 : 25) : 0,
-      y: enlargeCanvasSpace
-        ? canvas.height - (!isMobile ? 50 : 25)
-        : canvas.height,
-      scaleX: 1,
-      scaleY: 2,
-    };
-
-    /* For elastic easing, it would be better to decrease the scaling
-     * of the Y-axis, as the bouncing segments could overflow beyond the canvas.
-     */
-    if (easingFunctionName === "elastic") {
-      return {
-        minX,
-        minY,
-        maxX,
-        maxY,
-        translate: {
-          x: 0,
-          y: canvas.height,
-          scaleX: 1,
-          scaleY: 1,
-        },
-      };
-    }
-
-    return {
-      minX,
-      minY,
-      maxX,
-      maxY,
-      translate,
-    };
   };
 
   const additionalSpaceValues = {
@@ -118,9 +78,14 @@ const PlaygroundChart: React.FC<{
   };
 
   const drawEquation = (ctx: CanvasRenderingContext2D) => {
-    const { minX, minY, maxX, maxY, translate } = prepareChartValues(
-      ctx.canvas
-    );
+    const canvas = ctx.canvas;
+    const { minX, minY, maxX, maxY, translate } = prepareChartValues({
+      canvas,
+      easingFunctionName,
+      easingNestType,
+      enlargeCanvasSpace,
+      isMobile,
+    });
 
     const canvasWidth = !enlargeCanvasSpace
       ? ctx.canvas.width
@@ -245,6 +210,65 @@ const PlaygroundChart: React.FC<{
       </div>
     </div>
   );
+};
+
+interface ChartValuesProperties {
+  canvas: HTMLCanvasElement;
+  easingFunctionName: string;
+  easingNestType: string | undefined;
+  enlargeCanvasSpace: boolean;
+  isMobile: boolean;
+}
+
+const prepareChartValues = ({
+  canvas,
+  easingFunctionName,
+  easingNestType,
+  enlargeCanvasSpace,
+  isMobile,
+}: ChartValuesProperties) => {
+  // Initial values for all charts
+  const minX = 0;
+  const minY = -1;
+  const maxX = 1;
+  const maxY = 1;
+  let translate = {
+    x: enlargeCanvasSpace ? (!isMobile ? 50 : 25) : 0,
+    y: enlargeCanvasSpace
+      ? canvas.height - (!isMobile ? 50 : 25)
+      : canvas.height,
+    scaleX: 1,
+    scaleY: 2,
+  };
+
+  /* For elastic easing, it would be better to decrease the scaling
+   * of the Y-axis, as the bouncing segments could overflow beyond the canvas.
+   */
+  if (easingFunctionName === "elastic") {
+    let elasticEasingTranslate = {
+      x: 0,
+      y: canvas.height,
+      scaleX: 1,
+      scaleY: 1,
+    };
+
+    if (easingNestType === "inOut")
+      /* The midpoint between numbers 1.25 and 1.5 that represents starting points
+       * on the y-axis of the left and right side of the elastic easing function. */
+      elasticEasingTranslate.y = canvas.height / 1.375;
+    else if (easingNestType === "out")
+      elasticEasingTranslate.y = canvas.height / 2;
+
+    translate = elasticEasingTranslate;
+  }
+
+  return {
+    minX,
+    minY,
+    maxX,
+    maxY,
+    translate,
+  };
 };
 
 export default PlaygroundChart;

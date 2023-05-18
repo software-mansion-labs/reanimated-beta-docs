@@ -1,3 +1,7 @@
+:root {
+  --swm-expandable-transition: transform 200ms ease;
+}
+
 table {
   display: table;
   width: 100%;
