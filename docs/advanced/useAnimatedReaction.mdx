@@ -1,4 +1,4 @@
-# useAnimatedReaction()
+# useAnimatedReaction
 
 `useAnimatedReaction` lets you react to a change of a [shared value](/docs/fundamentals/glossary#shared-value). Especially useful when comparing values previously stored in shared value with the current one.
 
@@ -98,7 +98,7 @@ import AnimatedReactionMeasureSrc from "!!raw-loader!@site/src/examples/Animated
   component={<AnimatedReactionMeasure />}
 />
 
-## Caveats
+## Pit falls
 
 - Make sure not to mutate the same shared value in the `result` function that you've used in the `prepare` function as this will cause an infinite loop.
 

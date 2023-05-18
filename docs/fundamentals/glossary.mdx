@@ -149,13 +149,15 @@ function onPress() {
 
 ## to workletize
 
-To convert a JavaScript function into a serializable object which can be copied and run over on UI thread.
+To convert a JavaScript function into a serializable object which can be copied and run over on [UI thread](/docs/fundamentals/glossary#ui-thread).
 
 Functions marked with `"worklet";` directive are automatically picked up and workletized by the Reanimated Babel plugin.
 
 ## JavaScript thread
 
 JavaScript thread (or JS thread for short) is responsible for handling JavaScript code execution in the app.
+
+This is the primary place where the React Native app code is executed.
 
 ## UI thread
 
