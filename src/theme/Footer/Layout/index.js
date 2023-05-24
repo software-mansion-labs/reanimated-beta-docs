@@ -6,15 +6,15 @@ import Stars from "@site/static/img/stars-footer.svg";
 import usePagePath from "@site/src/hooks/usePagePath";
 
 export default function FooterLayout({ style, links, logo, copyright }) {
-  const { isDocumentation } = usePagePath();
+  const { isLanding } = usePagePath();
 
   return (
     <footer
-      className={clsx("footer", !isDocumentation && styles.footerLanding, {
+      className={clsx("footer", isLanding && styles.footerLanding, {
         "footer--dark": style === "dark",
       })}
     >
-      {!isDocumentation && (
+      {isLanding && (
         <div className={styles.sponsorsBackground}>
           <div className={styles.sponsorsBackgroundStars}>
             <Stars />

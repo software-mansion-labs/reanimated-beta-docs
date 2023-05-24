@@ -55,7 +55,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   const {
     navbar: { title: navbarTitle, logo },
   } = useThemeConfig();
-  const { isDocumentation } = usePagePath();
+  const { isLanding } = usePagePath();
   const {
     titleImages,
     heroImages,
@@ -95,7 +95,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
       {...propsRest}
       {...(logo?.target && { target: logo.target })}
     >
-      {logo && isDocumentation ? (
+      {logo && !isLanding ? (
         <LogoThemedImage
           logo={logo}
           alt={alt}
@@ -109,7 +109,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
         />
       )}
 
-      {titleImages && isDocumentation
+      {titleImages && !isLanding
         ? getWrappedImage(titleClassName, titleImage.docs)
         : getWrappedImage(titleClassName, titleImage.hero)}
     </Link>
