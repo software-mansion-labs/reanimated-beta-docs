@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useThemeConfig, type NavbarLogo } from "@docusaurus/theme-common";
 import ThemedImage from "@theme/ThemedImage";
 import type { Props } from "@theme/Logo";
-import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
+import usePagePath from "@site/src/hooks/usePagePath";
 
 interface LogoProps extends Props {
   readonly titleImages?: { light: string; dark: string };
@@ -55,7 +55,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   const {
     navbar: { title: navbarTitle, logo },
   } = useThemeConfig();
-  const { isDocumentation } = useDocumentationPath();
+  const { isDocumentation } = usePagePath();
   const {
     titleImages,
     heroImages,

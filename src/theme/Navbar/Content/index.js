@@ -16,7 +16,7 @@ import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
 import clsx from "clsx";
-import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
+import usePagePath from "@site/src/hooks/usePagePath";
 
 function useNavbarItems() {
   return useThemeConfig().navbar.items;
@@ -37,17 +37,14 @@ ${JSON.stringify(item, null, 2)}`,
             )
           }
         >
-          <NavbarItem
-            className={clsx(!isDocumentation && styles.navbarItemLanding)}
-            {...item}
-          />
+          <NavbarItem {...item} />
         </ErrorCauseBoundary>
       ))}
     </>
   );
 }
 function NavbarContentLayout({ left, right }) {
-  const { isDocumentation } = useDocumentationPath();
+  const { isLanding } = usePagePath();
 
   return (
     <div className="navbar__inner">
@@ -55,7 +52,7 @@ function NavbarContentLayout({ left, right }) {
       <div
         className={clsx(
           "navbar__items navbar__items--right",
-          !isDocumentation && styles.navbarItemsLanding
+          isLanding && styles.navbarItemsLanding
         )}
       >
         {right}
@@ -78,7 +75,7 @@ export default function NavbarContent() {
   const windowSize = useWindowSize();
   const isMobile = windowSize === "mobile";
 
-  const { isDocumentation } = useDocumentationPath();
+  const { isDocumentation, isLanding } = usePagePath();
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -108,7 +105,7 @@ export default function NavbarContent() {
           {!searchBarItem && isMobile && isDocumentation && (
             <AlgoliaSearchBar />
           )}
-          {!mobileSidebar.disabled && isDocumentation && (
+          {!mobileSidebar.disabled && !isLanding && (
             <NavbarMobileSidebarToggle />
           )}
         </>

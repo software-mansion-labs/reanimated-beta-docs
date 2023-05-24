@@ -6,12 +6,12 @@ import IconLightMode from "@theme/Icon/LightMode";
 import IconDarkMode from "@theme/Icon/DarkMode";
 import styles from "./styles.module.css";
 import { useColorScheme } from "@mui/material";
-import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
+import usePagePath from "@site/src/hooks/usePagePath";
 function ColorModeToggle({ className, buttonClassName, value, onChange }) {
   const isBrowser = useIsBrowser();
   /* Color scheme switcher from MUI framework. */
   const { setMode } = useColorScheme();
-  const { isDocumentation } = useDocumentationPath();
+  const { isDocumentation, isLanding } = usePagePath();
 
   const title = translate(
     {
@@ -47,7 +47,7 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
           "clean-btn",
           styles.toggleButton,
           !isBrowser && styles.toggleButtonDisabled,
-          !isDocumentation && styles.toggleButtonLanding,
+          isLanding && styles.toggleButtonLanding,
           buttonClassName
         )}
         type="button"
@@ -61,7 +61,7 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
           className={clsx(
             styles.iconContainer,
             styles.lightToggleIcon,
-            !isDocumentation && styles.iconLandingContainer
+            isLanding && styles.iconLandingContainer
           )}
         >
           <IconLightMode />
@@ -71,7 +71,7 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
             styles.iconContainer,
             styles.darkIconContainer,
             styles.darkToggleIcon,
-            !isDocumentation && styles.iconLandingContainer
+            isLanding && styles.iconLandingContainer
           )}
         >
           <IconDarkMode />
