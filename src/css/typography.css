@@ -168,5 +168,6 @@ code {
 /* Sidebar */
 [class*="menu__list-item-collapsible"] a {
   font-family: var(--swm-title-font);
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 18px;
 }
