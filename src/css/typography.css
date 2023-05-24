@@ -37,16 +37,22 @@
   --ifm-font-family-bold: var(--swm-body-font);
 
   /* Heading */
-  --ifm-h1-font-size: 32px;
-  --ifm-h2-font-size: 24px;
-  --ifm-h3-font-size: 20px;
-  --ifm-h4-font-size: 18px;
-  --ifm-h5-font-size: 18px;
-  --ifm-h6-font-size: 18px;
+  --swm-h1-font-size: 42px;
+  --swm-h2-font-size: 32px;
+  --swm-h3-font-size: 22px;
+  --swm-heading-font-size-smaller: 18px;
   --ifm-code-font-size: 90%;
 
   --ifm-heading-font-family: var(--swm-title-font);
   --ifm-heading-margin-bottom: 0;
+
+  --swm-heading-font-weight: 600;
+  --swm-h1-line-height: 115%;
+  --swm-h2-line-height: 120%;
+  --swm-heading-line-height-default: 130%;
+
+  --swm-heading-letter-spacing-bigger: 0.02em;
+  --swm-heading-letter-spacing-smaller: 0.01em;
 
   /* Admonitions */
   --swm-admonition-heading-font-family: var(--swm-body-font);
@@ -60,17 +66,81 @@
   --swm-paginator-label-font-weight: 500;
 }
 
+/* Remove all heading rules, prioritized by Docusaurus */
+:root,
+.markdown h1:first-child,
+.markdown > h1,
+.markdown > h2,
+.markdown > h3,
+.markdown > h4,
+.markdown > h5,
+.markdown > h6 {
+  --ifm-h1-font-size: var(--swm-h1-font-size);
+  --ifm-h2-font-size: var(--swm-h2-font-size);
+  --ifm-h3-font-size: var(--swm-h3-font-size);
+  --ifm-h4-font-size: var(--swm-heading-font-size-smaller);
+  --ifm-h5-font-size: var(--swm-heading-font-size-smaller);
+  --ifm-h6-font-size: var(--swm-heading-font-size-smaller);
+}
+
+@media (max-width: 996px) {
+  :root,
+  .markdown h1:first-child,
+  .markdown > h1,
+  .markdown > h2,
+  .markdown > h3,
+  .markdown > h4,
+  .markdown > h5,
+  .markdown > h6 {
+    --swm-heading-font-size-smaller-mobile: 16px;
+
+    /* Decrease the font size on mobile devices */
+    --ifm-h1-font-size: var(--swm-h2-font-size);
+    --ifm-h2-font-size: var(--swm-h3-font-size);
+    --ifm-h3-font-size: var(--swm-heading-font-size-smaller);
+    --ifm-h4-font-size: var(--swm-heading-font-size-smaller-mobile);
+    --ifm-h5-font-size: var(--swm-heading-font-size-smaller-mobile);
+    --ifm-h6-font-size: var(--swm-heading-font-size-smaller-mobile);
+  }
+}
+
 h1,
 h2,
 h3,
 h4,
+h5,
+h6 {
+  font-weight: var(--swm-heading-font-weight);
+  letter-spacing: var(--swm-heading-letter-spacing-smaller);
+}
+
+h1 {
+  line-height: var(--swm-h1-line-height);
+  letter-spacing: var(--swm-heading-letter-spacing-bigger);
+}
+
+@media (max-width: 996px) {
+  h1 {
+    letter-spacing: var(--swm-heading-letter-spacing-smaller);
+  }
+}
+
+h2 {
+  line-height: var(--swm-h2-line-height);
+}
+
+h3,
+h4,
 h5 {
-  font-weight: 500;
+  line-height: var(--swm-heading-line-height-default);
 }
 
 h6 {
   font-family: var(--swm-code-font);
-  font-weight: 600;
+}
+
+p {
+  line-height: 160%;
 }
 
 ul[role="tablist"] {
