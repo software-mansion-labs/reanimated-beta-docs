@@ -64,6 +64,10 @@
 
   --swm-paginator-label-font-size: 20px;
   --swm-paginator-label-font-weight: 500;
+
+  /* Search page */
+  --swm-search-page-heading-font-weight: 600;
+  --swm-search-page-summary-font-size: 14px;
 }
 
 /* Remove all heading rules, prioritized by Docusaurus */

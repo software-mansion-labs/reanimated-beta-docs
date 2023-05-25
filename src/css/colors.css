@@ -190,6 +190,8 @@
   --swm-searchbar-border: var(--swm-navy-light-20);
   --swm-searchbar-border-hover: var(--swm-purple-light-100);
 
+  --swm-search-page-query-text-color: var(--swm-navy-light-100);
+
   /* Sidebar */
   --swm-sidebar-background: var(--swm-off-white);
   --swm-sidebar-elements-background: var(--swm-white);
@@ -306,6 +308,8 @@
   --swm-searchbar-background: var(--swm-background);
   --swm-searchbar-border: var(--swm-navy-dark-60);
   --swm-searchbar-border-hover: var(--swm-purple-dark-80);
+
+  --swm-search-page-query-text-color: var(--swm-navy-light-10);
 
   /* Sidebar */
   --swm-sidebar-background: var(--swm-navy);

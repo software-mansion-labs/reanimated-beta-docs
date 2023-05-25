@@ -1,5 +1,5 @@
 footer {
-  --ifm-footer-padding-vertical: 2.5rem;
+  --ifm-footer-padding-vertical: 33px;
   --ifm-footer-padding-horizontal: 4rem;
   --ifm-footer-background-color: var(--swm-background);
 }

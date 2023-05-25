@@ -8,6 +8,7 @@ export default function NavbarMobileSidebarLayout({
   secondaryMenu,
 }) {
   const { shown: secondaryMenuShown } = useNavbarSecondaryMenu();
+
   return (
     <div className="navbar-sidebar">
       {header}
