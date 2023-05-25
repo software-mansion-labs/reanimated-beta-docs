@@ -71,6 +71,14 @@
   font-size: 16px;
 }
 
+.searchResultItem [class*='breadcrumbs__item']::after {
+  display: none;
+}
+
+.breadcrumbArrow {
+  margin: 0 var(--ifm-breadcrumb-spacing);
+}
+
 .searchResultItemPath {
   --ifm-breadcrumb-separator-size-multiplier: 1;
   margin-top: 0.5rem;

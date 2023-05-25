@@ -21,6 +21,7 @@ import {
   useSearchResultUrlProcessor,
 } from "@docusaurus/theme-search-algolia/client";
 import Layout from "@theme/Layout";
+import ThemedImage from "@theme/ThemedImage";
 import styles from "./styles.module.css";
 // Very simple pluralization: probably good enough for now
 function useDocumentsFoundPlural() {
@@ -109,6 +110,12 @@ function SearchVersionSelectList({ docsSearchVersionsHelpers }) {
     </div>
   );
 }
+
+const breadcrumbsArrows = {
+  light: "/img/breadcrumb-arrow-light.svg",
+  dark: "/img/breadcrumb-arrow-dark.svg",
+};
+
 function SearchPageContent() {
   const {
     i18n: { currentLocale },
@@ -405,13 +412,24 @@ function SearchPageContent() {
                         )}
                       >
                         {breadcrumbs.map((html, index) => (
-                          <li
-                            key={index}
-                            className="breadcrumbs__item"
-                            // Developer provided the HTML, so assume it's safe.
-                            // eslint-disable-next-line react/no-danger
-                            dangerouslySetInnerHTML={{ __html: html }}
-                          />
+                          <>
+                            <li
+                              key={index}
+                              className="breadcrumbs__item"
+                              // Developer provided the HTML, so assume it's safe.
+                              // eslint-disable-next-line react/no-danger
+                              dangerouslySetInnerHTML={{ __html: html }}
+                            />
+                            {index + 1 !== breadcrumbs.length && (
+                              <ThemedImage
+                                sources={{
+                                  light: breadcrumbsArrows.light,
+                                  dark: breadcrumbsArrows.dark,
+                                }}
+                                className={styles.breadcrumbArrow}
+                              />
+                            )}
+                          </>
                         ))}
                       </ul>
                     </nav>

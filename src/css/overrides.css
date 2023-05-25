@@ -67,18 +67,6 @@ table {
   margin-right: 1em;
 }
 
-.theme-code-block-highlighted-line {
-  text-shadow: var(--swm-yellow-light-60) 0 0 10px,
-    var(--swm-yellow-light-60) 0 0 10px, var(--swm-yellow-light-60) 0 0 10px,
-    var(--swm-yellow-light-60) 0 0 10px;
-}
-
-:root[data-theme="dark"] .theme-code-block-highlighted-line {
-  text-shadow: var(--swm-yellow-dark-120) 0 0 10px,
-    var(--swm-yellow-dark-120) 0 0 10px, var(--swm-yellow-dark-120) 0 0 10px,
-    var(--swm-yellow-dark-120) 0 0 10px;
-}
-
 [class*="cardContainer"] {
   box-shadow: none !important;
   border: 2px solid var(--swm-card-border) !important;
