@@ -69,13 +69,13 @@ table {
 
 [class*="cardContainer"] {
   box-shadow: none !important;
-  border: 2px solid var(--swm-card-border) !important;
+  border: 1px solid var(--swm-card-border) !important;
   border-radius: 0;
   background-color: var(--swm-card-background);
 }
 
 [class*="cardContainer"]:hover {
-  border: 2px solid var(--swm-card-border-hover) !important;
+  border: 1px solid var(--swm-card-border-hover) !important;
 }
 
 [class*="cardContainer"] p {

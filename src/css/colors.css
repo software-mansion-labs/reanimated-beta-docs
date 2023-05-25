@@ -195,6 +195,10 @@
   --swm-sidebar-elements-background: var(--swm-white);
   --swm-sidebar-menu-color: var(--swm-navy-light-60);
 
+  /* Mobile sidebar */
+  /* --swm-navy-light-100 in rgba */
+  --swm-sidebar-backdrop: rgba(0, 26, 114, 0.5);
+
   /* Landing */
   --swm-landing-heading: var(--ifm-font-color-base);
   --swm-landing-heading-selected: var(--swm-purple-light-100);
@@ -311,6 +315,10 @@
   --swm-sidebar-background: var(--swm-navy);
   --swm-sidebar-elements-background: var(--swm-off-navy);
   --swm-sidebar-menu-color: var(--swm-navy-light-20);
+
+  /* Mobile sidebar */
+  /* --swm-navy in rgba */
+  --swm-sidebar-backdrop: rgba(35, 39, 54, 0.5);
 
   /* Landing */
   --swm-landing-heading: var(--swm-off-white);
