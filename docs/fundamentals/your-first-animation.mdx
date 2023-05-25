@@ -10,7 +10,7 @@ In this section, we'll guide you through the basic concepts of Reanimated. If yo
 
 Let's start by having something that we could see on the screen. First, to create an animatable component you need to import an `Animated` object:
 
-```bash
+```jsx
 import Animated from "react-native-reanimated";
 ```
 
@@ -44,8 +44,8 @@ You can create your own custom Animated components with [`createAnimatedComponen
 
 A [shared value](/docs/fundamentals/glossary#shared-value) is a driving factor of all your animations. You can think of it as a React state which is automagically kept in sync between the “JavaScript” and the “native” side of your app (hence the name). You create shared values using a `useSharedValue` hook:
 
-```bash
-import { useSharedValue } from 'react-native-reanimated';
+```jsx
+import { useSharedValue } from "react-native-reanimated";
 ```
 
 As with any other [React hook](https://reactjs.org/docs/hooks-rules.html), you need to define it in your component's body. In a shared value, you can store any JS value like `number`, `string` or `boolean` but also data structures such as `array` and `object`.
