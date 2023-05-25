@@ -88,9 +88,7 @@ export default function NavbarContent() {
             <NavbarLogo />
           </div>
           <NavbarItems items={leftItems} />
-          {!searchBarItem && !isMobile && isDocumentation && (
-            <AlgoliaSearchBar />
-          )}
+          {!searchBarItem && !isMobile && !isLanding && <AlgoliaSearchBar />}
           {!isMobile && isDocumentation && (
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
@@ -98,13 +96,11 @@ export default function NavbarContent() {
       }
       right={
         <>
-          {!isDocumentation && (
+          {(isLanding || (!isMobile && !isDocumentation)) && (
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
           <NavbarItems items={rightItems} isDocumentation={isDocumentation} />
-          {!searchBarItem && isMobile && isDocumentation && (
-            <AlgoliaSearchBar />
-          )}
+          {!searchBarItem && isMobile && !isLanding && <AlgoliaSearchBar />}
           {!mobileSidebar.disabled && !isLanding && (
             <NavbarMobileSidebarToggle />
           )}

@@ -13,7 +13,7 @@ const ignoredClassNames = ["header-github"];
 // Filter items on mobile sidebar (such as GitHub icon) that contains specified className
 function filterIgnoredItems(items) {
   return items.filter((item) =>
-    item.className ? item.className !== "header-github" : item
+    item.className ? !ignoredClassNames.includes(item.className) : item
   );
 }
 

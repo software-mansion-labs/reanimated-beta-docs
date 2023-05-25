@@ -57,7 +57,7 @@ export default function NavbarLayout({ children }) {
   const { isActive: announcementBarActive } = useAnnouncementBar();
   const mobileSidebar = useNavbarMobileSidebar();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
-  const { isDocumentation, isLanding } = usePagePath();
+  const { isLanding } = usePagePath();
 
   return (
     <div>
