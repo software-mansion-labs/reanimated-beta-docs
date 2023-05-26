@@ -52,7 +52,7 @@ import SharedValueSrc from "!!raw-loader!@site/src/examples/SharedValue";
 
 <InteractiveExample src={SharedValueSrc} component={<SharedValue />} showCode />
 
-## Pit falls
+## Pitfalls
 
 - When you change the `sv.value` Reanimated will update the styles and keep the shared value in sync between the threads. However, this won't trigger a typical React re-render because a shared value is a plain JavaScript object.
 - When you change the `sv.value` the update will happen synchronously on the [UI thread](/docs/fundamentals/glossary#ui-thread). On the other hand, on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) the update is asynchronous. This means when you try to immediately log the `value` after the change it will log the previously stored value.
