@@ -10,7 +10,7 @@
 import { runOnJS } from "react-native-reanimated";
 
 function App() {
-  const [isAnimating, setAnimating] = React.useState(true);
+  const [isAnimating, setIsAnimating] = React.useState(true);
 
   function handlePress() {
     offset.value = withSpring(0, {}, () => {
