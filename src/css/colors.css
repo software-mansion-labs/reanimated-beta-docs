@@ -170,6 +170,13 @@
   --swm-interactive-copy-button-off: rgba(0, 26, 114, 0);
   --swm-interactive-copy-button-on: rgba(0, 26, 114, 1);
 
+  /* Table */
+  --swm-table-border-color: var(--swm-navy-light-20);
+
+  --ifm-table-head-background: var(--swm-off-background);
+  --ifm-table-stripe-background: var(--swm-off-background) !important;
+  --ifm-table-border-color: var(--swm-table-border-color);
+
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-100);
   --swm-paginator-label: var(--swm-purple-light-80);
@@ -290,6 +297,9 @@
   /* --swm-navy-light-20 in rgba schema */
   --swm-interactive-copy-button-off: rgba(193, 198, 229, 0);
   --swm-interactive-copy-button-on: rgb(193, 198, 229, 1);
+
+  /* Table */
+  --swm-table-border-color: var(--swm-navy-light-60);
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-20);

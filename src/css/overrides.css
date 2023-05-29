@@ -14,6 +14,10 @@ table {
   }
 }
 
+table thead tr {
+  border-bottom: 1px solid var(--ifm-table-border-color);
+}
+
 .compatibility table {
   display: table;
   width: 100%;
