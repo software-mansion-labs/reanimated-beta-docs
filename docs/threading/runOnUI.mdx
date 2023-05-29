@@ -1,6 +1,8 @@
 # runOnUI
 
-`runOnUI` lets you asynchronously run [workletized](/docs/fundamentals/glossary#to-workletize) functions on the [UI thread](/docs/fundamentals/glossary#ui-thread). Most commonly used within a `useEffect` to start an animation on component mount or with [`measure`](/docs/advanced/measure) and [`scrollTo`](/) functions which have implementations only on the UI thread.
+`runOnUI` lets you asynchronously run [workletized](/docs/fundamentals/glossary#to-workletize) functions on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+Most commonly used either with an `useEffect` to start an animation on component mount/unmount or with [`measure`](/docs/advanced/measure) and [`scrollTo`](/) functions which have implementations only on the UI thread.
 
 ## Reference
 
@@ -11,7 +13,7 @@ function App() {
   // E.g. in event handler or in an effect
   // highlight-next-line
   runOnUI((greeting) => {
-    console.log(greeting, "from the UI thread");
+    console.log(`${greeting} from the UI thread`);
     // highlight-next-line
   })("Howdy");
 
@@ -46,13 +48,22 @@ Don't forget to call the function returned from `runOnUI`.
 
 ## Example
 
+import RunOnUI from "@site/src/examples/RunOnUI";
+import RunOnUISrc from "!!raw-loader!@site/src/examples/RunOnUI";
+
+<InteractiveExample
+  src={RunOnUISrc}
+  component={<RunOnUI />}
+  label="Tap each word"
+/>
+
 ## Pitfalls
 
 - Make sure you pass a reference to the function instead of executing it in place, e.g. ~~runOnUI(setValue(10))()`~~.
 
-- When implementing your animations you should first reach for more general solutions such as `useDerivedValue`, `useAnimatedReaction` or running code in gesture callbacks and only use `runOnUI` after you've tried other methods.
+- When implementing your animations you should first reach for more general solutions such as [`useDerivedValue`](/), [`useAnimatedReaction`](/docs/advanced/useAnimatedReaction) or running code in gesture callbacks and only use `runOnUI` after you've tried other methods.
 
-- The callback passed as the first argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+- The callback passed as the argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
 
 ## Platform compatibility
 
