@@ -85,6 +85,10 @@ import DecayTrainSrc from "!!raw-loader!@site/src/examples/DecayTrain";
   label="Grab and drag the train"
 />
 
+## Pitfalls
+
+- The callback passed to the 2nd argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
 ## Platform compatibility
 
 <div className="compatibility">

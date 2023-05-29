@@ -125,6 +125,10 @@ import TimingTabsSrc from "!!raw-loader!@site/src/examples/TimingTabs";
 
 <InteractiveExample src={TimingTabsSrc} component={<TimingTabs />} />
 
+## Pitfalls
+
+- The callback passed to the 3rd argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
 ## Platform compatibility
 
 <div className="compatibility">

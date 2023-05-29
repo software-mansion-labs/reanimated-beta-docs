@@ -98,7 +98,7 @@ import AnimatedReactionMeasureSrc from "!!raw-loader!@site/src/examples/Animated
   component={<AnimatedReactionMeasure />}
 />
 
-## Pit falls
+## Pitfalls
 
 - Make sure not to mutate the same shared value in the `result` function that you've used in the `prepare` function as this will cause an infinite loop.
 
@@ -122,7 +122,7 @@ function App() {
 
 </Indent>
 
-- Functions passed to `prepare` and `result` arguments are automatically [workletized](/docs/fundamentals/glossary#to-workletize) and run on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+- Functions passed to `prepare` and `result` arguments are automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
 
 - You can technically react to any stateful React value using `useAnimatedReaction` but you should most probably use a `useEffect` for that instead.
 
