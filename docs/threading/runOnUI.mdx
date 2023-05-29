@@ -1,0 +1,65 @@
+# runOnUI
+
+`runOnUI` lets you asynchronously run [workletized](/docs/fundamentals/glossary#to-workletize) functions on the [UI thread](/docs/fundamentals/glossary#ui-thread). Most commonly used within a `useEffect` to start an animation on component mount or with [`measure`](/docs/advanced/measure) and [`scrollTo`](/) functions which have implementations only on the UI thread.
+
+## Reference
+
+```javascript
+import { runOnUI } from "react-native-reanimated";
+
+function App() {
+  // E.g. in event handler or in an effect
+  // highlight-next-line
+  runOnUI((greeting) => {
+    console.log(greeting, "from the UI thread");
+    // highlight-next-line
+  })("Howdy");
+
+  // ...
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+function runOnUI<A extends any[], R>(
+  fn: (...args: A) => R
+): (...args: Parameters<typeof fn>) => void;
+```
+
+</details>
+
+### Arguments
+
+#### fn
+
+A reference to a function you want to execute on the [UI thread](/docs/fundamentals/glossary#ui-thread) from the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread). Arguments to your function have to be passed to the function returned from `runOnUI` i.e. `runOnUI(myWorklet)(10);`.
+
+### Returns
+
+`runOnUI` returns a function that accepts arguments for the function passed as the first argument.
+
+:::info
+Don't forget to call the function returned from `runOnUI`.
+:::
+
+## Example
+
+## Pitfalls
+
+- Make sure you pass a reference to the function instead of executing it in place, e.g. ~~runOnUI(setValue(10))()`~~.
+
+- When implementing your animations you should first reach for more general solutions such as `useDerivedValue`, `useAnimatedReaction` or running code in gesture callbacks and only use `runOnUI` after you've tried other methods.
+
+- The callback passed as the first argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+## Platform compatibility
+
+<div className="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
