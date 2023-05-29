@@ -67,6 +67,7 @@ module.exports = {
       types: ["selector", "keyword"],
       style: {
         color: "var(--swm-blue-light-100)",
+        fontWeight: 600,
       },
     },
   ],

@@ -6,7 +6,7 @@
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
 
-[class*='navbar-sidebar__backdrop'] {
+[class*="navbar-sidebar__backdrop"] {
   background-color: var(--swm-sidebar-backdrop);
 }
 
