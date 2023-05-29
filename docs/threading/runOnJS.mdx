@@ -10,16 +10,8 @@
 import { runOnJS } from "react-native-reanimated";
 
 function App() {
-  const [isAnimating, setIsAnimating] = React.useState(true);
-
-  function handlePress() {
-    offset.value = withSpring(0, {}, () => {
-      // highlight-next-line
-      runOnJS(setIsAnimating)(false);
-    });
-  }
-
-  // ...
+  // While on the UI thread
+  runOnJS(navigation.goBack)();
 }
 ```
 
@@ -38,7 +30,7 @@ function runOnJS<A extends any[], R>(
 
 #### fn
 
-A reference to the function you want to execute on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) from the [UI thread](/docs/fundamentals/glossary#ui-thread). Arguments to your function have to be passed to the function returned from `runOnJS` i.e. `runOnJS(setValue)(10);`.
+A reference to a function you want to execute on the [JavaScript thread](/docs/fundamentals/glossary#javascript-thread) from the [UI thread](/docs/fundamentals/glossary#ui-thread). Arguments to your function have to be passed to the function returned from `runOnJS` i.e. `runOnJS(setValue)(10);`.
 
 ### Returns
 
