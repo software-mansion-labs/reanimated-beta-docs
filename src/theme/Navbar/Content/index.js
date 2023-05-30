@@ -10,13 +10,12 @@ import {
 } from "@docusaurus/theme-common/internal";
 import NavbarItem from "@theme/NavbarItem";
 import NavbarColorModeToggle from "@theme/Navbar/ColorModeToggle";
-import SearchBar from "@theme/SearchBar";
 import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
-import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
 import clsx from "clsx";
 import usePagePath from "@site/src/hooks/usePagePath";
+import AlgoliaSearchBar from "@site/src/components/AlgoliaSearchBar";
 
 function useNavbarItems() {
   return useThemeConfig().navbar.items;
@@ -61,16 +60,6 @@ function NavbarContentLayout({ left, right }) {
   );
 }
 
-function AlgoliaSearchBar() {
-  return (
-    <div className={styles.navbarSearchWrapper}>
-      <NavbarSearch className={styles.navbarSearch}>
-        <SearchBar />
-      </NavbarSearch>
-    </div>
-  );
-}
-
 export default function NavbarContent() {
   const windowSize = useWindowSize();
   const isMobile = windowSize === "mobile";
@@ -100,7 +89,6 @@ export default function NavbarContent() {
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
           <NavbarItems items={rightItems} isDocumentation={isDocumentation} />
-          {!searchBarItem && isMobile && !isLanding && <AlgoliaSearchBar />}
           {!mobileSidebar.disabled && !isLanding && (
             <NavbarMobileSidebarToggle />
           )}

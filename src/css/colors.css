@@ -190,6 +190,8 @@
   --swm-copyright-color-landing: var(--swm-copyright-color);
 
   /* Search */
+  --docsearch-text-color: var(--swm-searchbar-text-color);
+
   --swm-searchbar-text-color: var(--swm-navy-light-60);
   --swm-searchbar-background: var(--swm-white);
   --swm-searchbar-border: var(--swm-navy-light-20);

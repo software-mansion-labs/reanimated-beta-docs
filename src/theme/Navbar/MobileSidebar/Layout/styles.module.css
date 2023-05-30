@@ -1,9 +1,15 @@
 [class*="navbar-sidebar__items"] {
-  height: calc(100% - var(--ifm-navbar-height) - 64px);
+  height: calc(100% - var(--ifm-navbar-height) - 123px);
 }
 
 [class*="navbar-sidebar__brand"] {
   padding-left: 20px;
+}
+
+@media (max-width: 997px) {
+  [class*="navbar-sidebar__brand"] {
+    --ifm-navbar-height: 68px;
+  }
 }
 
 .sidebarGithubIcon {

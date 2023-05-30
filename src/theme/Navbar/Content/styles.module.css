@@ -6,27 +6,6 @@ nav {
   --ifm-navbar-shadow: none;
 }
 
-.navbarSearchWrapper {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.navbarSearch button {
-  border-radius: 0;
-  color: var(--swm-searchbar-text-color);
-  border: 1px solid var(--swm-searchbar-border);
-  background: var(--swm-searchbar-background);
-  height: 37px; /* should be --swm-logo-height but optical illusion makes the search bar smaller then the theme picker*/
-}
-.navbarSearch button:hover {
-  color: var(--swm-searchbar-text-color);
-  border: 1px solid var(--swm-searchbar-border-hover);
-  background: var(--swm-searchbar-background);
-  box-shadow: none;
-}
-
 @media (max-height: 768px) {
   nav {
     --ifm-navbar-height: 56px;
@@ -37,12 +16,6 @@ nav {
   nav {
     --ifm-navbar-padding-vertical: 0;
     --ifm-navbar-padding-horizontal: 1.5em;
-  }
-
-  .navbarSearch {
-    position: static;
-    margin-right: 1em;
-    padding: 0;
   }
 }
 
@@ -76,17 +49,5 @@ nav {
   [class*="navbar__items--left"] {
     flex: 1;
     width: 100%;
-  }
-
-  .navbarSearch {
-    width: 100%;
-    max-width: 600px;
-    justify-self: flex-end;
-  }
-
-  button[class*="DocSearch-Button"] {
-    flex: 1;
-    width: 100%;
-    font-family: var(--swm-title-font);
   }
 }
