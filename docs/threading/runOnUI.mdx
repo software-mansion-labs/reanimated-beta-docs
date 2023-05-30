@@ -59,11 +59,13 @@ import RunOnUISrc from "!!raw-loader!@site/src/examples/RunOnUI";
 
 ## Pitfalls
 
-- Make sure you pass a reference to the function instead of executing it in place, e.g. ~~runOnUI(setValue(10))()`~~.
-
 - When implementing your animations you should first reach for more general solutions such as [`useDerivedValue`](/), [`useAnimatedReaction`](/docs/advanced/useAnimatedReaction) or running code in gesture callbacks and only use `runOnUI` after you've tried other methods.
 
-- The callback passed as the argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+- It's a common mistake to execute function inside of runOnUI like this: ~~`runOnUI(myWorklet(10))()`~~. Here, the correct usage would be `runOnUI(myWorklet)(10)`.
+
+- The callback passed as the argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ready to be run on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+- Make sure not to execute `runOnUI` on the UI thread as this will result in an error.
 
 ## Platform compatibility
 
