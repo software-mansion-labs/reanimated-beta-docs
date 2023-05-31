@@ -1,98 +1,99 @@
-[class*='DocSearch-Modal'] {
-    --docsearch-modal-background: var(--swm-off-background);
+[class*="DocSearch-Modal"] {
+  --docsearch-modal-background: var(--swm-off-background);
 }
 
-[class*='DocSearch-Footer'] {
-    --docsearch-footer-height: 52px;
-    --docsearch-spacing: 18px;
+[class*="DocSearch-Footer"] {
+  --docsearch-footer-height: 52px;
+  --docsearch-spacing: 18px;
 }
 
-[class*='DocSearch-Form'] {
-    --docsearch-searchbox-shadow: none;
-    --docsearch-spacing: 16px;
-    --docsearch-searchbox-focus-background: var(--swm-searchbar-background);
+[class*="DocSearch-Form"] {
+  --docsearch-searchbox-shadow: none;
+  --docsearch-spacing: 16px;
+  --docsearch-searchbox-focus-background: var(--swm-searchbar-background);
 
-    border: 1px solid var(--swm-searchbar-border);
-    border-radius: 0 !important;
+  border: 1px solid var(--swm-searchbar-border);
+  border-radius: 0 !important;
 }
 
-[class*='DocSearch-Form'] [class*='DocSearch-Input'] {
-    padding: 0 0 0 6px;
+[class*="DocSearch-Form"] [class*="DocSearch-Input"] {
+  padding: 0 0 0 6px;
 }
 
-[class*='DocSearch-Input']::placeholder {
-    color: var(--swm-searchbar-text-color) !important;
+[class*="DocSearch-Input"]::placeholder {
+  color: var(--swm-searchbar-text-color) !important;
 }
 
-[class*='DocSearch-Hit-source'] {
-    font-size: 20px !important;
-    line-height: 130% !important;
-    letter-spacing: var(--swm-heading-letter-spacing-smaller);
+[class*="DocSearch-Hit-source"] {
+  font-size: 20px !important;
+  line-height: 130% !important;
+  letter-spacing: var(--swm-heading-letter-spacing-smaller);
 
-    padding: 0 !important;
-    margin: 24px 0 8px 0 !important;
+  padding: 0 !important;
+  margin: 24px 0 8px 0 !important;
 }
 
-[class*='DocSearch-Hit'], [class*='DocSearch-Hit'] a {
-    border-radius: 0 !important;
+[class*="DocSearch-Hit"],
+[class*="DocSearch-Hit"] a {
+  border-radius: 0 !important;
 }
 
-[class*='DocSearch-Hit'] a {
-    --docsearch-hit-shadow: none;
-    --docsearch-hit-background: var(--swm-search-hit-background);
-    border: 1px solid var(--swm-search-hit-border);
+[class*="DocSearch-Hit"] a {
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: var(--swm-search-hit-background);
+  border: 1px solid var(--swm-search-hit-border);
 }
 
-[class*='DocSearch-Hit'][aria-selected=true] a {
-    --docsearch-highlight-color: var(--swm-search-hit-background-hover);
-    border: 1px solid var(--swm-search-hit-border-hover);
+[class*="DocSearch-Hit"][aria-selected="true"] a {
+  --docsearch-highlight-color: var(--swm-search-hit-background-hover);
+  border: 1px solid var(--swm-search-hit-border-hover);
 }
 
-[class*='DocSearch-Hits'] *[aria-selected=false] {
-    --docsearch-hit-active-color: var(--ifm-font-color-base) !important;
+[class*="DocSearch-Hits"] *[aria-selected="false"] {
+  --docsearch-hit-active-color: var(--ifm-font-color-base) !important;
 }
 
-[class*='DocSearch-Hits'] *[aria-selected=true] {
-    --docsearch-hit-active-color: var(--swm-search-hit-active-color) !important;
+[class*="DocSearch-Hits"] *[aria-selected="true"] {
+  --docsearch-hit-active-color: var(--swm-search-hit-active-color) !important;
 }
 
-[class*='DocSearch-Hits'] mark {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+[class*="DocSearch-Hits"] mark {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-[class*='DocSearch-Hit-Container'] {
-    --docsearch-hit-color: var(--ifm-font-color-base);
-    font-weight: 400;
+[class*="DocSearch-Hit-Container"] {
+  --docsearch-hit-color: var(--ifm-font-color-base);
+  font-weight: 400;
 }
 
-[class*='DocSearch-Hit-content-wrapper'] {
-    font-weight: 400 !important;
+[class*="DocSearch-Hit-content-wrapper"] {
+  font-weight: 400 !important;
 }
 
-[class*='DocSearch-Hit-title'] {
-    font-size: 16px !important;
+[class*="DocSearch-Hit-title"] {
+  font-size: 16px !important;
 }
 
-[class*='DocSearch-Hit-path'], [class*='DocSearch-Hit-icon'] {
-    --docsearch-muted-color: var(--ifm-font-color-base);
-    font-size: 14px !important;
+[class*="DocSearch-Hit-path"],
+[class*="DocSearch-Hit-icon"] {
+  --docsearch-muted-color: var(--ifm-font-color-base);
+  font-size: 14px !important;
 }
 
-[class*='DocSearch-Hit-action-button'] {
-    color: var(--docsearch-hit-active-color) !important;
+[class*="DocSearch-Hit-action-button"] {
+  color: var(--docsearch-hit-active-color) !important;
 }
 
-[class*='DocSearch-HitsFooter'] {
-    --docsearch-muted-color: var(--swm-search-hit-results-color);
+[class*="DocSearch-HitsFooter"] {
+  --docsearch-muted-color: var(--swm-search-hit-results-color);
 }
 
-[class*='DocSearch-HitsFooter'] a {
-    border: none;
+[class*="DocSearch-HitsFooter"] a {
+  border: none;
 }
 
-[class*='DocSearch-Commands-Key'], [class*='DocSearch-Label'] {
-    --docsearch-muted-color: var(--swm-search-hit-results-color);
+[class*="DocSearch-Commands-Key"],
+[class*="DocSearch-Label"] {
+  --docsearch-muted-color: var(--swm-search-hit-results-color);
 }
-
-
