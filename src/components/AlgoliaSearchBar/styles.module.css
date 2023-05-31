@@ -34,10 +34,6 @@
   box-shadow: none;
 }
 
-.navbarSearch svg {
-  color: var(--swm-searchbar-text-color) !important;
-}
-
 @media (min-width: 997px) {
   .navbarSearch {
     width: 100%;
@@ -56,6 +52,7 @@ button[class*="DocSearch-Button"] {
 
 [class*="DocSearch-Search-Icon"] {
   margin-right: 6px;
+  color: var(--swm-searchbar-text-color) !important;
 }
 
 @media (max-width: 996px) {

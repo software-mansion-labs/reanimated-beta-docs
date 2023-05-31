@@ -193,9 +193,17 @@
   --docsearch-text-color: var(--swm-searchbar-text-color);
 
   --swm-searchbar-text-color: var(--swm-navy-light-60);
-  --swm-searchbar-background: var(--swm-white);
+  --swm-searchbar-background: var(--swm-background);
   --swm-searchbar-border: var(--swm-navy-light-20);
   --swm-searchbar-border-hover: var(--swm-purple-light-100);
+
+  --swm-search-hit-background: var(--swm-purple-light-20);
+  --swm-search-hit-background-hover: var(--swm-purple-light-80);
+  --swm-search-hit-border: var(--swm-purple-light-40);
+  --swm-search-hit-border-hover: var(--swm-purple-light-100);
+  --swm-search-hit-active-color: var(--swm-off-white);
+
+  --swm-search-hit-results-color: var(--swm-navy-light-40);
 
   --swm-search-page-query-text-color: var(--swm-navy-light-100);
 
@@ -317,9 +325,16 @@
 
   /* Search */
   --swm-searchbar-text-color: var(--swm-navy-dark-40);
-  --swm-searchbar-background: var(--swm-background);
   --swm-searchbar-border: var(--swm-navy-dark-60);
   --swm-searchbar-border-hover: var(--swm-purple-dark-80);
+
+  --swm-search-hit-background: var(--swm-purple-dark-120);
+  --swm-search-hit-background-hover: var(--swm-purple-dark-40);
+  --swm-search-hit-border: var(--swm-purple-dark-120);
+  --swm-search-hit-border-hover: var(--swm-purple-dark-40);
+  --swm-search-hit-active-color: var(--swm-navy-light-100);
+
+  --swm-search-hit-results-color: var(--swm-navy-light-20);
 
   --swm-search-page-query-text-color: var(--swm-navy-light-10);
 
