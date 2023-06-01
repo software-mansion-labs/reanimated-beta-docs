@@ -87,6 +87,8 @@
 
 [class*="DocSearch-HitsFooter"] {
   --docsearch-muted-color: var(--swm-search-hit-results-color);
+  font-size: 20px !important;
+  padding: 20px var(--docsearch-spacing) 22px var(--docsearch-spacing) !important;
 }
 
 [class*="DocSearch-HitsFooter"] a {
