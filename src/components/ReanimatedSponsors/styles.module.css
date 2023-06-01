@@ -44,14 +44,21 @@
 }
 
 .sponsorsLabel h3 {
+  font-family: var(--swm-title-landing-font);
   font-size: 32px;
-  margin-bottom: 40px;
   font-weight: 600;
+  line-height: 115%;
+  letter-spacing: var(--swm-heading-letter-spacing-bigger);
+
+  margin-bottom: 40px;
 }
 
 .sponsorsLabel p {
+  font-family: var(--swm-title-landing-font);
   font-size: 20px;
   font-weight: 600;
+  line-height: 130%;
+  letter-spacing: var(--swm-heading-letter-spacing-smaller);
 }
 
 .sponsorsBrands {
