@@ -64,8 +64,13 @@ button[class*="DocSearch-Button"] {
 }
 
 @media (max-width: 768px) {
-  [class*="DocSearch-Button-Keys"],
   [class*="DocSearch-Button-Placeholder"] {
     display: flex !important;
+  }
+}
+
+@media (max-width: 996px) {
+  [class*="DocSearch-Button-Keys"] {
+    display: none !important;
   }
 }
