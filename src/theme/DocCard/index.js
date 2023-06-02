@@ -28,8 +28,9 @@ function CardLayout({ href, title, description }) {
 
   return (
     <CardContainer href={href}>
-      {/*<div className={styles.cardWrapper}>*/}
-      <ThemedImage sources={cardIcons} className={styles.cardIcon} />
+      <div className={styles.cardIconWrapper}>
+        <ThemedImage sources={cardIcons} className={styles.cardIcon} />
+      </div>
       <div className={styles.cardLabels}>
         <h2 className={clsx("text--truncate", styles.cardTitle)} title={title}>
           {title}
@@ -43,7 +44,6 @@ function CardLayout({ href, title, description }) {
           </p>
         )}
       </div>
-      {/*</div>*/}
     </CardContainer>
   );
 }

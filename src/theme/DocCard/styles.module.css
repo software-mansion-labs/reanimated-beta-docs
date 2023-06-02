@@ -26,9 +26,16 @@
   min-width: 0;
 }
 
+.cardIconWrapper {
+  width: 24px;
+  margin-right: 8px;
+}
+
 .cardIcon {
   height: 24px;
-  margin: 4px 8px 0 0;
+  min-width: 24px;
+
+  margin: 4px 0 0 0;
 }
 
 .cardContainer h2 {
