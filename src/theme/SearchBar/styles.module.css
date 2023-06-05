@@ -4,13 +4,13 @@
 }
 
 @media (max-width: 768px) {
-  [class*='DocSearch-Modal'] {
+  [class*="DocSearch-Modal"] {
     --docsearch-spacing: 24px;
   }
 }
 
 @media (min-width: 768px) {
-  [class*='DocSearch-SearchBar'] {
+  [class*="DocSearch-SearchBar"] {
     padding: 24px var(--docsearch-spacing) 0 !important;
   }
 }
@@ -47,7 +47,7 @@
 }
 
 @media (max-width: 768px) {
-  [class*='DocSearch-Hit-source'] {
+  [class*="DocSearch-Hit-source"] {
     margin: 24px 0 16px 0 !important;
   }
 }
@@ -69,7 +69,8 @@
 }
 
 @media (max-width: 768px) {
-  [class*="DocSearch-Hit"] a, [class*="DocSearch-Hit"][aria-selected="true"] a {
+  [class*="DocSearch-Hit"] a,
+  [class*="DocSearch-Hit"][aria-selected="true"] a {
     border: none;
   }
 }
