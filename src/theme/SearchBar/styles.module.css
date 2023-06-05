@@ -1,5 +1,18 @@
 [class*="DocSearch-Modal"] {
   --docsearch-modal-background: var(--swm-off-background);
+  --docsearch-spacing: 16px;
+}
+
+@media (max-width: 768px) {
+  [class*='DocSearch-Modal'] {
+    --docsearch-spacing: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  [class*='DocSearch-SearchBar'] {
+    padding: 24px var(--docsearch-spacing) 0 !important;
+  }
 }
 
 [class*="DocSearch-Footer"] {
@@ -33,6 +46,12 @@
   margin: 24px 0 8px 0 !important;
 }
 
+@media (max-width: 768px) {
+  [class*='DocSearch-Hit-source'] {
+    margin: 24px 0 16px 0 !important;
+  }
+}
+
 [class*="DocSearch-Hit"],
 [class*="DocSearch-Hit"] a {
   border-radius: 0 !important;
@@ -47,6 +66,12 @@
 [class*="DocSearch-Hit"][aria-selected="true"] a {
   --docsearch-highlight-color: var(--swm-search-hit-background-hover);
   border: 1px solid var(--swm-search-hit-border-hover);
+}
+
+@media (max-width: 768px) {
+  [class*="DocSearch-Hit"] a, [class*="DocSearch-Hit"][aria-selected="true"] a {
+    border: none;
+  }
 }
 
 [class*="DocSearch-Hits"] *[aria-selected="false"] {
@@ -86,9 +111,16 @@
 }
 
 [class*="DocSearch-HitsFooter"] {
-  --docsearch-muted-color: var(--swm-search-hit-results-color);
+  --docsearch-muted-color: var(--ifm-font-color-base);
   font-size: 18px !important;
   padding: 20px var(--docsearch-spacing) 22px var(--docsearch-spacing) !important;
+}
+
+@media (max-width: 768px) {
+  [class*="DocSearch-HitsFooter"] {
+    font-size: 12px !important;
+    padding: 24px var(--docsearch-spacing);
+  }
 }
 
 [class*="DocSearch-HitsFooter"] a {
