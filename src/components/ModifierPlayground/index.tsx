@@ -7,6 +7,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 import useSpringPlayground from "./useSpringPlayground";
 import useTimingPlayground from "./useTimingPlayground";
+import useInterpolateColorPlayground from "./useInterpolateColorPlayground";
 
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
@@ -20,7 +21,11 @@ import {
   TextField,
 } from "@mui/material";
 
-export { useSpringPlayground, useTimingPlayground };
+export {
+  useSpringPlayground,
+  useTimingPlayground,
+  useInterpolateColorPlayground,
+};
 
 export default function ModifierPlayground(props: any) {
   const [key, setKey] = React.useState(0);
