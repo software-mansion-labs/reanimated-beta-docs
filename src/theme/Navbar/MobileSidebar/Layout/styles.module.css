@@ -1,5 +1,8 @@
 [class*="navbar-sidebar__items"] {
-  height: calc(100% - var(--ifm-navbar-height) - 123px);
+  --swm-navbar-sidebar-items-height: 123px; /* Overall height of additional items in mobile sidebar */
+  height: calc(
+    100% - var(--ifm-navbar-height) - var(--swm-navbar-sidebar-items-height)
+  );
 }
 
 [class*="navbar-sidebar__brand"] {

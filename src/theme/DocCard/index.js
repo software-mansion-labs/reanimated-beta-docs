@@ -77,7 +77,6 @@ function CardLink({ item }) {
   return (
     <CardLayout
       href={item.href}
-      // icon={cardIcons}
       title={item.label}
       description={item.description ?? doc?.description}
     />
