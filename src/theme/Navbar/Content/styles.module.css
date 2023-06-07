@@ -19,7 +19,7 @@ nav {
   }
 }
 
-@media (min-width: 997px) {
+@media (min-width: 996px) {
   .logoWrapper {
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@ nav {
   color: var(--swm-off-white);
 }
 
-@media (min-width: 997px) {
+@media (min-width: 996px) {
   [class*="navbar__items--left"] {
     flex: 1;
     width: 100%;

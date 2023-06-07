@@ -5,7 +5,7 @@
   justify-content: flex-end;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .navbarSearchWrapper {
     display: block;
     justify-content: flex-start;
@@ -13,7 +13,7 @@
   }
 }
 
-@media (min-width: 997px) {
+@media (min-width: 996px) {
   .navbarSearch {
     max-width: 360px;
   }
@@ -34,7 +34,7 @@
   box-shadow: none;
 }
 
-@media (min-width: 997px) {
+@media (min-width: 996px) {
   .navbarSearch {
     width: 100%;
     justify-self: flex-end;

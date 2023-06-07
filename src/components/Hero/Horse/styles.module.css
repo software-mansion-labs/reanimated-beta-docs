@@ -19,7 +19,7 @@
   stroke: var(--swm-landing-horse);
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .horse {
     right: 5vw;
   }

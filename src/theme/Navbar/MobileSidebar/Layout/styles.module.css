@@ -9,7 +9,7 @@
   padding-left: 20px;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   [class*="navbar-sidebar__brand"] {
     --ifm-navbar-height: 68px;
   }

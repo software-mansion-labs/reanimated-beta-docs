@@ -10,7 +10,7 @@
   width: 218px;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .navbar__logo {
     width: 50px;
   }
@@ -26,7 +26,7 @@
 }
 
 /* Logo shown on the sidebar after scrolling down the page. */
-@media (min-width: 997px) {
+@media (min-width: 996px) {
   [class*="sidebar"] [class*="navbar__logo"] {
     width: 100%;
     display: flex;
@@ -41,7 +41,7 @@
   height: var(--swm-logo-height);
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .navbar__title {
     display: none;
   }

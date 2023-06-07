@@ -38,11 +38,11 @@ const HeroSwirl = () => {
   return (
     <div className={styles.swirl}>
       {/* As the screen width decreases, it would be better to increase the width of the swirl on mobile devices.
-       * Thus, if the screen width is below 997 pixels, multiply the width of the swirl 1.8 times,
+       * Thus, if the screen width is below 996 pixels, multiply the width of the swirl 1.8 times,
        * instead of multiplying it 1.1 times.
        */}
       <svg
-        width={windowWidth * (windowWidth < 997 ? 1.8 : 1.1)}
+        width={windowWidth * (windowWidth < 996 ? 1.8 : 1.1)}
         viewBox="0 0 1653 1048"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -31,7 +31,7 @@
   }
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .sunAnimation {
     top: -40vh;
     right: 35vw;
@@ -105,7 +105,7 @@
   }
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   @keyframes flowSun {
     0% {
       transform: rotate(0) translate(0, 0);

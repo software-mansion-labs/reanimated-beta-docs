@@ -9,7 +9,7 @@
   margin: 180px 0 120px 0;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .sponsorsWrapper {
     margin: 120px 0;
   }
@@ -36,7 +36,7 @@
   }
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .sponsorsLabel {
     align-items: center;
     text-align: center;
