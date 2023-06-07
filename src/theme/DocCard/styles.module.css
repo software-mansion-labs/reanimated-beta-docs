@@ -40,7 +40,7 @@
 
 .cardContainer h2 {
   font-size: 22px;
-  line-height: 130%;
+  line-height: 1.3;
   letter-spacing: var(--swm-heading-letter-spacing-smaller);
 }
 

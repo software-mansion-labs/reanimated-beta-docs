@@ -39,7 +39,7 @@
 
 [class*="DocSearch-Hit-source"] {
   font-size: 20px !important;
-  line-height: 130% !important;
+  line-height: 1.3 !important;
   letter-spacing: var(--swm-heading-letter-spacing-smaller);
 
   padding: 0 !important;
