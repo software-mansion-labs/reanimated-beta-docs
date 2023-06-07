@@ -157,12 +157,8 @@
   /* Code snippets */
   --swm-border: var(--swm-navy-light-20);
   --docusaurus-highlighted-code-line-bg: var(--swm-blue-light-20);
-  --swm-code-lines-buttons-background: rgba(
-    145,
-    159,
-    207,
-    0.2
-  ); /* --swm-navy-light-40 in rgba */
+  /* --swm-navy-light-40 in rgba */
+  --swm-code-lines-buttons-background: rgba(145, 159, 207, 0.2);
 
   /* Interactive Examples */
   --swm-interactive-button-color: var(--swm-navy-light-60);
@@ -311,7 +307,7 @@
 
   /* --swm-navy-light-20 in rgba schema */
   --swm-interactive-copy-button-off: rgba(193, 198, 229, 0);
-  --swm-interactive-copy-button-on: rgb(193, 198, 229, 1);
+  --swm-interactive-copy-button-on: rgba(193, 198, 229, 1);
 
   /* Table */
   --swm-table-border-color: var(--swm-navy-light-60);

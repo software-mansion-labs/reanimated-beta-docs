@@ -1,11 +1,11 @@
 :root {
   --docusaurus-collapse-button-bg: transparent;
-  --docusaurus-collapse-button-bg-hover: rgb(0 0 0 / 10%);
+  --docusaurus-collapse-button-bg-hover: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"]:root {
-  --docusaurus-collapse-button-bg: rgb(255 255 255 / 5%);
-  --docusaurus-collapse-button-bg-hover: rgb(255 255 255 / 10%);
+  --docusaurus-collapse-button-bg: rgba(255, 255, 255, 0.05);
+  --docusaurus-collapse-button-bg-hover: rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 997px) {

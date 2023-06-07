@@ -1,10 +1,11 @@
 .cardContainer {
-  --ifm-link-color: var(--ifm-color-emphasis-800);
-  --ifm-link-hover-color: var(--ifm-color-emphasis-700);
   --ifm-link-hover-decoration: none;
 
-  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
-  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: none;
+  border: 1px solid var(--swm-card-border);
+  border-radius: 0;
+  background-color: var(--swm-card-background);
+
   transition: all var(--ifm-transition-fast) ease;
   transition-property: border, box-shadow;
 
@@ -13,8 +14,7 @@
 }
 
 .cardContainer:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+  border: 1px solid var(--swm-card-border-hover);
 }
 
 .cardContainer *:last-child {

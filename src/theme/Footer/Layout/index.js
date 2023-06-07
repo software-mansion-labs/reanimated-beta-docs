@@ -3,10 +3,10 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 
 import Stars from "@site/static/img/stars-footer.svg";
-import usePagePath from "@site/src/hooks/usePagePath";
+import usePageType from "@site/src/hooks/usePageType";
 
 export default function FooterLayout({ style, links, logo, copyright }) {
-  const { isLanding } = usePagePath();
+  const { isLanding } = usePageType();
 
   return (
     <footer

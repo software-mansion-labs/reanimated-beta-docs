@@ -130,8 +130,8 @@
 .loadingSpinner {
   width: 3rem;
   height: 3rem;
-  border: 0.4em solid #eee;
-  border-top-color: var(--ifm-color-primary);
+  border: 0.4em solid var(--swm-navy-light-10);
+  border-top-color: var(--swm-navy-light-80);
   border-radius: 50%;
   animation: loading-spin 1s linear infinite;
   margin: 0 auto;

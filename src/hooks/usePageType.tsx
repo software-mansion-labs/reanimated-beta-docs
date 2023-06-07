@@ -1,6 +1,6 @@
 import { useLocation } from "@docusaurus/router";
 
-const usePagePath = () => {
+const usePageType = () => {
   const location = useLocation();
 
   return {
@@ -9,4 +9,4 @@ const usePagePath = () => {
   };
 };
 
-export default usePagePath;
+export default usePageType;

@@ -3,14 +3,14 @@ import clsx from "clsx";
 import { useNavbarSecondaryMenu } from "@docusaurus/theme-common/internal";
 import styles from "./styles.module.css";
 import AlgoliaSearchBar from "@site/src/components/AlgoliaSearchBar";
-import usePagePath from "@site/src/hooks/usePagePath";
+import usePageType from "@site/src/hooks/usePageType";
 export default function NavbarMobileSidebarLayout({
   header,
   primaryMenu,
   secondaryMenu,
 }) {
   const { shown: secondaryMenuShown } = useNavbarSecondaryMenu();
-  const { isLanding } = usePagePath();
+  const { isLanding } = usePageType();
 
   return (
     <div className="navbar-sidebar">

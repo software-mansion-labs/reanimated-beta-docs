@@ -14,7 +14,7 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import styles from "./styles.module.css";
 import clsx from "clsx";
-import usePagePath from "@site/src/hooks/usePagePath";
+import usePageType from "@site/src/hooks/usePageType";
 import AlgoliaSearchBar from "@site/src/components/AlgoliaSearchBar";
 
 function useNavbarItems() {
@@ -43,7 +43,7 @@ ${JSON.stringify(item, null, 2)}`,
   );
 }
 function NavbarContentLayout({ left, right }) {
-  const { isLanding } = usePagePath();
+  const { isLanding } = usePageType();
 
   return (
     <div className="navbar__inner">
@@ -64,7 +64,7 @@ export default function NavbarContent() {
   const windowSize = useWindowSize();
   const isMobile = windowSize === "mobile";
 
-  const { isDocumentation, isLanding } = usePagePath();
+  const { isDocumentation, isLanding } = usePageType();
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);

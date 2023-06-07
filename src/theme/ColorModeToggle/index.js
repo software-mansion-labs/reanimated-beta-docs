@@ -6,12 +6,12 @@ import IconLightMode from "@theme/Icon/LightMode";
 import IconDarkMode from "@theme/Icon/DarkMode";
 import styles from "./styles.module.css";
 import { useColorScheme } from "@mui/material";
-import usePagePath from "@site/src/hooks/usePagePath";
+import usePageType from "@site/src/hooks/usePageType";
 function ColorModeToggle({ className, buttonClassName, value, onChange }) {
   const isBrowser = useIsBrowser();
   /* Color scheme switcher from MUI framework. */
   const { setMode } = useColorScheme();
-  const { isDocumentation, isLanding } = usePagePath();
+  const { isLanding } = usePageType();
 
   const title = translate(
     {

@@ -14,7 +14,7 @@ import Stars from "@site/src/components/Hero/Stars";
 import Sun from "@site/src/components/Hero/Sun";
 import Swirl from "@site/src/components/Hero/Swirl";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import usePagePath from "@site/src/hooks/usePagePath";
+import usePageType from "@site/src/hooks/usePageType";
 
 function NavbarBackdrop(props) {
   return (
@@ -57,7 +57,7 @@ export default function NavbarLayout({ children }) {
   const { isActive: announcementBarActive } = useAnnouncementBar();
   const mobileSidebar = useNavbarMobileSidebar();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
-  const { isLanding } = usePagePath();
+  const { isLanding } = usePageType();
 
   return (
     <div>

@@ -70,18 +70,3 @@ table thead tr {
 [class*="codeBlockLines"] span:last-of-type {
   margin-right: 1em;
 }
-
-[class*="cardContainer"] {
-  box-shadow: none !important;
-  border: 1px solid var(--swm-card-border) !important;
-  border-radius: 0;
-  background-color: var(--swm-card-background);
-}
-
-[class*="cardContainer"]:hover {
-  border: 1px solid var(--swm-card-border-hover) !important;
-}
-
-[class*="cardContainer"] p {
-  color: var(--ifm-font-color-base);
-}
