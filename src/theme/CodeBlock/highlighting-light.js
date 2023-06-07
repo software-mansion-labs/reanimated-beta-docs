@@ -21,15 +21,7 @@ module.exports = {
       },
     },
     {
-      types: [
-        "string",
-        "attr-value",
-        "property",
-        "atrule",
-        "attr-name",
-        "selector",
-        "tag",
-      ],
+      types: ["string", "property", "atrule", "selector", "keyword", "tag"],
       style: {
         color: "var(--swm-navy-light-80)",
       },
@@ -52,6 +44,7 @@ module.exports = {
         "regex",
         "inserted",
         "operator",
+        "attr-value",
       ],
       style: {
         color: "var(--swm-red-light-100)",
@@ -64,7 +57,7 @@ module.exports = {
       },
     },
     {
-      types: ["selector", "keyword"],
+      types: ["property", "module", "attr-name"],
       style: {
         color: "var(--swm-blue-light-100)",
       },
