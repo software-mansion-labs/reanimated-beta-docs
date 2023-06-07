@@ -7,10 +7,12 @@ import Animated, {
   cancelAnimation,
   InterpolateConfig,
   withTiming,
+  InterpolationOptions,
 } from "react-native-reanimated";
 
 interface Props {
   options: InterpolateConfig;
+  interpolationOptions: InterpolationOptions;
 }
 
 const initialProgress = 0;
@@ -23,7 +25,7 @@ export default function App({ options }: Props) {
       backgroundColor: interpolateColor(
         progress.value,
         [0, 1],
-        ["red", "green"]
+        [options.outputRange[0], options.outputRange[1]]
       ),
     };
   });
@@ -49,7 +51,6 @@ export default function App({ options }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
   },
   box: {

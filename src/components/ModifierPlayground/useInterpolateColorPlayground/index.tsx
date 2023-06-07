@@ -5,6 +5,8 @@ import {
   SelectOption,
 } from "@site/src/components/ModifierPlayground";
 import Example from "./Example";
+import styles from "./styles.module.css";
+import ColorPicker from "@site/src/components/ModifierPlayground/useInterpolateColorPlayground/ColorPicker";
 
 export enum ColorSpace {
   RGB,
@@ -47,7 +49,7 @@ export default function useInterpolateColorPlayground() {
     interpolateColor(
         sv.value,
         [0, 1],
-        ['red', 'green']
+        [${colorLeftBoundary.toUpperCase()}, ${colorRightBoundary.toUpperCase()}]
       )
     `;
 
@@ -80,14 +82,25 @@ export default function useInterpolateColorPlayground() {
   );
 
   const example = (
-    <Example
-      options={{
-        inputRange: [0, 1],
-        outputRange: ["red", "green"],
-        colorSpace: ColorSpace.RGB,
-        cache: null,
-      }}
-    />
+    <div className={styles.example}>
+      <ColorPicker color={colorLeftBoundary} setColor={setColorLeftBoundary} />
+      <Example
+        options={{
+          inputRange: [0, 1],
+          outputRange: [colorLeftBoundary, colorRightBoundary],
+          colorSpace: colorSpace,
+          cache: null,
+        }}
+        interpolationOptions={{
+          gamma,
+          useCorrectedHSVInterpolation: correction,
+        }}
+      />
+      <ColorPicker
+        color={colorRightBoundary}
+        setColor={setColorRightBoundary}
+      />
+    </div>
   );
 
   return {
