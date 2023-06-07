@@ -49,7 +49,15 @@ export default function useInterpolateColorPlayground() {
     interpolateColor(
         sv.value,
         [0, 1],
-        [${colorLeftBoundary.toUpperCase()}, ${colorRightBoundary.toUpperCase()}]
+        ['${colorLeftBoundary.toUpperCase()}', '${colorRightBoundary.toUpperCase()}']
+        '${ColorSpace[colorSpace]}',
+        {
+          ${
+            colorSpace === ColorSpace.RGB
+              ? `gamma: ${gamma}`
+              : `useCorrectedHSVInterpolation: ${correction}`
+          }
+        }
       )
     `;
 
@@ -85,7 +93,7 @@ export default function useInterpolateColorPlayground() {
     <div className={styles.example}>
       <ColorPicker color={colorLeftBoundary} setColor={setColorLeftBoundary} />
       <Example
-        options={{
+        baseOptions={{
           inputRange: [0, 1],
           outputRange: [colorLeftBoundary, colorRightBoundary],
           colorSpace: colorSpace,

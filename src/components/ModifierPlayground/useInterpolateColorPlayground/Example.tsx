@@ -9,15 +9,16 @@ import Animated, {
   withTiming,
   InterpolationOptions,
 } from "react-native-reanimated";
+import ColorSpace from "./index";
 
 interface Props {
-  options: InterpolateConfig;
+  baseOptions: InterpolateConfig;
   interpolationOptions: InterpolationOptions;
 }
 
 const initialProgress = 0;
 
-export default function App({ options }: Props) {
+export default function App({ baseOptions, interpolationOptions }: Props) {
   const progress = useSharedValue(initialProgress);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -25,7 +26,9 @@ export default function App({ options }: Props) {
       backgroundColor: interpolateColor(
         progress.value,
         [0, 1],
-        [options.outputRange[0], options.outputRange[1]]
+        [baseOptions.outputRange[0], baseOptions.outputRange[1]],
+        ColorSpace[baseOptions.colorSpace],
+        interpolationOptions
       ),
     };
   });
@@ -34,7 +37,7 @@ export default function App({ options }: Props) {
     cancelAnimation(progress);
 
     progress.value = initialProgress;
-  }, [options]);
+  }, [baseOptions]);
 
   return (
     <View style={styles.container}>
