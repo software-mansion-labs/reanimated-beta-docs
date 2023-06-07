@@ -54,8 +54,8 @@ export default function useInterpolateColorPlayground() {
         {
           ${
             colorSpace === ColorSpace.RGB
-              ? `gamma: ${gamma}`
-              : `useCorrectedHSVInterpolation: ${correction}`
+              ? `gamma: ${gamma},`
+              : `useCorrectedHSVInterpolation: ${correction},`
           }
         }
       )
