@@ -10,7 +10,7 @@ module.exports = {
     {
       types: ["comment", "prolog", "doctype", "cdata"],
       style: {
-        color: "var(--swm-navy-light-80)",
+        color: "var(--swm-navy-light-40)",
         fontStyle: "italic",
       },
     },
@@ -21,7 +21,7 @@ module.exports = {
       },
     },
     {
-      types: ["string", "property", "atrule", "selector", "keyword", "tag"],
+      types: ["string", "property", "atrule", "selector", "tag"],
       style: {
         color: "var(--swm-navy-light-80)",
       },
@@ -57,7 +57,7 @@ module.exports = {
       },
     },
     {
-      types: ["property", "module", "attr-name"],
+      types: ["property", "module", "attr-name", "keyword"],
       style: {
         color: "var(--swm-blue-light-100)",
       },
