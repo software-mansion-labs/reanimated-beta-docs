@@ -23,10 +23,13 @@
 }
 
 .featuresContainer h2 {
+  font-family: var(--swm-title-landing-font);
   font-size: 32px;
-  margin-bottom: 80px;
-
   font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: var(--swm-heading-letter-spacing-bigger);
+
+  margin-bottom: 80px;
 }
 
 @media (max-width: 768px) {

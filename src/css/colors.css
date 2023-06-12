@@ -156,6 +156,9 @@
 
   /* Code snippets */
   --swm-border: var(--swm-navy-light-20);
+  --docusaurus-highlighted-code-line-bg: var(--swm-blue-light-20);
+  /* --swm-navy-light-40 in rgba */
+  --swm-code-lines-buttons-background: rgba(145, 159, 207, 0.2);
 
   /* Interactive Examples */
   --swm-interactive-button-color: var(--swm-navy-light-60);
@@ -164,13 +167,16 @@
   --swm-interactive-slider: var(--swm-purple-light-100);
   --swm-interactive-slider-rail: var(--swm-navy-light-20);
 
-  /* --swm-navy-light-100 in rgba schema */
+  /* --swm-navy-light-100 in rgba */
   --swm-interactive-copy-button-off: rgba(0, 26, 114, 0);
   --swm-interactive-copy-button-on: rgba(0, 26, 114, 1);
 
-  /* Code lines */
-  --docusaurus-highlighted-code-line-bg: none;
-  --swm-code-lines-buttons-background: rgba(145, 159, 207, 0.2);
+  /* Table */
+  --swm-table-border-color: var(--swm-navy-light-20);
+
+  --ifm-table-head-background: var(--swm-off-background);
+  --ifm-table-stripe-background: var(--swm-off-background) !important;
+  --ifm-table-border-color: var(--swm-table-border-color);
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-100);
@@ -185,13 +191,31 @@
   --swm-copyright-color-landing: var(--swm-copyright-color);
 
   /* Search */
+  --docsearch-text-color: var(--swm-searchbar-text-color);
+
   --swm-searchbar-text-color: var(--swm-navy-light-60);
-  --swm-searchbar-background: var(--swm-white);
+  --swm-searchbar-background: var(--swm-background);
   --swm-searchbar-border: var(--swm-navy-light-20);
   --swm-searchbar-border-hover: var(--swm-purple-light-100);
 
+  --swm-search-hit-background: var(--swm-purple-light-20);
+  --swm-search-hit-background-hover: var(--swm-purple-light-80);
+  --swm-search-hit-border: var(--swm-purple-light-40);
+  --swm-search-hit-border-hover: var(--swm-purple-light-100);
+  --swm-search-hit-active-color: var(--swm-off-white);
+
+  --swm-search-hit-results-color: var(--swm-navy-light-40);
+
+  --swm-search-page-query-text-color: var(--swm-navy-light-100);
+
   /* Sidebar */
+  --swm-sidebar-background: var(--swm-off-white);
+  --swm-sidebar-elements-background: var(--swm-white);
   --swm-sidebar-menu-color: var(--swm-navy-light-60);
+
+  /* Mobile sidebar */
+  /* --swm-navy-light-100 in rgba */
+  --swm-sidebar-backdrop: rgba(0, 26, 114, 0.5);
 
   /* Landing */
   --swm-landing-heading: var(--ifm-font-color-base);
@@ -273,6 +297,7 @@
 
   /* Code snippets */
   --swm-border: var(--swm-navy-light-60);
+  --docusaurus-highlighted-code-line-bg: var(--swm-blue-dark-140);
 
   /* Interactive Examples */
   --swm-interactive-button-color: var(--swm-navy-light-40);
@@ -282,10 +307,10 @@
 
   /* --swm-navy-light-20 in rgba schema */
   --swm-interactive-copy-button-off: rgba(193, 198, 229, 0);
-  --swm-interactive-copy-button-on: rgb(193, 198, 229, 1);
+  --swm-interactive-copy-button-on: rgba(193, 198, 229, 1);
 
-  /* Code lines */
-  --docusaurus-highlighted-code-line-bg: none;
+  /* Table */
+  --swm-table-border-color: var(--swm-navy-light-60);
 
   /* Pagination */
   --swm-paginator-sublabel: var(--swm-navy-light-20);
@@ -301,12 +326,27 @@
 
   /* Search */
   --swm-searchbar-text-color: var(--swm-navy-dark-40);
-  --swm-searchbar-background: var(--swm-background);
   --swm-searchbar-border: var(--swm-navy-dark-60);
   --swm-searchbar-border-hover: var(--swm-purple-dark-80);
 
+  --swm-search-hit-background: var(--swm-purple-dark-120);
+  --swm-search-hit-background-hover: var(--swm-purple-dark-40);
+  --swm-search-hit-border: var(--swm-purple-dark-120);
+  --swm-search-hit-border-hover: var(--swm-purple-dark-40);
+  --swm-search-hit-active-color: var(--swm-navy-light-100);
+
+  --swm-search-hit-results-color: var(--swm-navy-light-20);
+
+  --swm-search-page-query-text-color: var(--swm-navy-light-10);
+
   /* Sidebar */
+  --swm-sidebar-background: var(--swm-navy);
+  --swm-sidebar-elements-background: var(--swm-off-navy);
   --swm-sidebar-menu-color: var(--swm-navy-light-20);
+
+  /* Mobile sidebar */
+  /* --swm-navy in rgba */
+  --swm-sidebar-backdrop: rgba(35, 39, 54, 0.5);
 
   /* Landing */
   --swm-landing-heading: var(--swm-off-white);

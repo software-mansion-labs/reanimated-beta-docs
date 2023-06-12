@@ -6,6 +6,10 @@
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
 
+[class*="navbar-sidebar__backdrop"] {
+  background-color: var(--swm-sidebar-backdrop);
+}
+
 .navbarLanding {
   position: relative;
   background-color: transparent;
@@ -51,13 +55,13 @@
   }
 }
 
-@media (min-width: 680px) and (max-width: 997px) and (max-height: 997px) {
+@media (min-width: 680px) and (max-width: 996px) and (max-height: 996px) {
   .heroBackground {
     min-height: 1124px !important;
   }
 }
 
-@media (min-width: 1600px) and (max-height: 997px) {
+@media (min-width: 1600px) and (max-height: 996px) {
   .heroBackground {
     min-height: 70vw !important;
   }

@@ -17,9 +17,12 @@
 }
 
 .headingLabel {
+  font-family: var(--swm-title-landing-font);
   font-size: 64px;
   font-weight: 700;
 
+  line-height: 1.1;
+  letter-spacing: 0;
   color: var(--swm-landing-heading);
 }
 
@@ -28,13 +31,16 @@
 }
 
 .subheadingLabel {
+  font-family: var(--swm-title-landing-font);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: var(--swm-heading-letter-spacing-bigger);
+
   margin-top: 32px;
   margin-bottom: 56px;
   width: 600px;
-
   color: var(--swm-landing-heading);
-  font-size: 32px;
-  font-weight: 600;
 }
 
 @media (max-width: 768px) {
