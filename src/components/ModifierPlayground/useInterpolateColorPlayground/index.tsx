@@ -6,7 +6,7 @@ import {
 } from "@site/src/components/ModifierPlayground";
 import Example from "./Example";
 import styles from "./styles.module.css";
-import ColorPicker from "@site/src/components/ModifierPlayground/useInterpolateColorPlayground/ColorPicker";
+import ColorPicker from "./ColorPicker";
 
 export enum ColorSpace {
   RGB,
@@ -18,8 +18,8 @@ const initialState = {
   gamma: 2.2,
   correction: true,
   color: {
-    leftBoundary: "#FFFFFF",
-    rightBoundary: "#000000",
+    leftBoundary: "#FFF",
+    rightBoundary: "#000",
   },
 };
 
@@ -49,7 +49,7 @@ export default function useInterpolateColorPlayground() {
     interpolateColor(
         sv.value,
         [0, 1],
-        ['${colorLeftBoundary.toUpperCase()}', '${colorRightBoundary.toUpperCase()}']
+        ['${colorLeftBoundary}', '${colorRightBoundary}']
         '${ColorSpace[colorSpace]}',
         {
           ${

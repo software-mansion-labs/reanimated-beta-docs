@@ -38,7 +38,7 @@ const ColorPicker = ({ color, setColor }) => {
         size="small"
         sx={TextFieldStyling}
         value={inputColor.replace("#", "").toUpperCase()}
-        inputProps={{ maxLength: 6, pattern: "" }}
+        inputProps={{ maxLength: 6 }}
         InputProps={{
           startAdornment: <InputAdornment position="start">#</InputAdornment>,
         }}
@@ -52,7 +52,7 @@ const ColorPicker = ({ color, setColor }) => {
         onChange={(e) => {
           const value = e.target.value;
           const hexPattern = /^([0-9A-F]{3}){1,2}$/i;
-          const enteringHexPattern = /^[0-9A-F]{0,6}$/;
+          const enteringHexPattern = /^[0-9A-F]{0,6}$/i;
 
           if (enteringHexPattern.test(value)) {
             setInputColor(value);
