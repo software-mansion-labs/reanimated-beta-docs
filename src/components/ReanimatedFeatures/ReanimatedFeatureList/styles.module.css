@@ -2,7 +2,7 @@
   display: flex;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .featureList {
     flex-direction: column;
   }

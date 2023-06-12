@@ -4,12 +4,12 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import ThemedImage from "@theme/ThemedImage";
 
-import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
+import usePageType from "@site/src/hooks/usePageType";
 
 const BRAND_LINK = "https://swmansion.com/";
 
 export default function FooterCopyright({ copyright }) {
-  const { isDocumentation } = useDocumentationPath();
+  const { isDocumentation } = usePageType();
 
   const brandLogo = {
     light: useBaseUrl("/img/brand.svg"),

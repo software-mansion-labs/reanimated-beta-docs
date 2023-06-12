@@ -1,9 +1,18 @@
 [class*="navbar-sidebar__items"] {
-  height: calc(100% - var(--ifm-navbar-height) - 64px);
+  --swm-navbar-sidebar-items-height: 127px; /* Overall height of additional items in mobile sidebar */
+  height: calc(
+    100% - var(--ifm-navbar-height) - var(--swm-navbar-sidebar-items-height)
+  );
 }
 
 [class*="navbar-sidebar__brand"] {
   padding-left: 20px;
+}
+
+@media (max-width: 996px) {
+  [class*="navbar-sidebar__brand"] {
+    --ifm-navbar-height: 68px;
+  }
 }
 
 .sidebarGithubIcon {
@@ -17,10 +26,9 @@
   align-items: center;
   justify-content: flex-end;
 
-  /*position: sticky;*/
   padding: 0 1em;
   bottom: 0;
 
   height: 4em;
-  background-color: var(--swm-background);
+  background-color: var(--swm-sidebar-elements-background);
 }

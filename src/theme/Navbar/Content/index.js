@@ -10,13 +10,12 @@ import {
 } from "@docusaurus/theme-common/internal";
 import NavbarItem from "@theme/NavbarItem";
 import NavbarColorModeToggle from "@theme/Navbar/ColorModeToggle";
-import SearchBar from "@theme/SearchBar";
 import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
-import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
 import clsx from "clsx";
-import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
+import usePageType from "@site/src/hooks/usePageType";
+import AlgoliaSearchBar from "@site/src/components/AlgoliaSearchBar";
 
 function useNavbarItems() {
   return useThemeConfig().navbar.items;
@@ -37,17 +36,14 @@ ${JSON.stringify(item, null, 2)}`,
             )
           }
         >
-          <NavbarItem
-            className={clsx(!isDocumentation && styles.navbarItemLanding)}
-            {...item}
-          />
+          <NavbarItem {...item} />
         </ErrorCauseBoundary>
       ))}
     </>
   );
 }
 function NavbarContentLayout({ left, right }) {
-  const { isDocumentation } = useDocumentationPath();
+  const { isLanding } = usePageType();
 
   return (
     <div className="navbar__inner">
@@ -55,7 +51,7 @@ function NavbarContentLayout({ left, right }) {
       <div
         className={clsx(
           "navbar__items navbar__items--right",
-          !isDocumentation && styles.navbarItemsLanding
+          isLanding && styles.navbarItemsLanding
         )}
       >
         {right}
@@ -64,21 +60,11 @@ function NavbarContentLayout({ left, right }) {
   );
 }
 
-function AlgoliaSearchBar() {
-  return (
-    <div className={styles.navbarSearchWrapper}>
-      <NavbarSearch className={styles.navbarSearch}>
-        <SearchBar />
-      </NavbarSearch>
-    </div>
-  );
-}
-
 export default function NavbarContent() {
   const windowSize = useWindowSize();
   const isMobile = windowSize === "mobile";
 
-  const { isDocumentation } = useDocumentationPath();
+  const { isDocumentation, isLanding } = usePageType();
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
@@ -91,9 +77,7 @@ export default function NavbarContent() {
             <NavbarLogo />
           </div>
           <NavbarItems items={leftItems} />
-          {!searchBarItem && !isMobile && isDocumentation && (
-            <AlgoliaSearchBar />
-          )}
+          {!searchBarItem && !isMobile && !isLanding && <AlgoliaSearchBar />}
           {!isMobile && isDocumentation && (
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
@@ -101,14 +85,11 @@ export default function NavbarContent() {
       }
       right={
         <>
-          {!isDocumentation && (
+          {(isLanding || (!isMobile && !isDocumentation)) && (
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
           <NavbarItems items={rightItems} isDocumentation={isDocumentation} />
-          {!searchBarItem && isMobile && isDocumentation && (
-            <AlgoliaSearchBar />
-          )}
-          {!mobileSidebar.disabled && isDocumentation && (
+          {!mobileSidebar.disabled && !isLanding && (
             <NavbarMobileSidebarToggle />
           )}
         </>

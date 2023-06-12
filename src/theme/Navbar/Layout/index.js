@@ -14,7 +14,7 @@ import Stars from "@site/src/components/Hero/Stars";
 import Sun from "@site/src/components/Hero/Sun";
 import Swirl from "@site/src/components/Hero/Swirl";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import useDocumentationPath from "@site/src/hooks/useDocumentationPath";
+import usePageType from "@site/src/hooks/usePageType";
 
 function NavbarBackdrop(props) {
   return (
@@ -57,11 +57,11 @@ export default function NavbarLayout({ children }) {
   const { isActive: announcementBarActive } = useAnnouncementBar();
   const mobileSidebar = useNavbarMobileSidebar();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
-  const { isDocumentation } = useDocumentationPath();
+  const { isLanding } = usePageType();
 
   return (
     <div>
-      {!isDocumentation && (
+      {isLanding && (
         <LandingBackground isAnnouncementBarActive={announcementBarActive} />
       )}
       <nav
@@ -73,8 +73,8 @@ export default function NavbarLayout({ children }) {
         })}
         className={clsx(
           "navbar",
-          isDocumentation && "navbar--fixed-top",
-          !isDocumentation && styles.navbarLanding,
+          !isLanding && "navbar--fixed-top",
+          isLanding && styles.navbarLanding,
           hideOnScroll && [
             styles.navbarHideable,
             !isNavbarVisible && styles.navbarHidden,

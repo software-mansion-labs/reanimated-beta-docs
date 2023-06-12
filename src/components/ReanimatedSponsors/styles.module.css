@@ -9,7 +9,7 @@
   margin: 180px 0 120px 0;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .sponsorsWrapper {
     margin: 120px 0;
   }
@@ -36,7 +36,7 @@
   }
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .sponsorsLabel {
     align-items: center;
     text-align: center;
@@ -44,14 +44,21 @@
 }
 
 .sponsorsLabel h3 {
+  font-family: var(--swm-title-landing-font);
   font-size: 32px;
-  margin-bottom: 40px;
   font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: var(--swm-heading-letter-spacing-bigger);
+
+  margin-bottom: 40px;
 }
 
 .sponsorsLabel p {
+  font-family: var(--swm-title-landing-font);
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: var(--swm-heading-letter-spacing-smaller);
 }
 
 .sponsorsBrands {

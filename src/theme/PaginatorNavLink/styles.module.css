@@ -8,15 +8,6 @@
   --ifm-pagination-nav-border-radius: 0;
 }
 
-[class*="pagination-nav"] {
-  display: grid;
-  justify-content: space-between;
-
-  /* Reset default grid properties. */
-  gap: 0;
-  grid-template-columns: none;
-}
-
 /* Main class for sublabel, used by Docusaurus. */
 [class*="pagination-nav__sublabel"] {
   margin-bottom: 0;

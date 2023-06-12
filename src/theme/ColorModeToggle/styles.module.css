@@ -49,15 +49,13 @@
   color: var(--swm-color-mode-disabled-color);
 }
 
-.iconLandingContainer {
-  color: var(--swm-color-mode-disabled-color-landing);
+.iconContainer svg {
+  width: 65%;
+  height: 65%;
 }
 
-@media (max-height: 768px) {
-  .iconContainer svg {
-    width: 65%;
-    height: 65%;
-  }
+.iconLandingContainer {
+  color: var(--swm-color-mode-disabled-color-landing);
 }
 
 .darkIconContainer {

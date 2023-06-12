@@ -9,7 +9,7 @@
   margin-right: 3em;
 }
 
-@media (max-width: 997px) {
+@media (max-width: 996px) {
   .featureItem:not(:last-of-type) {
     margin-right: 0;
     margin-bottom: 3em;

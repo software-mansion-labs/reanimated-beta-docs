@@ -1,11 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-import ExpoLogo from "@site/static/img/expo.svg";
-import ExpoLogoDark from "@site/static/img/expo-dark.svg";
-
-import ShopifyLogo from "@site/static/img/shopify.svg";
-import ShopifyLogoDark from "@site/static/img/shopify-dark.svg";
 import ThemedImage from "@theme/ThemedImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
