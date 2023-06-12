@@ -1,0 +1,67 @@
+---
+sidebar_position: 4
+---
+
+# useDerivedValue
+
+`useDerivedValue` is a hook that lets you create a new [shared value](/docs/fundamentals/glossary#shared-value) based on an existing one.
+
+## Reference
+
+```javascript
+import { useDerivedValue } from "react-native-reanimated";
+
+function App() {
+  const derivedValue = useDerivedValue(() => {
+    return sv.value * 50;
+  });
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+type SharedValue<T> = { value: T };
+type DerivedValue<T> = Readonly<SharedValue<T>>;
+
+function useDerivedValue<T>(
+  updater: () => T,
+  dependencies?: DependencyList
+): DerivedValue<T>;
+```
+
+</details>
+
+### Arguments
+
+#### `updater`
+
+#### `dependencies` <Optional/>
+
+An optional array of dependencies.
+
+Only relevant when using Reanimated [without the Babel plugin on the Web](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/web-support#web-without-a-babel-plugin).
+
+### Returns
+
+`useDerivedValue` returns a shared value.
+
+## Example
+
+import SharedValue from "@site/src/examples/SharedValue";
+import SharedValueSrc from "!!raw-loader!@site/src/examples/SharedValue";
+
+<InteractiveExample src={SharedValueSrc} component={<SharedValue />} showCode />
+
+## Pitfalls
+
+## Platform compatibility
+
+<div className="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
