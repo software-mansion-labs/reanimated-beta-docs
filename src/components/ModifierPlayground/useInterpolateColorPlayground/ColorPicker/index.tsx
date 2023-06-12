@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
-import { HexColorInput, HexColorPicker } from "react-colorful";
+import { HexColorPicker } from "react-colorful";
 import { InputAdornment, TextField } from "@mui/material";
 
 const TextFieldStyling = {
@@ -20,11 +20,16 @@ const TextFieldStyling = {
 };
 
 const ColorPicker = ({ color, setColor }) => {
+  const [inputColor, setInputColor] = useState(color);
+
   return (
     <div className={styles.colorSelection}>
       <HexColorPicker
         color={color}
-        onChange={setColor}
+        onChange={(color) => {
+          setColor(color);
+          setInputColor(color);
+        }}
         className={styles.colorPicker}
       />
       <TextField
@@ -32,17 +37,31 @@ const ColorPicker = ({ color, setColor }) => {
         hiddenLabel
         size="small"
         sx={TextFieldStyling}
-        value={color.replace("#", "").toUpperCase()}
-        inputProps={{ maxLength: 6 }}
+        value={inputColor.replace("#", "").toUpperCase()}
+        inputProps={{ maxLength: 6, pattern: "" }}
         InputProps={{
           startAdornment: <InputAdornment position="start">#</InputAdornment>,
         }}
-        onChange={(e) =>
-          setColor(
-            () =>
-              `${!e.target.value.startsWith("#") ? "#" : ""}${e.target.value}`
-          )
-        }
+        onBlur={(e) => {
+          const value = e.target.value;
+          if (!value) {
+            setInputColor("FFF");
+            setColor("#FFF");
+          }
+        }}
+        onChange={(e) => {
+          const value = e.target.value;
+          const hexPattern = /^([0-9A-F]{3}){1,2}$/i;
+          const enteringHexPattern = /^[0-9A-F]{0,6}$/;
+
+          if (enteringHexPattern.test(value)) {
+            setInputColor(value);
+          }
+
+          if (hexPattern.test(value)) {
+            setColor(`#${value}`);
+          }
+        }}
       />
     </div>
   );
