@@ -7,25 +7,40 @@ import {
 import Example from "./Example";
 import styles from "./styles.module.css";
 import ColorPicker from "./ColorPicker";
+import ProgressBarSection from "@site/src/components/ModifierPlayground/useInterpolateColorPlayground/ColorProgressBar/ProgressBarSection";
+import { Collapsible, useWindowSize } from "@docusaurus/theme-common";
+import CollapseButton from "@site/src/components/CollapseButton";
+import useScreenSize from "@site/src/hooks/useScreenSize";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-export enum ColorSpace {
-  RGB,
-  HSV,
-}
+export const ColorSpace = {
+  RGB: "RGB",
+  HSV: "HSV",
+};
 
 const initialState = {
-  colorSpace: ColorSpace.RGB,
+  colorSpace: "RGB",
   gamma: 2.2,
   correction: true,
   color: {
-    leftBoundary: "#FFF",
-    rightBoundary: "#000",
+    /* --swm-blue-light-100 */
+    leftBoundary: "#38ACDD",
+    /* --swm-yellow-light-100 */
+    rightBoundary: "#FFD61E",
   },
 };
 
 export default function useInterpolateColorPlayground() {
-  const [colorSpace, setColorSpace] = useState<ColorSpace>(
-    initialState.colorSpace
+  const { windowWidth } =
+    ExecutionEnvironment.canUseViewport && useScreenSize();
+  const isMobile = windowWidth < 600;
+
+  const [key, setKey] = useState(0);
+
+  const [colorBarsSectionCollapsed, setColorBarsSectionCollapsed] =
+    useState(true);
+  const [colorSpace, setColorSpace] = useState<"RGB" | "HSV">(
+    ColorSpace[initialState.colorSpace]
   );
   const [gamma, setGamma] = useState(initialState.gamma);
 
@@ -39,7 +54,8 @@ export default function useInterpolateColorPlayground() {
   const [correction, setCorrection] = useState(initialState.correction);
 
   const resetOptions = () => {
-    setColorSpace(() => initialState.colorSpace);
+    setKey((prevState) => prevState + 1);
+    setColorSpace(() => ColorSpace[initialState.colorSpace]);
     setGamma(() => initialState.gamma);
 
     setCorrection(() => initialState.correction);
@@ -49,8 +65,8 @@ export default function useInterpolateColorPlayground() {
     interpolateColor(
         sv.value,
         [0, 1],
-        ['${colorLeftBoundary}', '${colorRightBoundary}']
-        '${ColorSpace[colorSpace]}',
+        ['${colorLeftBoundary.toUpperCase()}', '${colorRightBoundary.toUpperCase()}']
+        '${colorSpace}',
         {
           ${
             colorSpace === ColorSpace.RGB
@@ -65,7 +81,7 @@ export default function useInterpolateColorPlayground() {
     <>
       <SelectOption
         label="Colorspace"
-        value={ColorSpace[colorSpace]}
+        value={colorSpace}
         onChange={(changedString) => setColorSpace(ColorSpace[changedString])}
         options={["RGB", "HSV"]}
       />
@@ -89,26 +105,59 @@ export default function useInterpolateColorPlayground() {
     </>
   );
 
+  const colorBox = (
+    <Example
+      outputRange={[colorLeftBoundary, colorRightBoundary]}
+      colorSpace={colorSpace}
+      options={{
+        gamma,
+        useCorrectedHSVInterpolation: correction,
+      }}
+    />
+  );
+
   const example = (
     <div className={styles.example}>
-      <ColorPicker color={colorLeftBoundary} setColor={setColorLeftBoundary} />
-      <Example
-        baseOptions={{
-          inputRange: [0, 1],
-          outputRange: [colorLeftBoundary, colorRightBoundary],
-          colorSpace: colorSpace,
-          cache: null,
-        }}
-        interpolationOptions={{
-          gamma,
-          useCorrectedHSVInterpolation: correction,
-        }}
+      <ColorPicker
+        color={colorLeftBoundary}
+        setColor={setColorLeftBoundary}
+        defaultValue={initialState.color.leftBoundary}
+        refreshKey={key}
       />
+      {!isMobile && colorBox}
       <ColorPicker
         color={colorRightBoundary}
         setColor={setColorRightBoundary}
+        defaultValue={initialState.color.rightBoundary}
+        refreshKey={key}
       />
+      {isMobile && colorBox}
     </div>
+  );
+
+  const section = (
+    <>
+      <CollapseButton
+        label="Hide interpolation comparison"
+        labelCollapsed="Show interpolation comparison"
+        collapsed={colorBarsSectionCollapsed}
+        onCollapse={() =>
+          setColorBarsSectionCollapsed((prevState) => !prevState)
+        }
+        className={styles.collapseButton}
+      />
+      <Collapsible
+        lazy={false}
+        collapsed={colorBarsSectionCollapsed}
+        disableSSRStyle
+        onCollapseTransitionEnd={setColorBarsSectionCollapsed}
+      >
+        <ProgressBarSection
+          color1={colorLeftBoundary}
+          color2={colorRightBoundary}
+        />
+      </Collapsible>
+    </>
   );
 
   return {
@@ -116,6 +165,6 @@ export default function useInterpolateColorPlayground() {
     controls,
     code,
     resetOptions,
-    additionalComponents: {},
+    additionalComponents: { section },
   };
 }

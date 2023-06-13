@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { HexColorPicker } from "react-colorful";
 import { InputAdornment, TextField } from "@mui/material";
@@ -19,8 +19,18 @@ const TextFieldStyling = {
   },
 };
 
-const ColorPicker = ({ color, setColor }) => {
+const ColorPicker = ({ color, setColor, defaultValue, refreshKey }) => {
   const [inputColor, setInputColor] = useState(color);
+
+  const resetOptionsHandler = () => {
+    console.log(defaultValue);
+    setInputColor((prevValue) => defaultValue);
+    setColor((prevValue) => defaultValue);
+  };
+
+  useEffect(() => {
+    resetOptionsHandler();
+  }, [refreshKey]);
 
   return (
     <div className={styles.colorSelection}>
@@ -45,8 +55,8 @@ const ColorPicker = ({ color, setColor }) => {
         onBlur={(e) => {
           const value = e.target.value;
           if (!value) {
-            setInputColor("FFF");
-            setColor("#FFF");
+            setInputColor(defaultValue);
+            setColor(defaultValue);
           }
         }}
         onChange={(e) => {

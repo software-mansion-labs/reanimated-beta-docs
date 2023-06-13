@@ -58,6 +58,7 @@ export default function ModifierPlayground(props: any) {
           <div className={styles.previewWrapper}>
             <React.Fragment key={key}>{example}</React.Fragment>
           </div>
+          {additionalComponents.section}
           <div className={styles.wrapper}>
             <div className={styles.controls}>
               {controls}
