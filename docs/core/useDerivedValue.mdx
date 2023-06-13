@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # useDerivedValue
 
-`useDerivedValue` is a hook that lets you create a new [shared value](/docs/fundamentals/glossary#shared-value) based on an existing one.
+`useDerivedValue` lets you create new [shared values](/docs/fundamentals/glossary#shared-value) based on existing ones.
 
 ## Reference
 
@@ -37,6 +37,8 @@ function useDerivedValue<T>(
 
 #### `updater`
 
+A function that should return a value constructed of shared values, React state or any other JavaScript value. This function is called whenever at least one of the shared values or state used in this function changes.
+
 #### `dependencies` <Optional/>
 
 An optional array of dependencies.
@@ -45,16 +47,18 @@ Only relevant when using Reanimated [without the Babel plugin on the Web](https:
 
 ### Returns
 
-`useDerivedValue` returns a shared value.
+`useDerivedValue` returns a new readonly [shared value](/docs/fundamentals/glossary#shared-value) based on a value returned from the [`updater`](/docs/core/useDerivedValue#updater) function.
 
 ## Example
 
-import SharedValue from "@site/src/examples/SharedValue";
-import SharedValueSrc from "!!raw-loader!@site/src/examples/SharedValue";
+import DerivedValue from "@site/src/examples/DerivedValue";
+import DerivedValueSrc from "!!raw-loader!@site/src/examples/DerivedValue";
 
-<InteractiveExample src={SharedValueSrc} component={<SharedValue />} showCode />
+<InteractiveExample src={DerivedValueSrc} component={<DerivedValue />} />
 
 ## Pitfalls
+
+- The callback passed to the first argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
 
 ## Platform compatibility
 
