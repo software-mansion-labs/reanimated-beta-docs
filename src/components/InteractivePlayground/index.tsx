@@ -29,14 +29,17 @@ export {
 
 interface InteractivePlaygroundProps {
   usePlayground: () => {
-    example: JSX.Element,
-    code: string,
-    controls: string,
-    resetOptions: () => {},
-    additionalComponents: {section, chart}}
+    example: JSX.Element;
+    code: string;
+    controls: string;
+    resetOptions: () => {};
+    additionalComponents: { section; chart };
+  };
 }
 
-export default function InteractivePlayground(props: InteractivePlaygroundProps) {
+export default function InteractivePlayground(
+  props: InteractivePlaygroundProps
+) {
   const [key, setKey] = React.useState(0);
 
   const { example, code, controls, resetOptions, additionalComponents } =

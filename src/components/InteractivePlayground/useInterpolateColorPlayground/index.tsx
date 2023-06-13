@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import {
-  CheckboxOption,
-  Range,
-  SelectOption,
-} from "src/components/InteractivePlayground";
+import { CheckboxOption, Range, SelectOption } from "../";
 import Example from "./Example";
 import styles from "./styles.module.css";
 import ColorPicker from "./ColorPicker";
-import ProgressBarSection from "@site/src/components/InteractivePlayground/useInterpolateColorPlayground/ColorProgressBar/ProgressBarSection";
-import { Collapsible, useWindowSize } from "@docusaurus/theme-common";
+import ProgressBarSection from "./ColorProgressBar/ProgressBarSection";
+import { Collapsible } from "@docusaurus/theme-common";
 import CollapseButton from "@site/src/components/CollapseButton";
 import useScreenSize from "@site/src/hooks/useScreenSize";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
