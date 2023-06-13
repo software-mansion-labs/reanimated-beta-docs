@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Draggable, { DraggableEvent } from "react-draggable";
 
-import { bezierEasingValues } from "@site/src/components/ModifierPlayground/PlaygroundChart";
+import { bezierEasingValues } from "@site/src/components/InteractivePlayground/PlaygroundChart";
 
 interface Point {
   x: number;

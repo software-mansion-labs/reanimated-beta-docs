@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { interpolateColor } from "react-native-reanimated";
-import ColorProgressBar from "@site/src/components/ModifierPlayground/useInterpolateColorPlayground/ColorProgressBar/index";
-import CodeBlock from "@theme/CodeBlock";
+import ColorProgressBar from "./index";
 import clsx from "clsx";
 
 function rgbInterpolation(color1: string, color2: string, progress: number) {

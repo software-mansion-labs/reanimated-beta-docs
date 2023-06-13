@@ -1,12 +1,5 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { interpolateColor } from "react-native-reanimated";
-
-interface RGB {
-  r: number;
-  g: number;
-  b: number;
-}
 
 const ColorProgressBar = ({
   color1,

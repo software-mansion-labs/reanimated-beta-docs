@@ -3,11 +3,11 @@ import {
   CheckboxOption,
   Range,
   SelectOption,
-} from "@site/src/components/ModifierPlayground";
+} from "src/components/InteractivePlayground";
 import Example from "./Example";
 import styles from "./styles.module.css";
 import ColorPicker from "./ColorPicker";
-import ProgressBarSection from "@site/src/components/ModifierPlayground/useInterpolateColorPlayground/ColorProgressBar/ProgressBarSection";
+import ProgressBarSection from "@site/src/components/InteractivePlayground/useInterpolateColorPlayground/ColorProgressBar/ProgressBarSection";
 import { Collapsible, useWindowSize } from "@docusaurus/theme-common";
 import CollapseButton from "@site/src/components/CollapseButton";
 import useScreenSize from "@site/src/hooks/useScreenSize";
