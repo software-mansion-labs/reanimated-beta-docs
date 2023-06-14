@@ -8,7 +8,7 @@ import { Easing } from "react-native-reanimated";
 import PlaygroundChart, {
   bezierEasingValues,
   HandleMoveHandlerProps,
-} from "@site/src/components/ModifierPlayground/PlaygroundChart";
+} from "@site/src/components/InteractivePlayground/PlaygroundChart";
 import { Collapsible } from "@docusaurus/theme-common";
 import CollapseButton from "@site/src/components/CollapseButton";
 import useScreenSize from "@site/src/hooks/useScreenSize";

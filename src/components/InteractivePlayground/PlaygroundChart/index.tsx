@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import useScreenSize from "@site/src/hooks/useScreenSize";
-import PlaygroundChartPoint from "@site/src/components/ModifierPlayground/PlaygroundChart/PlaygroundChartPoint";
+import PlaygroundChartPoint from "@site/src/components/InteractivePlayground/PlaygroundChart/PlaygroundChartPoint";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 export interface HandleMoveHandlerProps {

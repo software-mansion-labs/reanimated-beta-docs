@@ -7,6 +7,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 import useSpringPlayground from "./useSpringPlayground";
 import useTimingPlayground from "./useTimingPlayground";
+import useInterpolateColorPlayground from "./useInterpolateColorPlayground";
 
 import Reset from "@site/static/img/reset.svg";
 import ResetDark from "@site/static/img/reset-dark.svg";
@@ -20,9 +21,25 @@ import {
   TextField,
 } from "@mui/material";
 
-export { useSpringPlayground, useTimingPlayground };
+export {
+  useSpringPlayground,
+  useTimingPlayground,
+  useInterpolateColorPlayground,
+};
 
-export default function ModifierPlayground(props: any) {
+interface InteractivePlaygroundProps {
+  usePlayground: () => {
+    example: JSX.Element;
+    code: string;
+    controls: string;
+    resetOptions: () => {};
+    additionalComponents: { section; chart };
+  };
+}
+
+export default function InteractivePlayground(
+  props: InteractivePlaygroundProps
+) {
   const [key, setKey] = React.useState(0);
 
   const { example, code, controls, resetOptions, additionalComponents } =
@@ -53,6 +70,7 @@ export default function ModifierPlayground(props: any) {
           <div className={styles.previewWrapper}>
             <React.Fragment key={key}>{example}</React.Fragment>
           </div>
+          {additionalComponents.section}
           <div className={styles.wrapper}>
             <div className={styles.controls}>
               {controls}
