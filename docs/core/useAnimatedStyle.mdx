@@ -37,7 +37,7 @@ type AnimatedStyleProp<T> = AnimateStyle<T> | RegisteredStyle<AnimateStyle<T>>;
 
 function useAnimatedStyle<
   T extends AnimatedStyleProp<ViewStyle | ImageStyle | TextStyle>
->(updater: () => T, deps?: DependencyList | null): T;
+>(updater: () => T, dependencies?: DependencyList | null): T;
 ```
 
 </details>

@@ -33,7 +33,7 @@ function App() {
 ```typescript
 function useAnimatedProps<T extends {}>(
   updater: () => Partial<T>,
-  deps?: DependencyList | null,
+  dependencies?: DependencyList | null,
   adapters?: PropsAdapterFunction | PropsAdapterFunction[] | null
 ): Partial<T>;
 ```

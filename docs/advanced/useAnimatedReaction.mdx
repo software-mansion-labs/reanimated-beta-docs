@@ -32,7 +32,7 @@ type DependencyList = ReadonlyArray<any>;
 function useAnimatedReaction<T>(
   prepare: () => T,
   react: (prepareResult: T, preparePreviousResult: T | null) => void,
-  deps?: DependencyList
+  dependencies?: DependencyList
 ): void;
 ```
 
