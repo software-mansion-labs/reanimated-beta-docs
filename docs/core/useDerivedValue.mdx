@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # useDerivedValue
 
-`useDerivedValue` lets you create new [shared values](/docs/fundamentals/glossary#shared-value) based on existing ones.
+`useDerivedValue` lets you create new [shared values](/docs/fundamentals/glossary#shared-value) based on existing ones while keeping them reactive.
 
 ## Reference
 
@@ -37,7 +37,7 @@ function useDerivedValue<T>(
 
 #### `updater`
 
-A function that should return a value constructed of shared values, React state or any other JavaScript value. This function is called whenever at least one of the shared values or state used in this function changes.
+A function that should return a value constructed of shared values, React state or any other JavaScript value. This function is called whenever at least one of the shared values or state used in the function body changes.
 
 #### `dependencies` <Optional/>
 
@@ -59,6 +59,8 @@ import DerivedValueSrc from "!!raw-loader!@site/src/examples/DerivedValue";
 ## Pitfalls
 
 - The callback passed to the first argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+- You can also use `useDerivedValue` without returning a value in the `updater` function to react to a change of a shared value. If you need to access the previous value stored in a shared value use [`useAnimatedReaction`](/docs/advanced/useAnimatedReaction) instead.
 
 ## Platform compatibility
 
