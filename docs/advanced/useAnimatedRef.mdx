@@ -1,0 +1,24 @@
+# useAnimatedRef
+
+`useAnimatedRef` lets you
+
+## Reference
+
+```jsx
+import { useAnimatedRef } from "react-native-reanimated";
+
+function App() {
+  const animatedRef = useAnimatedRef();
+
+  return <Animated.View ref={animatedRef} />;
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+function useAnimatedRef<T extends Component>(): RefObject<T>;
+```
+
+</details>
