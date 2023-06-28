@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+---
+
+# Entering/Exiting animations
+
+## Fade
+
+<Row>
+
+<ThemedVideo
+  sources={{
+    light: "/recordings/layout-animations/fade_light.mov",
+    dark: "/recordings/layout-animations/fade_dark.mov",
+  }}
+/>
+
+```jsx
+import { FadeIn, FadeOut } from "react-native-reanimated";
+
+function App() {
+  return (
+    <Animated.View
+      entering={FadeIn.duration(300)}
+      exiting={FadeOut.duration(300)}
+    />
+  );
+}
+```
+
+</Row>
+
+<Row>
+<div>
+
+### Entering
+
+- FadeIn
+- FadeInRight
+- FadeInLeft
+- FadeInUp
+- FadeInDown
+
+</div>
+<div>
+
+### Exiting
+
+- FadeOut
+- FadeOutRight
+- FadeOutLeft
+- FadeOutUp
+- FadeOutDown
+
+</div>
+</Row>

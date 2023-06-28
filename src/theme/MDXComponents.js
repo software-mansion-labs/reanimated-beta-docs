@@ -5,6 +5,8 @@ import InteractivePlayground from "@site/src/components/InteractivePlayground";
 import CollapsibleCode from "@site/src/components/CollapsibleCode";
 import Optional from "@site/src/components/Optional";
 import Indent from "@site/src/components/Indent";
+import Row from "@site/src/components/Row";
+import ThemedVideo from "@site/src/components/ThemedVideo";
 
 export default {
   // Re-use the default mapping
@@ -16,4 +18,6 @@ export default {
   CollapsibleCode,
   Optional,
   Indent,
+  Row,
+  ThemedVideo,
 };
