@@ -6,6 +6,7 @@ import CollapsibleCode from "@site/src/components/CollapsibleCode";
 import Optional from "@site/src/components/Optional";
 import Indent from "@site/src/components/Indent";
 import Row from "@site/src/components/Row";
+import Grid from "@site/src/components/Grid";
 import ThemedVideo from "@site/src/components/ThemedVideo";
 
 export default {
@@ -19,5 +20,6 @@ export default {
   Optional,
   Indent,
   Row,
+  Grid,
   ThemedVideo,
 };

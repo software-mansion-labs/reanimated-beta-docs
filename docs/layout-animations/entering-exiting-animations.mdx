@@ -15,42 +15,108 @@ sidebar_position: 1
   }}
 />
 
+<div style={{flexGrow: 1}}>
+
+`FadeX` lets you create a fading animation.
+
 ```jsx
 import { FadeIn, FadeOut } from "react-native-reanimated";
 
 function App() {
-  return (
-    <Animated.View
-      entering={FadeIn.duration(300)}
-      exiting={FadeOut.duration(300)}
-    />
-  );
+  return <Animated.View entering={FadeIn} exiting={FadeOut} />;
 }
 ```
 
+</div>
+
 </Row>
 
-<Row>
+Available fade animations:
+
+<Grid>
 <div>
 
 ### Entering
 
-- FadeIn
-- FadeInRight
-- FadeInLeft
-- FadeInUp
-- FadeInDown
+<div style={{ margin: 16 }} />
+
+- `FadeIn`
+
+- `FadeInRight`
+
+- `FadeInLeft`
+
+- `FadeInUp`
+
+- `FadeInDown`
 
 </div>
 <div>
 
 ### Exiting
 
-- FadeOut
-- FadeOutRight
-- FadeOutLeft
-- FadeOutUp
-- FadeOutDown
+<div style={{ margin: 16 }} />
+
+- `FadeOut`
+
+- `FadeOutRight`
+
+- `FadeOutLeft`
+
+- `FadeOutUp`
+
+- `FadeOutDown`
 
 </div>
-</Row>
+</Grid>
+
+### Modifiers
+
+#### Common <Optional/>
+
+- `.delay(durationMs: number)` is the delay before the animation starts (in milliseconds). Defaults to `0`.
+- `.withInitialValues(values: StyleProps)` allows to override the initial config of the animation.
+- `.randomDelay()` randomizes the delay of the animation between `0` and the provided delay. Uses 1000 ms if delay wasn't provided.
+- `.withCallback(callback: (finished: boolean) => void)` is the callback that will fire after the animation ends. Sets `finished` to `true` when animation ends without interruptions, and `false` otherwise.
+
+```javascript
+FadeInDown.delay(500)
+  .withInitialValues({ transform: [{ translateY: 420 }] })
+  .randomDelay()
+  .withCallback((finished) => {
+    console.log(`finished without interruptions: ${finished}`);
+  });
+```
+
+#### Time-based <Optional/>
+
+- `.duration(durationMs: number)` is the length of the animation (in milliseconds). Defaults to `300`.
+- `.easing(easingFunction: EasingFunction)` is an easing function which defines the animation curve. Defaults to `Easing.inOut(Easing.quad)`
+
+```javascript
+FadeOutLeft.duration(500).easing(Easing.ease);
+```
+
+:::note
+Time-based modifiers have no effect when `.springify()` is used.
+:::
+
+#### Spring-based <Optional/>
+
+- `.springify()` enables the spring-based animation configuration.
+- `.damping(value: number)` decides how quickly a spring stops moving. Higher damping means the spring will come to rest faster. Defaults to `10`.
+- `.mass(value: number)` is the weight of the spring. Reducing this value makes the animation faster. Defaults to `1`.
+- `.stiffness(value: number)` decides how bouncy the spring is. Defaults to `100`.
+- `.overshootClamping(value: boolean)` decides whether a spring can bounce over the designated position. Defaults to `false`.
+- `.restDisplacementThreshold(value: number)` is the displacement below which the spring will snap to the designated position without further oscillations. Defaults to `0.001`.
+- `.restSpeedThreshold(value: number)` is the speed in pixels per second from which the spring will snap to the designated position without further oscillations. Defaults to `2`.
+
+```javascript
+FadeInUp.springify()
+  .damping(30)
+  .mass(5)
+  .stiffness(10)
+  .overshootClamping(false)
+  .restDisplacementThreshold(0.1)
+  .restSpeedThreshold(5);
+```
