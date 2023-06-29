@@ -75,14 +75,14 @@ Available fade animations:
 #### Common <Optional/>
 
 - `.delay(durationMs: number)` is the delay before the animation starts (in milliseconds). Defaults to `0`.
-- `.withInitialValues(values: StyleProps)` allows to override the initial config of the animation.
 - `.randomDelay()` randomizes the delay of the animation between `0` and the provided delay. Uses 1000 ms if delay wasn't provided.
+- `.withInitialValues(values: StyleProps)` allows to override the initial config of the animation.
 - `.withCallback(callback: (finished: boolean) => void)` is the callback that will fire after the animation ends. Sets `finished` to `true` when animation ends without interruptions, and `false` otherwise.
 
 ```javascript
 FadeInDown.delay(500)
-  .withInitialValues({ transform: [{ translateY: 420 }] })
   .randomDelay()
+  .withInitialValues({ transform: [{ translateY: 420 }] })
   .withCallback((finished) => {
     console.log(`finished without interruptions: ${finished}`);
   });
@@ -119,4 +119,90 @@ FadeInUp.springify()
   .overshootClamping(false)
   .restDisplacementThreshold(0.1)
   .restSpeedThreshold(5);
+```
+
+## Bounce
+
+<Row>
+
+<ThemedVideo
+  sources={{
+    light: "/recordings/layout-animations/bounce_light.mov",
+    dark: "/recordings/layout-animations/bounce_dark.mov",
+  }}
+/>
+
+<div style={{flexGrow: 1}}>
+
+`BounceX` lets you create a bouncing animation.
+
+```jsx
+import { BounceIn, BounceOut } from "react-native-reanimated";
+
+function App() {
+  return <Animated.View entering={BounceIn} exiting={BounceOut} />;
+}
+```
+
+</div>
+
+</Row>
+
+Available bounce animations:
+
+<Grid>
+<div>
+
+### Entering
+
+<div style={{ margin: 16 }} />
+
+- `BounceIn`
+
+- `BounceInRight`
+
+- `BounceInLeft`
+
+- `BounceInUp`
+
+- `BounceInDown`
+
+</div>
+<div>
+
+### Exiting
+
+<div style={{ margin: 16 }} />
+
+- `BounceOut`
+
+- `BounceOutRight`
+
+- `BounceOutLeft`
+
+- `BounceOutUp`
+
+- `BounceOutDown`
+
+</div>
+</Grid>
+
+### Modifiers
+
+#### Common <Optional/>
+
+- `.duration(durationMs: number)` is the length of the animation (in milliseconds). Defaults to `600`.
+- `.delay(durationMs: number)` is the delay before the animation starts (in milliseconds). Defaults to `0`.
+- `.randomDelay()` randomizes the delay of the animation between `0` and the provided delay. Uses 1000 ms if delay wasn't provided.
+- `.withInitialValues(values: StyleProps)` allows to override the initial config of the animation.
+- `.withCallback(callback: (finished: boolean) => void)` is the callback that will fire after the animation ends. Sets `finished` to `true` when animation ends without interruptions, and `false` otherwise.
+
+```javascript
+BounceInDown.duration(500)
+  .delay(500)
+  .randomDelay()
+  .withInitialValues({ transform: [{ translateY: -420 }] })
+  .withCallback((finished) => {
+    console.log(`finished without interruptions: ${finished}`);
+  });
 ```
