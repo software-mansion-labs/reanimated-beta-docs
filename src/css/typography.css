@@ -92,6 +92,13 @@
   --ifm-h4-font-size: var(--swm-heading-font-size-smaller);
   --ifm-h5-font-size: var(--swm-heading-font-size-smaller);
   --ifm-h6-font-size: var(--swm-heading-font-size-smaller);
+
+  --ifm-h1-vertical-rhythm-top: 3.75;
+  --ifm-h2-vertical-rhythm-top: 2.5;
+  --ifm-h3-vertical-rhythm-top: 1.75;
+  --ifm-heading-vertical-rhythm-top: 1.5;
+  --ifm-h1-vertical-rhythm-bottom: 1.5;
+  --ifm-heading-vertical-rhythm-bottom: 1.25;
 }
 
 @media (max-width: 996px) {
