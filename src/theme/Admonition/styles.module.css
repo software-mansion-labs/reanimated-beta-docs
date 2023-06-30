@@ -3,7 +3,7 @@
   --ifm-alert-padding-vertical: 1.5rem;
   --ifm-alert-padding-horizontal: 1.5rem;
 
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 [data-theme="dark"] .admonition {
