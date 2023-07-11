@@ -55,10 +55,10 @@ import AnimatedRefSrc from "!!raw-loader!@site/src/examples/AnimatedRef";
 function App() {
   const animatedRef = useAnimatedRef();
 
-  console.log(animatedRef.current); // 🚩 null
+  console.log(animatedRef.current); // 🚩 Returns null
 
   useEffect(() => {
-    console.log(animatedRef.current); // ✅
+    console.log(animatedRef.current); // ✅ Returns the component
   }, []);
 
   return <View ref={animatedRef} />;
