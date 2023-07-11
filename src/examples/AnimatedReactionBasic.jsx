@@ -1,11 +1,6 @@
 import React from "react";
-import { Button, StyleSheet, View, Text } from "react-native";
-import Animated, {
-  measure,
-  runOnJS,
-  useAnimatedReaction,
-  useSharedValue,
-} from "react-native-reanimated";
+import { StyleSheet, View } from "react-native";
+import Animated, { useSharedValue } from "react-native-reanimated";
 import {
   Gesture,
   GestureDetector,
