@@ -1,0 +1,57 @@
+---
+sidebar_position: 3
+---
+
+# useFrameCallback
+
+`useFrameCallback` lets you run a function on every frame.
+
+## Reference
+
+```javascript
+import { useFrameCallback } from "react-native-reanimated";
+
+function App() {
+  // ...
+}
+```
+
+<details>
+<summary>Type definitions</summary>
+
+```typescript
+
+```
+
+</details>
+
+### Arguments
+
+### Returns
+
+`useFrameCallback` returns an
+
+## Example
+
+import FrameCallbackDino from "@site/src/examples/FrameCallbackDino";
+import FrameCallbackDinoSrc from "!!raw-loader!@site/src/examples/FrameCallbackDino";
+
+<InteractiveExample
+  src={FrameCallbackDinoSrc}
+  component={<FrameCallbackDino />}
+  label="Tap to jump"
+/>
+
+## Pitfalls
+
+- The callback passed to the 1st argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+
+## Platform compatibility
+
+<div className="compatibility">
+
+| Android | iOS | Web |
+| ------- | --- | --- |
+| ✅      | ✅  | ✅  |
+
+</div>
