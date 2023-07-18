@@ -10,8 +10,8 @@ import { View, StyleSheet, Pressable, Text } from "react-native";
 import React from "react";
 
 const HEIGHT = 200;
-const DEFAULT_VELOCITY = 10;
-const VELOCITY_INCREMENT = 0.005;
+const DEFAULT_VELOCITY = 0.8;
+const VELOCITY_INCREMENT = 0.0001;
 const GROUND_LEVEL = 80;
 const DEFAULT_Y = HEIGHT - GROUND_LEVEL - 80;
 const DEFAULT_X = 1000;
@@ -30,19 +30,17 @@ const DEFAULT_HORSE = {
 };
 
 export default function FrameCallbackDino() {
-  const x = useSharedValue(0);
   const vx = useSharedValue(DEFAULT_VELOCITY);
-
   const width = useSharedValue(0);
-
-  const getDimensions = (event) => {
-    width.value = event.nativeEvent.layout.width;
-  };
 
   const obstacleX = useSharedValue(DEFAULT_X);
   const horseY = useSharedValue(DEFAULT_Y);
 
   const gameOver = useSharedValue(false);
+
+  const getDimensions = (event) => {
+    width.value = event.nativeEvent.layout.width;
+  };
 
   // highlight-next-line
   useFrameCallback((frameInfo) => {
@@ -59,9 +57,8 @@ export default function FrameCallbackDino() {
       return;
     }
 
-    x.value += dt * vx.value;
     obstacleX.value =
-      obstacleX.value > -100 ? obstacleX.value - vx.value : width.value;
+      obstacleX.value > -100 ? obstacleX.value - vx.value * dt : width.value;
 
     vx.value += VELOCITY_INCREMENT;
     // highlight-next-line
@@ -110,7 +107,6 @@ export default function FrameCallbackDino() {
     obstacleX.value = DEFAULT_X;
     horseY.value = DEFAULT_Y;
     vx.value = DEFAULT_VELOCITY;
-    x.value = 0;
   };
 
   return (
