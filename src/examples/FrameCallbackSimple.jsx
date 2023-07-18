@@ -1,28 +1,33 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import {
-  runOnJS,
+import { StyleSheet, View } from "react-native";
+import Animated, {
   useFrameCallback,
   useSharedValue,
+  useAnimatedStyle,
 } from "react-native-reanimated";
 
 export default function App() {
-  const fps = useSharedValue(0);
-  const [text, setText] = React.useState(fps.value);
+  const t = useSharedValue(0);
 
   // highlight-start
   useFrameCallback((frameInfo) => {
-    const { timeSincePreviousFrame } = frameInfo;
-
-    if (timeSincePreviousFrame != null) {
-      runOnJS(setText)(Math.round(1000 / timeSincePreviousFrame));
-    }
+    t.value = frameInfo.timeSinceFirstFrame / 350;
   });
   // highlight-end
 
+  const infinityStyle = useAnimatedStyle(() => {
+    const scale = (2 / (3 - Math.cos(2 * t.value))) * 200;
+    return {
+      transform: [
+        { translateX: scale * Math.cos(t.value) },
+        { translateY: scale * (Math.sin(2 * t.value) / 2) },
+      ],
+    };
+  });
+
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>FPS: {text}</Text>
+      <Animated.View style={[styles.dot, infinityStyle]} />
     </View>
   );
 }
@@ -31,11 +36,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    height: 150,
   },
-  label: {
-    fontSize: 24,
-    marginVertical: 16,
-    color: "#b58df1",
-    fontWeight: "bold",
+  dot: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#b58df1",
+    position: "absolute",
   },
 });
