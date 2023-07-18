@@ -21,7 +21,7 @@ import { useFrameCallback } from "react-native-reanimated";
 
 function App() {
   const frameCallback = useFrameCallback((frameInfo) => {
-    // Increment a value on every frame
+    // Increment a value on every frame update
     sv.value += 1;
   });
 
