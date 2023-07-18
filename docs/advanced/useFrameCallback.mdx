@@ -6,13 +6,28 @@ sidebar_position: 3
 
 `useFrameCallback` lets you run a function on every frame.
 
+import FrameCallbackSimple from "@site/src/examples/FrameCallbackSimple";
+import FrameCallbackSimpleSrc from "!!raw-loader!@site/src/examples/FrameCallbackSimple";
+
+<InteractiveExample
+  src={FrameCallbackSimpleSrc}
+  component={<FrameCallbackSimple />}
+/>
+
 ## Reference
 
 ```javascript
 import { useFrameCallback } from "react-native-reanimated";
 
 function App() {
-  // ...
+  const loop = useFrameCallback((frameInfo) => {
+    // Increment a value on every frame
+    sv.value += 1;
+  });
+
+  return (
+    <Button title="Start/Stop" onPress={() => loop.setActive(!loop.isActive)} />
+  );
 }
 ```
 
@@ -20,16 +35,41 @@ function App() {
 <summary>Type definitions</summary>
 
 ```typescript
+type FrameInfo = {
+  timestamp: number;
+  timeSincePreviousFrame: number | null;
+  timeSinceFirstFrame: number;
+};
 
+type FrameCallback = {
+  setActive: (isActive: boolean) => void;
+  isActive: boolean;
+  callbackId: number;
+};
+
+function useFrameCallback(
+  callback: (frameInfo: FrameInfo) => void,
+  autostart = true
+): FrameCallback;
 ```
 
 </details>
 
 ### Arguments
 
+#### `callback`
+
+A function to be executed on every frame update.
+
+#### `autostart` <Optional />
+
 ### Returns
 
-`useFrameCallback` returns an
+`useFrameCallback` returns an object containing these fields:
+
+- `setActive` a function used to
+- `isActive` a boolean indicating whether a callback is running
+- `callbackId` a number indicating a unique identifier of the frame callback
 
 ## Example
 
@@ -42,9 +82,9 @@ import FrameCallbackDinoSrc from "!!raw-loader!@site/src/examples/FrameCallbackD
   label="Tap to jump"
 />
 
-## Pitfalls
+## Remarks
 
-- The callback passed to the 1st argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
+- A function passed to the `callback` argument is automatically [workletized](/docs/fundamentals/glossary#to-workletize) and ran on the [UI thread](/docs/fundamentals/glossary#ui-thread).
 
 ## Platform compatibility
 

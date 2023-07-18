@@ -45,7 +45,8 @@ export default function FrameCallbackDino() {
   const gameOver = useSharedValue(false);
 
   // highlight-next-line
-  useFrameCallback(({ timeSincePreviousFrame: dt }) => {
+  useFrameCallback((frameInfo) => {
+    const { timeSincePreviousFrame: dt } = frameInfo;
     if (dt == null) {
       return;
     }
