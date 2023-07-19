@@ -8,19 +8,25 @@ import Animated, {
   cancelAnimation,
 } from "react-native-reanimated";
 
+const OFFSET = 200;
+
 export default function App() {
-  const offset = useSharedValue(200);
+  const offset = useSharedValue(OFFSET);
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [{ translateX: offset.value }],
   }));
 
-  React.useEffect(() => {
+  const startAnimation = () => {
     offset.value = withRepeat(
-      withTiming(-offset.value, { duration: 1500 }),
+      withTiming(offset.value > 0 ? -OFFSET : OFFSET, { duration: 1500 }),
       -1,
       true
     );
+  };
+
+  React.useEffect(() => {
+    startAnimation();
   }, []);
 
   const handleCancelAnimation = () => {
@@ -31,7 +37,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.box, animatedStyles]} />
-      <Button title="Cancel animation" onPress={handleCancelAnimation} />
+      <View style={styles.row}>
+        <Button title="Cancel animation" onPress={handleCancelAnimation} />
+        <Button title="Start animation" onPress={startAnimation} />
+      </View>
     </View>
   );
 }
@@ -49,5 +58,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#b58df1",
     borderRadius: 20,
     marginBottom: 30,
+  },
+  row: {
+    flexDirection: "row",
+    gap: 10,
   },
 });
