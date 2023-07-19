@@ -10,8 +10,8 @@ import { View, StyleSheet, Pressable, Text } from "react-native";
 import React from "react";
 
 const HEIGHT = 200;
-const DEFAULT_VELOCITY = 0.8;
-const VELOCITY_INCREMENT = 0.0001;
+const DEFAULT_VELOCITY = 0.6;
+const VELOCITY_INCREMENT = 0.00005;
 const GROUND_LEVEL = 80;
 const DEFAULT_Y = HEIGHT - GROUND_LEVEL - 80;
 const DEFAULT_X = 1000;
