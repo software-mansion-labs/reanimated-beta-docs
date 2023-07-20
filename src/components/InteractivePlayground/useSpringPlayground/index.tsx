@@ -84,7 +84,7 @@ export default function useSpringPlayground() {
           role="tab"
           onClick={() => setPhysicsBased(false)}
         >
-          Time-based
+          Duration-based
         </li>
       </ul>
       {isPhysicsBased ? (

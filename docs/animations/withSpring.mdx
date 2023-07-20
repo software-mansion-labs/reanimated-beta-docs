@@ -63,29 +63,23 @@ import { useSpringPlayground } from "@site/src/components/InteractivePlayground"
 
 Available properties:
 
-##### Physics-based <Optional />
+| Name                      | Type      | Default | Description                                                                                                                |
+| ------------------------- | --------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
+| mass                      | `number`  | 1       | The weight of the spring. Reducing this value makes the animation faster.                                                  |
+| damping                   | `number`  | 10      | How quickly a spring stops moving. Higher damping means the spring will come to rest faster.                               |
+| duration                  | `number`  | 2000    | Length of the animation (in milliseconds).                                                                                 |
+| dampingRatio              | `number`  | 0.5     | How damped the spring is. Value `1` means the spring is critically damped. Values `>= 1` means the spring won't overshoot. |
+| stiffness                 | `number`  | 100     | How bouncy the spring is.                                                                                                  |
+| velocity                  | `number`  | 0       | Initial velocity applied to the spring equation.                                                                           |
+| overshootClamping         | `boolean` | false   | Whether a spring can bounce over the `toValue`.                                                                            |
+| restDisplacementThreshold | `number`  | 0.01    | The displacement below which the spring will snap to `toValue` without further oscillations.                               |
+| restSpeedThreshold        | `number`  | 2       | The speed in pixels per second from which the spring will snap to `toValue` without further oscillations.                  |
 
-| Name    | Type     | Default | Description                                                                                  |
-| ------- | -------- | ------- | -------------------------------------------------------------------------------------------- |
-| mass    | `number` | 1       | The weight of the spring. Reducing this value makes the animation faster.                    |
-| damping | `number` | 10      | How quickly a spring stops moving. Higher damping means the spring will come to rest faster. |
+:::info
+The `mass` and `damping` (physics-based) properties can't be used at the same time as `duration` and `dampingRatio` (duration-based).
 
-##### Time-based <Optional />
-
-| Name         | Type     | Default | Description                                                                                       |
-| ------------ | -------- | ------- | ------------------------------------------------------------------------------------------------- |
-| duration     | `number` | 2000    | Length of the animation (in milliseconds).                                                        |
-| dampingRatio | `number` | 0.5     | Values higher than `1` result in a spring would not overshoot i.e. it would be critically damped. |
-
-##### Common <Optional />
-
-| Name                      | Type      | Default | Description                                                                                               |
-| ------------------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------- |
-| stiffness                 | `number`  | 100     | How bouncy the spring is.                                                                                 |
-| velocity                  | `number`  | 0       | Initial velocity applied to the spring equation.                                                          |
-| overshootClamping         | `boolean` | false   | Whether a spring can bounce over the `toValue`.                                                           |
-| restDisplacementThreshold | `number`  | 0.01    | The displacement below which the spring will snap to `toValue` without further oscillations.              |
-| restSpeedThreshold        | `number`  | 2       | The speed in pixels per second from which the spring will snap to `toValue` without further oscillations. |
+When used together `duration` and `dampingRatio` overrides `mass` and `damping` props.
+:::
 
 #### `callback` <Optional />
 
