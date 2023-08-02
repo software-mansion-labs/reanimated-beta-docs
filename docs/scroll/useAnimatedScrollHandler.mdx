@@ -71,7 +71,7 @@ The handler should be passed under `onScroll` parameter regardless of whether it
 In the below example we define a scroll handler by passing a single worklet handler.
 The worklet handler is triggered for each of the scroll events dispatched to the `Animated.ScrollView` component to which we attach the handler.
 
-```js {10-12,29}
+```jsx {10-12,29}
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -110,7 +110,7 @@ If we are interested in receiving drag or momentum events instead of passing a s
 Below for convenience, we only show how the `scrollHandler` should be defined in such a case.
 The place where we attach handler to a scrollable component remains unchanged regardless of the event types we want to receive:
 
-```js
+```jsx
 const isScrolling = useSharedValue(false);
 
 const scrollHandler = useAnimatedScrollHandler({

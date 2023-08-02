@@ -13,7 +13,7 @@ As we're rewriting the documentation some of the pages might be a little outdate
 This hook allows you to create animations based on the offset of a `ScrollView`.
 The hook automatically detects if the `ScrollView` is horizontal or vertical.
 
-```js
+```ts
 useScrollViewOffset(aref: RefObject<Animated.ScrollView>) => [SharedValue<number>]
 ```
 
@@ -30,7 +30,7 @@ A shared value which holds the current offset of the `ScrollView`.
 
 ## Example
 
-```js
+```jsx
 function ScrollViewOffsetExample() {
   const aref = useAnimatedRef<Animated.ScrollView>();
   const scrollHandler = useScrollViewOffset(aref);
