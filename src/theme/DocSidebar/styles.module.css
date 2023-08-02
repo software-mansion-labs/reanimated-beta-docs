@@ -19,7 +19,7 @@
 }
 
 [class*="menu__list-item-collapsible"] a {
-  margin: 20px 0 12px 20px;
+  margin: 8px 0 8px 20px;
 
   text-decoration: none;
   color: var(--ifm-font-color-base);
