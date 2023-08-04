@@ -8,7 +8,7 @@ import ReanimatedSponsors from "@site/src/components/ReanimatedSponsors";
 
 export default function Home(): JSX.Element {
   return (
-    <Layout description="Where declarative animations meet native performance at 120 fps">
+    <Layout description="Beyond the limitations">
       <div className={styles.landingContainer}>
         <HomepageStartScreen />
         <ReanimatedFeatures />
