@@ -7,8 +7,6 @@ import {
 import { useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
 import DocSidebarItems from "@theme/DocSidebarItems";
 
-import styles from "./styles.module.css";
-
 // eslint-disable-next-line react/function-component-definition
 const DocSidebarMobileSecondaryMenu = ({ sidebar, path }) => {
   const mobileSidebar = useNavbarMobileSidebar();
@@ -19,11 +17,7 @@ const DocSidebarMobileSecondaryMenu = ({ sidebar, path }) => {
         activePath={path}
         onItemClick={(item) => {
           // Mobile sidebar should only be closed if the category has a link
-          if (item.type === "category" && item.href) {
-            mobileSidebar.toggle();
-            console.log(sidebar);
-          }
-          if (item.type === "link") {
+          if ((item.type === "category" && item.href) || item.type === "link") {
             mobileSidebar.toggle();
           }
         }}

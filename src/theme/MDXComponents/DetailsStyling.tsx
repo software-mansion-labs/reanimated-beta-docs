@@ -48,7 +48,6 @@ const DetailsStyling = ({ summary, children, ...props }): JSX.Element => {
       }}
       onClick={(e) => {
         e.stopPropagation(); // For isolation of multiple nested details/summary
-        console.log(summary);
         const target = e.target as HTMLElement;
         const shouldToggle =
           isInSummary(target) && hasParent(target, detailsRef.current!);

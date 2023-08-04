@@ -23,9 +23,8 @@ const ColorPicker = ({ color, setColor, defaultValue, refreshKey }) => {
   const [inputColor, setInputColor] = useState(color);
 
   const resetOptionsHandler = () => {
-    console.log(defaultValue);
-    setInputColor((prevValue) => defaultValue);
-    setColor((prevValue) => defaultValue);
+    setInputColor(() => defaultValue);
+    setColor(() => defaultValue);
   };
 
   useEffect(() => {
