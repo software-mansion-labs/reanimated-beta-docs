@@ -4,6 +4,12 @@ title: Web Support
 sidebar_label: Web Support
 ---
 
+:::info
+This page was ported from an old version of the documentation.
+
+As we're rewriting the documentation some of the pages might be a little outdated.
+:::
+
 It's possible to launch Reanimated in a web browser. For that case all of the functionalities are implemented purely in JavaScript, hence the efficiency of the animations might be lower.
 
 Reanimated for Web requires the following configuration steps. You need to add [`@babel/plugin-proposal-export-namespace-from`](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from) as well as Reanimated Babel plugin to your `babel.config.js`.
