@@ -16,9 +16,7 @@ const StartScreen = () => {
               <span>React Native</span>
               <SelectedLabel>Reanimated</SelectedLabel>
             </h1>
-            <h2 className={styles.subheadingLabel}>
-              Where declarative animations meet native performance at 120 fps
-            </h2>
+            <h2 className={styles.subheadingLabel}>Beyond the limitations</h2>
           </div>
           <div className={styles.lowerHeading}>
             <Horse />
