@@ -55,7 +55,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/social-card.jpg",
+      image: "img/og-image.png",
       metadata: [
         { name: "og:image:width", content: "1200" },
         { name: "og:image:height", content: "630" },
