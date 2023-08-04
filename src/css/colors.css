@@ -235,6 +235,13 @@
   --swm-card-background: var(--swm-background);
   --swm-card-border: var(--swm-navy-light-20);
   --swm-card-border-hover: var(--swm-purple-light-100);
+
+  /* Sidebar label*/
+  --swm-sidebar-label-text-new: var(--swm-off-white);
+  --swm-sidebar-label-background-new: var(--swm-purple-light-100);
+
+  --swm-sidebar-label-text-experimental: var(--swm-navy-light-100);
+  --swm-sidebar-label-background-experimental: var(--swm-yellow-light-40);
 }
 
 :root[data-theme="dark"] {
@@ -366,6 +373,13 @@
   --swm-card-background: var(--swm-navy);
   --swm-card-border: var(--swm-navy-dark-60);
   --swm-card-border-hover: var(--swm-purple-dark-80);
+
+  /* Sidebar label*/
+  --swm-sidebar-label-text-new: var(--swm-off-white);
+  --swm-sidebar-label-background-new: var(--swm-purple-dark-120);
+
+  --swm-sidebar-label-text-experimental: var(--swm-off-white);
+  --swm-sidebar-label-background-experimental: var(--swm-yellow-dark-120);
 }
 
 code {
