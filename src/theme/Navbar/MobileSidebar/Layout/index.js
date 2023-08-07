@@ -1,30 +1,56 @@
 import React from "react";
 import clsx from "clsx";
-import { useNavbarSecondaryMenu } from "@docusaurus/theme-common/internal";
 import styles from "./styles.module.css";
 import AlgoliaSearchBar from "@site/src/components/AlgoliaSearchBar";
 import usePageType from "@site/src/hooks/usePageType";
-export default function NavbarMobileSidebarLayout({
-  header,
-  primaryMenu,
-  secondaryMenu,
-}) {
-  const { shown: secondaryMenuShown } = useNavbarSecondaryMenu();
+import { useAllDocsData } from "@docusaurus/plugin-content-docs/client";
+import { useLocalPathname } from "@docusaurus/theme-common/internal";
+
+function isActive(path, localPathname) {
+  return localPathname.startsWith(path);
+}
+
+export default function NavbarMobileSidebarLayout({ header, secondaryMenu }) {
   const { isLanding } = usePageType();
+
+  const data = useAllDocsData();
+  const { versions } = data.default;
+  const reversed = [...versions].reverse();
+
+  const localPathname = useLocalPathname();
+  const activeVersion = reversed.find((version) =>
+    isActive(version.path, localPathname)
+  );
 
   return (
     <div className="navbar-sidebar">
       {header}
       {!isLanding && <AlgoliaSearchBar />}
-      <div
-        className={clsx("navbar-sidebar__items", {
-          "navbar-sidebar__items--show-secondary": secondaryMenuShown,
-        })}
-      >
-        <div className="navbar-sidebar__item menu">{primaryMenu}</div>
+      <div className={clsx("navbar-sidebar__items")}>
         <div className="navbar-sidebar__item menu">{secondaryMenu}</div>
       </div>
       <div className={styles.sidebarFooter}>
+        <div className={styles.sidebarVersions}>
+          <span className={styles.sidebarVersionLabel}>Versions:</span>
+          {reversed.map((version) => {
+            return (
+              <a
+                key={version.label}
+                href={
+                  version.isLast
+                    ? `${version.path}/${version.mainDocId}`
+                    : version.path
+                }
+                className={clsx(
+                  styles.sidebarVersion,
+                  activeVersion.name === version.name && styles.active
+                )}
+              >
+                {version.label}
+              </a>
+            );
+          })}
+        </div>
         <a href="https://github.com/software-mansion/react-native-reanimated/tree/main/docs">
           <div className={clsx(styles.sidebarGithubIcon, "header-github")} />
         </a>

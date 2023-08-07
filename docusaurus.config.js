@@ -76,10 +76,9 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "fundamentals/getting-started",
+            type: "docsVersionDropdown",
             position: "right",
-            label: "Docs",
+            dropdownActiveClassDisabled: true,
           },
           {
             href: "https://github.com/software-mansion/react-native-reanimated/",
