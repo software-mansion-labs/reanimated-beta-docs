@@ -44,6 +44,12 @@ const config = {
           sidebarCollapsible: false,
           editUrl:
             "https://github.com/software-mansion-labs/reanimated-3-docs/edit/main/",
+          lastVersion: "current", // <- this makes 3.x docs as default
+          versions: {
+            current: {
+              label: "3.x",
+            },
+          },
         },
         theme: {
           customCss: require.resolve("./src/css/index.css"),
