@@ -260,6 +260,10 @@
 
   --swm-dropdown-versions-item-hover: var(--swm-navy-light-100);
   --swm-dropdown-versions-item-active-hover: var(--swm-navy-light-100);
+
+  /* Version badge */
+  --swm-version-badge: var(--swm-navy-light-100);
+  --swm-version-badge-background: var(--swm-navy-light-10);
 }
 
 :root[data-theme="dark"] {
@@ -417,6 +421,10 @@
 
   --swm-dropdown-versions-item-hover: var(--swm-navy-dark-100);
   --swm-dropdown-versions-item-active-hover: var(--swm-navy-dark-100);
+
+  /* Version badge */
+  --swm-version-badge: var(--swm-off-white);
+  --swm-version-badge-background: var(--swm-light-off-navy);
 }
 
 code {

@@ -70,3 +70,12 @@ table thead tr {
 [class*="codeBlockLines"] span:last-of-type {
   margin-right: 1em;
 }
+
+.theme-doc-version-badge {
+  color: var(--swm-version-badge);
+  background: var(--swm-version-badge-background);
+  padding: 6px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 8px;
+}
