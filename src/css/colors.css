@@ -247,6 +247,19 @@
   --swm-sidebar-elements-version-text: var(--swm-navy-light-100);
   --swm-sidebar-elements-version-inactive: var(--swm-navy-dark-40);
   --swm-sidebar-elements-background: var(--swm-white);
+
+  /* Versions dropdown */
+  --swm-dropdown-versions-background: var(--swm-off-white);
+  --swm-dropdown-versions-item: var(--swm-navy-light-100);
+  --swm-dropdown-versions-item-border: var(--swm-purple-light-40);
+  --swm-dropdown-versions-item-background: var(--swm-purple-light-20);
+
+  --swm-dropdown-versions-item-active: var(--swm-off-white);
+  --swm-dropdown-versions-item-border-active: var(--swm-purple-light-100);
+  --swm-dropdown-versions-item-background-active: var(--swm-purple-light-80);
+
+  --swm-dropdown-versions-item-hover: var(--swm-navy-light-100);
+  --swm-dropdown-versions-item-active-hover: var(--swm-navy-light-100);
 }
 
 :root[data-theme="dark"] {
@@ -390,6 +403,20 @@
   --swm-sidebar-elements-version-text: var(--swm-navy-dark-20);
   --swm-sidebar-elements-version-inactive: var(--swm-navy-dark-60);
   --swm-sidebar-elements-background: var(--swm-light-off-navy);
+
+  /* Versions dropdown */
+
+  --swm-dropdown-versions-background: var(--swm-off-navy);
+  --swm-dropdown-versions-item: var(--swm-off-white);
+  --swm-dropdown-versions-item-border: var(--swm-purple-dark-40);
+  --swm-dropdown-versions-item-background: var(--swm-purple-dark-40);
+
+  --swm-dropdown-versions-item-active: var(--swm-off-white);
+  --swm-dropdown-versions-item-border-active: var(--swm-purple-dark-120);
+  --swm-dropdown-versions-item-background-active: var(--swm-purple-dark-120);
+
+  --swm-dropdown-versions-item-hover: var(--swm-navy-dark-100);
+  --swm-dropdown-versions-item-active-hover: var(--swm-navy-dark-100);
 }
 
 code {

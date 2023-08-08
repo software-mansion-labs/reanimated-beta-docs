@@ -39,10 +39,38 @@ nav {
     var(--ifm-navbar-item-padding-horizontal);
 }
 
-.navbarItemsLanding a,
-.navbarItemsLanding:hover a {
-  display: inline-block;
+[class*="dropdown__menu"] {
+  background-color: var(--swm-dropdown-versions-background);
+  border-radius: 4px;
+  margin-top: 0;
+  padding: 8px;
+  width: 100%;
+}
+
+.navbarItemsLanding [class*="dropdown--right"] a {
   color: var(--swm-off-white);
+}
+
+.navbarItemsLanding [class*="dropdown__menu"] a,
+[class*="dropdown__menu"] a {
+  color: var(--swm-dropdown-versions-item);
+  border: 1px solid transparent;
+}
+
+.navbarItemsLanding [class*="dropdown__menu"] a:hover,
+[class*="dropdown__menu"] a:hover {
+  color: var(--swm-dropdown-versions-item-hover);
+  border: 1px solid var(--swm-dropdown-versions-item-border);
+  background-color: var(--swm-dropdown-versions-item-background);
+}
+
+[class*="dropdown__link--active"] {
+  color: var(--swm-dropdown-versions-item-active) !important;
+  background-color: var(--swm-dropdown-versions-item-background-active);
+}
+
+[class*="dropdown__link--active"]:hover {
+  color: var(--swm-dropdown-versions-item-active-hover) !important;
 }
 
 @media (min-width: 996px) {
