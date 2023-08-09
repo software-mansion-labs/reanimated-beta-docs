@@ -21,7 +21,7 @@ const StartScreen = () => {
           <div className={styles.lowerHeading}>
             <Horse />
             <HomepageButton
-              href="/docs/fundamentals/getting-started"
+              href="/react-native-reanimated/docs/fundamentals/getting-started"
               title="Get started"
             />
           </div>

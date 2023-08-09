@@ -15,7 +15,7 @@ const config = {
   url: "https://reanimated-beta-docs.swmansion.com",
 
   // Change this to /react-native-reanimated/ when deploying to GitHub pages
-  baseUrl: "/",
+  baseUrl: "/react-native-reanimated/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

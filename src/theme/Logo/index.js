@@ -10,8 +10,8 @@ export default function LogoWrapper(props) {
   };
 
   const heroImages = {
-    logo: "/img/logo-hero.svg",
-    title: "/img/title-hero.svg",
+    logo: useBaseUrl("/img/logo-hero.svg"),
+    title: useBaseUrl("/img/title-hero.svg"),
   };
 
   return (
