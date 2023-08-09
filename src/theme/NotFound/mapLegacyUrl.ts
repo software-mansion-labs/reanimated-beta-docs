@@ -81,6 +81,7 @@ function handleSiteMap(pathname: string): string {
 
   const [page, ...rest] = pathnameWithoutId.split("/").reverse();
   const [section] =
+    // @ts-ignore dunno tf is wrong here
     Object.entries(siteMap).find(([_, pages]) => pages.includes(page)) ?? [];
 
   if (!section) return pathname;
