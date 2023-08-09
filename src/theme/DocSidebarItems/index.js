@@ -12,8 +12,8 @@ function DocSidebarItems({ items, ...props }) {
   return (
     <DocSidebarItemsExpandedStateProvider>
       {items.map((item, index) => (
-        <div className={styles.wrapper}>
-          <DocSidebarItem key={index} item={item} index={index} {...props} />
+        <div className={styles.wrapper} key={`${item.docId}-${index}`}>
+          <DocSidebarItem item={item} index={index} {...props} />
           {EXPERIMENTAL_APIs.includes(item.docId) && (
             <SidebarLabel key={item.docId} type="experimental" />
           )}
