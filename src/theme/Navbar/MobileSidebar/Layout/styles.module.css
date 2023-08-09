@@ -3,6 +3,15 @@
   height: calc(
     100% - var(--ifm-navbar-height) - var(--swm-navbar-sidebar-items-height)
   );
+  padding-left: 1rem;
+}
+
+[class*="navbar-sidebar__back"] {
+  display: none;
+}
+
+[class*="navbar-sidebar__backdrop"] {
+  display: block;
 }
 
 [class*="navbar-sidebar__brand"] {
@@ -15,6 +24,10 @@
   }
 }
 
+[class*="navbar-sidebar"] {
+  background-color: var(--swm-off-background);
+}
+
 .sidebarGithubIcon {
   width: 26px;
   height: 26px;
@@ -24,11 +37,25 @@
 .sidebarFooter {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  font-weight: var(--ifm-font-weight-semibold);
 
   padding: 0 1em;
-  bottom: 0;
 
   height: 4em;
   background-color: var(--swm-sidebar-elements-background);
+}
+
+.sidebarVersionLabel {
+  margin-right: 12px;
+}
+
+.sidebarVersion {
+  margin: 0 8px;
+  color: var(--swm-sidebar-elements-version-inactive);
+}
+
+.active {
+  color: var(--swm-sidebar-elements-version-text);
+  text-decoration: underline;
 }
